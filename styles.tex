@@ -1,0 +1,532 @@
+%% ====================================================================
+%% Comprehensive LaTeX style.tex file
+%% ====================================================================
+
+\usepackage[usenames,dvipsnames]{xcolor}
+
+\usepackage[mathletters]{ucs}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+
+\usepackage{typearea, geometry}
+\usepackage{scrlayer-scrpage}
+
+\usepackage{float, wrapfig, picinpar, siunitx}
+\usepackage{lastpage, hyperref, textcomp}
+\usepackage{url, interval, calc,framed, fancybox, quoting, empheq, algorithm, stackrel, sectsty}
+\usepackage{longtable,tabu}
+
+\usepackage{algpseudocode}
+\algrenewcommand\algorithmicprocedure{\textbf{function}}
+\algrenewcommand{\algorithmiccomment}[1]{\hskip3em$\triangleright$ #1}
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.12}
+
+\usepackage{amsmath, amsopn, multicol, enumerate, mathtools, tikz, units, bbding}
+\usepackage{upgreek, bold-extra, mathrsfs, tensor}
+\usetikzlibrary{shapes,calendar,matrix,backgrounds,folding,knots,decorations.markings,calc,arrows,petri,topaths,fadings,decorations.pathreplacing}
+\usepackage[framed, hyperref, thmmarks, amsmath]{ntheorem}
+\usepackage[font=small,labelsep=none]{caption}
+\usepackage{subfig}
+\usepackage{mathdots}
+
+%\DeclareMathAlphabet{\mathbbold}{U}{bbold}{m}{n}   
+%\DeclareMathAlphabet{\mathbbm}{U}{bbm}{m}{n}
+\usepackage{bbm}
+%\usepackage{dsfont}
+
+\usepackage[e]{esvect}
+\usepackage[makeroom]{cancel}
+
+%=== loading symbols ===
+\newcommand{\eins}{\ensuremath{\mathbbm{1}}}
+
+%\usepackage[charter]{mathdesign}
+%\usepackage[nointegrals]{wasysym}
+\usepackage{amsfonts, amssymb, esint}
+\usepackage[new]{old-arrows}
+
+\let\rsfsscr=\mathscr
+\usepackage[mathscr]{euscript}
+\usepackage{listings}
+\lstset{
+    keywordstyle=\color{blue}
+  , basicstyle=\ttfamily\footnotesize\bfseries
+  , commentstyle={}
+  , columns=fullflexible
+  , numbers=left
+  , showstringspaces=false
+  , keepspaces=true
+  , xleftmargin=.2\textwidth
+  , xrightmargin=.2\textwidth
+  , frame=tb
+  }
+
+\AtBeginDocument{\setlength{\abovedisplayshortskip}{2pt}}%
+\AtBeginDocument{\setlength{\belowdisplayshortskip}{4pt}}%
+\AtBeginDocument{\setlength{\abovedisplayskip}{4pt}}%
+\AtBeginDocument{\setlength{\belowdisplayskip}{4pt}}%
+
+%% Sectioning (example)
+%\RedeclareSectionCommand[ beforeskip=0.5\baselineskip, afterskip=0.05\baselineskip]{section}
+%\RedeclareSectionCommand[ beforeskip=0.5\baselineskip, afterskip=0.05\baselineskip]{subsection}
+%\addtokomafont{section}{\mdseries\scshape\large\centering}
+%\addtokomafont{subsection}{\mdseries\scshape\normalsize\centering}
+
+%% tikz
+\tikzset{%
+extended line/.style={shorten >=-#1,shorten <=-#1},%
+extended line/.default=.5cm,%
+wpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=white, draw},%
+bpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=black, draw},%
+rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
+}
+
+\addtokomafont{disposition}{\rmfamily}
+
+\usepackage{enumitem}
+\setlist[enumerate]{itemsep=0.1pt, parsep=0pt, topsep=1pt, labelindent=0.1in, leftmargin=* } 
+\setlist[itemize]{itemsep=0.1pt, parsep=0pt, topsep=1pt, labelindent=0.1in, leftmargin=* } 
+\setlist[description]{itemsep=0.1pt, parsep=0pt, topsep=1pt, labelindent=0.1in, leftmargin=*, font=\normalfont\bfseries } 
+\setlist[itemize,1]{}
+\setlist[description,1]{}
+\setlist[enumerate,1]{label=(\emph{\alph*}), ref=\alph*}
+\setlist[enumerate,2]{label=(\emph{\roman*}), ref=\roman*}
+\setlist[enumerate,3]{label=(\emph{\arabic*}), ref=\arabic*}
+\setlist[enumerate,4]{label=(\emph{\roman*}), ref=\roman*}
+
+\newenvironment{enumI}{\begin{itemize}}{\end{itemize}}
+\newenvironment{enumC}{\begin{enumerate}}{\end{enumerate}}
+\newenvironment{enumCS}{\begin{enumerate}[label=(\alph*), ref=\alpha*]}{\end{enumerate}}
+\newenvironment{enumCN}{\begin{enumerate}[label=(\arabic*), ref=\arabic*]}{\end{enumerate}}
+\newenvironment{enumCRI}{\begin{enumerate}[label=(\emph{\roman*}), ref=\roman*]}{\end{enumerate}}
+\newenvironment{enumCR}{\begin{enumerate}[label=({\roman*}), ref=\roman*]}{\end{enumerate}}
+
+
+\setlength{\headheight}{1.25\baselineskip}
+\setlength{\headsep}{0.5\baselineskip}
+\setlength{\footskip}{2.5\baselineskip}
+\setlength{\footnotesep}{\baselineskip}
+
+%\setlength{\parindent}{0cm}
+\setlength{\parskip}{3pt plus0pt minus2pt}
+
+%% === Experimental ===
+%%\linespread{0.95}
+
+\setlength{\multicolsep}{2.0pt plus 0pt minus 0pt}
+\newenvironment{twocols}[1][]{\begin{multicols}{2}}{\end{multicols}\vspace{-5pt}}
+
+\newcounter{probCounter}
+\setcounter{probCounter}{0}
+
+%% ===
+\theorempreskip{2\parskip}
+\theorempostskip{2\parskip}
+
+\theoremstyle{plain}
+%\theoremheaderfont{\normalfont\sffamily\scshape}
+\theorembodyfont{\itshape}
+\theoremseparator{.}
+
+\newtheorem{ptheorem}{Theorem}[probCounter]
+\newtheorem{theorem}{Theorem}
+\newtheorem{conj}{Conjecture}
+
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{plemma}{Lemma}[probCounter]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{plain}
+%\theoremheaderfont{\normalfont\sffamily\bfseries}
+\theorembodyfont{\upshape}
+\theoremseparator{.}
+
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{pclaim}{Claim}[probCounter]
+
+\theoremstyle{plain}
+%\theoremheaderfont{\normalfont\sffamily\bfseries}
+\theorembodyfont{\upshape}
+\theoremseparator{.}
+
+\newtheorem{pdefn}{Definition}[probCounter]
+\newtheorem{defn}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{example}{Example}
+
+%\theoremheaderfont{\normalfont\bfseries\color{BrickRed}}
+\theorembodyfont{\upshape} 
+\theoremstyle{nonumberplain}
+%\theoremstyle{plain}
+\theoremsymbol{} 
+\newtheorem{rmk}{Remark}
+\newtheorem{hint}{Hint}
+\newtheorem{eg}{Example}
+\newtheorem{fct}{Fact}
+
+%\theoremheaderfont{\normalfont\sffamily\bfseries}
+\theorembodyfont{\upshape} 
+\theoremstyle{nonumberplain}
+\theoremsymbol{\rule{1ex}{2ex}} 
+\newtheorem{proof}{Proof}
+
+%\theoremheaderfont{\normalfont\sffamily\bfseries}
+\theorembodyfont{\upshape} 
+\theoremsymbol{}
+\newtheorem{solution}{Solution}
+
+%\theoremheaderfont{\normalfont\sffamily\bfseries}
+\theorembodyfont{\upshape}
+\theoremstyle{nonumberplain}
+\newtheorem{clm}{Claim}
+\theorembodyfont{\itshape}
+\newtheorem{lem}{Lemma}
+\newtheorem{thm}{Theorem}
+\theorembodyfont{\upshape}
+\theoremindent=4\parskip
+\newtheorem{subthm}{Theorem}
+
+%% ===
+\newcommand{\NP}{\textsc{np}}
+\newcommand{\iid}{\textsc{iid}}
+\newcommand{\id}{\textsc{id}}
+\newcommand{\pid}{\textsc{pid}}
+
+\newcommand{\ignore}[1]{}
+\newcommand{\mb}[1]{\ensuremath{\mathbf{#1}}}
+\newcommand{\mc}[1]{\ensuremath{\mathcal{#1}}}
+\newcommand{\mf}[1]{\ensuremath{\mathbb{#1}}}
+\newcommand{\me}[1]{\ensuremath{\rsfsscr{#1}}}
+\newcommand{\mk}[1]{\ensuremath{\mathfrak{#1}}}
+\newcommand{\mv}[1]{\ensuremath{\boldsymbol{#1}}}
+\newcommand{\ms}[1]{\ensuremath{\mathscr{#1}}}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Cx}{\mathbb{C}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\RP}{\mathbb{RP}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\PrimeSet}{\mathbb{P}}
+
+\newcommand{\df}{\ensuremath{\ \mathsf{d}}}
+
+\DeclareMathOperator{\GF}{\mathrm{GF}}
+\DeclareMathOperator{\SO}{\mathbf{SO}}
+\DeclareMathOperator{\E}{\mathsf{E}}
+\DeclareMathOperator{\var}{\mathsf{Var}}
+\DeclareMathOperator{\pr}{\mathsf{Pr}}
+
+\newcommand{\ex}{\ensuremath{\mathsf{E}}}
+\newcommand\T{{\mathpalette\raiseT\intercal}}
+\newcommand\raiseT[2]{\raisebox{0.25ex}{$#1#2$}}
+\newcommand{\transp}{\ensuremath{^\top}}
+\newcommand{\iv}{\ensuremath{^{-1}}}
+\newcommand{\img}{\ensuremath{^{\to}}}
+\newcommand{\pimg}{\ensuremath{^{\leftarrow}}}
+\newcommand{\cp}{\ensuremath{^{\complement}}}
+\newcommand{\defeq}{\ensuremath \stackrel{\Delta}{=}}
+
+%\let\originalleft\left
+%\let\originalright\right
+%\renewcommand{\left}{\mathopen{}\mathclose\bgroup\originalleft}
+%\renewcommand{\right}{\aftergroup\egroup\originalright}
+
+\newcommand{\delimit}[4]{
+	\ifcase #1
+		\mathopen{}\left#2 #3 \right#4\mathclose{}
+		\or #2 #3 #4
+		\or \bigl#2 #3 \bigr#4
+		\or \Bigl#2 #3 \Bigr#4
+		\or \biggl#2 #3 \biggr#4
+		\or \Biggl#2 #3 \Biggr#4
+	\fi
+}
+
+%Generalize builder with a bar
+\newcommand{\delb}[5]{
+	\delimit{#1}{#2}{
+		#3
+		\ifcase #1
+			\mid 
+			\or \mid 
+			\or \bigm| 
+			\or \Bigm| 
+			\or \biggm| 
+			\or \Biggm| 
+		\fi
+		#4
+	}{#5}
+}
+
+%Generalize builder with a colon
+\newcommand{\delc}[5]{
+	\delimit{#1}{#2}{
+		#3
+		\ifcase #1
+			:
+			\or :
+			\else \,:\,
+		\fi
+		#4
+	}{#5}
+}
+
+\usepackage{commath}
+\newcommand{\degrees}{\ensuremath{^{\circ}}}
+\newcommand{\iter}[1]{\ensuremath{^{\circ #1}}}
+\newcommand{\nder}[1]{\ensuremath{^{\left(#1\right)}}}
+\newcommand{\setc}[3][0]{\delb{#1}{\{}{#2}{#3}{\}}}
+\renewcommand{\set}[2][0]{\delimit{#1}{\{}{#2}{\}}}
+\renewcommand{\norm}[2][0]{\delimit{#1}{\lVert}{#2}{\rVert}}
+\renewcommand{\abs}[2][0]{\delimit{#1}{|}{#2}{|}}
+\newcommand{\angbr}[2][0]{\delimit{#1}{\langle}{#2}{\rangle}}
+\newcommand{\floor}[2][0]{\delimit{#1}{\lfloor}{#2}{\rfloor}}
+\newcommand{\ceil}[2][0]{\delimit{#1}{\lceil}{#2}{\rceil}}
+\newcommand{\pair}[2][0]{\delimit{#1}{(}{#2}{)}}
+
+\newcommand{\cro}{\ensuremath{^{\times}}}
+
+\DeclareMathOperator{\Ub}{\ensuremath{Ub}}
+\DeclareMathOperator{\Lb}{\ensuremath{Lb}}
+
+
+\DeclareMathOperator{\ord}{\ensuremath{ord}}
+\DeclareMathOperator{\lip}{\ensuremath{lip}}
+\DeclareMathOperator{\dvg}{\ensuremath{div}}
+\DeclareMathOperator{\len}{\ensuremath{len}}
+\DeclareMathOperator{\lcm}{\ensuremath{lcm}}
+\DeclareMathOperator{\pdf}{\ensuremath{pdf}}
+\DeclareMathOperator{\cdf}{\ensuremath{cdf}}
+\DeclareMathOperator{\nul}{\ensuremath{null}}
+\DeclareMathOperator{\Span}{\ensuremath{span}}
+\DeclareMathOperator{\Ker}{\ensuremath{ker}}
+\DeclareMathOperator{\Adj}{\ensuremath{Adj}}
+\DeclareMathOperator{\proj}{\ensuremath{proj}}
+\DeclareMathOperator{\sech}{\ensuremath{sech}}
+\DeclareMathOperator{\cis}{\ensuremath{cis}}
+\DeclareMathOperator{\avg}{\ensuremath{avg}}
+\DeclareMathOperator{\dist}{\ensuremath{dist}}
+\DeclareMathOperator{\diam}{\ensuremath{diam}}
+\DeclareMathOperator{\Sub}{\ensuremath{Sub}}
+\DeclareMathOperator{\Lin}{\ensuremath{Lin}}
+\DeclareMathOperator{\Mat}{\ensuremath{Mat}}
+\DeclareMathOperator{\Hom}{\ensuremath{Hom}}
+\DeclareMathOperator{\diag}{\ensuremath{diag}}
+\DeclareMathOperator{\End}{\ensuremath{End}}
+\DeclareMathOperator{\Rng}{\ensuremath{Rng}}
+\DeclareMathOperator{\range}{\ensuremath{range}}
+\DeclareMathOperator{\dom}{\ensuremath{Dom}}
+\DeclareMathOperator{\tr}{\ensuremath{tr}}
+\DeclareMathOperator{\Int}{\ensuremath{Int}}
+\DeclareMathOperator{\itr}{\ensuremath{int}}
+\DeclareMathOperator{\Ext}{\ensuremath{Ext}}
+\DeclareMathOperator{\Clo}{\ensuremath{Clo}}
+\DeclareMathOperator{\gr}{\ensuremath{Gr}}
+\DeclareMathOperator{\cl}{\ensuremath{cl}}
+\DeclareMathOperator{\fr}{\ensuremath{fr}}
+\DeclareMathOperator{\Bdy}{\ensuremath{Bdy}}
+\DeclareMathOperator{\Acc}{\ensuremath{acc}}
+\DeclareMathOperator{\curl}{\ensuremath{curl}}
+\DeclareMathOperator{\grad}{\ensuremath{grad}}
+\DeclareMathOperator{\dil}{\ensuremath{dil}}
+\DeclareMathOperator{\cof}{\ensuremath{cof}}
+\DeclareMathOperator{\area}{\ensuremath{area}}
+\DeclareMathOperator{\vol}{\ensuremath{vol}}
+\DeclareMathOperator{\Sym}{\ensuremath{Sym}}
+\DeclareMathOperator{\Syl}{\ensuremath{Syl}}
+\DeclareMathOperator{\Corr}{\ensuremath{Corr}}
+\DeclareMathOperator{\Cov}{\ensuremath{Cov}}
+\DeclareMathOperator{\polylog}{\ensuremath{polylog}}
+\DeclareMathOperator{\rank}{\ensuremath{rank}}
+\DeclareMathOperator{\nullity}{\ensuremath{nullity}}
+
+% Inverse hyperbolic 
+\DeclareMathOperator{\artanh}{\ensuremath{artanh}}
+\DeclareMathOperator{\arcosh}{\ensuremath{arcosh}}
+\DeclareMathOperator{\arsinh}{\ensuremath{arsinh}}
+\DeclareMathOperator{\arcoth}{\ensuremath{arcoth}}
+\DeclareMathOperator{\arsech}{\ensuremath{arsech}}
+\DeclareMathOperator{\arcsch}{\ensuremath{arcsch}}
+
+%
+%\DeclareMathOperator*{\cart}{\raisebox{-1.15ex}{{\tikz [x=3.1ex,y=3.1ex,line width=.275ex] \draw (0,0) -- (1,1) (0,1) -- (1,0);}}}%
+%\DeclareMathOperator*{\dcart}{\raisebox{-0.7ex}{{\tikz [x=2.3ex,y=2.3ex,line width=.2ex] \draw (0,0) -- (1,1) (0,1) -- (1,0);}}}%
+%%===norm
+\DeclareMathOperator*{\cart}{\raisebox{-1.25ex}{{\tikz [x=3.2ex,y=3.2ex,line width=.25ex] \draw (0,0) -- (1,1) (0,1) -- (1,0);}}}%
+\DeclareMathOperator*{\dcart}{\raisebox{-0.7ex}{{\tikz [x=2.3ex,y=2.3ex,line width=.2ex] \draw (0,0) -- (1,1) (0,1) -- (1,0);}}}%
+
+%% Statistics command
+\DeclareMathOperator{\Norm}{\ensuremath{\mathsf{Norm}}}
+\DeclareMathOperator{\Bin}{\ensuremath{\mathsf{Bin}}}
+\DeclareMathOperator{\Poi}{\ensuremath{\mathsf{Poi}}}
+\DeclareMathOperator{\Geo}{\ensuremath{\mathsf{Geo}}}
+\DeclareMathOperator{\Unif}{\ensuremath{\mathsf{Unif}}}
+\DeclareMathOperator{\Pare}{\ensuremath{\mathsf{Pare}}}
+\DeclareMathOperator{\Wern}{\ensuremath{\mathsf{Wern}}}
+\DeclareMathOperator{\Beta}{\ensuremath{\mathsf{Beta}}}
+
+\newcommand{\symdiff}{\bigtriangleup}
+
+\newcommand{\prd}[3][0]{#2\angbr[#1]{#3}} 
+
+\newcommand{\examhead}[6]{
+	\begin{center}
+	{{\large \fbox{\parbox{0.98\textwidth}{ 
+		\hbox to \hsize{#1 \hfil #2} \vskip 0.075in 
+		\hbox to \hsize{#3 \hfil #4} \vskip 0.075in 
+		\hbox to \hsize{#5 \hfil #6}
+	}}}} 
+	\end{center} 
+	\vspace{-1em} }
+
+\newcommand{\srudhead}[4]{
+	
+	\begin{center}
+	{\textsf {\large \fbox{\parbox{0.98\textwidth}{ 
+		\hbox to \hsize{#1 \hfil #2} \vskip 0.075in 
+		\hbox to \hsize{#3 \hfil #4}
+	}}}}
+	\end{center} 
+	\vspace{-1em} }
+
+\newcommand{\rudhead}[4]{
+	
+	\begin{center}
+	{ {\large \fbox{\parbox{0.98\textwidth}{ 
+		\hbox to \hsize{#1 \hfil #2} \vskip 0.075in 
+		\hbox to \hsize{#3 \hfil #4}
+	}}}}
+	\end{center} 
+	\vspace{-1em} }
+	
+\newcommand{\drudhead}[4]{	
+	\begin{center}
+	{\textbf{\large { {\parbox{1\textwidth}{ 
+		\hbox to \hsize{#1 \hfil #2} \vskip 0.075in 
+		\hbox to \hsize{#3 \hfil #4}
+	}}}}
+	\raisebox{-5pt}[0pt][0pt]{\rule{\linewidth}{0.75pt}}
+	}
+	\end{center} 
+	\vspace{-1em} 
+}
+	
+\usepackage{chemfig}
+\renewcommand*\printatom[1]{\ensuremath{\mathsf{#1}}}
+
+\newcommand{\mysetminusD}{\hbox{\tikz{\draw[line width=0.4pt,line cap=round] (3pt,0) -- (0,6pt);}}}
+\newcommand{\mysetminusT}{\mysetminusD}
+\newcommand{\mysetminusS}{\hbox{\tikz{\draw[line width=0.25pt,line cap=round] (2pt,0) -- (0,4pt);}}}
+\newcommand{\mysetminusSS}{\hbox{\tikz{\draw[line width=0.2pt,line cap=round] (1.5pt,0) -- (0,3pt);}}}
+\newcommand{\mysetminus}{\mathbin{\mathchoice{\mysetminusD}{\mysetminusT}{\mysetminusS}{\mysetminusSS}}}
+
+
+\usepackage{centernot}
+
+\newcommand{\parte}[1]{\vspace{2\parskip}\noindent{\color{Cerulean}\textbf{{{\ifthenelse{\equal{#1}{}}{{Part:}}{{Part} {\textcolor{Black}{#1}}{.}}}}}}}
+\newcommand{\prob}[1]{\vspace{2\parskip}\noindent{\color{BrickRed}\textbf{{{\ifthenelse{\equal{#1}{}}{{Problem:}}{{Problem} {\large\textcolor{Black}{#1}}{.}}}}}} \stepcounter{probCounter}}
+\newcommand{\soln}[1]{\noindent{\textbf{{{\ifthenelse{\equal{#1}{}}{{{Solution:}}}{{{Solution}} {\large \textcolor{Black}{#1}}{.}}}}}}}
+\newcommand{\varnmid}{\centernot\mid}
+\newcommand{\iprod}[1]{\prod_{#1}^\infty}
+\newcommand{\isum}[1]{\sum_{#1}^\infty}
+\newcommand{\ilim}[1]{\lim_{#1\to\infty}}
+\newcommand{\seq}[1]{#1_1,\dotsc,#1_n}
+
+\newcommand{\shownum}{\addtocounter{equation}{1}\tag{\theequation}}
+\usepackage{array}
+\newcolumntype{x}[1]{>{\centering\arraybackslash\hspace{0pt}}p{#1}}
+\renewcommand{\arraystretch}{1}
+\newcommand{\w}{\hspace*{-3pt}}
+\newcommand{\unitj}{\ensuremath{\mv{\textbf{\j}}}}
+\newcommand{\uniti}{\ensuremath{\mv{\textbf{\i}}}}
+\newcommand{\unitk}{\ensuremath{\mb{k}}}
+
+%% ==== Custom macro ===
+\newcommand{\eps}{\varepsilon}
+
+%% ==== Arcs
+\newcommand{\arc}[1]{%
+  \setbox9=\hbox{\ensuremath{#1}}%
+  \ooalign{\raisebox{8pt}{\resizebox{\wd9}{\height}{\ensuremath{\frown}}}\cr\ensuremath{#1}}}
+
+\newcommand{\intentblank}{
+\vspace*{\fill}%
+\begin{center}%
+This page is intentionally left blank.%
+\end{center}%
+\vspace{\fill}
+}
+
+%% == Single letter loading
+%\DeclareFontFamily{U}{MnSymbolC}{}
+%\DeclareFontShape{U}{MnSymbolC}{m}{n}{
+%<-6> MnSymbolC5
+%<6-7> MnSymbolC6
+%<7-8> MnSymbolC7
+%<8-9> MnSymbolC8
+%<9-10> MnSymbolC9
+%<10-12> MnSymbolC10
+%<12-> MnSymbolC12}{}
+%\DeclareSymbolFont{mnsymbols}{U}{MnSymbolC}{m}{n}
+%\DeclareMathSymbol{\powerset}{\mathop}{mnsymbols}{180}
+%\DeclareMathSymbol{\varinfty}{\mathop}{mnsymbols}{170}
+
+%
+%\DeclareFontFamily{U}{MnSymbolA}{}
+%\DeclareFontShape{U}{MnSymbolA}{m}{n}{
+%<-6> MnSymbolA5
+%<6-7> MnSymbolA6
+%<7-8> MnSymbolA7
+%<8-9> MnSymbolA8
+%<9-10> MnSymbolA9
+%<10-12> MnSymbolA10
+%<12-> MnSymbolA12}{}
+%\DeclareSymbolFont{mnsymbolsa}{U}{MnSymbolA}{m}{n}
+%\DeclareMathSymbol{\mto}{\mathop}{mnsymbolsa}{0}
+%\DeclareMathSymbol{\mup}{\mathop}{mnsymbolsa}{1}
+%\DeclareMathSymbol{\mget}{\mathop}{mnsymbolsa}{2}
+%\DeclareMathSymbol{\mdown}{\mathop}{mnsymbolsa}{3}
+%
+%%% code from mathabx.sty and mathabx.dcl
+%\DeclareFontFamily{U}{mathx}{\hyphenchar\font45}
+%\DeclareFontShape{U}{mathx}{m}{n}{
+%      <5> <6> <7> <8> <9> <10>
+%      <10.95> <12> <14.4> <17.28> <20.74> <24.88>
+%      mathx10
+%      }{}
+%\DeclareSymbolFont{mathx}{U}{mathx}{m}{n}
+%\DeclareFontSubstitution{U}{mathx}{m}{n}
+%\DeclareMathAccent{\widecheck}{0}{mathx}{"71}
+%\DeclareMathAccent{\wideparen}{0}{mathx}{"75}
+%
+%\def\app#1#2{%
+%  \mathrel{%
+%    \setbox0=\hbox{$#1\sim$}%
+%    \setbox2=\hbox{%
+%      \rlap{\hbox{$#1\propto$}}%
+%      \lower1.2\ht0\box0%
+%    }%
+%    \raise0.25\ht2\box2%
+%  }%
+%}
+%\def\approxprop{\mathpalette\app\relax}
+
+\newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+
+\def\Xint#1{\ \ \mathchoice
+      {\XXint\displaystyle\textstyle{#1}}%
+      {\XXint\textstyle\scriptstyle{#1}}%
+      {\XXint\scriptstyle\scriptscriptstyle{#1}}%
+      {\XXint\scriptscriptstyle\scriptscriptstyle{#1}}%
+      \ \iiint}
+   \def\XXint#1#2#3{{\setbox0=\hbox{$#1{\ \ \ #2#3}{\iiint}$}
+        \vcenter{\hbox{$#2#3$}}\kern-.5\wd0}}
+\newcommand{\odc}{\subset\!\supset}
+\newcommand{\oiiint}{\Xint{\odc}}

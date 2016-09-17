@@ -1,2 +1,2 @@
-# latex-template
-LaTeX homework template
+# LaTeX Homework Template
+
