@@ -33,7 +33,7 @@
 \algrenewcommand{\algorithmiccomment}[1]{\hskip3em$\triangleright$ #1}
 
 \usepackage{pgfplots}
-\pgfplotsset{compat=1.14}
+\pgfplotsset{compat=1.16}
 
 \usepackage{amsmath, amsopn, multicol, enumerate, mathtools, tikz, units, bbding}
 \usepackage{upgreek, bold-extra, mathrsfs, tensor}
@@ -43,7 +43,7 @@
 \usepackage{subfig}
 \usepackage{mathdots}
 
-%\DeclareMathAlphabet{\mathbbold}{U}{bbold}{m}{n}   
+%\DeclareMathAlphabet{\mathbbold}{U}{bbold}{m}{n}
 %\DeclareMathAlphabet{\mathbbm}{U}{bbm}{m}{n}
 \usepackage{bbm}
 %\usepackage{dsfont}
@@ -98,9 +98,9 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 \addtokomafont{disposition}{\rmfamily}
 
 \usepackage{enumitem}
-\setlist[enumerate]{itemsep=0.1pt, parsep=0pt, topsep=1pt, labelindent=0.1in, leftmargin=* } 
-\setlist[itemize]{itemsep=0.1pt, parsep=0pt, topsep=1pt, labelindent=0.1in, leftmargin=* } 
-\setlist[description]{itemsep=0.1pt, parsep=0pt, topsep=1pt, labelindent=0.1in, leftmargin=*, font=\normalfont\bfseries } 
+\setlist[enumerate]{itemsep=0.1pt, parsep=0pt, topsep=1pt, labelindent=0.1in, leftmargin=* }
+\setlist[itemize]{itemsep=0.1pt, parsep=0pt, topsep=1pt, labelindent=0.1in, leftmargin=* }
+\setlist[description]{itemsep=0.1pt, parsep=0pt, topsep=1pt, labelindent=0.1in, leftmargin=*, font=\normalfont\bfseries }
 \setlist[itemize,1]{}
 \setlist[description,1]{}
 \setlist[enumerate,1]{label=(\emph{\alph*}), ref=\alph*}
@@ -171,23 +171,23 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 \newtheorem{example}{Example}
 
 %\theoremheaderfont{\normalfont\bfseries\color{BrickRed}}
-\theorembodyfont{\upshape} 
+\theorembodyfont{\upshape}
 \theoremstyle{nonumberplain}
 %\theoremstyle{plain}
-\theoremsymbol{} 
+\theoremsymbol{}
 \newtheorem{rmk}{Remark}
 \newtheorem{hint}{Hint}
 \newtheorem{eg}{Example}
 \newtheorem{fct}{Fact}
 
 %\theoremheaderfont{\normalfont\sffamily\bfseries}
-\theorembodyfont{\upshape} 
+\theorembodyfont{\upshape}
 \theoremstyle{nonumberplain}
-\theoremsymbol{\rule{0.75ex}{1.75ex}} 
+\theoremsymbol{\rule{0.75ex}{1.75ex}}
 \newtheorem{proof}{Proof}
 
 \theoremheaderfont{\normalfont\sffamily\bfseries}
-\theorembodyfont{\upshape} 
+\theorembodyfont{\upshape}
 \theoremsymbol{}
 \newtheorem{solution}{Solution}
 
@@ -265,12 +265,12 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 	\delimit{#1}{#2}{
 		#3
 		\ifcase #1
-			\mid 
-			\or \mid 
-			\or \bigm| 
-			\or \Bigm| 
-			\or \biggm| 
-			\or \Biggm| 
+			\mid
+			\or \mid
+			\or \bigm|
+			\or \Bigm|
+			\or \biggm|
+			\or \Biggm|
 		\fi
 		#4
 	}{#5}
@@ -329,6 +329,8 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 \DeclareMathOperator{\Lin}{\ensuremath{Lin}}
 \DeclareMathOperator{\Mat}{\ensuremath{Mat}}
 \DeclareMathOperator{\Hom}{\ensuremath{Hom}}
+\DeclareMathOperator{\Hol}{\ensuremath{Hol}}
+\DeclareMathOperator{\Mer}{\ensuremath{Mer}}
 \DeclareMathOperator{\diag}{\ensuremath{diag}}
 \DeclareMathOperator{\End}{\ensuremath{End}}
 \DeclareMathOperator{\Rng}{\ensuremath{Rng}}
@@ -358,7 +360,7 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 \DeclareMathOperator{\rank}{\ensuremath{rank}}
 \DeclareMathOperator{\nullity}{\ensuremath{nullity}}
 
-% Inverse hyperbolic 
+% Inverse hyperbolic
 \DeclareMathOperator{\artanh}{\ensuremath{artanh}}
 \DeclareMathOperator{\arcosh}{\ensuremath{arcosh}}
 \DeclareMathOperator{\arsinh}{\ensuremath{arsinh}}
@@ -385,50 +387,50 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 
 \newcommand{\symdiff}{\bigtriangleup}
 
-\newcommand{\prd}[3][0]{#2\angbr[#1]{#3}} 
+\newcommand{\prd}[3][0]{#2\angbr[#1]{#3}}
 
 \newcommand{\examhead}[6]{
 	\begin{center}
-	{{\large \fbox{\parbox{0.98\textwidth}{ 
-		\hbox to \hsize{#1 \hfil #2} \vskip 0.075in 
-		\hbox to \hsize{#3 \hfil #4} \vskip 0.075in 
+	{{\large \fbox{\parbox{0.98\textwidth}{
+		\hbox to \hsize{#1 \hfil #2} \vskip 0.075in
+		\hbox to \hsize{#3 \hfil #4} \vskip 0.075in
 		\hbox to \hsize{#5 \hfil #6}
-	}}}} 
-	\end{center} 
+	}}}}
+	\end{center}
 	\vspace{-1em} }
 
 \newcommand{\srudhead}[4]{
-	
+
 	\begin{center}
-	{\textsf {\large \fbox{\parbox{0.98\textwidth}{ 
-		\hbox to \hsize{#1 \hfil #2} \vskip 0.075in 
+	{\textsf {\large \fbox{\parbox{0.98\textwidth}{
+		\hbox to \hsize{#1 \hfil #2} \vskip 0.075in
 		\hbox to \hsize{#3 \hfil #4}
 	}}}}
-	\end{center} 
+	\end{center}
 	\vspace{-1em} }
 
 \newcommand{\rudhead}[4]{
-	
+
 	\begin{center}
-	{ {\large \fbox{\parbox{0.98\textwidth}{ 
-		\hbox to \hsize{#1 \hfil #2} \vskip 0.075in 
+	{ {\large \fbox{\parbox{0.98\textwidth}{
+		\hbox to \hsize{#1 \hfil #2} \vskip 0.075in
 		\hbox to \hsize{#3 \hfil #4}
 	}}}}
-	\end{center} 
+	\end{center}
 	\vspace{-1em} }
-	
-\newcommand{\drudhead}[4]{	
+
+\newcommand{\drudhead}[4]{
 	\begin{center}
-	{\textbf{\large { {\parbox{1\textwidth}{ 
-		\hbox to \hsize{#1 \hfil #2} \vskip 0.075in 
+	{\textbf{\large { {\parbox{1\textwidth}{
+		\hbox to \hsize{#1 \hfil #2} \vskip 0.075in
 		\hbox to \hsize{#3 \hfil #4}
 	}}}}
 	\raisebox{-5pt}[0pt][0pt]{\rule{\linewidth}{0.75pt}}
 	}
-	\end{center} 
-	\vspace{-1em} 
+	\end{center}
+	\vspace{-1em}
 }
-	
+
 \usepackage{chemfig}
 \renewcommand*\printatom[1]{\ensuremath{\mathsf{#1}}}
 
