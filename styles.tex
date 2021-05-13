@@ -15,7 +15,9 @@
 
 \usepackage{float, wrapfig, picinpar, siunitx, derivative}
 \usepackage{lastpage, hyperref, textcomp}
-\usepackage{url, interval, calc,framed, fancybox, quoting, empheq, algorithm, stackrel, sectsty}
+\usepackage{url, interval, calc,framed, fancybox, quoting, empheq, algorithm, stackrel}
+%% Commenting out sectsty due to conflict with KOMA
+%\usepackage{sectsty}
 \usepackage{longtable,tabu}
 
 \makeatletter
@@ -227,6 +229,7 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 \newcommand{\RP}{\mathbb{RP}}
 \newcommand{\F}{\mathbb{F}}
 \newcommand{\PrimeSet}{\mathbb{P}}
+\newcommand{\varE}{\mathbb{E}}
 
 \newcommand{\df}{\ensuremath{\ \mathsf{d}}}
 
