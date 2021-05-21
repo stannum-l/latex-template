@@ -16,8 +16,7 @@
 \usepackage{float, wrapfig, picinpar, siunitx, derivative}
 \usepackage{lastpage, hyperref, textcomp}
 \usepackage{url, interval, calc,framed, fancybox, quoting, empheq, algorithm, stackrel}
-%% Commenting out sectsty due to conflict with KOMA
-%\usepackage{sectsty}
+% \usepackage{sectsty}
 \usepackage{longtable,tabu}
 
 \makeatletter
@@ -143,6 +142,7 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 
 \theoremstyle{plain}
 %\theoremheaderfont{\normalfont\sffamily\scshape}
+\theoremheaderfont{\normalfont\sffamily\bfseries}
 \theorembodyfont{\itshape}
 \theoremseparator{.}
 
@@ -150,13 +150,14 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 \newtheorem{theorem}{Theorem}
 \newtheorem{conj}{Conjecture}
 
+\theorembodyfont{\upshape}
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{plemma}{Lemma}[probCounter]
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{corollary}[theorem]{Corollary}
 
 \theoremstyle{plain}
-%\theoremheaderfont{\normalfont\sffamily\bfseries}
+\theoremheaderfont{\normalfont\sffamily\bfseries}
 \theorembodyfont{\upshape}
 \theoremseparator{.}
 
@@ -184,7 +185,7 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 \newtheorem{eg}{Example}
 \newtheorem{fct}{Fact}
 
-%\theoremheaderfont{\normalfont\sffamily\bfseries}
+\theoremheaderfont{\normalfont\sffamily\bfseries}
 \theorembodyfont{\upshape}
 \theoremstyle{nonumberplain}
 \theoremsymbol{\rule{0.75ex}{1.75ex}}
@@ -232,7 +233,6 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 \newcommand{\varE}{\mathbb{E}}
 
 \newcommand{\df}{\ensuremath{\ \mathsf{d}}}
-
 
 \DeclareMathOperator{\GF}{\ensuremath{\mathrm{GF}}}
 \DeclareMathOperator{\SO}{\ensuremath{\mathbf{SO}}}
@@ -450,8 +450,8 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 
 \usepackage{centernot}
 
-\newcommand{\parte}[1]{\vspace{2\parskip}\noindent{\color{Cerulean}\textbf{{{\ifthenelse{\equal{#1}{}}{\textsf{Part:}}{\textsf{Part} {\textcolor{Black}{#1}}{.}}}}}}}
-\newcommand{\prob}[1]{\vspace{2\parskip}\noindent{\color{BrickRed}\textbf{{{\ifthenelse{\equal{#1}{}}{\textsf{Problem:}}{\textsf{Problem} {\textcolor{Black}{#1}}{.}}}}}} \stepcounter{probCounter}}
+\newcommand{\parte}[1]{\vspace{2\parskip}\noindent{\color{Cerulean}\textbf{{{\ifthenelse{\equal{#1}{}}{\textsf{Part:}}{\textsf{Part} {\textcolor{Black}{\textsf{#1}}}{.}}}}}}}
+\newcommand{\prob}[1]{\vspace{2\parskip}\noindent{\color{BrickRed}\textbf{{{\ifthenelse{\equal{#1}{}}{\textsf{Problem:}}{\textsf{Problem} {\textcolor{Black}{\textsf{#1}}}{.}}}}}} \stepcounter{probCounter}}
 \newcommand{\soln}[1]{\noindent{\textbf{{{\ifthenelse{\equal{#1}{}}{{{Solution:}}}{{{Solution}} {\textcolor{Black}{#1}}{.}}}}}}}
 \newcommand{\varnmid}{\centernot\mid}
 \newcommand{\iprod}[1]{\prod_{#1}^\infty}
@@ -550,6 +550,8 @@ This page is intentionally left blank.%
         \vcenter{\hbox{$#2#3$}}\kern-.5\wd0}}
 \newcommand{\odc}{\subset\!\supset}
 \newcommand{\oiiint}{\Xint{\odc}}
+\newcommand{\bdc}{<\!>}
+\newcommand{\biiint}{\Xint{\bdc}}
 
 \newcommand*\Laplace{\mathop{}\!\mathbin\bigtriangleup}
 \newcommand*\DAlambert{\mathop{}\!\mathbin\Box}
