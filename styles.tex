@@ -4,8 +4,10 @@
 
 \usepackage[usenames,dvipsnames]{xcolor}
 
-\usepackage[mathletters]{ucs}
-\usepackage[utf8x]{inputenc}
+%% don't use with LuaLatex
+% \usepackage[mathletters]{ucs}
+% \usepackage[utf8x]{inputenc}
+
 \usepackage{lmodern}
 \usepackage[T1]{fontenc}
 \usepackage[english]{babel}
@@ -35,7 +37,7 @@
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.18}
 
-\usepackage{amsmath, amsopn, multicol, enumerate, mathtools, tikz, bbding}
+\usepackage{amsmath, amsopn, multicol, enumerate, tikz, bbding}
 \usepackage{upgreek, bold-extra, mathrsfs, tensor}
 \usetikzlibrary {arrows.meta,bending,positioning}
 \usetikzlibrary{shapes, calendar, matrix, backgrounds, folding, knots, fadings, shadows}
@@ -58,7 +60,8 @@
 %=== loading symbols ===
 \newcommand{\eins}{\ensuremath{\mathbbm{1}}}
 
-\usepackage{amsfonts, amssymb, esint}
+\usepackage{amsfonts}
+\usepackage{amssymb, esint}
 \usepackage[new]{old-arrows}
 
 \let\rsfsscr=\mathscr
@@ -311,7 +314,6 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 \newcommand{\ku}{\mathfrak u}
 \newcommand{\kz}{\mathfrak z}
 
-
 %
 %\DeclareMathOperator*{\cart}{\raisebox{-1.15ex}{{\tikz [x=3.1ex,y=3.1ex,line width=.275ex] \draw (0,0) -- (1,1) (0,1) -- (1,0);}}}%
 %\DeclareMathOperator*{\dcart}{\raisebox{-0.7ex}{{\tikz [x=2.3ex,y=2.3ex,line width=.2ex] \draw (0,0) -- (1,1) (0,1) -- (1,0);}}}%
@@ -384,7 +386,6 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 \newcommand{\mysetminusSS}{\hbox{\tikz{\draw[line width=0.2pt,line cap=round] (1.5pt,0) -- (0,3pt);}}}
 \newcommand{\mysetminus}{\mathbin{\mathchoice{\mysetminusD}{\mysetminusT}{\mysetminusS}{\mysetminusSS}}}
 
-
 \usepackage{centernot}
 
 \newcommand{\parte}[1]{\vspace{2\parskip}\noindent{\color{Cerulean}\textbf{{{\ifthenelse{\equal{#1}{}}{\textsf{Part:}}{\textsf{Part} {\textcolor{Black}{\textsf{#1}}}{.}}}}}}}
@@ -431,19 +432,6 @@ This page is intentionally left blank.%
 }
 
 \newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
-
-\def\Xint#1{\ \ \mathchoice
-  {\XXint\displaystyle\textstyle{#1}}%
-  {\XXint\textstyle\scriptstyle{#1}}%
-  {\XXint\scriptstyle\scriptscriptstyle{#1}}%
-  {\XXint\scriptscriptstyle\scriptscriptstyle{#1}}%
-  \ \iiint}
-\def\XXint#1#2#3{{\setbox0=\hbox{$#1{\ \ \ #2#3}{\iiint}$}
-  \vcenter{\hbox{$#2#3$}}\kern-.5\wd0}}
-\newcommand{\odc}{\subset\!\supset}
-\newcommand{\oiiint}{\Xint{\odc}}
-\newcommand{\bdc}{<\!>}
-\newcommand{\biiint}{\Xint{\bdc}}
 
 \newcommand*\Laplace{\mathop{}\!\mathbin\bigtriangleup}
 \newcommand*\DAlambert{\mathop{}\!\mathbin\Box}
@@ -638,6 +626,9 @@ This page is intentionally left blank.%
 \declaretheorem[style=basehead,name=Question,sibling=theorem]{ques}
 \declaretheorem[style=basehead,name=Question,numbered=no]{ques*}
 
-\newenvironment{solution}
-  {\renewcommand\qedsymbol{$\blacksquare$}\begin{proof}[Solution]}
-  {\end{proof}}
+\newenvironment{solution}{\renewcommand\qedsymbol{$\blacksquare$}\begin{proof}[Solution]}{\end{proof}}
+
+\usepackage{unicode-math}
+\usepackage{mathtools}
+%\setmathfont{texgyrepagella-math.otf}
+\setmathfont{NewCMMath-Regular.otf}
