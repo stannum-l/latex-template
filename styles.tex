@@ -1,0 +1,642 @@
+%% ====================================================================
+%% Comprehensive LaTeX style.tex file
+%% ====================================================================
+
+\usepackage[usenames,dvipsnames]{xcolor}
+
+\usepackage[mathletters]{ucs}
+\usepackage[utf8x]{inputenc}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+
+\usepackage{typearea, geometry}
+\usepackage{scrlayer-scrpage}
+
+\usepackage{float, wrapfig, picinpar, siunitx, derivative, lastpage, textcomp}
+\usepackage{url, interval, calc, framed, fancybox, quoting, empheq, algorithm, stackrel}
+\usepackage{longtable,tabu}
+% \usepackage{sectsty}
+
+\makeatletter
+\def\mathcolor#1#{\@mathcolor{#1}}
+\def\@mathcolor#1#2#3{%
+  \protect\leavevmode
+  \begingroup
+    \color#1{#2}#3%
+  \endgroup
+}
+\makeatother
+
+\usepackage{algpseudocode}
+\algrenewcommand\algorithmicprocedure{\textbf{function}}
+\algrenewcommand{\algorithmiccomment}[1]{\hskip3em$\triangleright$ #1}
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+\usepackage{amsmath, amsopn, multicol, enumerate, mathtools, tikz, bbding}
+\usepackage{upgreek, bold-extra, mathrsfs, tensor}
+\usetikzlibrary{shapes, calendar, matrix, backgrounds, folding, knots, fadings, shadows}
+\usetikzlibrary{decorations.markings, calc, arrows, petri, topaths, decorations.pathreplacing}
+\usetikzlibrary{graphs, graphs.standard}
+
+\usepackage{amsthm}
+% \usepackage[framed, hyperref, thmmarks, amsmath, amsthm]{ntheorem}
+\usepackage{thmtools}
+
+\usepackage[font=small,labelsep=none]{caption}
+\usepackage{subfig, mathdots}
+
+\usepackage[framemethod=TikZ]{mdframed}
+\usepackage{bbm}
+
+\usepackage[e]{esvect}
+\usepackage[makeroom]{cancel}
+
+%=== loading symbols ===
+\newcommand{\eins}{\ensuremath{\mathbbm{1}}}
+
+\usepackage{amsfonts, amssymb, esint}
+\usepackage[new]{old-arrows}
+
+\let\rsfsscr=\mathscr
+\usepackage[mathscr]{euscript}
+\usepackage{listings,lstautogobble}
+\lstset{
+    keywordstyle=\color{blue}
+  , basicstyle=\ttfamily\footnotesize\bfseries
+  , commentstyle={}
+  , columns=fullflexible
+  , numbers=left
+  , showstringspaces=false
+  , keepspaces=true
+  , xleftmargin=.2\textwidth
+  , xrightmargin=.2\textwidth
+  , frame=tb
+  }
+
+\AtBeginDocument{\setlength{\abovedisplayshortskip}{2pt}}%
+\AtBeginDocument{\setlength{\belowdisplayshortskip}{4pt}}%
+\AtBeginDocument{\setlength{\abovedisplayskip}{4pt}}%
+\AtBeginDocument{\setlength{\belowdisplayskip}{4pt}}%
+
+%% Sectioning (example)
+%\RedeclareSectionCommand[ beforeskip=0.5\baselineskip, afterskip=0.05\baselineskip]{section}
+%\RedeclareSectionCommand[ beforeskip=0.5\baselineskip, afterskip=0.05\baselineskip]{subsection}
+%\addtokomafont{section}{\mdseries\scshape\large\centering}
+%\addtokomafont{subsection}{\mdseries\scshape\normalsize\centering}
+
+%% tikz
+\tikzset{%
+extended line/.style={shorten >=-#1,shorten <=-#1},%
+extended line/.default=.5cm,%
+wpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=white, draw},%
+bpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=black, draw},%
+rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
+}
+
+\addtokomafont{disposition}{\rmfamily}
+
+\usepackage{enumitem}
+\setlist[enumerate]{itemsep=0.1pt, parsep=0pt, topsep=1pt, labelindent=0.1in, leftmargin=* }
+\setlist[itemize]{itemsep=0.1pt, parsep=0pt, topsep=1pt, labelindent=0.1in, leftmargin=* }
+\setlist[description]{itemsep=0.1pt, parsep=0pt, topsep=1pt, labelindent=0.1in, leftmargin=*, font=\normalfont\bfseries }
+\setlist[itemize,1]{}
+\setlist[description,1]{}
+\setlist[enumerate,1]{label=(\emph{\alph*}), ref=\alph*}
+\setlist[enumerate,2]{label=(\emph{\roman*}), ref=\roman*}
+\setlist[enumerate,3]{label=(\emph{\arabic*}), ref=\arabic*}
+\setlist[enumerate,4]{label=(\emph{\roman*}), ref=\roman*}
+
+\newenvironment{enumI}{\begin{itemize}}{\end{itemize}}
+\newenvironment{enumC}{\begin{enumerate}}{\end{enumerate}}
+\newenvironment{enumCS}{\begin{enumerate}[label=(\alph*), ref=\alpha*]}{\end{enumerate}}
+\newenvironment{enumCN}{\begin{enumerate}[label=(\arabic*), ref=\arabic*]}{\end{enumerate}}
+\newenvironment{enumCRI}{\begin{enumerate}[label=(\emph{\roman*}), ref=\roman*]}{\end{enumerate}}
+\newenvironment{enumCR}{\begin{enumerate}[label=({\roman*}), ref=\roman*]}{\end{enumerate}}
+
+
+\setlength{\headheight}{1.25\baselineskip}
+\setlength{\headsep}{0.5\baselineskip}
+\setlength{\footskip}{2.5\baselineskip}
+\setlength{\footnotesep}{\baselineskip}
+
+%\setlength{\parindent}{0cm}
+\setlength{\parskip}{3pt plus0pt minus2pt}
+
+%% === Experimental ===
+%%\linespread{0.95}
+\setlength{\multicolsep}{2.0pt plus 0pt minus 0pt}
+\newenvironment{twocols}[1][]{\begin{multicols}{2}}{\end{multicols}\vspace{-5pt}}
+
+\newcounter{probCounter}
+\setcounter{probCounter}{0}
+
+%% ===
+\newcommand{\NP}{\textsc{np}}
+\newcommand{\iid}{\textsc{iid}}
+\newcommand{\id}{\textsc{id}}
+\newcommand{\pid}{\textsc{pid}}
+
+\newcommand{\ignore}[1]{}
+\newcommand{\mb}[1]{\ensuremath{\mathbf{#1}}}
+\newcommand{\mc}[1]{\ensuremath{\mathcal{#1}}}
+\newcommand{\mf}[1]{\ensuremath{\mathbb{#1}}}
+\newcommand{\me}[1]{\ensuremath{\rsfsscr{#1}}}
+\newcommand{\mk}[1]{\ensuremath{\mathfrak{#1}}}
+\newcommand{\mv}[1]{\ensuremath{\boldsymbol{#1}}}
+\newcommand{\ms}[1]{\ensuremath{\mathscr{#1}}}
+
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RP}{\mathbb{RP}}
+\newcommand{\FF}{\mathbb{F}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\EE}{\mathbb{E}}
+
+\newcommand{\df}{\ensuremath{\ \mathsf{d}}}
+
+\DeclareMathOperator{\GF}{\ensuremath{\mathrm{GF}}}
+\DeclareMathOperator{\SO}{\ensuremath{\mathbf{SO}}}
+\DeclareMathOperator{\E}{\ensuremath{\mathsf{E}}}
+\DeclareMathOperator{\var}{\ensuremath{\mathsf{Var}}}
+\DeclareMathOperator{\pr}{\ensuremath{\mathsf{Pr}}}
+\DeclareMathOperator{\varvar}{\ensuremath{\mathrm{Var}}}
+
+\newcommand{\ex}{\ensuremath{\mathsf{E}}}
+\newcommand\T{{\mathpalette\raiseT\intercal}}
+\newcommand\raiseT[2]{\raisebox{0.25ex}{$#1#2$}}
+\newcommand{\transp}{\ensuremath{^\top}}
+\newcommand{\iv}{\ensuremath{^{-1}}}
+\newcommand{\img}{\ensuremath{^{\to}}}
+\newcommand{\pimg}{\ensuremath{^{\leftarrow}}}
+\newcommand{\cp}{\ensuremath{^{\complement}}}
+\newcommand{\defeq}{\ensuremath \stackrel{\Delta}{=}}
+
+\newcommand{\delimit}[4]{
+	\ifcase #1
+		\mathopen{}\left#2 #3 \right#4\mathclose{}
+		\or #2 #3 #4
+		\or \bigl#2 #3 \bigr#4
+		\or \Bigl#2 #3 \Bigr#4
+		\or \biggl#2 #3 \biggr#4
+		\or \Biggl#2 #3 \Biggr#4
+	\fi
+}
+
+%Generalize builder with a bar
+\newcommand{\delb}[5]{
+	\delimit{#1}{#2}{
+		#3
+		\ifcase #1
+			\mid
+			\or \mid
+			\or \bigm|
+			\or \Bigm|
+			\or \biggm|
+			\or \Biggm|
+		\fi
+		#4
+	}{#5}
+}
+
+%Generalize builder with a colon
+\newcommand{\delc}[5]{
+	\delimit{#1}{#2}{
+		#3
+		\ifcase #1
+			:
+			\or :
+			\else \,:\,
+		\fi
+		#4
+	}{#5}
+}
+
+\usepackage{commath}
+\newcommand{\degrees}{\ensuremath{^{\circ}}}
+\newcommand{\iter}[1]{\ensuremath{^{\circ #1}}}
+\newcommand{\nder}[1]{\ensuremath{^{\left(#1\right)}}}
+\newcommand{\setc}[3][0]{\delb{#1}{\{}{#2}{#3}{\}}}
+\renewcommand{\set}[2][0]{\delimit{#1}{\{}{#2}{\}}}
+\renewcommand{\norm}[2][0]{\delimit{#1}{\lVert}{#2}{\rVert}}
+\renewcommand{\abs}[2][0]{\delimit{#1}{|}{#2}{|}}
+\newcommand{\angbr}[2][0]{\delimit{#1}{\langle}{#2}{\rangle}}
+\newcommand{\floor}[2][0]{\delimit{#1}{\lfloor}{#2}{\rfloor}}
+\newcommand{\ceil}[2][0]{\delimit{#1}{\lceil}{#2}{\rceil}}
+\newcommand{\pair}[2][0]{\delimit{#1}{(}{#2}{)}}
+
+\newcommand{\cro}{\ensuremath{^{\times}}}
+
+\DeclareMathOperator{\Ub}{\ensuremath{Ub}}
+\DeclareMathOperator{\Lb}{\ensuremath{Lb}}
+
+
+\DeclareMathOperator{\ord}{\ensuremath{ord}}
+\DeclareMathOperator{\lip}{\ensuremath{lip}}
+\DeclareMathOperator{\dvg}{\ensuremath{div}}
+\DeclareMathOperator{\len}{\ensuremath{len}}
+\DeclareMathOperator{\lcm}{\ensuremath{lcm}}
+\DeclareMathOperator{\pdf}{\ensuremath{pdf}}
+\DeclareMathOperator{\cdf}{\ensuremath{cdf}}
+\DeclareMathOperator{\nul}{\ensuremath{null}}
+\DeclareMathOperator{\Span}{\ensuremath{span}}
+\DeclareMathOperator{\Ker}{\ensuremath{ker}}
+\DeclareMathOperator{\Adj}{\ensuremath{Adj}}
+\DeclareMathOperator{\proj}{\ensuremath{proj}}
+\DeclareMathOperator{\sech}{\ensuremath{sech}}
+\DeclareMathOperator{\cis}{\ensuremath{cis}}
+\DeclareMathOperator{\avg}{\ensuremath{avg}}
+\DeclareMathOperator{\dist}{\ensuremath{dist}}
+\DeclareMathOperator{\diam}{\ensuremath{diam}}
+\DeclareMathOperator{\Sub}{\ensuremath{Sub}}
+\DeclareMathOperator{\Lin}{\ensuremath{Lin}}
+\DeclareMathOperator{\Mat}{\ensuremath{Mat}}
+\DeclareMathOperator{\Hom}{\ensuremath{Hom}}
+\DeclareMathOperator{\Hol}{\ensuremath{Hol}}
+\DeclareMathOperator{\Mer}{\ensuremath{Mer}}
+\DeclareMathOperator{\diag}{\ensuremath{diag}}
+\DeclareMathOperator{\End}{\ensuremath{End}}
+\DeclareMathOperator{\Rng}{\ensuremath{Rng}}
+\DeclareMathOperator{\range}{\ensuremath{range}}
+\DeclareMathOperator{\dom}{\ensuremath{Dom}}
+\DeclareMathOperator{\tr}{\ensuremath{tr}}
+\DeclareMathOperator{\Int}{\ensuremath{Int}}
+\DeclareMathOperator{\itr}{\ensuremath{int}}
+\DeclareMathOperator{\Ext}{\ensuremath{Ext}}
+\DeclareMathOperator{\Clo}{\ensuremath{Clo}}
+\DeclareMathOperator{\gr}{\ensuremath{Gr}}
+\DeclareMathOperator{\cl}{\ensuremath{cl}}
+\DeclareMathOperator{\fr}{\ensuremath{fr}}
+\DeclareMathOperator{\Bdy}{\ensuremath{Bdy}}
+\DeclareMathOperator{\Acc}{\ensuremath{acc}}
+\DeclareMathOperator{\curl}{\ensuremath{curl}}
+\DeclareMathOperator{\grad}{\ensuremath{grad}}
+\DeclareMathOperator{\dil}{\ensuremath{dil}}
+\DeclareMathOperator{\cof}{\ensuremath{cof}}
+\DeclareMathOperator{\area}{\ensuremath{area}}
+\DeclareMathOperator{\vol}{\ensuremath{vol}}
+\DeclareMathOperator{\Sym}{\ensuremath{Sym}}
+\DeclareMathOperator{\Syl}{\ensuremath{Syl}}
+\DeclareMathOperator{\Corr}{\ensuremath{Corr}}
+\DeclareMathOperator{\Cov}{\ensuremath{Cov}}
+\DeclareMathOperator{\polylog}{\ensuremath{polylog}}
+\DeclareMathOperator{\rank}{\ensuremath{rank}}
+\DeclareMathOperator{\nullity}{\ensuremath{nullity}}
+\DeclareMathOperator{\sign}{\ensuremath{sign}}
+\DeclareMathOperator{\Aut}{\ensuremath{Aut}}
+\DeclareMathOperator{\Inn}{\ensuremath{Inn}}
+\DeclareMathOperator{\GL}{\ensuremath{GL}} % General linear group
+\DeclareMathOperator{\SL}{\ensuremath{SL}} % Special linear group
+\DeclareMathOperator{\Vol}{\ensuremath{Vol}} % Special linear group
+
+% Inverse hyperbolic
+\DeclareMathOperator{\artanh}{\ensuremath{artanh}}
+\DeclareMathOperator{\arcosh}{\ensuremath{arcosh}}
+\DeclareMathOperator{\arsinh}{\ensuremath{arsinh}}
+\DeclareMathOperator{\arcoth}{\ensuremath{arcoth}}
+\DeclareMathOperator{\arsech}{\ensuremath{arsech}}
+\DeclareMathOperator{\arcsch}{\ensuremath{arcsch}}
+\DeclareMathOperator{\ffrac}{\ensuremath{frac}}
+
+\newcommand{\kb}{\mathfrak b}
+\newcommand{\kg}{\mathfrak g}
+\newcommand{\kh}{\mathfrak h}
+\newcommand{\kn}{\mathfrak n}
+\newcommand{\ku}{\mathfrak u}
+\newcommand{\kz}{\mathfrak z}
+
+
+%
+%\DeclareMathOperator*{\cart}{\raisebox{-1.15ex}{{\tikz [x=3.1ex,y=3.1ex,line width=.275ex] \draw (0,0) -- (1,1) (0,1) -- (1,0);}}}%
+%\DeclareMathOperator*{\dcart}{\raisebox{-0.7ex}{{\tikz [x=2.3ex,y=2.3ex,line width=.2ex] \draw (0,0) -- (1,1) (0,1) -- (1,0);}}}%
+%%===norm
+\DeclareMathOperator*{\cart}{\raisebox{-1.25ex}{{\tikz [x=3.2ex,y=3.2ex,line width=.25ex] \draw (0,0) -- (1,1) (0,1) -- (1,0);}}}%
+\DeclareMathOperator*{\dcart}{\raisebox{-0.7ex}{{\tikz [x=2.3ex,y=2.3ex,line width=.2ex] \draw (0,0) -- (1,1) (0,1) -- (1,0);}}}%
+
+%% Statistics command
+\DeclareMathOperator{\Norm}{\ensuremath{\mathsf{Norm}}}
+\DeclareMathOperator{\Bin}{\ensuremath{\mathsf{Bin}}}
+\DeclareMathOperator{\Poi}{\ensuremath{\mathsf{Poi}}}
+\DeclareMathOperator{\Geo}{\ensuremath{\mathsf{Geo}}}
+\DeclareMathOperator{\Unif}{\ensuremath{\mathsf{Unif}}}
+\DeclareMathOperator{\Pare}{\ensuremath{\mathsf{Pare}}}
+\DeclareMathOperator{\Wern}{\ensuremath{\mathsf{Wern}}}
+\DeclareMathOperator{\Beta}{\ensuremath{\mathsf{Beta}}}
+
+\newcommand{\symdiff}{\bigtriangleup}
+
+\newcommand{\prd}[3][0]{#2\angbr[#1]{#3}}
+
+\newcommand{\examhead}[6]{
+	\begin{center}
+	{{\large \fbox{\parbox{0.98\textwidth}{
+		\hbox to \hsize{#1 \hfil #2} \vskip 0.075in
+		\hbox to \hsize{#3 \hfil #4} \vskip 0.075in
+		\hbox to \hsize{#5 \hfil #6}
+	}}}}
+	\end{center}
+	\vspace{-1em} }
+
+\newcommand{\srudhead}[4]{
+
+	\begin{center}
+	{\textsf {\large \fbox{\parbox{0.98\textwidth}{
+		\hbox to \hsize{#1 \hfil #2} \vskip 0.075in
+		\hbox to \hsize{#3 \hfil #4}
+	}}}}
+	\end{center}
+	\vspace{-1em} }
+
+\newcommand{\rudhead}[4]{
+
+	\begin{center}
+	{ {\large \fbox{\parbox{0.98\textwidth}{
+		\hbox to \hsize{#1 \hfil #2} \vskip 0.075in
+		\hbox to \hsize{#3 \hfil #4}
+	}}}}
+	\end{center}
+	\vspace{-1em} }
+
+\newcommand{\drudhead}[4]{
+	\begin{center}
+	{\textbf{\large { {\parbox{1\textwidth}{
+		\hbox to \hsize{#1 \hfil #2} \vskip 0.075in
+		\hbox to \hsize{#3 \hfil #4}
+	}}}}
+	\raisebox{-5pt}[0pt][0pt]{\rule{\linewidth}{0.75pt}}
+	}
+	\end{center}
+	\vspace{-1em}
+}
+
+\usepackage{chemfig}
+\renewcommand*\printatom[1]{\ensuremath{\mathsf{#1}}}
+
+\newcommand{\mysetminusD}{\hbox{\tikz{\draw[line width=0.4pt,line cap=round] (3pt,0) -- (0,6pt);}}}
+\newcommand{\mysetminusT}{\mysetminusD}
+\newcommand{\mysetminusS}{\hbox{\tikz{\draw[line width=0.25pt,line cap=round] (2pt,0) -- (0,4pt);}}}
+\newcommand{\mysetminusSS}{\hbox{\tikz{\draw[line width=0.2pt,line cap=round] (1.5pt,0) -- (0,3pt);}}}
+\newcommand{\mysetminus}{\mathbin{\mathchoice{\mysetminusD}{\mysetminusT}{\mysetminusS}{\mysetminusSS}}}
+
+
+\usepackage{centernot}
+
+\newcommand{\parte}[1]{\vspace{2\parskip}\noindent{\color{Cerulean}\textbf{{{\ifthenelse{\equal{#1}{}}{\textsf{Part:}}{\textsf{Part} {\textcolor{Black}{\textsf{#1}}}{.}}}}}}}
+\newcommand{\prob}[1]{\vspace{2\parskip}\noindent{\color{BrickRed}\textbf{{{\ifthenelse{\equal{#1}{}}{\textsf{Problem:}}{\textsf{Problem} {\textcolor{Black}{\textsf{#1}}}{.}}}}}} \stepcounter{probCounter}}
+\newcommand{\soln}[1]{\noindent{\textbf{{{\ifthenelse{\equal{#1}{}}{{{Solution:}}}{{{Solution}} {\textcolor{Black}{#1}}{.}}}}}}}
+\newcommand{\varnmid}{\centernot\mid}
+\newcommand{\iprod}[1]{\prod_{#1}^\infty}
+\newcommand{\isum}[1]{\sum_{#1}^\infty}
+\newcommand{\ilim}[1]{\lim_{#1\to\infty}}
+\newcommand{\seq}[1]{#1_1,\dotsc,#1_n}
+
+\newcommand{\shownum}{\addtocounter{equation}{1}\tag{\theequation}}
+\usepackage{array}
+\newcolumntype{x}[1]{>{\centering\arraybackslash\hspace{0pt}}p{#1}}
+\renewcommand{\arraystretch}{1}
+\newcommand{\w}{\hspace*{-3pt}}
+\newcommand{\unitj}{\ensuremath{\mv{\textbf{\j}}}}
+\newcommand{\uniti}{\ensuremath{\mv{\textbf{\i}}}}
+\newcommand{\unitk}{\ensuremath{\mb{k}}}
+
+%% ==== Custom macro ===
+\newcommand{\eps}{\varepsilon}
+\newcommand{\ol}{\overline}
+\newcommand{\ul}{\underline}
+\newcommand{\wt}{\widetilde}
+\newcommand{\wh}{\widehat}
+
+\newcommand{\cycsum}{\sum_{\mathrm{cyc}}}
+\newcommand{\symsum}{\sum_{\mathrm{sym}}}
+\newcommand{\cycprod}{\prod_{\mathrm{cyc}}}
+\newcommand{\symprod}{\prod_{\mathrm{sym}}}
+
+%% ==== Arcs
+\newcommand{\arc}[1]{%
+  \setbox9=\hbox{\ensuremath{#1}}%
+  \ooalign{\raisebox{8pt}{\resizebox{\wd9}{\height}{\ensuremath{\frown}}}\cr\ensuremath{#1}}}
+
+\newcommand{\intentblank}{
+\vspace*{\fill}%
+\begin{center}%
+This page is intentionally left blank.%
+\end{center}%
+\vspace{\fill}
+}
+
+\newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+
+\def\Xint#1{\ \ \mathchoice
+  {\XXint\displaystyle\textstyle{#1}}%
+  {\XXint\textstyle\scriptstyle{#1}}%
+  {\XXint\scriptstyle\scriptscriptstyle{#1}}%
+  {\XXint\scriptscriptstyle\scriptscriptstyle{#1}}%
+  \ \iiint}
+\def\XXint#1#2#3{{\setbox0=\hbox{$#1{\ \ \ #2#3}{\iiint}$}
+  \vcenter{\hbox{$#2#3$}}\kern-.5\wd0}}
+\newcommand{\odc}{\subset\!\supset}
+\newcommand{\oiiint}{\Xint{\odc}}
+\newcommand{\bdc}{<\!>}
+\newcommand{\biiint}{\Xint{\bdc}}
+
+\newcommand*\Laplace{\mathop{}\!\mathbin\bigtriangleup}
+\newcommand*\DAlambert{\mathop{}\!\mathbin\Box}
+\newcommand{\powerset}{\raisebox{.15\baselineskip}{\Large\ensuremath{\wp}}}
+
+\lstdefinestyle{customCodeList}{
+  belowcaptionskip=1\baselineskip,
+  breaklines=true,
+  frame=L,
+  xleftmargin=\parindent,
+  showstringspaces=false,
+  basicstyle=\footnotesize\ttfamily,
+  keywordstyle=\bfseries\color{green!40!black},
+  commentstyle=\itshape\color{purple!40!black},
+  identifierstyle=\color{blue},
+  stringstyle=\color{orange},
+}
+
+\usepackage{tkz-euclide}
+\usepackage{tcolorbox}
+
+\xpatchcmd{\endmdframed}
+  {\aftergroup\endmdf@trivlist\color@endgroup}
+  {\endmdf@trivlist\color@endgroup\@doendpe}
+  {}{}
+
+\mdfdefinestyle{mdbluebox}{%
+  linewidth=1pt,
+  skipabove=12pt,
+  innertopmargin=9pt,
+  innerbottommargin=9pt,
+  skipbelow=2pt,
+  linecolor=MidnightBlue,
+  frametitlefont=\bfseries,
+  % nobreak=true,
+  backgroundcolor=TealBlue!5,
+}
+
+\declaretheoremstyle[
+  headfont=\sffamily\bfseries\color{MidnightBlue},
+  mdframed={style=mdbluebox},
+  spaceabove=2pt,
+  spacebelow=1pt,
+  % postheadspace={0pt}
+]{thmbluebox}
+
+
+\mdfdefinestyle{mdgreenbox}{%
+  skipabove=8pt,
+  skipbelow=0pt,
+  linewidth=2pt,
+  rightline=false,
+  leftline=true,
+  topline=false,
+  bottomline=false,
+  linecolor=ForestGreen,
+  backgroundcolor=ForestGreen!5,
+}
+
+\declaretheoremstyle[
+  headfont=\bfseries\sffamily\color{ForestGreen!70!black},
+  bodyfont=\normalfont,
+  spaceabove=2pt,
+  spacebelow=1pt,
+  mdframed={style=mdgreenbox},
+]{thmgreenbox}
+
+\mdfdefinestyle{mdredbox}{%
+  linewidth=0.5pt,
+  skipabove=12pt,
+  frametitleaboveskip=5pt,
+  frametitlebelowskip=0pt,
+  skipbelow=2pt,
+  frametitlefont=\bfseries,
+  innertopmargin=8pt,
+  innerbottommargin=8pt,
+  nobreak=true,
+  backgroundcolor=Salmon!5,
+  linecolor=RawSienna,
+}
+
+\declaretheoremstyle[
+  headfont=\bfseries\color{RawSienna},
+  mdframed={style=mdredbox},
+  headpunct={---},
+  postheadspace={0pt},
+]{thmredbox}
+
+
+\mdfdefinestyle{mdblackbox}{%
+  skipabove=8pt,
+  linewidth=3pt,
+  rightline=false,
+  leftline=true,
+  topline=false,
+  bottomline=false,
+  linecolor=black,
+  backgroundcolor=RedViolet!5!gray!5,
+}
+
+\declaretheoremstyle[
+  headfont=\bfseries,
+  bodyfont=\normalfont\small,
+  spaceabove=0pt,
+  spacebelow=0pt,
+  mdframed={style=mdblackbox}
+]{thmblackbox}
+
+
+\mdfdefinestyle{mdpurplebox}{%
+  linewidth=1pt,
+  skipabove=12pt,
+  skipbelow=12pt,
+  innertopmargin=9pt,
+  innerbottommargin=9pt,
+  linecolor=black,
+  nobreak=true,
+  backgroundcolor=Orchid!10,
+  shadow=true,
+  shadowsize=6pt,
+  shadowcolor=black!30,
+  frametitleaboveskip=8pt,
+  frametitlebelowskip=8pt,
+  frametitlebackgroundcolor=Violet!50!black,
+  frametitlefont=\bfseries\sffamily\color{white},
+  frametitlerule=true,
+}
+
+\mdfdefinestyle{mdroyalbluebox}{%
+  linewidth=1pt,
+  skipabove=12pt,
+  skipbelow=12pt,
+  innertopmargin=9pt,
+  innerbottommargin=9pt,
+  linecolor=black,
+  nobreak=true,
+  backgroundcolor=RoyalBlue!10,
+  shadow=true,
+  shadowsize=6pt,
+  shadowcolor=black!30,
+  frametitleaboveskip=8pt,
+  frametitlebelowskip=8pt,
+  frametitlebackgroundcolor=RoyalBlue!50!black,
+  frametitlefont=\bfseries\sffamily\color{white},
+  frametitlerule=true,
+}
+
+\newcommand{\listhack}{$\empty$\vspace{-2em}}
+
+\theoremstyle{definition}
+% \declaretheorem[style=thmbluebox,name=Theorem,numberwithin=section]{cstheorem}
+\declaretheorem[style=thmbluebox,name=Theorem]{theorem}
+
+\declaretheorem[style=thmbluebox,name=Lemma,sibling=theorem]{lemma}
+\declaretheorem[style=thmbluebox,name=Proposition,sibling=theorem]{proposition}
+\declaretheorem[style=thmbluebox,name=Corollary,sibling=theorem]{corollary}
+\declaretheorem[style=thmbluebox,name=Assumption,sibling=theorem]{assume}
+\declaretheorem[style=thmbluebox,name=Theorem,numbered=no]{theorem*}
+\declaretheorem[style=thmbluebox,name=Lemma,numbered=no]{lemma*}
+\declaretheorem[style=thmbluebox,name=Proposition,numbered=no]{proposition*}
+\declaretheorem[style=thmbluebox,name=Corollary,numbered=no]{corollary*}
+\declaretheorem[style=thmbluebox,name=Assumption,numbered=no]{assume*}
+
+\declaretheorem[style=thmgreenbox,name=Algorithm,sibling=theorem]{algo}
+\declaretheorem[style=thmgreenbox,name=Algorithm,numbered=no]{algo*}
+\declaretheorem[style=thmgreenbox,name=Claim,sibling=theorem]{claim}
+\declaretheorem[style=thmgreenbox,name=Claim,numbered=no]{claim*}
+
+\declaretheorem[style=thmredbox,name=Example,sibling=theorem]{example}
+\declaretheorem[style=thmredbox,name=Example,numbered=no]{example*}
+
+\declaretheoremstyle[
+  % headfont=\color{blue!40!black}\normalfont\bfseries,
+  headfont=\color{BrickRed}\sffamily\bfseries,
+  spaceabove=8pt,
+  spacebelow=8pt,
+  bodyfont=\normalfont
+]{basehead}
+
+\declaretheorem[style=basehead,name=Answer,sibling=theorem]{answer}
+\declaretheorem[style=basehead,name=Answer,numbered=no]{answer*}
+\declaretheorem[style=basehead,name=Conjecture,sibling=theorem]{conjecture}
+\declaretheorem[style=basehead,name=Conjecture,numbered=no]{conjecture*}
+\declaretheorem[style=basehead,name=Definition,sibling=theorem]{definition}
+\declaretheorem[style=basehead,name=Definition,numbered=no]{definition*}
+\declaretheorem[style=basehead,name=Exercise,sibling=theorem]{exercise}
+\declaretheorem[style=basehead,name=Exercise,numbered=no]{exercise*}
+\declaretheorem[style=basehead,name=Fact,sibling=theorem]{fact}
+\declaretheorem[style=basehead,name=Fact,numbered=no]{fact*}
+\declaretheorem[style=basehead,name=Problem,sibling=theorem]{problem}
+\declaretheorem[style=basehead,name=Problem,numbered=no]{problem*}
+\declaretheorem[style=basehead,name=Question,sibling=theorem]{ques}
+\declaretheorem[style=basehead,name=Question,numbered=no]{ques*}
+
+\newenvironment{solution}
+  {\renewcommand\qedsymbol{$\blacksquare$}\begin{proof}[Solution]}
+  {\end{proof}}
