@@ -33,15 +33,17 @@
 \usepackage{algpseudocode}
 \algrenewcommand\algorithmicprocedure{\textbf{function}}
 \algrenewcommand{\algorithmiccomment}[1]{\hskip3em$\triangleright$ #1}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,urlcolor=RubineRed,linkcolor=RoyalBlue,citecolor=ForestGreen,filecolor=Magenta}
 
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.18}
 
 \usepackage{amsmath, amsopn, multicol, enumerate, tikz, bbding}
 \usepackage{upgreek, bold-extra, mathrsfs, tensor}
-\usetikzlibrary {arrows.meta,bending,positioning}
 \usetikzlibrary{shapes, calendar, matrix, backgrounds, folding, knots, fadings, shadows}
 \usetikzlibrary{decorations.markings, calc, arrows, petri, topaths, decorations.pathreplacing}
+\usetikzlibrary{arrows.meta,bending,positioning}
 \usetikzlibrary{graphs, graphs.standard}
 
 \usepackage{amsthm}
@@ -62,7 +64,7 @@
 
 \usepackage{amsfonts}
 \usepackage{amssymb, esint}
-\usepackage[new]{old-arrows}
+
 
 \let\rsfsscr=\mathscr
 \usepackage[mathscr]{euscript}
@@ -628,7 +630,10 @@ This page is intentionally left blank.%
 
 \newenvironment{solution}{\renewcommand\qedsymbol{$\blacksquare$}\begin{proof}[Solution]}{\end{proof}}
 
+
+%% IMPORTANT: below should be at the end of the file and order should be preserved.
 \usepackage{unicode-math}
 \usepackage{mathtools}
 %\setmathfont{texgyrepagella-math.otf}
 \setmathfont{NewCMMath-Regular.otf}
+\usepackage[old]{old-arrows}
