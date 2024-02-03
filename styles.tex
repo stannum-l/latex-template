@@ -90,12 +90,12 @@
 %=== loading symbols ===
 \newcommand{\eins}{\ensuremath{\mathbbm{1}}}
 
-\usepackage{amsfonts}
-\usepackage{amssymb, esint}
+\usepackage{amsfonts, amssymb, esint}
 
+% \let\rsfsscr=\mathscr
+% \usepackage[mathscr]{euscript}
+% \usepackage[mathscr]{eucal}
 
-\let\rsfsscr=\mathscr
-\usepackage[mathscr]{euscript}
 \usepackage{listings,lstautogobble}
 \lstset{
     keywordstyle=\color{blue}
@@ -174,13 +174,21 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 \newcommand{\pid}{\textsc{pid}}
 
 \newcommand{\ignore}[1]{}
+
+
+
+\DeclareMathAlphabet{\mathrsfs}{U}{rsfso}{m}{n}
+\DeclareMathAlphabet{\mathssss}{U}{rsfs}{m}{n}
 \newcommand{\mb}[1]{\ensuremath{\mathbf{#1}}}
 \newcommand{\mc}[1]{\ensuremath{\mathcal{#1}}}
 \newcommand{\mf}[1]{\ensuremath{\mathbb{#1}}}
-\newcommand{\me}[1]{\ensuremath{\rsfsscr{#1}}}
 \newcommand{\mk}[1]{\ensuremath{\mathfrak{#1}}}
 \newcommand{\mv}[1]{\ensuremath{\boldsymbol{#1}}}
-\newcommand{\ms}[1]{\ensuremath{\mathscr{#1}}}
+\newcommand{\me}[1]{\ensuremath{\mathscr{#1}}}
+\newcommand{\ms}[1]{\ensuremath{\mathrsfs{#1}}}
+\newcommand{\mh}[1]{\ensuremath{\mathssss{#1}}}
+
+
 
 \newcommand{\NN}{\mathbb{N}}
 \newcommand{\RR}{\mathbb{R}}
@@ -672,5 +680,5 @@ This page is intentionally left blank.%
 %\setmathfont{texgyrepagella-math.otf}
 \setmathfont{NewCMMath-Regular.otf}
 \usepackage[old]{old-arrows}
-
 \renewcommand{\emptyset}{\diameter}
+\DeclareMathAlphabet{\mathcal}{OMS}{cmsy}{m}{n}
