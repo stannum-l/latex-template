@@ -711,8 +711,10 @@ This page is intentionally left blank.%
 \declaretheorem[style=thmgreenbox,name=Claim,numberwithin=problem]{claim}
 \declaretheorem[style=thmgreenbox,name=Claim,numbered=no]{claim*}
 
-\newenvironment{solution}{\renewcommand\qedsymbol{$\blacksquare$}\begin{proof}[Solution]}{\end{proof}}
-\newenvironment{scsoln}{\renewcommand\qedsymbol{$\blacksquare$}\begin{proof}[\normalfont \scshape Solution]}{\end{proof}}
+\newenvironment{solution}{\renewcommand\qedsymbol{$\blacksquare$}\renewcommand{\proofname}{Solution}\begin{proof}}{\end{proof}}
+\newenvironment{scsolution}[1][\proofname]{\renewcommand\qedsymbol{$\blacksquare$}\renewcommand{\proofname}{Solution}\proof[\normalfont \scshape #1]}{\endproof}
+% \newenvironment{solution}{\begin{proof}[Solution]}{\end{proof}}
+% \newenvironment{scsoln}{\begin{proof}[\normalfont \scshape Solution]}{\end{proof}}
 \newenvironment{scproof}[1][\proofname]{\proof[\normalfont \scshape #1]}{\endproof}
 
 
