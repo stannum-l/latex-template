@@ -590,7 +590,7 @@ This page is intentionally left blank.%
   nobreak=true,
   backgroundcolor=Orchid!10,
   shadow=true,
-  shadowsize=6pt,
+  shadowsize=2pt,
   shadowcolor=black!30,
   frametitleaboveskip=8pt,
   frametitlebelowskip=8pt,
@@ -618,30 +618,46 @@ This page is intentionally left blank.%
   frametitlerule=true,
 }
 
+\declaretheoremstyle[
+  headfont=\sffamily\bfseries\color{Violet},
+  mdframed={style=mdpurplebox},
+  spaceabove=2pt,
+  spacebelow=1pt,
+  % postheadspace={0pt}
+]{thmpurplebox}
+
 \newcommand{\listhack}{$\empty$\vspace{-2em}}
 
 \theoremstyle{definition}
 % \declaretheorem[style=thmbluebox,name=Theorem,numberwithin=section]{cstheorem}
 \declaretheorem[style=thmbluebox,name=Theorem]{theorem}
-
-\declaretheorem[style=thmbluebox,name=Lemma,sibling=theorem]{lemma}
-% \declaretheorem[style=thmbluebox,name=Proposition,sibling=theorem]{proposition}
-\declaretheorem[style=thmbluebox,name=Corollary,sibling=theorem]{corollary}
-\declaretheorem[style=thmbluebox,name=Assumption,sibling=theorem]{assume}
 \declaretheorem[style=thmbluebox,name=Theorem,numbered=no]{theorem*}
-\declaretheorem[style=thmbluebox,name=Lemma,numbered=no]{lemma*}
-\declaretheorem[style=thmbluebox,name=Proposition,numbered=no]{proposition*}
+
+\declaretheorem[style=thmpurplebox,name=Lemma,sibling=theorem]{lemma}
+\declaretheorem[style=thmpurplebox,name=Lemma,numbered=no]{lemma*}
+
+
+\declaretheorem[style=thmbluebox,name=Corollary,sibling=theorem]{corollary}
 \declaretheorem[style=thmbluebox,name=Corollary,numbered=no]{corollary*}
-\declaretheorem[style=thmbluebox,name=Assumption,numbered=no]{assume*}
+
+\declaretheorem[style=thmbluebox,name=Assumption,sibling=theorem]{assume}
+\declaretheorem[style=thmgreenbox,name=Assumption,numbered=no]{assume*}
+
 
 \declaretheorem[style=thmgreenbox,name=Algorithm,sibling=theorem]{algo}
 \declaretheorem[style=thmgreenbox,name=Algorithm,numbered=no]{algo*}
 
-% \declaretheorem[style=thmgreenbox,name=Claim,sibling=theorem]{claim}
-\declaretheorem[style=thmgreenbox,name=Claim,numbered=no]{claim*}
 
 \declaretheorem[style=thmredbox,name=Example,sibling=theorem]{example}
 \declaretheorem[style=thmredbox,name=Example,numbered=no]{example*}
+
+\declaretheoremstyle[
+  % headfont=\color{blue!40!black}\normalfont\bfseries,
+  headfont=\color{YellowOrange}\sffamily\bfseries,
+  spaceabove=8pt,
+  spacebelow=8pt,
+  bodyfont=\normalfont
+]{answerhead}
 
 \declaretheoremstyle[
   % headfont=\color{blue!40!black}\normalfont\bfseries,
@@ -651,23 +667,49 @@ This page is intentionally left blank.%
   bodyfont=\normalfont
 ]{basehead}
 
-\declaretheorem[style=basehead,name=Answer,sibling=theorem]{answer}
-\declaretheorem[style=basehead,name=Answer,numbered=no]{answer*}
-\declaretheorem[style=basehead,name=Conjecture,sibling=theorem]{conjecture}
-\declaretheorem[style=basehead,name=Conjecture,numbered=no]{conjecture*}
-\declaretheorem[style=basehead,name=Definition,sibling=theorem]{definition}
-\declaretheorem[style=basehead,name=Definition,numbered=no]{definition*}
+\mdfdefinestyle{mddefbox}{%
+  skipabove=8pt,
+  skipbelow=0pt,
+  linewidth=2pt,
+  rightline=false,
+  leftline=true,
+  topline=false,
+  bottomline=false,
+  linecolor=Salmon,
+  backgroundcolor=Salmon!5,
+}
+
+\declaretheoremstyle[
+  headfont=\bfseries\sffamily\color{Salmon!70!black},
+  bodyfont=\normalfont,
+  spaceabove=2pt,
+  spacebelow=1pt,
+  mdframed={style=mddefbox},
+]{thmdefbox}
+
+\declaretheorem[style=answerhead,name=Answer,sibling=theorem]{answer}
+\declaretheorem[style=answerhead,name=Answer,numbered=no]{answer*}
+\declaretheorem[style=answerhead,name=Fact,sibling=theorem]{fact}
+\declaretheorem[style=answerhead,name=Fact,numbered=no]{fact*}
+
+\declaretheorem[style=thmdefbox,name=Conjecture,sibling=theorem]{conjecture}
+\declaretheorem[style=thmdefbox,name=Conjecture,numbered=no]{conjecture*}
+\declaretheorem[style=thmdefbox,name=Definition,sibling=theorem]{definition}
+\declaretheorem[style=thmdefbox,name=Definition,numbered=no]{definition*}
+
 \declaretheorem[style=basehead,name=Exercise,sibling=theorem]{exercise}
 \declaretheorem[style=basehead,name=Exercise,numbered=no]{exercise*}
-\declaretheorem[style=basehead,name=Fact,sibling=theorem]{fact}
-\declaretheorem[style=basehead,name=Fact,numbered=no]{fact*}
 \declaretheorem[style=basehead,name=Problem,sibling=theorem]{problem}
 \declaretheorem[style=basehead,name=Problem,numbered=no]{problem*}
 \declaretheorem[style=basehead,name=Question,sibling=theorem]{ques}
 \declaretheorem[style=basehead,name=Question,numbered=no]{ques*}
 
-\declaretheorem[style=thmbluebox,name=Proposition,numberwithin=problem]{proposition}
+\declaretheorem[style=thmgreenbox,name=Proposition,numberwithin=problem]{proposition}
+% \declaretheorem[style=thmbluebox,name=Proposition,sibling=theorem]{proposition}
+\declaretheorem[style=thmgreenbox,name=Proposition,numbered=no]{proposition*}
+
 \declaretheorem[style=thmgreenbox,name=Claim,numberwithin=problem]{claim}
+\declaretheorem[style=thmgreenbox,name=Claim,numbered=no]{claim*}
 
 \newenvironment{solution}{\renewcommand\qedsymbol{$\blacksquare$}\begin{proof}[Solution]}{\end{proof}}
 \newenvironment{scsoln}{\renewcommand\qedsymbol{$\blacksquare$}\begin{proof}[\normalfont \scshape Solution]}{\end{proof}}
