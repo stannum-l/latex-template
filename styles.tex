@@ -133,9 +133,11 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 \addtokomafont{disposition}{\rmfamily}
 
 \usepackage[shortlabels]{enumitem}
-\setlist[enumerate]{itemsep=0.1pt, parsep=0pt, topsep=1pt, labelindent=0.1in, leftmargin=* }
-\setlist[itemize]{itemsep=0.1pt, parsep=0pt, topsep=1pt, labelindent=0.1in, leftmargin=* }
-\setlist[description]{itemsep=0.1pt, parsep=0pt, topsep=1pt, labelindent=0.1in, leftmargin=*, font=\normalfont\bfseries }
+% \setlist[enumerate]{itemsep=0.1pt, parsep=0pt, topsep=1pt, labelindent=0.1in, leftmargin=* }
+% \setlist[itemize]{itemsep=0.1pt, parsep=0pt, topsep=1pt, labelindent=0.1in, leftmargin=* }
+% \setlist[description]{itemsep=0.1pt, parsep=0pt, topsep=1pt, labelindent=0.1in, leftmargin=*, font=\normalfont\bfseries }
+\setlist[description]{font=\normalfont\bfseries }
+
 \setlist[itemize,1]{}
 \setlist[description,1]{}
 \setlist[enumerate,1]{label=(\emph{\alph*}), ref=\alph*}
@@ -144,11 +146,11 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 \setlist[enumerate,4]{label=(\emph{\roman*}), ref=\roman*}
 
 \newenvironment{enumI}{\begin{itemize}}{\end{itemize}}
-\newenvironment{enumC}{\begin{enumerate}}{\end{enumerate}}
-\newenvironment{enumCS}{\begin{enumerate}[label=(\alph*), ref=\alpha*]}{\end{enumerate}}
-\newenvironment{enumCN}{\begin{enumerate}[label=(\arabic*), ref=\arabic*]}{\end{enumerate}}
-\newenvironment{enumCRI}{\begin{enumerate}[label=(\emph{\roman*}), ref=\roman*]}{\end{enumerate}}
-\newenvironment{enumCR}{\begin{enumerate}[label=({\roman*}), ref=\roman*]}{\end{enumerate}}
+\newenvironment{enum}{\begin{enumerate}}{\end{enumerate}}
+\newenvironment{enumL}{\begin{enumerate}[label=(\alph*), ref=\alpha*]}{\end{enumerate}}
+\newenvironment{enumA}{\begin{enumerate}[label=(\arabic*), ref=\arabic*]}{\end{enumerate}}
+\newenvironment{enumRB}{\begin{enumerate}[label=(\emph{\roman*}), ref=\roman*]}{\end{enumerate}}
+\newenvironment{enumR}{\begin{enumerate}[label=({\roman*}), ref=\roman*]}{\end{enumerate}}
 
 
 \setlength{\headheight}{1.25\baselineskip}
@@ -189,14 +191,13 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 \newcommand{\mh}[1]{\ensuremath{\mathssss{#1}}}
 
 
-
-\newcommand{\NN}{\mathbb{N}}
-\newcommand{\RR}{\mathbb{R}}
-\newcommand{\ZZ}{\mathbb{Z}}
-\newcommand{\CC}{\mathbb{C}}
-\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Cx}{\mathbb{C}}
+\newcommand{\Q}{\mathbb{Q}}
 \newcommand{\RP}{\mathbb{RP}}
-\newcommand{\FF}{\mathbb{F}}
+\newcommand{\F}{\mathbb{F}}
 \newcommand{\PP}{\mathbb{P}}
 \newcommand{\EE}{\mathbb{E}}
 
@@ -214,7 +215,8 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 \newcommand\raiseT[2]{\raisebox{0.25ex}{$#1#2$}}
 \newcommand{\transp}{\ensuremath{^\top}}
 \newcommand{\iv}{\ensuremath{^{-1}}}
-\newcommand{\img}{\ensuremath{^{\to}}}
+\newcommand{\icr}{\ensuremath{^{\times}}}
+\newcommand{\img}{\ensuremath{^{\varto}}}
 \newcommand{\pimg}{\ensuremath{^{\leftarrow}}}
 \newcommand{\cp}{\ensuremath{^{\complement}}}
 \newcommand{\defeq}{\ensuremath \stackrel{\Delta}{=}}
@@ -327,6 +329,7 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 \DeclareMathOperator{\Syl}{\ensuremath{Syl}}
 \DeclareMathOperator{\Corr}{\ensuremath{Corr}}
 \DeclareMathOperator{\Cov}{\ensuremath{Cov}}
+\DeclareMathOperator{\idm}{\ensuremath{id}}
 \DeclareMathOperator{\polylog}{\ensuremath{polylog}}
 \DeclareMathOperator{\rank}{\ensuremath{rank}}
 \DeclareMathOperator{\nullity}{\ensuremath{nullity}}
