@@ -48,7 +48,7 @@
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.18}
 
-\usepackage{amsmath, amsopn, multicol, enumerate, tikz, bbding}
+\usepackage{amsmath, amsopn, multicol, enumerate, tikz, bbding, tikz-3dplot}
 \usepackage{upgreek, bold-extra, mathrsfs, tensor}
 \usetikzlibrary{shapes, calendar, matrix, backgrounds, folding, knots, fadings, shadows}
 \usetikzlibrary{decorations.markings, calc, arrows, petri, topaths, decorations.pathreplacing}
@@ -145,10 +145,10 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 \setlist[enumerate,3]{label=(\emph{\arabic*}), ref=\arabic*}
 \setlist[enumerate,4]{label=(\emph{\roman*}), ref=\roman*}
 
-\newenvironment{enumI}{\begin{itemize}}{\end{itemize}}
-\newenvironment{enum}{\begin{enumerate}}{\end{enumerate}}
-\newenvironment{enumL}{\begin{enumerate}[label=(\alph*), ref=\alpha*]}{\end{enumerate}}
-\newenvironment{enumA}{\begin{enumerate}[label=(\arabic*), ref=\arabic*]}{\end{enumerate}}
+% \newenvironment{enumI}{\begin{itemize}}{\end{itemize}}
+\newenvironment{enumA}{\begin{enumerate}}{\end{enumerate}}
+\newenvironment{enum}{\begin{enumerate}[label=(\alph*), ref=\alpha*]}{\end{enumerate}}
+\newenvironment{enumN}{\begin{enumerate}[label=(\arabic*), ref=\arabic*]}{\end{enumerate}}
 \newenvironment{enumRB}{\begin{enumerate}[label=(\emph{\roman*}), ref=\roman*]}{\end{enumerate}}
 \newenvironment{enumR}{\begin{enumerate}[label=({\roman*}), ref=\roman*]}{\end{enumerate}}
 
@@ -201,8 +201,6 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 \newcommand{\PP}{\mathbb{P}}
 \newcommand{\EE}{\mathbb{E}}
 
-\newcommand{\df}{\ensuremath{\ \mathsf{d}}}
-
 \DeclareMathOperator{\GF}{\ensuremath{\mathrm{GF}}}
 \DeclareMathOperator{\SO}{\ensuremath{\mathbf{SO}}}
 \DeclareMathOperator{\E}{\ensuremath{\mathsf{E}}}
@@ -211,8 +209,6 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 \DeclareMathOperator{\varvar}{\ensuremath{\mathrm{Var}}}
 
 \newcommand{\ex}{\ensuremath{\mathsf{E}}}
-\newcommand\T{{\mathpalette\raiseT\intercal}}
-\newcommand\raiseT[2]{\raisebox{0.25ex}{$#1#2$}}
 \newcommand{\transp}{\ensuremath{^\top}}
 \newcommand{\iv}{\ensuremath{^{-1}}}
 \newcommand{\icr}{\ensuremath{^{\times}}}
@@ -495,127 +491,96 @@ This page is intentionally left blank.%
 \usepackage{tkz-euclide}
 \usepackage{tcolorbox}
 
-\xpatchcmd{\endmdframed}
-  {\aftergroup\endmdf@trivlist\color@endgroup}
-  {\endmdf@trivlist\color@endgroup\@doendpe}
-  {}{}
+\mdfdefinestyle{mdbox}{%
+  linewidth=2pt,
+  skipabove=12pt,
+  innertopmargin=5pt,
+  innerbottommargin=5pt,
+  skipbelow=2pt,
+  frametitlefont=\bfseries,
+  nobreak=true,
+  rightline=false,
+  leftline=true,
+  topline=false,
+  bottomline=false
+}
 
 \mdfdefinestyle{mdbluebox}{%
-  linewidth=1pt,
-  skipabove=12pt,
-  innertopmargin=9pt,
-  innerbottommargin=9pt,
-  skipbelow=2pt,
+  style=mdbox,
   linecolor=MidnightBlue,
-  frametitlefont=\bfseries,
-  % nobreak=true,
   backgroundcolor=TealBlue!5,
 }
 
 \declaretheoremstyle[
-  headfont=\sffamily\bfseries\color{MidnightBlue},
+  headfont=\sffamily\bfseries\color{MidnightBlue!70!black},
   mdframed={style=mdbluebox},
   spaceabove=2pt,
   spacebelow=1pt,
   % postheadspace={0pt}
 ]{thmbluebox}
 
-
 \mdfdefinestyle{mdgreenbox}{%
-  skipabove=8pt,
-  skipbelow=0pt,
-  linewidth=2pt,
-  rightline=false,
-  leftline=true,
-  topline=false,
-  bottomline=false,
+  style=mdbox,
   linecolor=ForestGreen,
   backgroundcolor=ForestGreen!5,
 }
 
 \declaretheoremstyle[
   headfont=\bfseries\sffamily\color{ForestGreen!70!black},
+  mdframed={style=mdgreenbox},
   bodyfont=\normalfont,
   spaceabove=2pt,
   spacebelow=1pt,
-  mdframed={style=mdgreenbox},
 ]{thmgreenbox}
 
 \mdfdefinestyle{mdredbox}{%
-  linewidth=0.5pt,
-  skipabove=12pt,
-  frametitleaboveskip=5pt,
-  frametitlebelowskip=0pt,
-  skipbelow=2pt,
-  frametitlefont=\bfseries,
-  innertopmargin=8pt,
-  innerbottommargin=8pt,
-  nobreak=true,
-  backgroundcolor=Salmon!5,
-  linecolor=RawSienna,
+  style=mdbox,
+  backgroundcolor=CarnationPink!5,
+  linecolor=CarnationPink,
 }
 
 \declaretheoremstyle[
-  headfont=\bfseries\color{RawSienna},
+  headfont=\bfseries\color{CarnationPink},
   mdframed={style=mdredbox},
-  headpunct={---},
-  postheadspace={0pt},
+  bodyfont=\normalfont,
+  spaceabove=2pt,
+  spacebelow=1pt,
+  % headpunct={---},
+  % postheadspace={0pt},
 ]{thmredbox}
 
 
 \mdfdefinestyle{mdblackbox}{%
-  skipabove=8pt,
-  linewidth=3pt,
-  rightline=false,
-  leftline=true,
-  topline=false,
-  bottomline=false,
+  style=mdbox,
   linecolor=black,
   backgroundcolor=RedViolet!5!gray!5,
 }
 
 \declaretheoremstyle[
   headfont=\bfseries,
-  bodyfont=\normalfont\small,
-  spaceabove=0pt,
-  spacebelow=0pt,
-  mdframed={style=mdblackbox}
+  mdframed={style=mdredbox},
+  bodyfont=\normalfont,
+  spaceabove=2pt,
+  spacebelow=1pt,
 ]{thmblackbox}
 
 
 \mdfdefinestyle{mdpurplebox}{%
-  linewidth=1pt,
-  skipabove=12pt,
-  skipbelow=12pt,
-  innertopmargin=9pt,
-  innerbottommargin=9pt,
-  linecolor=black,
-  nobreak=true,
-  backgroundcolor=Orchid!10,
+  style=mdbox,
   shadow=true,
   shadowsize=2pt,
-  shadowcolor=black!30,
-  frametitleaboveskip=8pt,
-  frametitlebelowskip=8pt,
+  backgroundcolor=Orchid!10,
   frametitlebackgroundcolor=Violet!50!black,
   frametitlefont=\bfseries\sffamily\color{white},
   frametitlerule=true,
 }
 
 \mdfdefinestyle{mdroyalbluebox}{%
-  linewidth=1pt,
-  skipabove=12pt,
-  skipbelow=12pt,
-  innertopmargin=9pt,
-  innerbottommargin=9pt,
-  linecolor=black,
-  nobreak=true,
+  style=mdbox,
   backgroundcolor=RoyalBlue!10,
   shadow=true,
   shadowsize=6pt,
   shadowcolor=black!30,
-  frametitleaboveskip=8pt,
-  frametitlebelowskip=8pt,
   frametitlebackgroundcolor=RoyalBlue!50!black,
   frametitlefont=\bfseries\sffamily\color{white},
   frametitlerule=true,
@@ -626,37 +591,38 @@ This page is intentionally left blank.%
   mdframed={style=mdpurplebox},
   spaceabove=2pt,
   spacebelow=1pt,
-  % postheadspace={0pt}
 ]{thmpurplebox}
 
-\newcommand{\listhack}{$\empty$\vspace{-2em}}
-
-\theoremstyle{definition}
-% \declaretheorem[style=thmbluebox,name=Theorem,numberwithin=section]{cstheorem}
-\declaretheorem[style=thmbluebox,name=Theorem]{theorem}
-\declaretheorem[style=thmbluebox,name=Theorem,numbered=no]{theorem*}
-
-\declaretheorem[style=thmpurplebox,name=Lemma,sibling=theorem]{lemma}
-\declaretheorem[style=thmpurplebox,name=Lemma,numbered=no]{lemma*}
-
-
-\declaretheorem[style=thmbluebox,name=Corollary,sibling=theorem]{corollary}
-\declaretheorem[style=thmbluebox,name=Corollary,numbered=no]{corollary*}
-
-\declaretheorem[style=thmbluebox,name=Assumption,sibling=theorem]{assume}
-\declaretheorem[style=thmgreenbox,name=Assumption,numbered=no]{assume*}
-
-
-\declaretheorem[style=thmgreenbox,name=Algorithm,sibling=theorem]{algo}
-\declaretheorem[style=thmgreenbox,name=Algorithm,numbered=no]{algo*}
-
-
-\declaretheorem[style=thmredbox,name=Example,sibling=theorem]{example}
-\declaretheorem[style=thmredbox,name=Example,numbered=no]{example*}
+\mdfdefinestyle{mddefbox}{%
+  style=mdbox,
+  linecolor=Dandelion,
+  backgroundcolor=Dandelion!5,
+}
 
 \declaretheoremstyle[
-  % headfont=\color{blue!40!black}\normalfont\bfseries,
-  headfont=\color{YellowOrange}\sffamily\bfseries,
+  headfont=\bfseries\sffamily\color{Dandelion!70!black},
+  mdframed={style=mddefbox},
+  bodyfont=\normalfont,
+  spaceabove=2pt,
+  spacebelow=1pt,
+]{thmdefbox}
+
+\mdfdefinestyle{mdcerubox}{%
+  style=mdbox,
+  linecolor=Cerulean,
+  backgroundcolor=Cerulean!5,
+}
+
+\declaretheoremstyle[
+  headfont=\bfseries\sffamily\color{Cerulean!70!black},
+  bodyfont=\normalfont,
+  spaceabove=2pt,
+  spacebelow=1pt,
+  mdframed={style=mdcerubox},
+]{thmcerubox}
+
+\declaretheoremstyle[
+  headfont=\color{YellowOrange!40!black}\sffamily\bfseries,
   spaceabove=8pt,
   spacebelow=8pt,
   bodyfont=\normalfont
@@ -664,31 +630,37 @@ This page is intentionally left blank.%
 
 \declaretheoremstyle[
   % headfont=\color{blue!40!black}\normalfont\bfseries,
-  headfont=\color{BrickRed}\sffamily\bfseries,
+  headfont=\color{BrickRed!40!black}\sffamily\bfseries,
   spaceabove=8pt,
   spacebelow=8pt,
   bodyfont=\normalfont
 ]{basehead}
 
-\mdfdefinestyle{mddefbox}{%
-  skipabove=8pt,
-  skipbelow=0pt,
-  linewidth=2pt,
-  rightline=false,
-  leftline=true,
-  topline=false,
-  bottomline=false,
-  linecolor=Salmon,
-  backgroundcolor=Salmon!5,
-}
+\newcommand{\listhack}{$\empty$\vspace{-2em}}
 
-\declaretheoremstyle[
-  headfont=\bfseries\sffamily\color{Salmon!70!black},
-  bodyfont=\normalfont,
-  spaceabove=2pt,
-  spacebelow=1pt,
-  mdframed={style=mddefbox},
-]{thmdefbox}
+\theoremstyle{definition}
+% \declaretheorem[style=thmbluebox,name=Theorem,numberwithin=section]{cstheorem}
+\declaretheorem[style=thmbluebox,name=Theorem]{theorem}
+\declaretheorem[style=thmbluebox,name=Theorem,numbered=no]{theorem*}
+\declaretheorem[style=basehead,name=Problem,sibling=theorem]{problem}
+\declaretheorem[style=basehead,name=Problem,numbered=no]{problem*}
+
+
+\declaretheorem[style=thmcerubox,name=Lemma,sibling=theorem,numberwithin=problem]{lemma}
+\declaretheorem[style=thmcerubox,name=Lemma,numbered=no]{lemma*}
+
+
+\declaretheorem[style=thmbluebox,name=Corollary,sibling=theorem]{corollary}
+\declaretheorem[style=thmbluebox,name=Corollary,numbered=no]{corollary*}
+
+\declaretheorem[style=thmcerubox,name=Assumption,sibling=theorem]{assume}
+\declaretheorem[style=thmcerubox,name=Assumption,numbered=no]{assume*}
+
+\declaretheorem[style=thmgreenbox,name=Algorithm,sibling=theorem]{algo}
+\declaretheorem[style=thmgreenbox,name=Algorithm,numbered=no]{algo*}
+
+\declaretheorem[style=thmredbox,name=Example,sibling=theorem]{example}
+\declaretheorem[style=thmredbox,name=Example,numbered=no]{example*}
 
 \declaretheorem[style=answerhead,name=Answer,sibling=theorem]{answer}
 \declaretheorem[style=answerhead,name=Answer,numbered=no]{answer*}
@@ -702,8 +674,6 @@ This page is intentionally left blank.%
 
 \declaretheorem[style=basehead,name=Exercise,sibling=theorem]{exercise}
 \declaretheorem[style=basehead,name=Exercise,numbered=no]{exercise*}
-\declaretheorem[style=basehead,name=Problem,sibling=theorem]{problem}
-\declaretheorem[style=basehead,name=Problem,numbered=no]{problem*}
 \declaretheorem[style=basehead,name=Question,sibling=theorem]{ques}
 \declaretheorem[style=basehead,name=Question,numbered=no]{ques*}
 
@@ -716,15 +686,11 @@ This page is intentionally left blank.%
 
 \newenvironment{solution}{\renewcommand\qedsymbol{$\blacksquare$}\renewcommand{\proofname}{Solution}\begin{proof}}{\end{proof}}
 \newenvironment{scsolution}[1][\proofname]{\renewcommand\qedsymbol{$\blacksquare$}\renewcommand{\proofname}{Solution}\proof[\normalfont \scshape #1]}{\endproof}
-% \newenvironment{solution}{\begin{proof}[Solution]}{\end{proof}}
-% \newenvironment{scsoln}{\begin{proof}[\normalfont \scshape Solution]}{\end{proof}}
 \newenvironment{scproof}[1][\proofname]{\proof[\normalfont \scshape #1]}{\endproof}
-
 
 %% IMPORTANT: below should be at the end of the file and order should be preserved.
 \usepackage{unicode-math}
 \usepackage{mathtools}
-%\setmathfont{texgyrepagella-math.otf}
 \setmathfont{NewCMMath-Regular.otf}
 \usepackage[old]{old-arrows}
 \renewcommand{\emptyset}{\diameter}
