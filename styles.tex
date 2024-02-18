@@ -246,7 +246,7 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 
 %Generalize builder with a colon
 \newcommand{\delc}[5]{
-	\delimit{#1}{#2}{
+	\delimit{#1}{\mathopen{#2}}{
 		#3
 		\ifcase #1
 			:
@@ -254,7 +254,7 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 			\else \,:\,
 		\fi
 		#4
-	}{#5}
+	}{\mathclose{#5}}
 }
 
 \usepackage{commath}
@@ -270,6 +270,9 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 \newcommand{\floor}[2][0]{\delimit{#1}{\lfloor}{#2}{\rfloor}}
 \newcommand{\ceil}[2][0]{\delimit{#1}{\lceil}{#2}{\rceil}}
 \newcommand{\pair}[2][0]{\delimit{#1}{(}{#2}{)}}
+\newcommand{\lopen}[2][0]{\delimit{#1}{]}{#2}{]}}
+\newcommand{\ropen}[2][0]{\delimit{#1}{[}{#2}{[}}
+\newcommand{\bopen}[2][0]{\delimit{#1}{]}{#2}{[}}
 
 \newcommand{\cro}{\ensuremath{^{\times}}}
 
@@ -493,10 +496,10 @@ This page is intentionally left blank.%
 
 \mdfdefinestyle{mdbox}{%
   linewidth=2pt,
-  skipabove=12pt,
+  skipabove=10pt,
   innertopmargin=5pt,
   innerbottommargin=5pt,
-  skipbelow=2pt,
+  skipbelow=4pt,
   frametitlefont=\bfseries,
   nobreak=true,
   rightline=false,
@@ -515,7 +518,7 @@ This page is intentionally left blank.%
   headfont=\sffamily\bfseries\color{MidnightBlue!70!black},
   mdframed={style=mdbluebox},
   spaceabove=2pt,
-  spacebelow=1pt,
+  spacebelow=2pt,
   % postheadspace={0pt}
 ]{thmbluebox}
 
@@ -530,7 +533,7 @@ This page is intentionally left blank.%
   mdframed={style=mdgreenbox},
   bodyfont=\normalfont,
   spaceabove=2pt,
-  spacebelow=1pt,
+  spacebelow=2pt,
 ]{thmgreenbox}
 
 \mdfdefinestyle{mdredbox}{%
@@ -544,7 +547,7 @@ This page is intentionally left blank.%
   mdframed={style=mdredbox},
   bodyfont=\normalfont,
   spaceabove=2pt,
-  spacebelow=1pt,
+  spacebelow=2pt,
   % headpunct={---},
   % postheadspace={0pt},
 ]{thmredbox}
@@ -630,7 +633,7 @@ This page is intentionally left blank.%
 
 \declaretheoremstyle[
   % headfont=\color{blue!40!black}\normalfont\bfseries,
-  headfont=\color{BrickRed!40!black}\sffamily\bfseries,
+  headfont=\color{BrickRed}\sffamily\bfseries,
   spaceabove=8pt,
   spacebelow=8pt,
   bodyfont=\normalfont
