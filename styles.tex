@@ -15,7 +15,7 @@
 \usepackage{typearea, geometry}
 \usepackage{scrlayer-scrpage}
 
-\usepackage{float, wrapfig, picinpar, siunitx, derivative, lastpage, textcomp}
+\usepackage{float, wrapfig, picinpar, siunitx, derivative, lastpage, textcomp, nicefrac}
 \usepackage{url, interval, calc, framed, fancybox, quoting, empheq, algorithm, stackrel}
 \usepackage{longtable,tabu}
 \usepackage{xpatch}
@@ -491,7 +491,8 @@ This page is intentionally left blank.%
   stringstyle=\color{orange},
 }
 
-\usepackage{tkz-euclide}
+\let\SO\undefined
+\usepackage{tkz-euclide, tkz-graph}
 \usepackage{tcolorbox}
 
 \mdfdefinestyle{mdbox}{%
@@ -517,6 +518,7 @@ This page is intentionally left blank.%
 \declaretheoremstyle[
   headfont=\sffamily\bfseries\color{MidnightBlue!70!black},
   mdframed={style=mdbluebox},
+  % bodyfont=\itshape,
   spaceabove=2pt,
   spacebelow=2pt,
   % postheadspace={0pt}
@@ -639,6 +641,14 @@ This page is intentionally left blank.%
   bodyfont=\normalfont
 ]{basehead}
 
+\declaretheoremstyle[
+  % headfont=\color{blue!40!black}\normalfont\bfseries,
+  headfont=\color{WildStrawberry}\sffamily\bfseries,
+  spaceabove=8pt,
+  spacebelow=8pt,
+  bodyfont=\normalfont
+]{remarkhead}
+
 \newcommand{\listhack}{$\empty$\vspace{-2em}}
 
 \theoremstyle{definition}
@@ -686,6 +696,9 @@ This page is intentionally left blank.%
 
 \declaretheorem[style=thmgreenbox,name=Claim,numberwithin=problem]{claim}
 \declaretheorem[style=thmgreenbox,name=Claim,numbered=no]{claim*}
+
+\declaretheorem[style=remarkhead,name=Remark,numberwithin=problem]{remark}
+\declaretheorem[style=remarkhead,name=Remark,numbered=no]{remark*}
 
 \newenvironment{solution}{\renewcommand\qedsymbol{$\blacksquare$}\renewcommand{\proofname}{Solution}\begin{proof}}{\end{proof}}
 \newenvironment{scsolution}[1][\proofname]{\renewcommand\qedsymbol{$\blacksquare$}\renewcommand{\proofname}{Solution}\proof[\normalfont \scshape #1]}{\endproof}
