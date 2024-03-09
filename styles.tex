@@ -3,6 +3,7 @@
 %% ====================================================================
 
 \usepackage[usenames,dvipsnames]{xcolor}
+\usepackage{luacolor}
 
 %% don't use with LuaLatex
 % \usepackage[mathletters]{ucs}
@@ -493,7 +494,7 @@ This page is intentionally left blank.%
 
 \let\SO\undefined
 \usepackage{tkz-euclide, tkz-graph}
-\usepackage{tcolorbox}
+\usepackage[most]{tcolorbox}
 
 \mdfdefinestyle{mdbox}{%
   linewidth=2pt,
@@ -711,3 +712,10 @@ This page is intentionally left blank.%
 \usepackage[old]{old-arrows}
 \renewcommand{\emptyset}{\diameter}
 \DeclareMathAlphabet{\mathcal}{OMS}{cmsy}{m}{n}
+
+\newcommand{\cem}[1]{\emph{\textcolor{Maroon}{#1}}}
+\newcommand{\ceg}[1]{\emph{\textcolor{ForestGreen}{#1}}}
+
+\newcommand{\ctb}[2]{\tcbox[on line,boxsep=4pt,boxrule=0.6pt,left=0pt,right=0pt,top=0pt,bottom=0pt,colback=#1,highlight math style={enhanced}]{#2}}
+\newcommand{\cmb}[2]{\tcbhighmath[on line,boxsep=4pt,boxrule=0.6pt,left=0pt,right=0pt,top=0pt,bottom=0pt,colback=#1,highlight math style={enhanced}]{#2}}
+\newcommand{\myfbox}[2]{\textcolor{#1}{\fbox{\normalcolor#2}}}
