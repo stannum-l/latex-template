@@ -356,13 +356,6 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 \newcommand{\ku}{\mathfrak u}
 \newcommand{\kz}{\mathfrak z}
 
-%
-%\DeclareMathOperator*{\cart}{\raisebox{-1.15ex}{{\tikz [x=3.1ex,y=3.1ex,line width=.275ex] \draw (0,0) -- (1,1) (0,1) -- (1,0);}}}%
-%\DeclareMathOperator*{\dcart}{\raisebox{-0.7ex}{{\tikz [x=2.3ex,y=2.3ex,line width=.2ex] \draw (0,0) -- (1,1) (0,1) -- (1,0);}}}%
-%%===norm
-\DeclareMathOperator*{\cart}{\raisebox{-1.25ex}{{\tikz [x=3.2ex,y=3.2ex,line width=.25ex] \draw (0,0) -- (1,1) (0,1) -- (1,0);}}}%
-\DeclareMathOperator*{\dcart}{\raisebox{-0.7ex}{{\tikz [x=2.3ex,y=2.3ex,line width=.2ex] \draw (0,0) -- (1,1) (0,1) -- (1,0);}}}%
-
 %% Statistics command
 \DeclareMathOperator{\Norm}{\ensuremath{\mathsf{Norm}}}
 \DeclareMathOperator{\Bin}{\ensuremath{\mathsf{Bin}}}
@@ -619,6 +612,12 @@ This page is intentionally left blank.%
   backgroundcolor=Cerulean!5,
 }
 
+\mdfdefinestyle{answerbox}{%
+  style=mdbox,
+  linecolor=YellowOrange,
+  backgroundcolor=YellowOrange!5,
+}
+
 \declaretheoremstyle[
   headfont=\bfseries\sffamily\color{Cerulean!70!black},
   bodyfont=\normalfont,
@@ -628,10 +627,11 @@ This page is intentionally left blank.%
 ]{thmcerubox}
 
 \declaretheoremstyle[
-  headfont=\color{YellowOrange!40!black}\sffamily\bfseries,
-  spaceabove=8pt,
-  spacebelow=8pt,
-  bodyfont=\normalfont
+  headfont=\bfseries\sffamily\color{YellowOrange!70!black},
+  bodyfont=\normalfont,
+  spaceabove=2pt,
+  spacebelow=1pt,
+  mdframed={style=answerbox},
 ]{answerhead}
 
 \declaretheoremstyle[
@@ -676,9 +676,9 @@ This page is intentionally left blank.%
 \declaretheorem[style=thmredbox,name=Example,sibling=theorem]{example}
 \declaretheorem[style=thmredbox,name=Example,numbered=no]{example*}
 
-\declaretheorem[style=answerhead,name=Answer,sibling=theorem]{answer}
+\declaretheorem[style=answerhead,name=Answer,numberwithin=problem]{answer}
 \declaretheorem[style=answerhead,name=Answer,numbered=no]{answer*}
-\declaretheorem[style=answerhead,name=Fact,sibling=theorem]{fact}
+\declaretheorem[style=answerhead,name=Fact,numberwithin=problem]{fact}
 \declaretheorem[style=answerhead,name=Fact,numbered=no]{fact*}
 
 \declaretheorem[style=thmdefbox,name=Conjecture,sibling=theorem]{conjecture}
@@ -724,3 +724,29 @@ This page is intentionally left blank.%
 \newcommand{\stirlingIII}[2]{\genfrac{\lBrack}{\rBrack}{0pt}{}{#1}{#2}}
 \newcommand{\eulerianI}[2]{\genfrac{\langle}{\rangle}{0pt}{}{#1}{#2}}
 \newcommand{\eulerianII}[2]{\genfrac{\lAngle}{\rAngle}{0pt}{}{#1}{#2}}
+
+\newcommand{\dstirlingI}[2]{\genfrac{[}{]}{0pt}{0}{#1}{#2}}
+\newcommand{\dstirlingII}[2]{\genfrac{\{}{\}}{0pt}{0}{#1}{#2}}
+\newcommand{\dstirlingIII}[2]{\genfrac{\lBrack}{\rBrack}{0pt}{0}{#1}{#2}}
+\newcommand{\deulerianI}[2]{\genfrac{\langle}{\rangle}{0pt}{0}{#1}{#2}}
+\newcommand{\deulerianII}[2]{\genfrac{\lAngle}{\rAngle}{0pt}{0}{#1}{#2}}
+
+\newcommand{\tstirlingI}[2]{\genfrac{[}{]}{0pt}{1}{#1}{#2}}
+\newcommand{\tstirlingII}[2]{\genfrac{\{}{\}}{0pt}{1}{#1}{#2}}
+\newcommand{\tstirlingIII}[2]{\genfrac{\lBrack}{\rBrack}{0pt}{1}{#1}{#2}}
+\newcommand{\teulerianI}[2]{\genfrac{\langle}{\rangle}{0pt}{1}{#1}{#2}}
+\newcommand{\teulerianII}[2]{\genfrac{\lAngle}{\rAngle}{0pt}{1}{#1}{#2}}
+
+% \def\hsbar{\ensuremath{\mathit{^^^^0127}}}
+\usepackage{xparse}
+% \usepackage{fontspec}
+% \newcommand{\hsbar}{{\mathchar"AF\mkern-9mu h}}
+% \newcommand{\hsbar}{\mathit{^^^^0127}}
+\makeatletter
+\newcommand{\raisemath}[1]{\mathpalette{\raisem@th{#1}}}% \raisemath{<len>}{...}
+\newcommand{\raisem@th}[3]{\raisebox{#1}{$#2#3$}}
+\makeatother
+\NewDocumentCommand{\newhbar}{O{0pt} O{0pt}}{% \newhbar[<horz len>][<vert len>]
+  \ensuremath{\mathrlap{\raisemath{#2}{\hspace*{#1}{\mathchar"AF\mkern-9mu}}}h}%
+}
+\newcommand{\hsbar}{\newhbar[0pt][-0.5pt]}
