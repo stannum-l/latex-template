@@ -173,7 +173,8 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 %% ===
 \newcommand{\NP}{\textsc{np}}
 \newcommand{\iid}{\textsc{iid}}
-\newcommand{\id}{\textsc{id}}
+\DeclareMathOperator{\idsc}{\ensuremath{\textsc{id}}}
+\DeclareMathOperator{\id}{\ensuremath{id}}
 \newcommand{\pid}{\textsc{pid}}
 
 \newcommand{\ignore}[1]{}
@@ -267,7 +268,8 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 \renewcommand{\norm}[2][0]{\delimit{#1}{\lVert}{#2}{\rVert}}
 \renewcommand{\abs}[2][0]{\delimit{#1}{|}{#2}{|}}
 \newcommand{\angbr}[2][0]{\delimit{#1}{\langle}{#2}{\rangle}}
-\newcommand{\brk}[2][0]{\delimit{#1}{\langle}{#2}{\rangle}}
+\newcommand{\Angbr}[2][0]{\delimit{#1}{\lAngle}{#2}{\rAngle}}
+\newcommand{\dbr}[2][0]{\delimit{#1}{\lBrack}{#2}{\rBrack}}
 \newcommand{\floor}[2][0]{\delimit{#1}{\lfloor}{#2}{\rfloor}}
 \newcommand{\ceil}[2][0]{\delimit{#1}{\lceil}{#2}{\rceil}}
 \newcommand{\pair}[2][0]{\delimit{#1}{(}{#2}{)}}
@@ -285,6 +287,7 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 \DeclareMathOperator{\lip}{\ensuremath{lip}}
 \DeclareMathOperator{\dvg}{\ensuremath{div}}
 \DeclareMathOperator{\len}{\ensuremath{len}}
+\DeclareMathOperator{\Perm}{\ensuremath{Perm}}
 \DeclareMathOperator{\lcm}{\ensuremath{lcm}}
 \DeclareMathOperator{\pdf}{\ensuremath{pdf}}
 \DeclareMathOperator{\cdf}{\ensuremath{cdf}}
@@ -295,6 +298,7 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 \DeclareMathOperator{\proj}{\ensuremath{proj}}
 \DeclareMathOperator{\sech}{\ensuremath{sech}}
 \DeclareMathOperator{\cis}{\ensuremath{cis}}
+\DeclareMathOperator{\sinc}{\ensuremath{sinc}}
 \DeclareMathOperator{\avg}{\ensuremath{avg}}
 \DeclareMathOperator{\dist}{\ensuremath{dist}}
 \DeclareMathOperator{\diam}{\ensuremath{diam}}
@@ -308,6 +312,7 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 \DeclareMathOperator{\End}{\ensuremath{End}}
 \DeclareMathOperator{\Rng}{\ensuremath{Rng}}
 \DeclareMathOperator{\range}{\ensuremath{range}}
+\DeclareMathOperator{\cod}{\ensuremath{Cod}}
 \DeclareMathOperator{\dom}{\ensuremath{Dom}}
 \DeclareMathOperator{\tr}{\ensuremath{tr}}
 \DeclareMathOperator{\Int}{\ensuremath{Int}}
@@ -750,3 +755,11 @@ This page is intentionally left blank.%
   \ensuremath{\mathrlap{\raisemath{#2}{\hspace*{#1}{\mathchar"AF\mkern-9mu}}}h}%
 }
 \newcommand{\hsbar}{\newhbar[0pt][-0.5pt]}
+
+\makeatletter
+\def\mathcolor#1#{\@mathcolor{#1}}
+\def\@mathcolor#1#2#3{%
+  \protect\leavevmode
+  \begingroup\color#1{#2}#3\endgroup
+}
+\makeatother
