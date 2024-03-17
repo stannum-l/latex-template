@@ -235,7 +235,7 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 	\delimit{#1}{#2}{
 		#3
 		\ifcase #1
-			\mid
+			\middle|
 			\or \mid
 			\or \bigm|
 			\or \Bigm|
@@ -268,6 +268,11 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 \renewcommand{\norm}[2][0]{\delimit{#1}{\lVert}{#2}{\rVert}}
 \renewcommand{\abs}[2][0]{\delimit{#1}{|}{#2}{|}}
 \newcommand{\angbr}[2][0]{\delimit{#1}{\langle}{#2}{\rangle}}
+
+\newcommand{\bra}[2][0]{\delimit{#1}{\langle}{#2}{|}}
+\newcommand{\ket}[2][0]{\delimit{#1}{|}{#2}{\rangle}}
+\newcommand{\braket}[3][0]{\delb{#1}{\langle}{#2}{#3}{\rangle}}
+
 \newcommand{\Angbr}[2][0]{\delimit{#1}{\lAngle}{#2}{\rAngle}}
 \newcommand{\dbr}[2][0]{\delimit{#1}{\lBrack}{#2}{\rBrack}}
 \newcommand{\floor}[2][0]{\delimit{#1}{\lfloor}{#2}{\rfloor}}
@@ -754,7 +759,7 @@ This page is intentionally left blank.%
 \NewDocumentCommand{\newhbar}{O{0pt} O{0pt}}{% \newhbar[<horz len>][<vert len>]
   \ensuremath{\mathrlap{\raisemath{#2}{\hspace*{#1}{\mathchar"AF\mkern-9mu}}}h}%
 }
-\newcommand{\hsbar}{\newhbar[0pt][-0.5pt]}
+\newcommand{\hsbar}{\newhbar[0pt][-0.75pt]}
 
 \makeatletter
 \def\mathcolor#1#{\@mathcolor{#1}}
