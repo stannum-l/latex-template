@@ -287,7 +287,7 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 \DeclareMathOperator{\Ub}{\ensuremath{Ub}}
 \DeclareMathOperator{\Lb}{\ensuremath{Lb}}
 
-
+\DeclareMathOperator{\sf}{\ensuremath{sf}}
 \DeclareMathOperator{\ord}{\ensuremath{ord}}
 \DeclareMathOperator{\lip}{\ensuremath{lip}}
 \DeclareMathOperator{\dvg}{\ensuremath{div}}
@@ -756,10 +756,11 @@ This page is intentionally left blank.%
 \newcommand{\raisemath}[1]{\mathpalette{\raisem@th{#1}}}% \raisemath{<len>}{...}
 \newcommand{\raisem@th}[3]{\raisebox{#1}{$#2#3$}}
 \makeatother
-\NewDocumentCommand{\newhbar}{O{0pt} O{0pt}}{% \newhbar[<horz len>][<vert len>]
-  \ensuremath{\mathrlap{\raisemath{#2}{\hspace*{#1}{\mathchar"AF\mkern-9mu}}}h}%
+\newcommand{\newhbar}[3]{% \newhbar[<horz len>][<vert len>]
+  \ensuremath{\mathrlap{\raisemath{#2}{\hspace*{#1}{\mathchar"AF\mkern-9mu}}}#3}%
 }
-\newcommand{\hsbar}{\newhbar[0pt][-0.75pt]}
+\newcommand{\hsbar}{\newhbar{0pt}{-0.3pt}{h}}
+\newcommand{\dsbar}{\newhbar{2pt}{-0.3pt}{d}}
 
 \makeatletter
 \def\mathcolor#1#{\@mathcolor{#1}}
