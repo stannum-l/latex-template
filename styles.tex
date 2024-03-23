@@ -3,7 +3,7 @@
 %% ====================================================================
 
 \usepackage[usenames,dvipsnames]{xcolor}
-\usepackage{luacolor}
+% \usepackage{luacolor}
 
 %% don't use with LuaLatex
 % \usepackage[mathletters]{ucs}
@@ -179,11 +179,10 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 
 \newcommand{\ignore}[1]{}
 
-
-
 \DeclareMathAlphabet{\mathrsfs}{U}{rsfso}{m}{n}
 \DeclareMathAlphabet{\mathssss}{U}{rsfs}{m}{n}
 \newcommand{\mb}[1]{\ensuremath{\mathbf{#1}}}
+\newcommand{\mbi}[1]{\ensuremath{\mathbfit{#1}}}
 \newcommand{\mc}[1]{\ensuremath{\mathcal{#1}}}
 \newcommand{\mf}[1]{\ensuremath{\mathbb{#1}}}
 \newcommand{\mk}[1]{\ensuremath{\mathfrak{#1}}}
@@ -193,15 +192,15 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 \newcommand{\mh}[1]{\ensuremath{\mathssss{#1}}}
 
 
-\newcommand{\N}{\mathbb{N}}
-\newcommand{\R}{\mathbb{R}}
-\newcommand{\Z}{\mathbb{Z}}
-\newcommand{\Cx}{\mathbb{C}}
-\newcommand{\Q}{\mathbb{Q}}
-\newcommand{\RP}{\mathbb{RP}}
-\newcommand{\F}{\mathbb{F}}
-\newcommand{\PP}{\mathbb{P}}
-\newcommand{\EE}{\mathbb{E}}
+\newcommand{\N}{\ensuremath{\mathbb{N}}}
+\newcommand{\R}{\ensuremath{\mathbb{R}}}
+\newcommand{\Z}{\ensuremath{\mathbb{Z}}}
+\newcommand{\Q}{\ensuremath{\mathbb{Q}}}
+\newcommand{\F}{\ensuremath{\mathbb{F}}}
+\newcommand{\PP}{\ensuremath{\mathbb{P}}}
+\newcommand{\EE}{\ensuremath{\mathbb{E}}}
+\newcommand{\Cx}{\ensuremath{\mathbb{C}}}
+\newcommand{\RP}{\ensuremath{\mathbb{RP}}}
 
 \DeclareMathOperator{\GF}{\ensuremath{\mathrm{GF}}}
 \DeclareMathOperator{\SO}{\ensuremath{\mathbf{SO}}}
@@ -349,6 +348,9 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 \DeclareMathOperator{\GL}{\ensuremath{GL}} % General linear group
 \DeclareMathOperator{\SL}{\ensuremath{SL}} % Special linear group
 \DeclareMathOperator{\Vol}{\ensuremath{Vol}} % Special linear group
+
+\DeclareMathOperator{\re}{\ensuremath{re}}
+\DeclareMathOperator{\im}{\ensuremath{im}}
 
 % Inverse hyperbolic
 \DeclareMathOperator{\artanh}{\ensuremath{artanh}}
@@ -734,7 +736,6 @@ This page is intentionally left blank.%
 \newcommand{\stirlingIII}[2]{\genfrac{\lBrack}{\rBrack}{0pt}{}{#1}{#2}}
 \newcommand{\eulerianI}[2]{\genfrac{\langle}{\rangle}{0pt}{}{#1}{#2}}
 \newcommand{\eulerianII}[2]{\genfrac{\lAngle}{\rAngle}{0pt}{}{#1}{#2}}
-
 \newcommand{\dstirlingI}[2]{\genfrac{[}{]}{0pt}{0}{#1}{#2}}
 \newcommand{\dstirlingII}[2]{\genfrac{\{}{\}}{0pt}{0}{#1}{#2}}
 \newcommand{\dstirlingIII}[2]{\genfrac{\lBrack}{\rBrack}{0pt}{0}{#1}{#2}}
@@ -759,8 +760,8 @@ This page is intentionally left blank.%
 \newcommand{\newhbar}[3]{% \newhbar[<horz len>][<vert len>]
   \ensuremath{\mathrlap{\raisemath{#2}{\hspace*{#1}{\mathchar"AF\mkern-9mu}}}#3}%
 }
-\newcommand{\hsbar}{\newhbar{0pt}{-0.3pt}{h}}
-\newcommand{\dsbar}{\newhbar{2pt}{-0.3pt}{d}}
+\newcommand{\hsbar}{\newhbar{0pt}{-0.7pt}{h}}
+\newcommand{\dsbar}{\newhbar{2pt}{-0.7pt}{d}}
 
 \makeatletter
 \def\mathcolor#1#{\@mathcolor{#1}}
