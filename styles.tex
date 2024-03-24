@@ -3,6 +3,7 @@
 %% ====================================================================
 
 \usepackage[usenames,dvipsnames]{xcolor}
+% \usepackage{luacolor}
 
 %% don't use with LuaLatex
 % \usepackage[mathletters]{ucs}
@@ -15,7 +16,7 @@
 \usepackage{typearea, geometry}
 \usepackage{scrlayer-scrpage}
 
-\usepackage{float, wrapfig, picinpar, siunitx, derivative, lastpage, textcomp}
+\usepackage{float, wrapfig, picinpar, siunitx, derivative, lastpage, textcomp, nicefrac}
 \usepackage{url, interval, calc, framed, fancybox, quoting, empheq, algorithm, stackrel}
 \usepackage{longtable,tabu}
 \usepackage{xpatch}
@@ -48,7 +49,7 @@
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.18}
 
-\usepackage{amsmath, amsopn, multicol, enumerate, tikz, bbding}
+\usepackage{amsmath, amsopn, multicol, enumerate, tikz, bbding, tikz-3dplot}
 \usepackage{upgreek, bold-extra, mathrsfs, tensor}
 \usetikzlibrary{shapes, calendar, matrix, backgrounds, folding, knots, fadings, shadows}
 \usetikzlibrary{decorations.markings, calc, arrows, petri, topaths, decorations.pathreplacing}
@@ -133,9 +134,11 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 \addtokomafont{disposition}{\rmfamily}
 
 \usepackage[shortlabels]{enumitem}
-\setlist[enumerate]{itemsep=0.1pt, parsep=0pt, topsep=1pt, labelindent=0.1in, leftmargin=* }
-\setlist[itemize]{itemsep=0.1pt, parsep=0pt, topsep=1pt, labelindent=0.1in, leftmargin=* }
-\setlist[description]{itemsep=0.1pt, parsep=0pt, topsep=1pt, labelindent=0.1in, leftmargin=*, font=\normalfont\bfseries }
+% \setlist[enumerate]{itemsep=0.1pt, parsep=0pt, topsep=1pt, labelindent=0.1in, leftmargin=* }
+% \setlist[itemize]{itemsep=0.1pt, parsep=0pt, topsep=1pt, labelindent=0.1in, leftmargin=* }
+% \setlist[description]{itemsep=0.1pt, parsep=0pt, topsep=1pt, labelindent=0.1in, leftmargin=*, font=\normalfont\bfseries }
+\setlist[description]{font=\normalfont\bfseries }
+
 \setlist[itemize,1]{}
 \setlist[description,1]{}
 \setlist[enumerate,1]{label=(\emph{\alph*}), ref=\alph*}
@@ -143,12 +146,12 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 \setlist[enumerate,3]{label=(\emph{\arabic*}), ref=\arabic*}
 \setlist[enumerate,4]{label=(\emph{\roman*}), ref=\roman*}
 
-\newenvironment{enumI}{\begin{itemize}}{\end{itemize}}
-\newenvironment{enumC}{\begin{enumerate}}{\end{enumerate}}
-\newenvironment{enumCS}{\begin{enumerate}[label=(\alph*), ref=\alpha*]}{\end{enumerate}}
-\newenvironment{enumCN}{\begin{enumerate}[label=(\arabic*), ref=\arabic*]}{\end{enumerate}}
-\newenvironment{enumCRI}{\begin{enumerate}[label=(\emph{\roman*}), ref=\roman*]}{\end{enumerate}}
-\newenvironment{enumCR}{\begin{enumerate}[label=({\roman*}), ref=\roman*]}{\end{enumerate}}
+% \newenvironment{enumI}{\begin{itemize}}{\end{itemize}}
+\newenvironment{enumA}{\begin{enumerate}}{\end{enumerate}}
+\newenvironment{enum}{\begin{enumerate}[label=(\alph*), ref=\alpha*]}{\end{enumerate}}
+\newenvironment{enumN}{\begin{enumerate}[label=(\arabic*), ref=\arabic*]}{\end{enumerate}}
+\newenvironment{enumRB}{\begin{enumerate}[label=(\emph{\roman*}), ref=\roman*]}{\end{enumerate}}
+\newenvironment{enumR}{\begin{enumerate}[label=({\roman*}), ref=\roman*]}{\end{enumerate}}
 
 
 \setlength{\headheight}{1.25\baselineskip}
@@ -170,16 +173,16 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 %% ===
 \newcommand{\NP}{\textsc{np}}
 \newcommand{\iid}{\textsc{iid}}
-\newcommand{\id}{\textsc{id}}
+\DeclareMathOperator{\idsc}{\ensuremath{\textsc{id}}}
+\DeclareMathOperator{\id}{\ensuremath{id}}
 \newcommand{\pid}{\textsc{pid}}
 
 \newcommand{\ignore}[1]{}
 
-
-
 \DeclareMathAlphabet{\mathrsfs}{U}{rsfso}{m}{n}
 \DeclareMathAlphabet{\mathssss}{U}{rsfs}{m}{n}
 \newcommand{\mb}[1]{\ensuremath{\mathbf{#1}}}
+\newcommand{\mbi}[1]{\ensuremath{\mathbfit{#1}}}
 \newcommand{\mc}[1]{\ensuremath{\mathcal{#1}}}
 \newcommand{\mf}[1]{\ensuremath{\mathbb{#1}}}
 \newcommand{\mk}[1]{\ensuremath{\mathfrak{#1}}}
@@ -189,18 +192,15 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 \newcommand{\mh}[1]{\ensuremath{\mathssss{#1}}}
 
 
-
-\newcommand{\NN}{\mathbb{N}}
-\newcommand{\RR}{\mathbb{R}}
-\newcommand{\ZZ}{\mathbb{Z}}
-\newcommand{\CC}{\mathbb{C}}
-\newcommand{\QQ}{\mathbb{Q}}
-\newcommand{\RP}{\mathbb{RP}}
-\newcommand{\FF}{\mathbb{F}}
-\newcommand{\PP}{\mathbb{P}}
-\newcommand{\EE}{\mathbb{E}}
-
-\newcommand{\df}{\ensuremath{\ \mathsf{d}}}
+\newcommand{\N}{\ensuremath{\mathbb{N}}}
+\newcommand{\R}{\ensuremath{\mathbb{R}}}
+\newcommand{\Z}{\ensuremath{\mathbb{Z}}}
+\newcommand{\Q}{\ensuremath{\mathbb{Q}}}
+\newcommand{\F}{\ensuremath{\mathbb{F}}}
+\newcommand{\PP}{\ensuremath{\mathbb{P}}}
+\newcommand{\EE}{\ensuremath{\mathbb{E}}}
+\newcommand{\Cx}{\ensuremath{\mathbb{C}}}
+\newcommand{\RP}{\ensuremath{\mathbb{RP}}}
 
 \DeclareMathOperator{\GF}{\ensuremath{\mathrm{GF}}}
 \DeclareMathOperator{\SO}{\ensuremath{\mathbf{SO}}}
@@ -210,11 +210,10 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 \DeclareMathOperator{\varvar}{\ensuremath{\mathrm{Var}}}
 
 \newcommand{\ex}{\ensuremath{\mathsf{E}}}
-\newcommand\T{{\mathpalette\raiseT\intercal}}
-\newcommand\raiseT[2]{\raisebox{0.25ex}{$#1#2$}}
 \newcommand{\transp}{\ensuremath{^\top}}
 \newcommand{\iv}{\ensuremath{^{-1}}}
-\newcommand{\img}{\ensuremath{^{\to}}}
+\newcommand{\icr}{\ensuremath{^{\times}}}
+\newcommand{\img}{\ensuremath{^{\varto}}}
 \newcommand{\pimg}{\ensuremath{^{\leftarrow}}}
 \newcommand{\cp}{\ensuremath{^{\complement}}}
 \newcommand{\defeq}{\ensuremath \stackrel{\Delta}{=}}
@@ -235,7 +234,7 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 	\delimit{#1}{#2}{
 		#3
 		\ifcase #1
-			\mid
+			\ \middle|\
 			\or \mid
 			\or \bigm|
 			\or \Bigm|
@@ -248,7 +247,7 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 
 %Generalize builder with a colon
 \newcommand{\delc}[5]{
-	\delimit{#1}{#2}{
+	\delimit{#1}{\mathopen{#2}}{
 		#3
 		\ifcase #1
 			:
@@ -256,7 +255,7 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 			\else \,:\,
 		\fi
 		#4
-	}{#5}
+	}{\mathclose{#5}}
 }
 
 \usepackage{commath}
@@ -268,21 +267,31 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 \renewcommand{\norm}[2][0]{\delimit{#1}{\lVert}{#2}{\rVert}}
 \renewcommand{\abs}[2][0]{\delimit{#1}{|}{#2}{|}}
 \newcommand{\angbr}[2][0]{\delimit{#1}{\langle}{#2}{\rangle}}
-\newcommand{\brk}[2][0]{\delimit{#1}{\langle}{#2}{\rangle}}
+
+\newcommand{\bra}[2][0]{\delimit{#1}{\langle}{#2}{|}}
+\newcommand{\ket}[2][0]{\delimit{#1}{|}{#2}{\rangle}}
+\newcommand{\braket}[3][0]{\delb{#1}{\langle}{#2}{#3}{\rangle}}
+
+\newcommand{\Angbr}[2][0]{\delimit{#1}{\lAngle}{#2}{\rAngle}}
+\newcommand{\dbr}[2][0]{\delimit{#1}{\lBrack}{#2}{\rBrack}}
 \newcommand{\floor}[2][0]{\delimit{#1}{\lfloor}{#2}{\rfloor}}
 \newcommand{\ceil}[2][0]{\delimit{#1}{\lceil}{#2}{\rceil}}
 \newcommand{\pair}[2][0]{\delimit{#1}{(}{#2}{)}}
+\newcommand{\lopen}[2][0]{\delimit{#1}{]}{#2}{]}}
+\newcommand{\ropen}[2][0]{\delimit{#1}{[}{#2}{[}}
+\newcommand{\bopen}[2][0]{\delimit{#1}{]}{#2}{[}}
 
 \newcommand{\cro}{\ensuremath{^{\times}}}
 
 \DeclareMathOperator{\Ub}{\ensuremath{Ub}}
 \DeclareMathOperator{\Lb}{\ensuremath{Lb}}
 
-
+\DeclareMathOperator{\sf}{\ensuremath{sf}}
 \DeclareMathOperator{\ord}{\ensuremath{ord}}
 \DeclareMathOperator{\lip}{\ensuremath{lip}}
 \DeclareMathOperator{\dvg}{\ensuremath{div}}
 \DeclareMathOperator{\len}{\ensuremath{len}}
+\DeclareMathOperator{\Perm}{\ensuremath{Perm}}
 \DeclareMathOperator{\lcm}{\ensuremath{lcm}}
 \DeclareMathOperator{\pdf}{\ensuremath{pdf}}
 \DeclareMathOperator{\cdf}{\ensuremath{cdf}}
@@ -293,6 +302,7 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 \DeclareMathOperator{\proj}{\ensuremath{proj}}
 \DeclareMathOperator{\sech}{\ensuremath{sech}}
 \DeclareMathOperator{\cis}{\ensuremath{cis}}
+\DeclareMathOperator{\sinc}{\ensuremath{sinc}}
 \DeclareMathOperator{\avg}{\ensuremath{avg}}
 \DeclareMathOperator{\dist}{\ensuremath{dist}}
 \DeclareMathOperator{\diam}{\ensuremath{diam}}
@@ -306,6 +316,7 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 \DeclareMathOperator{\End}{\ensuremath{End}}
 \DeclareMathOperator{\Rng}{\ensuremath{Rng}}
 \DeclareMathOperator{\range}{\ensuremath{range}}
+\DeclareMathOperator{\cod}{\ensuremath{Cod}}
 \DeclareMathOperator{\dom}{\ensuremath{Dom}}
 \DeclareMathOperator{\tr}{\ensuremath{tr}}
 \DeclareMathOperator{\Int}{\ensuremath{Int}}
@@ -327,6 +338,7 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 \DeclareMathOperator{\Syl}{\ensuremath{Syl}}
 \DeclareMathOperator{\Corr}{\ensuremath{Corr}}
 \DeclareMathOperator{\Cov}{\ensuremath{Cov}}
+\DeclareMathOperator{\idm}{\ensuremath{id}}
 \DeclareMathOperator{\polylog}{\ensuremath{polylog}}
 \DeclareMathOperator{\rank}{\ensuremath{rank}}
 \DeclareMathOperator{\nullity}{\ensuremath{nullity}}
@@ -336,6 +348,9 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 \DeclareMathOperator{\GL}{\ensuremath{GL}} % General linear group
 \DeclareMathOperator{\SL}{\ensuremath{SL}} % Special linear group
 \DeclareMathOperator{\Vol}{\ensuremath{Vol}} % Special linear group
+
+\DeclareMathOperator{\re}{\ensuremath{re}}
+\DeclareMathOperator{\im}{\ensuremath{im}}
 
 % Inverse hyperbolic
 \DeclareMathOperator{\artanh}{\ensuremath{artanh}}
@@ -352,13 +367,6 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 \newcommand{\kn}{\mathfrak n}
 \newcommand{\ku}{\mathfrak u}
 \newcommand{\kz}{\mathfrak z}
-
-%
-%\DeclareMathOperator*{\cart}{\raisebox{-1.15ex}{{\tikz [x=3.1ex,y=3.1ex,line width=.275ex] \draw (0,0) -- (1,1) (0,1) -- (1,0);}}}%
-%\DeclareMathOperator*{\dcart}{\raisebox{-0.7ex}{{\tikz [x=2.3ex,y=2.3ex,line width=.2ex] \draw (0,0) -- (1,1) (0,1) -- (1,0);}}}%
-%%===norm
-\DeclareMathOperator*{\cart}{\raisebox{-1.25ex}{{\tikz [x=3.2ex,y=3.2ex,line width=.25ex] \draw (0,0) -- (1,1) (0,1) -- (1,0);}}}%
-\DeclareMathOperator*{\dcart}{\raisebox{-0.7ex}{{\tikz [x=2.3ex,y=2.3ex,line width=.2ex] \draw (0,0) -- (1,1) (0,1) -- (1,0);}}}%
 
 %% Statistics command
 \DeclareMathOperator{\Norm}{\ensuremath{\mathsf{Norm}}}
@@ -489,130 +497,101 @@ This page is intentionally left blank.%
   stringstyle=\color{orange},
 }
 
-\usepackage{tkz-euclide}
-\usepackage{tcolorbox}
+\let\SO\undefined
+\usepackage{tkz-euclide, tkz-graph}
+\usepackage[most]{tcolorbox}
 
-\xpatchcmd{\endmdframed}
-  {\aftergroup\endmdf@trivlist\color@endgroup}
-  {\endmdf@trivlist\color@endgroup\@doendpe}
-  {}{}
+\mdfdefinestyle{mdbox}{%
+  linewidth=2pt,
+  skipabove=10pt,
+  innertopmargin=5pt,
+  innerbottommargin=5pt,
+  skipbelow=4pt,
+  frametitlefont=\bfseries,
+  nobreak=true,
+  rightline=false,
+  leftline=true,
+  topline=false,
+  bottomline=false
+}
 
 \mdfdefinestyle{mdbluebox}{%
-  linewidth=1pt,
-  skipabove=12pt,
-  innertopmargin=9pt,
-  innerbottommargin=9pt,
-  skipbelow=2pt,
+  style=mdbox,
   linecolor=MidnightBlue,
-  frametitlefont=\bfseries,
-  % nobreak=true,
   backgroundcolor=TealBlue!5,
 }
 
 \declaretheoremstyle[
-  headfont=\sffamily\bfseries\color{MidnightBlue},
+  headfont=\sffamily\bfseries\color{MidnightBlue!70!black},
   mdframed={style=mdbluebox},
+  % bodyfont=\itshape,
   spaceabove=2pt,
-  spacebelow=1pt,
+  spacebelow=2pt,
   % postheadspace={0pt}
 ]{thmbluebox}
 
-
 \mdfdefinestyle{mdgreenbox}{%
-  skipabove=8pt,
-  skipbelow=0pt,
-  linewidth=2pt,
-  rightline=false,
-  leftline=true,
-  topline=false,
-  bottomline=false,
+  style=mdbox,
   linecolor=ForestGreen,
   backgroundcolor=ForestGreen!5,
 }
 
 \declaretheoremstyle[
   headfont=\bfseries\sffamily\color{ForestGreen!70!black},
+  mdframed={style=mdgreenbox},
   bodyfont=\normalfont,
   spaceabove=2pt,
-  spacebelow=1pt,
-  mdframed={style=mdgreenbox},
+  spacebelow=2pt,
 ]{thmgreenbox}
 
 \mdfdefinestyle{mdredbox}{%
-  linewidth=0.5pt,
-  skipabove=12pt,
-  frametitleaboveskip=5pt,
-  frametitlebelowskip=0pt,
-  skipbelow=2pt,
-  frametitlefont=\bfseries,
-  innertopmargin=8pt,
-  innerbottommargin=8pt,
-  nobreak=true,
-  backgroundcolor=Salmon!5,
-  linecolor=RawSienna,
+  style=mdbox,
+  backgroundcolor=CarnationPink!5,
+  linecolor=CarnationPink,
 }
 
 \declaretheoremstyle[
-  headfont=\bfseries\color{RawSienna},
+  headfont=\bfseries\color{CarnationPink},
   mdframed={style=mdredbox},
-  headpunct={---},
-  postheadspace={0pt},
+  bodyfont=\normalfont,
+  spaceabove=2pt,
+  spacebelow=2pt,
+  % headpunct={---},
+  % postheadspace={0pt},
 ]{thmredbox}
 
 
 \mdfdefinestyle{mdblackbox}{%
-  skipabove=8pt,
-  linewidth=3pt,
-  rightline=false,
-  leftline=true,
-  topline=false,
-  bottomline=false,
+  style=mdbox,
   linecolor=black,
   backgroundcolor=RedViolet!5!gray!5,
 }
 
 \declaretheoremstyle[
   headfont=\bfseries,
-  bodyfont=\normalfont\small,
-  spaceabove=0pt,
-  spacebelow=0pt,
-  mdframed={style=mdblackbox}
+  mdframed={style=mdredbox},
+  bodyfont=\normalfont,
+  spaceabove=2pt,
+  spacebelow=1pt,
 ]{thmblackbox}
 
 
 \mdfdefinestyle{mdpurplebox}{%
-  linewidth=1pt,
-  skipabove=12pt,
-  skipbelow=12pt,
-  innertopmargin=9pt,
-  innerbottommargin=9pt,
-  linecolor=black,
-  nobreak=true,
-  backgroundcolor=Orchid!10,
+  style=mdbox,
   shadow=true,
   shadowsize=2pt,
-  shadowcolor=black!30,
-  frametitleaboveskip=8pt,
-  frametitlebelowskip=8pt,
+  backgroundcolor=Orchid!10,
   frametitlebackgroundcolor=Violet!50!black,
   frametitlefont=\bfseries\sffamily\color{white},
   frametitlerule=true,
 }
 
 \mdfdefinestyle{mdroyalbluebox}{%
-  linewidth=1pt,
-  skipabove=12pt,
-  skipbelow=12pt,
-  innertopmargin=9pt,
-  innerbottommargin=9pt,
-  linecolor=black,
-  nobreak=true,
+  style=mdbox,
   backgroundcolor=RoyalBlue!10,
   shadow=true,
   shadowsize=6pt,
   shadowcolor=black!30,
-  frametitleaboveskip=8pt,
-  frametitlebelowskip=8pt,
   frametitlebackgroundcolor=RoyalBlue!50!black,
   frametitlefont=\bfseries\sffamily\color{white},
   frametitlerule=true,
@@ -623,40 +602,48 @@ This page is intentionally left blank.%
   mdframed={style=mdpurplebox},
   spaceabove=2pt,
   spacebelow=1pt,
-  % postheadspace={0pt}
 ]{thmpurplebox}
 
-\newcommand{\listhack}{$\empty$\vspace{-2em}}
-
-\theoremstyle{definition}
-% \declaretheorem[style=thmbluebox,name=Theorem,numberwithin=section]{cstheorem}
-\declaretheorem[style=thmbluebox,name=Theorem]{theorem}
-\declaretheorem[style=thmbluebox,name=Theorem,numbered=no]{theorem*}
-
-\declaretheorem[style=thmpurplebox,name=Lemma,sibling=theorem]{lemma}
-\declaretheorem[style=thmpurplebox,name=Lemma,numbered=no]{lemma*}
-
-
-\declaretheorem[style=thmbluebox,name=Corollary,sibling=theorem]{corollary}
-\declaretheorem[style=thmbluebox,name=Corollary,numbered=no]{corollary*}
-
-\declaretheorem[style=thmbluebox,name=Assumption,sibling=theorem]{assume}
-\declaretheorem[style=thmgreenbox,name=Assumption,numbered=no]{assume*}
-
-
-\declaretheorem[style=thmgreenbox,name=Algorithm,sibling=theorem]{algo}
-\declaretheorem[style=thmgreenbox,name=Algorithm,numbered=no]{algo*}
-
-
-\declaretheorem[style=thmredbox,name=Example,sibling=theorem]{example}
-\declaretheorem[style=thmredbox,name=Example,numbered=no]{example*}
+\mdfdefinestyle{mddefbox}{%
+  style=mdbox,
+  linecolor=Dandelion,
+  backgroundcolor=Dandelion!5,
+}
 
 \declaretheoremstyle[
-  % headfont=\color{blue!40!black}\normalfont\bfseries,
-  headfont=\color{YellowOrange}\sffamily\bfseries,
-  spaceabove=8pt,
-  spacebelow=8pt,
-  bodyfont=\normalfont
+  headfont=\bfseries\sffamily\color{Dandelion!70!black},
+  mdframed={style=mddefbox},
+  bodyfont=\normalfont,
+  spaceabove=2pt,
+  spacebelow=1pt,
+]{thmdefbox}
+
+\mdfdefinestyle{mdcerubox}{%
+  style=mdbox,
+  linecolor=Cerulean,
+  backgroundcolor=Cerulean!5,
+}
+
+\mdfdefinestyle{answerbox}{%
+  style=mdbox,
+  linecolor=YellowOrange,
+  backgroundcolor=YellowOrange!5,
+}
+
+\declaretheoremstyle[
+  headfont=\bfseries\sffamily\color{Cerulean!70!black},
+  bodyfont=\normalfont,
+  spaceabove=2pt,
+  spacebelow=1pt,
+  mdframed={style=mdcerubox},
+]{thmcerubox}
+
+\declaretheoremstyle[
+  headfont=\bfseries\sffamily\color{YellowOrange!70!black},
+  bodyfont=\normalfont,
+  spaceabove=2pt,
+  spacebelow=1pt,
+  mdframed={style=answerbox},
 ]{answerhead}
 
 \declaretheoremstyle[
@@ -667,29 +654,43 @@ This page is intentionally left blank.%
   bodyfont=\normalfont
 ]{basehead}
 
-\mdfdefinestyle{mddefbox}{%
-  skipabove=8pt,
-  skipbelow=0pt,
-  linewidth=2pt,
-  rightline=false,
-  leftline=true,
-  topline=false,
-  bottomline=false,
-  linecolor=Salmon,
-  backgroundcolor=Salmon!5,
-}
-
 \declaretheoremstyle[
-  headfont=\bfseries\sffamily\color{Salmon!70!black},
-  bodyfont=\normalfont,
-  spaceabove=2pt,
-  spacebelow=1pt,
-  mdframed={style=mddefbox},
-]{thmdefbox}
+  % headfont=\color{blue!40!black}\normalfont\bfseries,
+  headfont=\color{WildStrawberry}\sffamily\bfseries,
+  spaceabove=8pt,
+  spacebelow=8pt,
+  bodyfont=\normalfont
+]{remarkhead}
 
-\declaretheorem[style=answerhead,name=Answer,sibling=theorem]{answer}
+\newcommand{\listhack}{$\empty$\vspace{-2em}}
+
+\theoremstyle{definition}
+% \declaretheorem[style=thmbluebox,name=Theorem,numberwithin=section]{cstheorem}
+\declaretheorem[style=thmbluebox,name=Theorem]{theorem}
+\declaretheorem[style=thmbluebox,name=Theorem,numbered=no]{theorem*}
+\declaretheorem[style=basehead,name=Problem,sibling=theorem]{problem}
+\declaretheorem[style=basehead,name=Problem,numbered=no]{problem*}
+
+
+\declaretheorem[style=thmcerubox,name=Lemma,sibling=theorem,numberwithin=problem]{lemma}
+\declaretheorem[style=thmcerubox,name=Lemma,numbered=no]{lemma*}
+
+
+\declaretheorem[style=thmbluebox,name=Corollary,sibling=theorem]{corollary}
+\declaretheorem[style=thmbluebox,name=Corollary,numbered=no]{corollary*}
+
+\declaretheorem[style=thmcerubox,name=Assumption,sibling=theorem]{assume}
+\declaretheorem[style=thmcerubox,name=Assumption,numbered=no]{assume*}
+
+\declaretheorem[style=thmgreenbox,name=Algorithm,sibling=theorem]{algo}
+\declaretheorem[style=thmgreenbox,name=Algorithm,numbered=no]{algo*}
+
+\declaretheorem[style=thmredbox,name=Example,sibling=theorem]{example}
+\declaretheorem[style=thmredbox,name=Example,numbered=no]{example*}
+
+\declaretheorem[style=answerhead,name=Answer,numberwithin=problem]{answer}
 \declaretheorem[style=answerhead,name=Answer,numbered=no]{answer*}
-\declaretheorem[style=answerhead,name=Fact,sibling=theorem]{fact}
+\declaretheorem[style=answerhead,name=Fact,numberwithin=problem]{fact}
 \declaretheorem[style=answerhead,name=Fact,numbered=no]{fact*}
 
 \declaretheorem[style=thmdefbox,name=Conjecture,sibling=theorem]{conjecture}
@@ -699,8 +700,6 @@ This page is intentionally left blank.%
 
 \declaretheorem[style=basehead,name=Exercise,sibling=theorem]{exercise}
 \declaretheorem[style=basehead,name=Exercise,numbered=no]{exercise*}
-\declaretheorem[style=basehead,name=Problem,sibling=theorem]{problem}
-\declaretheorem[style=basehead,name=Problem,numbered=no]{problem*}
 \declaretheorem[style=basehead,name=Question,sibling=theorem]{ques}
 \declaretheorem[style=basehead,name=Question,numbered=no]{ques*}
 
@@ -711,18 +710,63 @@ This page is intentionally left blank.%
 \declaretheorem[style=thmgreenbox,name=Claim,numberwithin=problem]{claim}
 \declaretheorem[style=thmgreenbox,name=Claim,numbered=no]{claim*}
 
+\declaretheorem[style=remarkhead,name=Remark,numberwithin=problem]{remark}
+\declaretheorem[style=remarkhead,name=Remark,numbered=no]{remark*}
+
 \newenvironment{solution}{\renewcommand\qedsymbol{$\blacksquare$}\renewcommand{\proofname}{Solution}\begin{proof}}{\end{proof}}
 \newenvironment{scsolution}[1][\proofname]{\renewcommand\qedsymbol{$\blacksquare$}\renewcommand{\proofname}{Solution}\proof[\normalfont \scshape #1]}{\endproof}
-% \newenvironment{solution}{\begin{proof}[Solution]}{\end{proof}}
-% \newenvironment{scsoln}{\begin{proof}[\normalfont \scshape Solution]}{\end{proof}}
 \newenvironment{scproof}[1][\proofname]{\proof[\normalfont \scshape #1]}{\endproof}
-
 
 %% IMPORTANT: below should be at the end of the file and order should be preserved.
 \usepackage{unicode-math}
 \usepackage{mathtools}
-%\setmathfont{texgyrepagella-math.otf}
 \setmathfont{NewCMMath-Regular.otf}
 \usepackage[old]{old-arrows}
 \renewcommand{\emptyset}{\diameter}
 \DeclareMathAlphabet{\mathcal}{OMS}{cmsy}{m}{n}
+
+\newcommand{\cem}[1]{\emph{\textcolor{Maroon}{#1}}}
+\newcommand{\ceg}[1]{\emph{\textcolor{ForestGreen}{#1}}}
+
+\newcommand{\ctb}[2]{\tcbox[on line,boxsep=4pt,boxrule=0.6pt,left=0pt,right=0pt,top=0pt,bottom=0pt,colback=#1,highlight math style={enhanced}]{#2}}
+\newcommand{\cmb}[2]{\tcbhighmath[on line,boxsep=4pt,boxrule=0.6pt,left=0pt,right=0pt,top=0pt,bottom=0pt,colback=#1,highlight math style={enhanced}]{#2}}
+\newcommand{\myfbox}[2]{\textcolor{#1}{\fbox{\normalcolor#2}}}
+\newcommand{\stirlingI}[2]{\genfrac{[}{]}{0pt}{}{#1}{#2}}
+\newcommand{\stirlingII}[2]{\genfrac{\{}{\}}{0pt}{}{#1}{#2}}
+\newcommand{\stirlingIII}[2]{\genfrac{\lBrack}{\rBrack}{0pt}{}{#1}{#2}}
+\newcommand{\eulerianI}[2]{\genfrac{\langle}{\rangle}{0pt}{}{#1}{#2}}
+\newcommand{\eulerianII}[2]{\genfrac{\lAngle}{\rAngle}{0pt}{}{#1}{#2}}
+\newcommand{\dstirlingI}[2]{\genfrac{[}{]}{0pt}{0}{#1}{#2}}
+\newcommand{\dstirlingII}[2]{\genfrac{\{}{\}}{0pt}{0}{#1}{#2}}
+\newcommand{\dstirlingIII}[2]{\genfrac{\lBrack}{\rBrack}{0pt}{0}{#1}{#2}}
+\newcommand{\deulerianI}[2]{\genfrac{\langle}{\rangle}{0pt}{0}{#1}{#2}}
+\newcommand{\deulerianII}[2]{\genfrac{\lAngle}{\rAngle}{0pt}{0}{#1}{#2}}
+
+\newcommand{\tstirlingI}[2]{\genfrac{[}{]}{0pt}{1}{#1}{#2}}
+\newcommand{\tstirlingII}[2]{\genfrac{\{}{\}}{0pt}{1}{#1}{#2}}
+\newcommand{\tstirlingIII}[2]{\genfrac{\lBrack}{\rBrack}{0pt}{1}{#1}{#2}}
+\newcommand{\teulerianI}[2]{\genfrac{\langle}{\rangle}{0pt}{1}{#1}{#2}}
+\newcommand{\teulerianII}[2]{\genfrac{\lAngle}{\rAngle}{0pt}{1}{#1}{#2}}
+
+% \def\hsbar{\ensuremath{\mathit{^^^^0127}}}
+\usepackage{xparse}
+% \usepackage{fontspec}
+% \newcommand{\hsbar}{{\mathchar"AF\mkern-9mu h}}
+% \newcommand{\hsbar}{\mathit{^^^^0127}}
+\makeatletter
+\newcommand{\raisemath}[1]{\mathpalette{\raisem@th{#1}}}% \raisemath{<len>}{...}
+\newcommand{\raisem@th}[3]{\raisebox{#1}{$#2#3$}}
+\makeatother
+\newcommand{\newhbar}[3]{% \newhbar[<horz len>][<vert len>]
+  \ensuremath{\mathrlap{\raisemath{#2}{\hspace*{#1}{\mathchar"AF\mkern-9mu}}}#3}%
+}
+\newcommand{\hsbar}{\newhbar{0pt}{-0.7pt}{h}}
+\newcommand{\dsbar}{\newhbar{2pt}{-0.7pt}{d}}
+
+\makeatletter
+\def\mathcolor#1#{\@mathcolor{#1}}
+\def\@mathcolor#1#2#3{%
+  \protect\leavevmode
+  \begingroup\color#1{#2}#3\endgroup
+}
+\makeatother
