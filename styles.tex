@@ -20,6 +20,7 @@
 \usepackage{url, interval, calc, framed, fancybox, quoting, empheq, algorithm, stackrel}
 \usepackage{longtable,tabu}
 \usepackage{xpatch}
+\usepackage{stackengine}
 % \usepackage{sectsty}
 
 \usepackage[obeyFinal,textsize=scriptsize,shadow,loadshadowlibrary]{todonotes}
@@ -371,7 +372,7 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 %% Statistics command
 \DeclareMathOperator{\Norm}{\ensuremath{\mathsf{Norm}}}
 \DeclareMathOperator{\Bin}{\ensuremath{\mathsf{Bin}}}
-\DeclareMathOperator{\Poi}{\ensuremath{\mathsf{Poi}}}
+\DeclareMathOperator{\Pois}{\ensuremath{\mathsf{Pois}}}
 \DeclareMathOperator{\Geo}{\ensuremath{\mathsf{Geo}}}
 \DeclareMathOperator{\Unif}{\ensuremath{\mathsf{Unif}}}
 \DeclareMathOperator{\Pare}{\ensuremath{\mathsf{Pare}}}
@@ -432,6 +433,7 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 \newcommand{\mysetminusS}{\hbox{\tikz{\draw[line width=0.25pt,line cap=round] (2pt,0) -- (0,4pt);}}}
 \newcommand{\mysetminusSS}{\hbox{\tikz{\draw[line width=0.2pt,line cap=round] (1.5pt,0) -- (0,3pt);}}}
 \newcommand{\mysetminus}{\mathbin{\mathchoice{\mysetminusD}{\mysetminusT}{\mysetminusS}{\mysetminusSS}}}
+\newcommand{\varsetminus}{\mathbin{\backslash}}
 
 \usepackage{centernot}
 
@@ -728,6 +730,7 @@ This page is intentionally left blank.%
 \newcommand{\cem}[1]{\emph{\textcolor{Maroon}{#1}}}
 \newcommand{\ceg}[1]{\emph{\textcolor{ForestGreen}{#1}}}
 
+\tcbset{highlight math style={enhanced,colframe=black,colback=white,arc=4pt,boxrule=0.6pt}}
 \newcommand{\ctb}[2]{\tcbox[on line,boxsep=4pt,boxrule=0.6pt,left=0pt,right=0pt,top=0pt,bottom=0pt,colback=#1,highlight math style={enhanced}]{#2}}
 \newcommand{\cmb}[2]{\tcbhighmath[on line,boxsep=4pt,boxrule=0.6pt,left=0pt,right=0pt,top=0pt,bottom=0pt,colback=#1,highlight math style={enhanced}]{#2}}
 \newcommand{\myfbox}[2]{\textcolor{#1}{\fbox{\normalcolor#2}}}
