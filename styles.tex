@@ -30,17 +30,6 @@
 \renewcommand{\epigraphsize}{\scriptsize}
 \renewcommand{\epigraphwidth}{60ex}
 
-
-\makeatletter
-\def\mathcolor#1#{\@mathcolor{#1}}
-\def\@mathcolor#1#2#3{%
-  \protect\leavevmode
-  \begingroup
-    \color#1{#2}#3%
-  \endgroup
-}
-\makeatother
-
 \usepackage{algpseudocode}
 \algrenewcommand\algorithmicprocedure{\textbf{function}}
 \algrenewcommand{\algorithmiccomment}[1]{\hskip3em$\triangleright$ #1}
@@ -212,7 +201,6 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 \DeclareMathOperator{\pr}{\ensuremath{\mathsf{Pr}}}
 \DeclareMathOperator{\varvar}{\ensuremath{\mathrm{Var}}}
 
-\newcommand{\ex}{\ensuremath{\mathsf{E}}}
 \newcommand{\transp}{\ensuremath{^\top}}
 \newcommand{\inv}{\ensuremath{^{-1}}}
 \newcommand{\icr}{\ensuremath{^{\times}}}
@@ -286,9 +274,11 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 
 \newcommand{\cro}{\ensuremath{^{\times}}}
 
+\DeclareMathOperator{\Gal}{\ensuremath{Gal}}
+\DeclareMathOperator{\ch}{\ensuremath{ch}}
 \DeclareMathOperator{\Ub}{\ensuremath{Ub}}
 \DeclareMathOperator{\Lb}{\ensuremath{Lb}}
-
+\DeclareMathOperator{\Ann}{\ensuremath{Ann}}
 \DeclareMathOperator{\sf}{\ensuremath{sf}}
 \DeclareMathOperator{\ord}{\ensuremath{ord}}
 \DeclareMathOperator{\lip}{\ensuremath{lip}}
@@ -304,6 +294,10 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 \DeclareMathOperator{\Adj}{\ensuremath{Adj}}
 \DeclareMathOperator{\proj}{\ensuremath{proj}}
 \DeclareMathOperator{\sech}{\ensuremath{sech}}
+\DeclareMathOperator{\Supp}{\ensuremath{Supp}}
+\DeclareMathOperator{\Ind}{\ensuremath{Ind}}
+\DeclareMathOperator{\Stab}{\ensuremath{Stab}}
+\DeclareMathOperator{\Dih}{\ensuremath{Dih}}
 \DeclareMathOperator{\cis}{\ensuremath{cis}}
 \DeclareMathOperator{\atan2}{\ensuremath{atan2}}
 \DeclareMathOperator{\sinc}{\ensuremath{sinc}}
@@ -334,11 +328,13 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 \DeclareMathOperator{\Acc}{\ensuremath{acc}}
 \DeclareMathOperator{\curl}{\ensuremath{curl}}
 \DeclareMathOperator{\grad}{\ensuremath{grad}}
+\DeclareMathOperator{\rad}{\ensuremath{rad}}
 \DeclareMathOperator{\dil}{\ensuremath{dil}}
 \DeclareMathOperator{\cof}{\ensuremath{cof}}
 \DeclareMathOperator{\area}{\ensuremath{area}}
 \DeclareMathOperator{\vol}{\ensuremath{vol}}
 \DeclareMathOperator{\Sym}{\ensuremath{Sym}}
+\DeclareMathOperator{\Tor}{\ensuremath{Tor}}
 \DeclareMathOperator{\Syl}{\ensuremath{Syl}}
 \DeclareMathOperator{\Corr}{\ensuremath{Corr}}
 \DeclareMathOperator{\Cov}{\ensuremath{Cov}}
@@ -635,6 +631,12 @@ This page is intentionally left blank.%
   backgroundcolor=YellowOrange!5,
 }
 
+\mdfdefinestyle{remarkbox}{%
+  style=mdbox,
+  linecolor=WildStrawberry,
+  backgroundcolor=WildStrawberry!5,
+}
+
 \declaretheoremstyle[
   headfont=\bfseries\sffamily\color{Cerulean!70!black},
   bodyfont=\normalfont,
@@ -654,17 +656,17 @@ This page is intentionally left blank.%
 \declaretheoremstyle[
   % headfont=\color{blue!40!black}\normalfont\bfseries,
   headfont=\color{BrickRed}\sffamily\bfseries,
-  spaceabove=8pt,
-  spacebelow=8pt,
+  spaceabove=2pt,
+  spacebelow=1pt,
   bodyfont=\normalfont
 ]{basehead}
 
 \declaretheoremstyle[
-  % headfont=\color{blue!40!black}\normalfont\bfseries,
   headfont=\color{WildStrawberry}\sffamily\bfseries,
-  spaceabove=8pt,
-  spacebelow=8pt,
-  bodyfont=\normalfont
+  spaceabove=2pt,
+  spacebelow=1pt,
+  bodyfont=\normalfont,
+  mdframed={style=remarkbox},
 ]{remarkhead}
 
 \newcommand{\listhack}{$\empty$\vspace{-2em}}
