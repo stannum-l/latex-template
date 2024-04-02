@@ -86,7 +86,7 @@
 \usepackage[framemethod=TikZ]{mdframed}
 \usepackage{bbm}
 
-\usepackage[e]{esvect}
+% \usepackage[e]{esvect}
 \usepackage[makeroom]{cancel}
 
 %=== loading symbols ===
@@ -212,7 +212,7 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 
 \newcommand{\ex}{\ensuremath{\mathsf{E}}}
 \newcommand{\transp}{\ensuremath{^\top}}
-\newcommand{\iv}{\ensuremath{^{-1}}}
+\newcommand{\inv}{\ensuremath{^{-1}}}
 \newcommand{\icr}{\ensuremath{^{\times}}}
 \newcommand{\img}{\ensuremath{^{\varto}}}
 \newcommand{\pimg}{\ensuremath{^{\leftarrow}}}
@@ -303,6 +303,7 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 \DeclareMathOperator{\proj}{\ensuremath{proj}}
 \DeclareMathOperator{\sech}{\ensuremath{sech}}
 \DeclareMathOperator{\cis}{\ensuremath{cis}}
+\DeclareMathOperator{\atan2}{\ensuremath{atan2}}
 \DeclareMathOperator{\sinc}{\ensuremath{sinc}}
 \DeclareMathOperator{\avg}{\ensuremath{avg}}
 \DeclareMathOperator{\dist}{\ensuremath{dist}}
@@ -723,7 +724,8 @@ This page is intentionally left blank.%
 \usepackage{unicode-math}
 \usepackage{mathtools}
 \setmathfont{NewCMMath-Regular.otf}
-\usepackage[old]{old-arrows}
+\usepackage[new]{old-arrows}
+\usepackage[allcommands]{overarrows}
 \renewcommand{\emptyset}{\diameter}
 \DeclareMathAlphabet{\mathcal}{OMS}{cmsy}{m}{n}
 
