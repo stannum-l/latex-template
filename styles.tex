@@ -329,6 +329,7 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 \DeclareMathOperator{\Acc}{\ensuremath{acc}}
 \DeclareMathOperator{\Spin}{\ensuremath{Spin}}
 \DeclareMathOperator{\SO}{\ensuremath{SO}}
+\DeclareMathOperator{\SU}{\ensuremath{SU}}
 \DeclareMathOperator{\curl}{\ensuremath{curl}}
 \DeclareMathOperator{\grad}{\ensuremath{grad}}
 \DeclareMathOperator{\rad}{\ensuremath{rad}}
@@ -725,6 +726,8 @@ This page is intentionally left blank.%
 \newenvironment{solution}{\renewcommand\qedsymbol{$\blacksquare$}\renewcommand{\proofname}{Solution}\begin{proof}}{\end{proof}}
 \newenvironment{scsolution}[1][\proofname]{\renewcommand\qedsymbol{$\blacksquare$}\renewcommand{\proofname}{Solution}\proof[\normalfont \scshape #1]}{\endproof}
 \newenvironment{scproof}[1][\proofname]{\proof[\normalfont \scshape #1]}{\endproof}
+\newenvironment{Solution}[1][\proofname]{\renewcommand\qedsymbol{$\blacksquare$}\renewcommand{\proofname}{Solution}\proof[\normalfont\sffamily\bfseries #1]}{\endproof}
+\newenvironment{Proof}[1][\proofname]{\proof[\normalfont\sffamily\bfseries #1]}{\endproof}
 
 %% IMPORTANT: below should be at the end of the file and order should be preserved.
 \usepackage{unicode-math}
@@ -758,6 +761,11 @@ This page is intentionally left blank.%
 \newcommand{\tstirlingIII}[2]{\genfrac{\lBrack}{\rBrack}{0pt}{1}{#1}{#2}}
 \newcommand{\teulerianI}[2]{\genfrac{\langle}{\rangle}{0pt}{1}{#1}{#2}}
 \newcommand{\teulerianII}[2]{\genfrac{\lAngle}{\rAngle}{0pt}{1}{#1}{#2}}
+
+\newcommand{\nsubg}{\mathrel{\lhd}}
+\newcommand{\nsubgeq}{\mathrel{\trianglelefteq}}
+\newcommand{\nnsubg}{\mathrel{\ntriangleleft}}
+\newcommand{\nnsubgeq}{\mathrel{\ntrianglelefteq}}
 
 % \def\hsbar{\ensuremath{\mathit{^^^^0127}}}
 \usepackage{xparse}
