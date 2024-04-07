@@ -45,6 +45,8 @@
 \usetikzlibrary{decorations.markings, calc, arrows, petri, topaths, decorations.pathreplacing}
 \usetikzlibrary{arrows.meta,bending,positioning}
 \usetikzlibrary{graphs, graphs.standard}
+\usetikzlibrary{patterns}
+\usetikzlibrary{shapes.geometric}
 \usepackage{chessfss, adjustbox}
 \newcommand{\pawnB}[1][1.3ex]{%
 \adjustbox{Trim=4.3pt 2.6pt 4.3pt 0pt,width=#1,margin=0.2ex 0ex 0.2ex 0ex}{\BlackPawnOnWhite}%
@@ -318,7 +320,6 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 \DeclareMathOperator{\cod}{\ensuremath{Cod}}
 \DeclareMathOperator{\dom}{\ensuremath{Dom}}
 \DeclareMathOperator{\tr}{\ensuremath{tr}}
-\DeclareMathOperator{\Int}{\ensuremath{Int}}
 \DeclareMathOperator{\itr}{\ensuremath{int}}
 \DeclareMathOperator{\Ext}{\ensuremath{Ext}}
 \DeclareMathOperator{\Clo}{\ensuremath{Clo}}
@@ -327,6 +328,7 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 \DeclareMathOperator{\fr}{\ensuremath{fr}}
 \DeclareMathOperator{\Bdy}{\ensuremath{Bdy}}
 \DeclareMathOperator{\Acc}{\ensuremath{acc}}
+\DeclareMathOperator{\Int}{\ensuremath{Int}}
 \DeclareMathOperator{\Spin}{\ensuremath{Spin}}
 \DeclareMathOperator{\SO}{\ensuremath{SO}}
 \DeclareMathOperator{\SU}{\ensuremath{SU}}
@@ -770,7 +772,7 @@ This page is intentionally left blank.%
 \newcommand{\nsupgeq}{\mathrel{\trianglerighteq}}
 \newcommand{\nnsupg}{\mathrel{\ntriangleright}}
 \newcommand{\nnsupgeq}{\mathrel{\ntrianglerighteq}}
-
+\newcommand{\sq}[1]{\ensuremath{#1 \times #1}}
 
 % \def\hsbar{\ensuremath{\mathit{^^^^0127}}}
 \usepackage{xparse}
@@ -794,3 +796,5 @@ This page is intentionally left blank.%
   \begingroup\color#1{#2}#3\endgroup
 }
 \makeatother
+
+\newcommand{\phiv}{\varphi}
