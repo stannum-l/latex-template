@@ -1,43 +1,32 @@
-\documentclass[fontsize=10pt,numbers=endperiod]{scrartcl}
+\documentclass[fontsize=10pt,numbers=endperiod,letterpaper]{scrartcl}
 
-\PassOptionsToPackage{e}{esvect}
+\PassOptionsToPackage{esvecte}{overarrows}
 \PassOptionsToPackage{footheight=16pt}{typearea}
-\PassOptionsToPackage{plainfootsepline=off,headsepline=1pt,footsepline=0pt}{scrlayer-scrpage}
-\PassOptionsToPackage{margin=0.5in}{geometry}
+\PassOptionsToPackage{plainfootsepline=off,headsepline=0.5pt,footsepline=0.5pt}{scrlayer-scrpage}
+\PassOptionsToPackage{margin=1in}{geometry}
 
 \include{styles}
-
 %% ==== Header / footer ===
 %\setkomafont{pageheadfoot}{\normalfont\itshape}
-%\lohead[]{}
-%\rohead[]{}
+%\ohead[]{}
+%\chead[]{}
+%\ihead[]{}
 %\cfoot[\vbox{\vspace{0.15cm}\pagemark}]{\vbox{\vspace{0.15cm}\pagemark}}
+
+%% ==== Header / footer === Use one of the below
 %\pagestyle{scrheadings}
-
-%% ==== Header / footer ===
 \pagestyle{plain.scrheadings}
-
-%% ==== Label ===
-% \renewcommand{\theequation}{\theprobCounter.\arabic{equation}}
-
-% ==== Sectioning ===
-% \RedeclareSectionCommand[ beforeskip=0.5\baselineskip, afterskip=0.05\baselineskip]{section}
-% \RedeclareSectionCommand[ beforeskip=0.5\baselineskip, afterskip=0.05\baselineskip]{subsection}
-
-% \addtokomafont{section}{\mdseries\scshape\large\centering}
-% \addtokomafont{subsection}{\mdseries\scshape\normalsize\centering}
-
-% \renewcommand{\theequation}{\theprobCounter.\arabic{equation}}
-% \renewcommand{\thesection}{\roman{section}}
-% \renewcommand{\thesubsection}{\roman{section}.\roman{subsection}}
 
 %%%% === Turn everything into displaystyle
 %\everymath{\displaystyle}
 
 \begin{document}
+\include{color-alias}
 %------ Begin content here -----
 %\thispagestyle{plain.scrheadings}
 
 
+
+Test
 %------ End document -----
 \end{document}
