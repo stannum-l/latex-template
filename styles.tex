@@ -18,7 +18,7 @@
 
 \usepackage{float, wrapfig, picinpar, siunitx, derivative, lastpage, textcomp, nicefrac}
 \usepackage{url, interval, calc, framed, fancybox, quoting, empheq, algorithm, stackrel}
-\usepackage{longtable,tabu}
+\usepackage{longtable, tabu}
 \usepackage{xpatch}
 \usepackage{stackengine}
 % \usepackage{sectsty}
@@ -186,14 +186,14 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 \newcommand{\mh}[1]{\ensuremath{\mathssss{#1}}}
 
 
-\newcommand{\N}{\ensuremath{\mathbb{N}}}
-\newcommand{\R}{\ensuremath{\mathbb{R}}}
-\newcommand{\Z}{\ensuremath{\mathbb{Z}}}
-\newcommand{\Q}{\ensuremath{\mathbb{Q}}}
-\newcommand{\F}{\ensuremath{\mathbb{F}}}
+\newcommand{\NN}{\ensuremath{\mathbb{N}}}
+\newcommand{\RR}{\ensuremath{\mathbb{R}}}
+\newcommand{\ZZ}{\ensuremath{\mathbb{Z}}}
+\newcommand{\QQ}{\ensuremath{\mathbb{Q}}}
+\newcommand{\FF}{\ensuremath{\mathbb{F}}}
 \newcommand{\PP}{\ensuremath{\mathbb{P}}}
 \newcommand{\EE}{\ensuremath{\mathbb{E}}}
-\newcommand{\Cx}{\ensuremath{\mathbb{C}}}
+\newcommand{\CC}{\ensuremath{\mathbb{C}}}
 \newcommand{\RP}{\ensuremath{\mathbb{RP}}}
 
 \DeclareMathOperator{\GF}{\ensuremath{\mathrm{GF}}}
@@ -366,13 +366,6 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 \DeclareMathOperator{\arsech}{\ensuremath{arsech}}
 \DeclareMathOperator{\arcsch}{\ensuremath{arcsch}}
 \DeclareMathOperator{\ffrac}{\ensuremath{frac}}
-
-\newcommand{\kb}{\mathfrak b}
-\newcommand{\kg}{\mathfrak g}
-\newcommand{\kh}{\mathfrak h}
-\newcommand{\kn}{\mathfrak n}
-\newcommand{\ku}{\mathfrak u}
-\newcommand{\kz}{\mathfrak z}
 
 %% Statistics command
 \DeclareMathOperator{\Norm}{\ensuremath{\mathsf{Norm}}}
@@ -667,6 +660,14 @@ This page is intentionally left blank.%
 ]{basehead}
 
 \declaretheoremstyle[
+  % headfont=\color{blue!40!black}\normalfont\bfseries,
+  headfont=\color{Black}\sffamily\bfseries,
+  spaceabove=2pt,
+  spacebelow=1pt,
+  bodyfont=\normalfont
+]{normhead}
+
+\declaretheoremstyle[
   headfont=\color{WildStrawberry}\sffamily\bfseries,
   spaceabove=2pt,
   spacebelow=1pt,
@@ -700,8 +701,8 @@ This page is intentionally left blank.%
 \declaretheorem[style=thmredbox,name=Example,sibling=theorem]{example}
 \declaretheorem[style=thmredbox,name=Example,numbered=no]{example*}
 
-\declaretheorem[style=answerhead,name=Answer,numberwithin=problem]{answer}
-\declaretheorem[style=answerhead,name=Answer,numbered=no]{answer*}
+\declaretheorem[style=normhead,name=Answer,numberwithin=problem]{answer}
+\declaretheorem[style=normhead,name=Answer,numbered=no]{answer*}
 \declaretheorem[style=answerhead,name=Fact,numberwithin=problem]{fact}
 \declaretheorem[style=answerhead,name=Fact,numbered=no]{fact*}
 
@@ -798,3 +799,4 @@ This page is intentionally left blank.%
 \makeatother
 
 \newcommand{\phiv}{\varphi}
+\NewOverArrowCommand{overhookleft}{start=\lhook, end=\rightarrow, middle=\relbar, trim start=0, trim end=3, trim middle=5,}
