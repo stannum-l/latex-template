@@ -726,11 +726,12 @@ This page is intentionally left blank.%
 \declaretheorem[style=remarkhead,name=Remark,numberwithin=problem]{remark}
 \declaretheorem[style=remarkhead,name=Remark,numbered=no]{remark*}
 
-\newenvironment{solution}{\renewcommand\qedsymbol{$\blacksquare$}\renewcommand{\proofname}{Solution}\begin{proof}}{\end{proof}}
-\newenvironment{scsolution}[1][\proofname]{\renewcommand\qedsymbol{$\blacksquare$}\renewcommand{\proofname}{Solution}\proof[\normalfont \scshape #1]}{\endproof}
-\newenvironment{scproof}[1][\proofname]{\proof[\normalfont \scshape #1]}{\endproof}
-\newenvironment{Solution}[1][\proofname]{\renewcommand\qedsymbol{$\blacksquare$}\renewcommand{\proofname}{Solution}\proof[\normalfont\sffamily\bfseries #1]}{\endproof}
-\newenvironment{Proof}[1][\proofname]{\proof[\normalfont\sffamily\bfseries #1]}{\endproof}
+\makeatletter
+\newenvironment{solution}{\renewcommand{\proofname}{Solution}\begin{proof}\renewcommand{\proofname}{Proof}}{\renewcommand\qedsymbol{$\blacksquare$}\end{proof}}
+\newenvironment{Solution}[1][\proofname]{\renewcommand{\proofname}{Solution}\proof[\normalfont\sffamily\bfseries #1]\renewcommand{\proofname}{Proof}}{\renewcommand\qedsymbol{$\blacksquare$}\endproof}
+\newenvironment{Proof}[1][\proofname]{\renewcommand\qedsymbol{$\square$}\renewcommand{\proofname}{Proof}\proof[\normalfont\sffamily\bfseries #1]}{\endproof}
+
+\makeatother
 
 %% IMPORTANT: below should be at the end of the file and order should be preserved.
 \usepackage{unicode-math}
