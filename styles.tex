@@ -120,7 +120,15 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 \setlength{\headheight}{1.25\baselineskip}
 \setlength{\headsep}{0.5\baselineskip}
 \setlength{\footskip}{2.5\baselineskip}
-\setlength{\footnotesep}{\baselineskip}
+\setlength{\footnotesep}{0.75\baselineskip}
+
+% Shift foot down
+\ModifyLayer[addvoffset=.6ex]{scrheadings.foot.odd}
+\ModifyLayer[addvoffset=.6ex]{scrheadings.foot.even}
+\ModifyLayer[addvoffset=.6ex]{scrheadings.foot.oneside}
+\ModifyLayer[addvoffset=.6ex]{plain.scrheadings.foot.odd}
+\ModifyLayer[addvoffset=.6ex]{plain.scrheadings.foot.even}
+\ModifyLayer[addvoffset=.6ex]{plain.scrheadings.foot.oneside}
 
 %\setlength{\parindent}{0cm}
 \setlength{\parskip}{3pt plus0pt minus2pt}
@@ -627,7 +635,6 @@ This page is intentionally left blank.%
   spaceabove=2pt,
   spacebelow=1pt,
   bodyfont=\normalfont,
-  mdframed={style=remarkbox},
 ]{remarkhead}
 
 \newcommand{\listhack}{$\empty$\vspace{-2em}}
