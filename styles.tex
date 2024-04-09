@@ -230,18 +230,22 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 \renewcommand{\set}[2][0]{\delimit{#1}{\{}{#2}{\}}}
 \renewcommand{\norm}[2][0]{\delimit{#1}{\lVert}{#2}{\rVert}}
 \renewcommand{\abs}[2][0]{\delimit{#1}{|}{#2}{|}}
-\newcommand{\angbr}[2][0]{\delimit{#1}{\langle}{#2}{\rangle}}
+
 
 \newcommand{\bra}[2][0]{\delimit{#1}{\langle}{#2}{|}}
 \newcommand{\ket}[2][0]{\delimit{#1}{|}{#2}{\rangle}}
 \newcommand{\braket}[3][0]{\delb{#1}{\langle}{#2}{#3}{\rangle}}
 \newcommand{\angbrc}[3][0]{\delb{#1}{\langle}{#2}{#3}{\rangle}}
 
+\newcommand{\angbr}[2][0]{\delimit{#1}{\langle}{#2}{\rangle}}
 \newcommand{\Angbr}[2][0]{\delimit{#1}{\lAngle}{#2}{\rAngle}}
-\newcommand{\dbr}[2][0]{\delimit{#1}{\lBrack}{#2}{\rBrack}}
+
+\newcommand{\brac}[2][0]{\delimit{#1}{\lbrack}{#2}{\rbrack}}
+\newcommand{\Brac}[2][0]{\delimit{#1}{\lBrack}{#2}{\rBrack}}
 \newcommand{\floor}[2][0]{\delimit{#1}{\lfloor}{#2}{\rfloor}}
 \newcommand{\ceil}[2][0]{\delimit{#1}{\lceil}{#2}{\rceil}}
 \newcommand{\pair}[2][0]{\delimit{#1}{(}{#2}{)}}
+\newcommand{\Pair}[2][0]{\delimit{#1}{\lParen}{#2}{\rParen}}
 \newcommand{\pairc}[3][0]{\delb{#1}{(}{#2}{#3}{)}}
 \newcommand{\lopen}[2][0]{\delimit{#1}{]}{#2}{]}}
 \newcommand{\ropen}[2][0]{\delimit{#1}{[}{#2}{[}}
@@ -354,7 +358,7 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 
 \newcommand{\symdiff}{\bigtriangleup}
 
-\newcommand{\examhead}[6]{
+\newcommand{\examhead}[6]{%
 	\begin{center}
 	{{\large \fbox{\parbox{0.98\textwidth}{
 		\hbox to \hsize{#1 \hfil #2} \vskip 0.075in
@@ -364,8 +368,7 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 	\end{center}
 	\vspace{-1em} }
 
-\newcommand{\srudhead}[4]{
-
+\newcommand{\srudhead}[4]{%
 	\begin{center}
 	{\textsf {\large \fbox{\parbox{0.98\textwidth}{
 		\hbox to \hsize{#1 \hfil #2} \vskip 0.075in
@@ -374,8 +377,7 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 	\end{center}
 	\vspace{-1em} }
 
-\newcommand{\rudhead}[4]{
-
+\newcommand{\rudhead}[4]{%
 	\begin{center}
 	{ {\large \fbox{\parbox{0.98\textwidth}{
 		\hbox to \hsize{#1 \hfil #2} \vskip 0.075in
@@ -410,7 +412,8 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 \newcommand{\iprod}[1]{\prod_{#1}^\infty}
 \newcommand{\isum}[1]{\sum_{#1}^\infty}
 \newcommand{\ilim}[1]{\lim_{#1\to\infty}}
-\newcommand{\seq}[1]{#1_1,\dotsc,#1_n}
+\newcommand{\seq}[1]{#1_1, #1_2, \dotsc,#1_n}
+\newcommand{\vseq}[1]{(#1_i)_{i\in\mathbb{N}}}
 
 \newcommand{\shownum}{\addtocounter{equation}{1}\tag{\theequation}}
 \usepackage{array}
@@ -765,4 +768,5 @@ This page is intentionally left blank.%
 \newcommand{\nll}{\mathrel{\mathpalette\@nll{\ll}}}
 \newcommand{\ngg}{\mathrel{\mathpalette\@nll{\gg}}}
 \newcommand{\varnmid}{\mathrel{\mathpalette\@nll{\mid}}}
+\newcommand{\centernot}[1]{\mathrel{\mathpalette\@nll{#1}}}
 \makeatother
