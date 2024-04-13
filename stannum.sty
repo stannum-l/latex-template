@@ -52,16 +52,25 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ProvidesPackage{stannum}
 
+\newif\if@footsepline\@footseplinefalse
+\DeclareOption{footsepline}{\@footseplinetrue}
+\ProcessOptions\relax
+
 \usepackage[usenames,dvipsnames]{xcolor}
 \usepackage[T1]{fontenc}
 \usepackage[english]{babel}
 \usepackage{lmodern, bbding}
 
+\if@footsepline
+\usepackage[plainfootsepline=off,headsepline=0.5pt,footsepline=0.5pt]{scrlayer-scrpage}
+\else
 \usepackage[plainfootsepline=off,headsepline=0.5pt,footsepline=0pt]{scrlayer-scrpage}
+\fi
+
 %\usepackage[margin=1in]{geometry}
 \usepackage{typearea}
 \usepackage{geometry}
-\usepackage{commath, yhmath, amsmath, amsopn, multicol, amsfonts, amssymb, esint, amsthm, thmtools, subfig, mathdots}
+\usepackage{commath, yhmath, amsmath, amsopn, multicol, amsfonts, amssymb, esint, amsthm, thmtools, subfig, mathdots, mathtools}
 \usepackage{upgreek, bold-extra, mathrsfs, tensor, multirow, ellipsis, chemfig, stackengine, asymptote, bbm}
 \usepackage{xpatch, longtable, tabu, enumerate, xparse, array}
 \usepackage{float, wrapfig, picinpar, siunitx, derivative, lastpage, textcomp, nicefrac}
@@ -70,7 +79,13 @@
 \usepackage[obeyFinal,textsize=scriptsize,shadow,loadshadowlibrary]{todonotes}
 \usepackage[font=small,labelsep=none]{caption}
 \usepackage[new]{old-arrows}
-\usepackage[allcommands,esvecte]{overarrows}
+
+\usepackage{unicode-math}
+\setmathfont{NewCMMath-Regular.otf}
+\DeclareMathAlphabet{\mathcal}{OMS}{cmsy}{m}{n}
+
+\usepackage[allcommands,esvecte]{overarrows} % This needs to be loaded at the end for overbar to work
+
 % Backup package:
 % \usepackage[e]{esvect}
 % \usepackage{url}
@@ -947,7 +962,6 @@ This page is intentionally left blank.%
 \newcommand{\cycprod}{\prod_{\mathrm{cyc}}}
 \newcommand{\cycsum}{\sum_{\mathrm{cyc}}}
 \newcommand{\defeq}{\ensuremath \stackrel{\Delta}{=}}
-\newcommand{\degrees}{\ensuremath{^{\circ}}}
 \newcommand{\eins}{\ensuremath{\mathbbm{1}}}
 \newcommand{\emphg}[1]{\emph{\textcolor{ForestGreen}{#1}}}
 \newcommand{\emphr}[1]{\emph{\textcolor{Maroon}{#1}}}
@@ -956,6 +970,7 @@ This page is intentionally left blank.%
 \newcommand{\ignore}[1]{}
 \newcommand{\ilim}[1]{\lim_{#1\to\infty}}
 \newcommand{\img}{\ensuremath{^{\varto}}}
+\newcommand{\injto}{\hookrightarrow}
 \newcommand{\inv}{\ensuremath{^{-1}}}
 \newcommand{\iprod}[1]{\prod_{#1}^\infty}
 \newcommand{\isum}[1]{\sum_{#1}^\infty}
@@ -970,16 +985,18 @@ This page is intentionally left blank.%
 \newcommand{\nsubgeq}{\mathrel{\trianglelefteq}}
 \newcommand{\nsupg}{\mathrel{\rhd}}
 \newcommand{\nsupgeq}{\mathrel{\trianglerighteq}}
+\newcommand{\dg}{\ensuremath{^{\circ}}}
 \newcommand{\phiv}{\varphi}
 \newcommand{\pimg}{\ensuremath{^{\varleftarrow}}}
 \newcommand{\seq}[1]{#1_1, #1_2, \dotsc,#1_n}
 \newcommand{\sq}[1]{\ensuremath{#1 \times #1}}
+\newcommand{\surjto}{\twoheadrightarrow}
 \newcommand{\symprod}{\prod_{\mathrm{sym}}}
 \newcommand{\symsum}{\sum_{\mathrm{sym}}}
 \newcommand{\transp}{\ensuremath{^\top}}
+\newcommand{\varempty}{\diameter}
 \newcommand{\vseq}[1]{(#1_i)_{i\in\mathbb{N}}}
 \newcommand{\w}{\hspace*{-3pt}}
-\renewcommand{\emptyset}{\diameter}
 
 % Boxes
 \tcbset{highlight math style={enhanced,colframe=black,colback=white,arc=2.5pt,boxrule=0.6pt}}%
@@ -995,7 +1012,7 @@ This page is intentionally left blank.%
 \newcommand{\centernot}[1]{\mathrel{\mathpalette\@nll{#1}}}
 \makeatother
 
-% Bold mathbb characters
+% Special characters
 \newcommand{\NN}{\ensuremath{\mathbb{N}}}
 \newcommand{\RR}{\ensuremath{\mathbb{R}}}
 \newcommand{\ZZ}{\ensuremath{\mathbb{Z}}}
@@ -1010,11 +1027,11 @@ This page is intentionally left blank.%
 \DeclareMathAlphabet{\mathrsfs}{U}{rsfso}{m}{n}
 \DeclareMathAlphabet{\mathssss}{U}{rsfs}{m}{n}
 \newcommand{\mb}[1]{\ensuremath{\mathbf{#1}}}
-\newcommand{\mbi}[1]{\ensuremath{\mathbfit{#1}}}
+\newcommand{\mv}[1]{\ensuremath{\mathbfit{#1}}}
+\newcommand{\ml}[1]{\ensuremath{\mathsf{#1}}}
 \newcommand{\mc}[1]{\ensuremath{\mathcal{#1}}}
 \newcommand{\mf}[1]{\ensuremath{\mathbb{#1}}}
 \newcommand{\mk}[1]{\ensuremath{\mathfrak{#1}}}
-\newcommand{\mv}[1]{\ensuremath{\boldsymbol{#1}}}
 \newcommand{\me}[1]{\ensuremath{\mathscr{#1}}}
 \newcommand{\ms}[1]{\ensuremath{\mathrsfs{#1}}}
 \newcommand{\mh}[1]{\ensuremath{\mathssss{#1}}}
@@ -1086,6 +1103,7 @@ This page is intentionally left blank.%
 \renewcommand{\set}[2][0]{\delimit{#1}{\{}{#2}{\}}}
 \renewcommand{\norm}[2][0]{\delimit{#1}{\lVert}{#2}{\rVert}}
 \renewcommand{\abs}[2][0]{\delimit{#1}{|}{#2}{|}}
+\newcommand{\reval}[2][0]{\delimit{#1}{.}{#2}{|}}
 \newcommand{\bra}[2][0]{\delimit{#1}{\langle}{#2}{|}}
 \newcommand{\ket}[2][0]{\delimit{#1}{|}{#2}{\rangle}}
 \newcommand{\braket}[3][0]{\delb{#1}{\langle}{#2}{#3}{\rangle}}
@@ -1163,7 +1181,6 @@ This page is intentionally left blank.%
 \DeclareMathOperator{\grad}{\ensuremath{grad}}
 \DeclareMathOperator{\Hol}{\ensuremath{Hol}}
 \DeclareMathOperator{\Hom}{\ensuremath{Hom}}
-\DeclareMathOperator{\idm}{\ensuremath{id}}
 \DeclareMathOperator{\im}{\ensuremath{im}}
 \DeclareMathOperator{\Ind}{\ensuremath{Ind}}
 \DeclareMathOperator{\Inn}{\ensuremath{Inn}}
@@ -1447,6 +1464,7 @@ This page is intentionally left blank.%
 \newenvironment{solution}{\renewcommand{\proofname}{Solution}\begin{proof}\renewcommand{\proofname}{Proof}}{\renewcommand\qedsymbol{$\blacksquare$}\end{proof}}
 \newenvironment{Solution}[1][\proofname]{\renewcommand{\proofname}{Solution}\proof[\normalfont\sffamily\bfseries #1]\renewcommand{\proofname}{Proof}}{\renewcommand\qedsymbol{$\blacksquare$}\endproof}
 \newenvironment{Proof}[1][\proofname]{\renewcommand\qedsymbol{$\square$}\renewcommand{\proofname}{Proof}\proof[\normalfont\sffamily\bfseries #1]}{\endproof}
+\newenvironment{Subproof}[1][\proofname]{\renewcommand\qedsymbol{$\triangle$}\renewcommand{\proofname}{Proof}\proof[\normalfont\sffamily\bfseries #1]}{\endproof}
 
 \makeatletter
 \newcommand{\raisemath}[1]{\mathpalette{\raisem@th{#1}}}% \raisemath{<len>}{...}
@@ -1464,19 +1482,32 @@ This page is intentionally left blank.%
 \newcommand{\hsbar}{\newhbar{0pt}{-0.7pt}{h}}
 \newcommand{\dsbar}{\newhbar{2pt}{-0.7pt}{d}}
 
-%%%%%%
-% This should be at the end of the file
-%%%%%%
-\usepackage{unicode-math}
-\usepackage{mathtools}
-\setmathfont{NewCMMath-Regular.otf}
-\DeclareMathAlphabet{\mathcal}{OMS}{cmsy}{m}{n}
-
 \NewOverArrowCommand{overhookleft}{start=\lhook, end=\rightarrow, middle=\relbar, trim start=0, trim end=3, trim middle=5,}
 
-% customize
+% Customize style
 \addtokomafont{disposition}{\rmfamily}
+\addtokomafont{section}{\sffamily}
+\addtokomafont{subsection}{\sffamily}
+\addtokomafont{subsubsection}{\sffamily}
+\addtokomafont{paragraph}{\sffamily\color{navyblue!35!brown}\P\ }
 \addtokomafont{subtitle}{\Large}
 \setkomafont{pageheadfoot}{\normalfont\sffamily}
 \setkomafont{author}{\Large\scshape}
 \setkomafont{date}{\Large\normalsize}
+
+
+  % \@ifundefined{chapter}{}{
+  %   \addtokomafont{partprefix}{\rmfamily}
+  %   \renewcommand*{\partformat}{\color{purple}
+  %     \scalebox{2.5}{\thepart}\enlargethispage{2em}}
+  %   \addtokomafont{chapterprefix}{\raggedleft}
+  %   \RedeclareSectionCommand[beforeskip=0.5em]{chapter}
+  %   \renewcommand*{\chapterformat}{\mbox{%
+  %     \scalebox{1.5}{\chapappifchapterprefix{\nobreakspace}}%
+  %     \scalebox{2.718}{\color{purple}\thechapter}\enskip}}
+  % }
+  \renewcommand*{\sectionformat}{\color{purple}\S\thesection\enskip}
+  \renewcommand*{\subsectionformat}{\color{purple}\S\thesubsection\enskip}
+  \renewcommand*{\subsubsectionformat}{\color{purple}\S\thesubsubsection\enskip}
+  \KOMAoptions{numbers=noenddot}
+  %\usetocstyle{KOMAlike}
