@@ -3,11 +3,6 @@
 %% ====================================================================
 
 \usepackage[usenames,dvipsnames]{xcolor}
-% \usepackage{luacolor}
-
-%% don't use with LuaLatex
-% \usepackage[mathletters]{ucs}
-% \usepackage[utf8x]{inputenc}
 
 \usepackage{lmodern}
 \usepackage[T1]{fontenc}
@@ -29,10 +24,12 @@
 \usepackage{epigraph}
 \renewcommand{\epigraphsize}{\scriptsize}
 \renewcommand{\epigraphwidth}{60ex}
+\usepackage{chemfig}
 
 \usepackage{algpseudocode}
 \algrenewcommand\algorithmicprocedure{\textbf{function}}
 \algrenewcommand{\algorithmiccomment}[1]{\hskip3em$\triangleright$ #1}
+
 \usepackage{hyperref}
 \hypersetup{colorlinks=true,urlcolor=RubineRed,linkcolor=RoyalBlue,citecolor=ForestGreen,filecolor=Magenta}
 
@@ -48,27 +45,8 @@
 \usetikzlibrary{patterns}
 \usetikzlibrary{shapes.geometric}
 \usepackage{chessfss, adjustbox}
-\newcommand{\pawnB}[1][1.3ex]{%
-\adjustbox{Trim=4.3pt 2.6pt 4.3pt 0pt,width=#1,margin=0.2ex 0ex 0.2ex 0ex}{\BlackPawnOnWhite}%
-}%
-\newcommand{\rookB}[1][1.58ex]{%
-\adjustbox{Trim=3.2pt 2.2pt 3.2pt 0pt,width=#1,raise=0ex,margin=0.1ex 0ex 0.1ex 0ex}{\BlackRookOnWhite}%
-}%
-\newcommand{\knightB}[1][1.85ex]{%
-\adjustbox{Trim=2.3pt 2.35pt 2.5pt 0pt,width=#1,raise=-0.03ex,margin=0.14ex 0ex 0.14ex 0ex}{\BlackKnightOnWhite}%
-}%
-\newcommand{\bishopB}[1][1.79ex]{%
-\adjustbox{Trim=2.3pt 2pt 2.3pt 0pt,width=#1,raise=-0.12ex,margin=0.1ex 0ex 0.1ex 0ex}{\BlackBishopOnWhite}%
-}%
-\newcommand{\queenB}[1][2.05ex]{%
-\adjustbox{Trim=1.2pt 2.2pt 1.2pt 0pt,width=#1,raise=-0.08ex,margin=0.1ex 0ex 0.1ex 0ex}{\BlackQueenOnWhite}%
-}%
-\newcommand{\kingB}[1][1.95ex]{%
-\adjustbox{Trim=2pt 2pt 2pt 0pt,width=#1,raise=-0.06ex,margin=0.13ex 0ex 0.13ex 0ex}{\BlackKingOnWhite}%
-}%
 
 \usepackage{amsthm}
-% \usepackage[framed, hyperref, thmmarks, amsmath, amsthm]{ntheorem}
 \usepackage{thmtools}
 
 \usepackage[font=small,labelsep=none]{caption}
@@ -85,9 +63,6 @@
 
 \usepackage{amsfonts, amssymb, esint}
 
-% \let\rsfsscr=\mathscr
-% \usepackage[mathscr]{euscript}
-% \usepackage[mathscr]{eucal}
 
 \usepackage{listings,lstautogobble}
 \lstset{
@@ -107,12 +82,6 @@
 \AtBeginDocument{\setlength{\belowdisplayshortskip}{4pt}}%
 \AtBeginDocument{\setlength{\abovedisplayskip}{4pt}}%
 \AtBeginDocument{\setlength{\belowdisplayskip}{4pt}}%
-
-%% Sectioning (example)
-%\RedeclareSectionCommand[ beforeskip=0.5\baselineskip, afterskip=0.05\baselineskip]{section}
-%\RedeclareSectionCommand[ beforeskip=0.5\baselineskip, afterskip=0.05\baselineskip]{subsection}
-%\addtokomafont{section}{\mdseries\scshape\large\centering}
-%\addtokomafont{subsection}{\mdseries\scshape\normalsize\centering}
 
 %% tikz
 \tikzset{%
@@ -151,7 +120,15 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 \setlength{\headheight}{1.25\baselineskip}
 \setlength{\headsep}{0.5\baselineskip}
 \setlength{\footskip}{2.5\baselineskip}
-\setlength{\footnotesep}{\baselineskip}
+\setlength{\footnotesep}{0.75\baselineskip}
+
+% Shift foot down
+\ModifyLayer[addvoffset=.6ex]{scrheadings.foot.odd}
+\ModifyLayer[addvoffset=.6ex]{scrheadings.foot.even}
+\ModifyLayer[addvoffset=.6ex]{scrheadings.foot.oneside}
+\ModifyLayer[addvoffset=.6ex]{plain.scrheadings.foot.odd}
+\ModifyLayer[addvoffset=.6ex]{plain.scrheadings.foot.even}
+\ModifyLayer[addvoffset=.6ex]{plain.scrheadings.foot.oneside}
 
 %\setlength{\parindent}{0cm}
 \setlength{\parskip}{3pt plus0pt minus2pt}
@@ -196,12 +173,7 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 \newcommand{\CC}{\ensuremath{\mathbb{C}}}
 \newcommand{\RP}{\ensuremath{\mathbb{RP}}}
 
-\DeclareMathOperator{\GF}{\ensuremath{\mathrm{GF}}}
-\DeclareMathOperator{\E}{\ensuremath{\mathsf{E}}}
-\DeclareMathOperator{\var}{\ensuremath{\mathsf{Var}}}
-\DeclareMathOperator{\pr}{\ensuremath{\mathsf{Pr}}}
-\DeclareMathOperator{\varvar}{\ensuremath{\mathrm{Var}}}
-
+\newcommand{\cro}{\ensuremath{^{\times}}}
 \newcommand{\transp}{\ensuremath{^\top}}
 \newcommand{\inv}{\ensuremath{^{-1}}}
 \newcommand{\icr}{\ensuremath{^{\times}}}
@@ -258,25 +230,32 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 \renewcommand{\set}[2][0]{\delimit{#1}{\{}{#2}{\}}}
 \renewcommand{\norm}[2][0]{\delimit{#1}{\lVert}{#2}{\rVert}}
 \renewcommand{\abs}[2][0]{\delimit{#1}{|}{#2}{|}}
-\newcommand{\angbr}[2][0]{\delimit{#1}{\langle}{#2}{\rangle}}
+
 
 \newcommand{\bra}[2][0]{\delimit{#1}{\langle}{#2}{|}}
 \newcommand{\ket}[2][0]{\delimit{#1}{|}{#2}{\rangle}}
 \newcommand{\braket}[3][0]{\delb{#1}{\langle}{#2}{#3}{\rangle}}
 \newcommand{\angbrc}[3][0]{\delb{#1}{\langle}{#2}{#3}{\rangle}}
 
+\newcommand{\angbr}[2][0]{\delimit{#1}{\langle}{#2}{\rangle}}
 \newcommand{\Angbr}[2][0]{\delimit{#1}{\lAngle}{#2}{\rAngle}}
-\newcommand{\dbr}[2][0]{\delimit{#1}{\lBrack}{#2}{\rBrack}}
+
+\newcommand{\brac}[2][0]{\delimit{#1}{\lbrack}{#2}{\rbrack}}
+\newcommand{\Brac}[2][0]{\delimit{#1}{\lBrack}{#2}{\rBrack}}
 \newcommand{\floor}[2][0]{\delimit{#1}{\lfloor}{#2}{\rfloor}}
 \newcommand{\ceil}[2][0]{\delimit{#1}{\lceil}{#2}{\rceil}}
 \newcommand{\pair}[2][0]{\delimit{#1}{(}{#2}{)}}
+\newcommand{\Pair}[2][0]{\delimit{#1}{\lParen}{#2}{\rParen}}
 \newcommand{\pairc}[3][0]{\delb{#1}{(}{#2}{#3}{)}}
 \newcommand{\lopen}[2][0]{\delimit{#1}{]}{#2}{]}}
 \newcommand{\ropen}[2][0]{\delimit{#1}{[}{#2}{[}}
 \newcommand{\bopen}[2][0]{\delimit{#1}{]}{#2}{[}}
 
-\newcommand{\cro}{\ensuremath{^{\times}}}
-
+\DeclareMathOperator{\GF}{\ensuremath{\mathrm{GF}}}
+\DeclareMathOperator{\E}{\ensuremath{\mathsf{E}}}
+\DeclareMathOperator{\var}{\ensuremath{\mathsf{Var}}}
+\DeclareMathOperator{\pr}{\ensuremath{\mathsf{Pr}}}
+\DeclareMathOperator{\varvar}{\ensuremath{\mathrm{Var}}}
 \DeclareMathOperator{\Gal}{\ensuremath{Gal}}
 \DeclareMathOperator{\ch}{\ensuremath{ch}}
 \DeclareMathOperator{\Ub}{\ensuremath{Ub}}
@@ -330,7 +309,7 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 \DeclareMathOperator{\Acc}{\ensuremath{acc}}
 \DeclareMathOperator{\Int}{\ensuremath{Int}}
 \DeclareMathOperator{\Spin}{\ensuremath{Spin}}
-\DeclareMathOperator{\SO}{\ensuremath{SO}}
+\DeclareMathOperator{\So}{\ensuremath{SO}}
 \DeclareMathOperator{\SU}{\ensuremath{SU}}
 \DeclareMathOperator{\curl}{\ensuremath{curl}}
 \DeclareMathOperator{\grad}{\ensuremath{grad}}
@@ -354,7 +333,6 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 \DeclareMathOperator{\GL}{\ensuremath{GL}} % General linear group
 \DeclareMathOperator{\SL}{\ensuremath{SL}} % Special linear group
 \DeclareMathOperator{\Vol}{\ensuremath{Vol}} % Special linear group
-
 \DeclareMathOperator{\re}{\ensuremath{re}}
 \DeclareMathOperator{\im}{\ensuremath{im}}
 
@@ -380,7 +358,7 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 
 \newcommand{\symdiff}{\bigtriangleup}
 
-\newcommand{\examhead}[6]{
+\newcommand{\examhead}[6]{%
 	\begin{center}
 	{{\large \fbox{\parbox{0.98\textwidth}{
 		\hbox to \hsize{#1 \hfil #2} \vskip 0.075in
@@ -390,8 +368,7 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 	\end{center}
 	\vspace{-1em} }
 
-\newcommand{\srudhead}[4]{
-
+\newcommand{\srudhead}[4]{%
 	\begin{center}
 	{\textsf {\large \fbox{\parbox{0.98\textwidth}{
 		\hbox to \hsize{#1 \hfil #2} \vskip 0.075in
@@ -400,8 +377,7 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 	\end{center}
 	\vspace{-1em} }
 
-\newcommand{\rudhead}[4]{
-
+\newcommand{\rudhead}[4]{%
 	\begin{center}
 	{ {\large \fbox{\parbox{0.98\textwidth}{
 		\hbox to \hsize{#1 \hfil #2} \vskip 0.075in
@@ -422,9 +398,6 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 	\vspace{-1em}
 }
 
-\usepackage{chemfig}
-\renewcommand*\printatom[1]{\ensuremath{\mathsf{#1}}}
-
 \newcommand{\mysetminusD}{\hbox{\tikz{\draw[line width=0.4pt,line cap=round] (3pt,0) -- (0,6pt);}}}
 \newcommand{\mysetminusT}{\mysetminusD}
 \newcommand{\mysetminusS}{\hbox{\tikz{\draw[line width=0.25pt,line cap=round] (2pt,0) -- (0,4pt);}}}
@@ -432,25 +405,21 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 \newcommand{\mysetminus}{\mathbin{\mathchoice{\mysetminusD}{\mysetminusT}{\mysetminusS}{\mysetminusSS}}}
 \newcommand{\varsetminus}{\mathbin{\backslash}}
 
-\usepackage{centernot}
-
 \newcommand{\parte}[1]{\vspace{2\parskip}\noindent{\color{Cerulean}\textbf{{{\ifthenelse{\equal{#1}{}}{\textsf{Part:}}{\textsf{Part} {\textcolor{Black}{\textsf{#1}}}{.}}}}}}}
 \newcommand{\prob}[1]{\vspace{2\parskip}\noindent{\color{BrickRed}\textbf{{{\ifthenelse{\equal{#1}{}}{\textsf{Problem:}}{\textsf{Problem} {\textcolor{Black}{\textsf{#1}}}{.}}}}}} \stepcounter{probCounter}}
 \newcommand{\soln}[1]{\noindent{\textbf{{{\ifthenelse{\equal{#1}{}}{{{Solution:}}}{{{Solution}} {\textcolor{Black}{#1}}{.}}}}}}}
-\newcommand{\varnmid}{\centernot\mid}
+
 \newcommand{\iprod}[1]{\prod_{#1}^\infty}
 \newcommand{\isum}[1]{\sum_{#1}^\infty}
 \newcommand{\ilim}[1]{\lim_{#1\to\infty}}
-\newcommand{\seq}[1]{#1_1,\dotsc,#1_n}
+\newcommand{\seq}[1]{#1_1, #1_2, \dotsc,#1_n}
+\newcommand{\vseq}[1]{(#1_i)_{i\in\mathbb{N}}}
 
 \newcommand{\shownum}{\addtocounter{equation}{1}\tag{\theequation}}
 \usepackage{array}
 \newcolumntype{x}[1]{>{\centering\arraybackslash\hspace{0pt}}p{#1}}
 \renewcommand{\arraystretch}{1}
 \newcommand{\w}{\hspace*{-3pt}}
-\newcommand{\unitj}{\ensuremath{\mv{\textbf{\j}}}}
-\newcommand{\uniti}{\ensuremath{\mv{\textbf{\i}}}}
-\newcommand{\unitk}{\ensuremath{\mb{k}}}
 
 %% ==== Custom macro ===
 \newcommand{\eps}{\varepsilon}
@@ -477,8 +446,6 @@ This page is intentionally left blank.%
 \vspace{\fill}
 }
 
-\newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
-
 \newcommand*\Laplace{\mathop{}\!\mathbin\bigtriangleup}
 \newcommand*\DAlambert{\mathop{}\!\mathbin\Box}
 \newcommand{\powerset}{\raisebox{.15\baselineskip}{\Large\ensuremath{\wp}}}
@@ -496,7 +463,6 @@ This page is intentionally left blank.%
   stringstyle=\color{orange},
 }
 
-\let\SO\undefined
 \usepackage{tkz-euclide, tkz-graph}
 \usepackage[most]{tcolorbox}
 
@@ -672,7 +638,6 @@ This page is intentionally left blank.%
   spaceabove=2pt,
   spacebelow=1pt,
   bodyfont=\normalfont,
-  mdframed={style=remarkbox},
 ]{remarkhead}
 
 \newcommand{\listhack}{$\empty$\vspace{-2em}}
@@ -730,7 +695,6 @@ This page is intentionally left blank.%
 \newenvironment{solution}{\renewcommand{\proofname}{Solution}\begin{proof}\renewcommand{\proofname}{Proof}}{\renewcommand\qedsymbol{$\blacksquare$}\end{proof}}
 \newenvironment{Solution}[1][\proofname]{\renewcommand{\proofname}{Solution}\proof[\normalfont\sffamily\bfseries #1]\renewcommand{\proofname}{Proof}}{\renewcommand\qedsymbol{$\blacksquare$}\endproof}
 \newenvironment{Proof}[1][\proofname]{\renewcommand\qedsymbol{$\square$}\renewcommand{\proofname}{Proof}\proof[\normalfont\sffamily\bfseries #1]}{\endproof}
-
 \makeatother
 
 %% IMPORTANT: below should be at the end of the file and order should be preserved.
@@ -776,22 +740,10 @@ This page is intentionally left blank.%
 \newcommand{\nnsupgeq}{\mathrel{\ntrianglerighteq}}
 \newcommand{\sq}[1]{\ensuremath{#1 \times #1}}
 
-% \def\hsbar{\ensuremath{\mathit{^^^^0127}}}
 \usepackage{xparse}
-% \usepackage{fontspec}
-% \newcommand{\hsbar}{{\mathchar"AF\mkern-9mu h}}
-% \newcommand{\hsbar}{\mathit{^^^^0127}}
 \makeatletter
 \newcommand{\raisemath}[1]{\mathpalette{\raisem@th{#1}}}% \raisemath{<len>}{...}
 \newcommand{\raisem@th}[3]{\raisebox{#1}{$#2#3$}}
-\makeatother
-\newcommand{\newhbar}[3]{% \newhbar[<horz len>][<vert len>]
-  \ensuremath{\mathrlap{\raisemath{#2}{\hspace*{#1}{\mathchar"AF\mkern-9mu}}}#3}%
-}
-\newcommand{\hsbar}{\newhbar{0pt}{-0.7pt}{h}}
-\newcommand{\dsbar}{\newhbar{2pt}{-0.7pt}{d}}
-
-\makeatletter
 \def\mathcolor#1#{\@mathcolor{#1}}
 \def\@mathcolor#1#2#3{%
   \protect\leavevmode
@@ -799,5 +751,22 @@ This page is intentionally left blank.%
 }
 \makeatother
 
+\newcommand{\newhbar}[3]{% \newhbar[<horz len>][<vert len>]
+  \ensuremath{\mathrlap{\raisemath{#2}{\hspace*{#1}{\mathchar"AF\mkern-9mu}}}#3}%
+}
+\newcommand{\hsbar}{\newhbar{0pt}{-0.7pt}{h}}
+\newcommand{\dsbar}{\newhbar{2pt}{-0.7pt}{d}}
+
+
 \newcommand{\phiv}{\varphi}
 \NewOverArrowCommand{overhookleft}{start=\lhook, end=\rightarrow, middle=\relbar, trim start=0, trim end=3, trim middle=5,}
+
+%% centernot + mathunicode breaks things
+%% \usepackage{centernot}
+\makeatletter
+\def\@nll#1#2{\m@th\ooalign{\hfil$#1#2$\hfil\cr\hfil$#1/$\hfil\cr}}
+\newcommand{\nll}{\mathrel{\mathpalette\@nll{\ll}}}
+\newcommand{\ngg}{\mathrel{\mathpalette\@nll{\gg}}}
+\newcommand{\varnmid}{\mathrel{\mathpalette\@nll{\mid}}}
+\newcommand{\centernot}[1]{\mathrel{\mathpalette\@nll{#1}}}
+\makeatother

@@ -8,9 +8,8 @@ To use this repository, copy the `template.tex`.  For example
 $ cp template.tex hw01.tex
 ```
 
-Make the changes needed and compile the file as usual, for
-example:
+Make the changes needed and compile the file as usual. Use `XeLaTeX` to compile your source code.
 
 ```bash
-$ latex hw01.tex
+$ xelatex hw01.tex
 ```
