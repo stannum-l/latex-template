@@ -70,15 +70,21 @@
 %\usepackage[margin=1in]{geometry}
 \usepackage{typearea}
 \usepackage{geometry}
+
+
 \usepackage{commath, yhmath, amsmath, amsopn, multicol, amsfonts, amssymb, esint, amsthm, thmtools, subfig, mathdots}
 \usepackage{upgreek, bold-extra, mathrsfs, tensor, multirow, ellipsis, chemfig, stackengine, asymptote, bbm}
 \usepackage{xpatch, longtable, tabu, enumerate, xparse, array}
 \usepackage{float, wrapfig, picinpar, siunitx, derivative, lastpage, textcomp, nicefrac}
-\usepackage{interval, calc, framed, fancybox, quoting, empheq, algorithm, stackrel, adjustbox}
+\usepackage{interval, calc, framed, fancybox, quoting, empheq, stackrel, adjustbox}
 \usepackage[makeroom]{cancel}
 \usepackage[obeyFinal,textsize=scriptsize,shadow,loadshadowlibrary]{todonotes}
 \usepackage[font=small,labelsep=none]{caption}
 
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,urlcolor=RubineRed,linkcolor=RoyalBlue,citecolor=ForestGreen,filecolor=Magenta}
+
+\usepackage{algorithm}
 
 \usepackage{unicode-math}
 \usepackage{mathtools}
@@ -120,9 +126,6 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 \usepackage{algpseudocode}
 \algrenewcommand\algorithmicprocedure{\textbf{function}}
 \algrenewcommand{\algorithmiccomment}[1]{\hskip3em$\triangleright$ #1}
-
-\usepackage{hyperref}
-\hypersetup{colorlinks=true,urlcolor=RubineRed,linkcolor=RoyalBlue,citecolor=ForestGreen,filecolor=Magenta}
 
 \usepackage{epigraph}
 \renewcommand{\epigraphsize}{\scriptsize}
@@ -167,13 +170,13 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 
 % enumerate
 \usepackage[shortlabels]{enumitem}
-\setlist[description]{font=\normalfont\bfseries }
 \setlist[itemize,1]{}
+\setlist[itemize,2]{label=$\circ$,leftmargin=\parindent}
 \setlist[description,1]{}
 \setlist[enumerate,1]{label=(\emph{\alph*}), ref=\alph*}
-\setlist[enumerate,2]{label=(\emph{\roman*}), ref=\roman*}
-\setlist[enumerate,3]{label=(\emph{\arabic*}), ref=\arabic*}
-\setlist[enumerate,4]{label=(\emph{\roman*}), ref=\roman*}
+\setlist[enumerate,2]{label=(\emph{\roman*}), leftmargin=\parindent, ref=\roman*}
+\setlist[enumerate,3]{label=(\emph{\arabic*}), leftmargin=\parindent, ref=\arabic*}
+\setlist[enumerate,4]{label=(\emph{\roman*}), leftmargin=\parindent, ref=\roman*}
 % \newenvironment{enumI}{\begin{itemize}}{\end{itemize}}
 \newenvironment{enum}{\begin{enumerate}[label=(\alph*), ref=\alpha*]}{\end{enumerate}}
 \newenvironment{enuma}{\begin{enumerate}[label=(\alph*), ref=\alpha*]}{\end{enumerate}}
@@ -182,6 +185,7 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 \newenvironment{enumrB}{\begin{enumerate}[label=(\emph{\roman*}), ref=\roman*]}{\end{enumerate}}
 \newenvironment{enumr}{\begin{enumerate}[label=({\roman*}), ref=\roman*]}{\end{enumerate}}
 \newenvironment{enumR}{\begin{enumerate}[label=({\Roman*}), ref=\Roman*]}{\end{enumerate}}
+\newenvironment{descr}{\begin{description}[font=\normalfont\sffamily, labelindent=\parindent, leftmargin=\parindent]}{\end{description}}
 
 %% colors
 \definecolor{airforceblue}{rgb}{0.36, 0.54, 0.66}
