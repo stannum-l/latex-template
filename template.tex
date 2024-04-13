@@ -1,32 +1,10 @@
-\documentclass[fontsize=10pt,numbers=endperiod,letterpaper]{scrartcl}
-
-\PassOptionsToPackage{esvecte}{overarrows}
-\PassOptionsToPackage{footheight=16pt}{typearea}
-\PassOptionsToPackage{plainfootsepline=off,headsepline=0.5pt,footsepline=0.5pt}{scrlayer-scrpage}
-\PassOptionsToPackage{margin=1in}{geometry}
-
-\include{styles}
-%% ==== Header / footer ===
-%\setkomafont{pageheadfoot}{\normalfont\itshape}
-%\ohead[]{}
-%\chead[]{}
-%\ihead[]{}
-%\cfoot[\vbox{\vspace{0.15cm}\pagemark}]{\vbox{\vspace{0.15cm}\pagemark}}
-
-%% ==== Header / footer === Use one of the below
-%\pagestyle{scrheadings}
-\pagestyle{plain.scrheadings}
-
-%%%% === Turn everything into displaystyle
-%\everymath{\displaystyle}
-
+\documentclass[12pt,oneside,numbers=endperiod,a4paper]{scrartcl}
+\usepackage{stannum}
 \begin{document}
-\include{color-alias}
-%------ Begin content here -----
-%\thispagestyle{plain.scrheadings}
+\thispagestyle{plain.scrheadings}
+\rudhead{}{}{Homework \#4}{\today}
 
-
-
-Test
-%------ End document -----
+\begin{problem}
+  This is problem number 1.
+\end{problem}
 \end{document}
