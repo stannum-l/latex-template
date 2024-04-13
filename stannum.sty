@@ -52,6 +52,19 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ProvidesPackage{stannum}
 
+\AtBeginDocument{\setlength{\abovedisplayshortskip}{2pt}}%
+\AtBeginDocument{\setlength{\belowdisplayshortskip}{4pt}}%
+\AtBeginDocument{\setlength{\abovedisplayskip}{4pt}}%
+\AtBeginDocument{\setlength{\belowdisplayskip}{4pt}}%
+\AtBeginDocument{\setlength{\headheight}{1.25\baselineskip}}%
+\AtBeginDocument{\setlength{\headsep}{0.5\baselineskip}}%
+\AtBeginDocument{\setlength{\footskip}{2.5\baselineskip}}%
+\AtBeginDocument{\setlength{\footnotesep}{0.75\baselineskip}}%
+%\AtBeginDocument{\setlength{\parindent}{0cm}}%
+\AtBeginDocument{\setlength {\marginparwidth }{1in}}
+\AtBeginDocument{\setlength{\parskip}{3pt plus0pt minus2pt}}%
+\AtBeginDocument{\setlength{\multicolsep}{2.0pt plus 0pt minus 0pt}}
+
 \newif\if@footsepline\@footseplinefalse
 \DeclareOption{footsepline}{\@footseplinetrue}
 \ProcessOptions\relax
@@ -86,7 +99,7 @@
 
 \usepackage{algorithm}
 
-\usepackage{unicode-math}
+\usepackage[warnings-off={mathtools-colon,mathtools-overbracket}]{unicode-math}
 \usepackage{mathtools}
 \setmathfont{NewCMMath-Regular.otf}
 \DeclareMathAlphabet{\mathcal}{OMS}{cmsy}{m}{n}
@@ -94,6 +107,13 @@
 \usepackage[new]{old-arrows} % must be loaded after amsmath, lmodern, mathtools, and stmaryrd
 \usepackage[allcommands,esvecte]{overarrows} % This needs to be loaded at the end for overbar to work
 
+% Shift foot down
+\ModifyLayer[addvoffset=.6ex]{scrheadings.foot.odd}
+\ModifyLayer[addvoffset=.6ex]{scrheadings.foot.even}
+\ModifyLayer[addvoffset=.6ex]{scrheadings.foot.oneside}
+\ModifyLayer[addvoffset=.6ex]{plain.scrheadings.foot.odd}
+\ModifyLayer[addvoffset=.6ex]{plain.scrheadings.foot.even}
+\ModifyLayer[addvoffset=.6ex]{plain.scrheadings.foot.oneside}
 
 % Backup package:
 % \usepackage[e]{esvect}
@@ -147,26 +167,6 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.18}
-
-\AtBeginDocument{\setlength{\abovedisplayshortskip}{2pt}}%
-\AtBeginDocument{\setlength{\belowdisplayshortskip}{4pt}}%
-\AtBeginDocument{\setlength{\abovedisplayskip}{4pt}}%
-\AtBeginDocument{\setlength{\belowdisplayskip}{4pt}}%
-\AtBeginDocument{\setlength{\headheight}{1.25\baselineskip}}%
-\AtBeginDocument{\setlength{\headsep}{0.5\baselineskip}}%
-\AtBeginDocument{\setlength{\footskip}{2.5\baselineskip}}%
-\AtBeginDocument{\setlength{\footnotesep}{0.75\baselineskip}}%
-%\AtBeginDocument{\setlength{\parindent}{0cm}}%
-\AtBeginDocument{\setlength{\parskip}{3pt plus0pt minus2pt}}%
-\AtBeginDocument{\setlength{\multicolsep}{2.0pt plus 0pt minus 0pt}}
-
-% Shift foot down
-\ModifyLayer[addvoffset=.6ex]{scrheadings.foot.odd}
-\ModifyLayer[addvoffset=.6ex]{scrheadings.foot.even}
-\ModifyLayer[addvoffset=.6ex]{scrheadings.foot.oneside}
-\ModifyLayer[addvoffset=.6ex]{plain.scrheadings.foot.odd}
-\ModifyLayer[addvoffset=.6ex]{plain.scrheadings.foot.even}
-\ModifyLayer[addvoffset=.6ex]{plain.scrheadings.foot.oneside}
 
 % enumerate
 \usepackage[shortlabels]{enumitem}
@@ -1016,13 +1016,11 @@ This page is intentionally left blank.%
 \newcommand{\cmb}[2]{\tcbhighmath[on line,boxsep=4pt,boxrule=0.6pt,left=0pt,right=0pt,top=0pt,bottom=0pt,colback=#1,highlight math style={enhanced}]{#2}}
 
 % center not
-\makeatletter
 \def\@nll#1#2{\m@th\ooalign{\hfil$#1#2$\hfil\cr\hfil$#1/$\hfil\cr}}
 \newcommand{\nll}{\mathrel{\mathpalette\@nll{\ll}}}
 \newcommand{\ngg}{\mathrel{\mathpalette\@nll{\gg}}}
 \newcommand{\varnmid}{\mathrel{\mathpalette\@nll{\mid}}}
 \newcommand{\centernot}[1]{\mathrel{\mathpalette\@nll{#1}}}
-\makeatother
 
 % Special characters
 \newcommand{\NN}{\ensuremath{\mathbb{N}}}
