@@ -70,7 +70,7 @@
 %\usepackage[margin=1in]{geometry}
 \usepackage{typearea}
 \usepackage{geometry}
-\usepackage{commath, yhmath, amsmath, amsopn, multicol, amsfonts, amssymb, esint, amsthm, thmtools, subfig, mathdots, mathtools}
+\usepackage{commath, yhmath, amsmath, amsopn, multicol, amsfonts, amssymb, esint, amsthm, thmtools, subfig, mathdots}
 \usepackage{upgreek, bold-extra, mathrsfs, tensor, multirow, ellipsis, chemfig, stackengine, asymptote, bbm}
 \usepackage{xpatch, longtable, tabu, enumerate, xparse, array}
 \usepackage{float, wrapfig, picinpar, siunitx, derivative, lastpage, textcomp, nicefrac}
@@ -78,13 +78,16 @@
 \usepackage[makeroom]{cancel}
 \usepackage[obeyFinal,textsize=scriptsize,shadow,loadshadowlibrary]{todonotes}
 \usepackage[font=small,labelsep=none]{caption}
-\usepackage[new]{old-arrows}
+
 
 \usepackage{unicode-math}
+\usepackage{mathtools}
 \setmathfont{NewCMMath-Regular.otf}
 \DeclareMathAlphabet{\mathcal}{OMS}{cmsy}{m}{n}
 
+\usepackage[new]{old-arrows} % must be loaded after amsmath, lmodern, mathtools, and stmaryrd
 \usepackage[allcommands,esvecte]{overarrows} % This needs to be loaded at the end for overbar to work
+
 
 % Backup package:
 % \usepackage[e]{esvect}
@@ -963,8 +966,10 @@ This page is intentionally left blank.%
 \newcommand{\cycsum}{\sum_{\mathrm{cyc}}}
 \newcommand{\defeq}{\ensuremath \stackrel{\Delta}{=}}
 \newcommand{\eins}{\ensuremath{\mathbbm{1}}}
-\newcommand{\emphg}[1]{\emph{\textcolor{ForestGreen}{#1}}}
-\newcommand{\emphr}[1]{\emph{\textcolor{Maroon}{#1}}}
+\newcommand{\emphg}[1]{\emph{\textcolor{ForestGreen}{\textbf{#1}}}}
+\newcommand{\emphr}[1]{\emph{\textcolor{darkcoral}{\textbf{#1}}}}
+\newcommand{\emphv}[1]{\emph{\textcolor{violet}{\textbf{#1}}}}
+\newcommand{\emphb}[1]{\emph{\textbf{#1}}}
 \newcommand{\eps}{\varepsilon}
 \newcommand{\icr}{\ensuremath{^{\times}}}
 \newcommand{\ignore}[1]{}
@@ -988,8 +993,7 @@ This page is intentionally left blank.%
 \newcommand{\dg}{\ensuremath{^{\circ}}}
 \newcommand{\phiv}{\varphi}
 \newcommand{\pimg}{\ensuremath{^{\varleftarrow}}}
-\newcommand{\seq}[1]{#1_1, #1_2, \dotsc,#1_n}
-\newcommand{\sq}[1]{\ensuremath{#1 \times #1}}
+\newcommand{\sq}[1][1]{\ensuremath{#1 \times #1}}
 \newcommand{\surjto}{\twoheadrightarrow}
 \newcommand{\symprod}{\prod_{\mathrm{sym}}}
 \newcommand{\symsum}{\sum_{\mathrm{sym}}}
@@ -997,6 +1001,10 @@ This page is intentionally left blank.%
 \newcommand{\varempty}{\diameter}
 \newcommand{\vseq}[1]{(#1_i)_{i\in\mathbb{N}}}
 \newcommand{\w}{\hspace*{-3pt}}
+
+\newcommand{\seq@noargs}[1]{#1_1, #1_2, \dotsc,#1_n}
+\newcommand{\seq@withargs}[2]{#1_1, #1_2, \dotsc,#1_#2}
+\newcommand{\seq}[2][]{\ifthenelse{\equal{#1}{}}{\seq@noargs{#2}}{\seq@withargs{#2}{#1}}}
 
 % Boxes
 \tcbset{highlight math style={enhanced,colframe=black,colback=white,arc=2.5pt,boxrule=0.6pt}}%
