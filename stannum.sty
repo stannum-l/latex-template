@@ -105,7 +105,7 @@
 \DeclareMathAlphabet{\mathcal}{OMS}{cmsy}{m}{n}
 
 \usepackage[new]{old-arrows} % must be loaded after amsmath, lmodern, mathtools, and stmaryrd
-\usepackage[allcommands,esvecte]{overarrows} % This needs to be loaded at the end for overbar to work
+\usepackage[allcommands,esvectf]{overarrows} % This needs to be loaded at the end for overbar to work
 
 % Shift foot down
 \ModifyLayer[addvoffset=.6ex]{scrheadings.foot.odd}
@@ -1005,6 +1005,9 @@ This page is intentionally left blank.%
 \newcommand{\varempty}{\diameter}
 \newcommand{\vseq}[1]{(#1_i)_{i\in\mathbb{N}}}
 \newcommand{\w}{\hspace*{-3pt}}
+\newcommand{\ol}[1]{\overbar{#1}}
+\newcommand{\ul}[1]{\underbar{#1}}
+\newcommand{\ray}[1]{\overrightarrow{#1}}
 
 \newcommand{\seq@noargs}[1]{#1_1, #1_2, \dotsc,#1_n}
 \newcommand{\seq@withargs}[2]{#1_1, #1_2, \dotsc,#1_#2}
