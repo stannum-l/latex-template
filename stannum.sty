@@ -171,13 +171,13 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 
 % enumerate
 \usepackage[shortlabels]{enumitem}
-\setlist[itemize,1]{}
-\setlist[itemize,2]{label=$\circ$,leftmargin=\parindent}
-\setlist[description,1]{}
-\setlist[enumerate,1]{label=(\emph{\alph*}), ref=\alph*}
-\setlist[enumerate,2]{label=(\emph{\roman*}), leftmargin=\parindent, ref=\roman*}
-\setlist[enumerate,3]{label=(\emph{\arabic*}), leftmargin=\parindent, ref=\arabic*}
-\setlist[enumerate,4]{label=(\emph{\roman*}), leftmargin=\parindent, ref=\roman*}
+\setlist[itemize,1]{listparindent=\parindent}
+\setlist[itemize,2]{label=$\circ$,leftmargin=\parindent,listparindent=\parindent}
+\setlist[description,1]{listparindent=\parindent}
+\setlist[enumerate,1]{label=(\emph{\alph*}), ref=\alph*, listparindent=\parindent}
+\setlist[enumerate,2]{label=(\emph{\roman*}), leftmargin=\parindent, ref=\roman*, listparindent=\parindent}
+\setlist[enumerate,3]{label=(\emph{\arabic*}), leftmargin=\parindent, ref=\arabic*, listparindent=\parindent}
+\setlist[enumerate,4]{label=(\emph{\roman*}), leftmargin=\parindent, ref=\roman*, listparindent=\parindent}
 % \newenvironment{enumI}{\begin{itemize}}{\end{itemize}}
 \newenvironment{enum}{\begin{enumerate}[label=(\alph*), ref=\alpha*]}{\end{enumerate}}
 \newenvironment{enumA}{\begin{enumerate}[label=(\Alph*), ref=\Alpha*]}{\end{enumerate}}
@@ -187,6 +187,7 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 \newenvironment{enumr}{\begin{enumerate}[label=({\roman*}), ref=\roman*]}{\end{enumerate}}
 \newenvironment{enumR}{\begin{enumerate}[label=({\Roman*}), ref=\Roman*]}{\end{enumerate}}
 \newenvironment{descr}{\begin{description}[font=\normalfont\sffamily, labelindent=\parindent, leftmargin=\parindent]}{\end{description}}
+
 
 %% colors
 \definecolor{airforceblue}{rgb}{0.36, 0.54, 0.66}
