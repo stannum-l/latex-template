@@ -1511,11 +1511,17 @@ This page is intentionally left blank.%
   frametitlerule=true,
 }
 
-\mdfdefinestyle{problemstatement}{%
-  style=mdboxybox,
-  frametitle={Problem Statement},
-}
+\mdfdefinestyle{problemstatement}{style=mdboxybox,frametitle={Problem Statement}}
 \newmdenv[style=problemstatement]{probstat}
+
+% Recreating using mdthereorem for a box, there is no need to define the * version here.
+\makeatletter
+\define@key{thmdef}{mdthm}[{}]{%
+\thmt@trytwice{\RequirePackage{thm-patch}\def\thmt@theoremdefiner{\mdtheorem[#1]}}{}}
+\makeatother
+\declaretheorem[mdthm={style=problemstatement},name={Problem Statement},numberwithin=section]{psenv}
+
+
 
 \newenvironment{solution}{\renewcommand{\proofname}{Solution}\begin{proof}\renewcommand{\proofname}{Proof}}{\renewcommand\qedsymbol{$\blacksquare$}\end{proof}}
 \newenvironment{Solution}[1][\proofname]{\renewcommand{\proofname}{Solution}\proof[\normalfont\sffamily\bfseries #1]\renewcommand{\proofname}{Proof}}{\renewcommand\qedsymbol{$\blacksquare$}\endproof}
