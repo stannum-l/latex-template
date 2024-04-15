@@ -52,25 +52,70 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ProvidesPackage{stannum}
 
+\AtBeginDocument{\setlength{\abovedisplayshortskip}{2pt}}%
+\AtBeginDocument{\setlength{\belowdisplayshortskip}{4pt}}%
+\AtBeginDocument{\setlength{\abovedisplayskip}{4pt}}%
+\AtBeginDocument{\setlength{\belowdisplayskip}{4pt}}%
+\AtBeginDocument{\setlength{\headheight}{1.25\baselineskip}}%
+\AtBeginDocument{\setlength{\headsep}{0.5\baselineskip}}%
+\AtBeginDocument{\setlength{\footskip}{2.5\baselineskip}}%
+\AtBeginDocument{\setlength{\footnotesep}{0.75\baselineskip}}%
+%\AtBeginDocument{\setlength{\parindent}{0cm}}%
+\AtBeginDocument{\setlength {\marginparwidth }{1in}}
+\AtBeginDocument{\setlength{\parskip}{3pt plus0pt minus2pt}}%
+\AtBeginDocument{\setlength{\multicolsep}{2.0pt plus 0pt minus 0pt}}
+
+\newif\if@footsepline\@footseplinefalse
+\DeclareOption{footsepline}{\@footseplinetrue}
+\ProcessOptions\relax
+
 \usepackage[usenames,dvipsnames]{xcolor}
 \usepackage[T1]{fontenc}
 \usepackage[english]{babel}
 \usepackage{lmodern, bbding}
 
+\if@footsepline
+\usepackage[plainfootsepline=off,headsepline=0.5pt,footsepline=0.5pt]{scrlayer-scrpage}
+\else
 \usepackage[plainfootsepline=off,headsepline=0.5pt,footsepline=0pt]{scrlayer-scrpage}
+\fi
+
 %\usepackage[margin=1in]{geometry}
 \usepackage{typearea}
 \usepackage{geometry}
+
+
 \usepackage{commath, yhmath, amsmath, amsopn, multicol, amsfonts, amssymb, esint, amsthm, thmtools, subfig, mathdots}
 \usepackage{upgreek, bold-extra, mathrsfs, tensor, multirow, ellipsis, chemfig, stackengine, asymptote, bbm}
 \usepackage{xpatch, longtable, tabu, enumerate, xparse, array}
 \usepackage{float, wrapfig, picinpar, siunitx, derivative, lastpage, textcomp, nicefrac}
-\usepackage{interval, calc, framed, fancybox, quoting, empheq, algorithm, stackrel, adjustbox}
+\usepackage{interval, calc, framed, fancybox, quoting, empheq, stackrel, adjustbox, ragged2e}
 \usepackage[makeroom]{cancel}
 \usepackage[obeyFinal,textsize=scriptsize,shadow,loadshadowlibrary]{todonotes}
 \usepackage[font=small,labelsep=none]{caption}
-\usepackage[new]{old-arrows}
-\usepackage[allcommands,esvecte]{overarrows}
+\usepackage{scalerel}
+
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,urlcolor=RubineRed,linkcolor=RoyalBlue,citecolor=ForestGreen,filecolor=Magenta}
+
+\usepackage{algorithm}
+
+\usepackage[warnings-off={mathtools-colon,mathtools-overbracket}]{unicode-math}
+\usepackage{mathtools}
+\setmathfont{NewCMMath-Regular.otf}
+\DeclareMathAlphabet{\mathcal}{OMS}{cmsy}{m}{n}
+
+\usepackage[new]{old-arrows} % must be loaded after amsmath, lmodern, mathtools, and stmaryrd
+\usepackage[allcommands,esvectf]{overarrows} % This needs to be loaded at the end for overbar to work
+
+% Shift foot down
+\ModifyLayer[addvoffset=.6ex]{scrheadings.foot.odd}
+\ModifyLayer[addvoffset=.6ex]{scrheadings.foot.even}
+\ModifyLayer[addvoffset=.6ex]{scrheadings.foot.oneside}
+\ModifyLayer[addvoffset=.6ex]{plain.scrheadings.foot.odd}
+\ModifyLayer[addvoffset=.6ex]{plain.scrheadings.foot.even}
+\ModifyLayer[addvoffset=.6ex]{plain.scrheadings.foot.oneside}
+
 % Backup package:
 % \usepackage[e]{esvect}
 % \usepackage{url}
@@ -103,9 +148,6 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 \algrenewcommand\algorithmicprocedure{\textbf{function}}
 \algrenewcommand{\algorithmiccomment}[1]{\hskip3em$\triangleright$ #1}
 
-\usepackage{hyperref}
-\hypersetup{colorlinks=true,urlcolor=RubineRed,linkcolor=RoyalBlue,citecolor=ForestGreen,filecolor=Magenta}
-
 \usepackage{epigraph}
 \renewcommand{\epigraphsize}{\scriptsize}
 \renewcommand{\epigraphwidth}{60ex}
@@ -127,43 +169,24 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.18}
 
-\AtBeginDocument{\setlength{\abovedisplayshortskip}{2pt}}%
-\AtBeginDocument{\setlength{\belowdisplayshortskip}{4pt}}%
-\AtBeginDocument{\setlength{\abovedisplayskip}{4pt}}%
-\AtBeginDocument{\setlength{\belowdisplayskip}{4pt}}%
-\AtBeginDocument{\setlength{\headheight}{1.25\baselineskip}}%
-\AtBeginDocument{\setlength{\headsep}{0.5\baselineskip}}%
-\AtBeginDocument{\setlength{\footskip}{2.5\baselineskip}}%
-\AtBeginDocument{\setlength{\footnotesep}{0.75\baselineskip}}%
-%\AtBeginDocument{\setlength{\parindent}{0cm}}%
-\AtBeginDocument{\setlength{\parskip}{3pt plus0pt minus2pt}}%
-\AtBeginDocument{\setlength{\multicolsep}{2.0pt plus 0pt minus 0pt}}
-
-% Shift foot down
-\ModifyLayer[addvoffset=.6ex]{scrheadings.foot.odd}
-\ModifyLayer[addvoffset=.6ex]{scrheadings.foot.even}
-\ModifyLayer[addvoffset=.6ex]{scrheadings.foot.oneside}
-\ModifyLayer[addvoffset=.6ex]{plain.scrheadings.foot.odd}
-\ModifyLayer[addvoffset=.6ex]{plain.scrheadings.foot.even}
-\ModifyLayer[addvoffset=.6ex]{plain.scrheadings.foot.oneside}
-
 % enumerate
 \usepackage[shortlabels]{enumitem}
-\setlist[description]{font=\normalfont\bfseries }
 \setlist[itemize,1]{}
+\setlist[itemize,2]{label=$\circ$,leftmargin=\parindent}
 \setlist[description,1]{}
 \setlist[enumerate,1]{label=(\emph{\alph*}), ref=\alph*}
-\setlist[enumerate,2]{label=(\emph{\roman*}), ref=\roman*}
-\setlist[enumerate,3]{label=(\emph{\arabic*}), ref=\arabic*}
-\setlist[enumerate,4]{label=(\emph{\roman*}), ref=\roman*}
+\setlist[enumerate,2]{label=(\emph{\roman*}), leftmargin=\parindent, ref=\roman*}
+\setlist[enumerate,3]{label=(\emph{\arabic*}), leftmargin=\parindent, ref=\arabic*}
+\setlist[enumerate,4]{label=(\emph{\roman*}), leftmargin=\parindent, ref=\roman*}
 % \newenvironment{enumI}{\begin{itemize}}{\end{itemize}}
 \newenvironment{enum}{\begin{enumerate}[label=(\alph*), ref=\alpha*]}{\end{enumerate}}
-\newenvironment{enuma}{\begin{enumerate}[label=(\alph*), ref=\alpha*]}{\end{enumerate}}
-\newenvironment{enumaI}{\begin{enumerate}}{\end{enumerate}}
+\newenvironment{enumA}{\begin{enumerate}[label=(\Alph*), ref=\Alpha*]}{\end{enumerate}}
+\newenvironment{enumI}{\begin{enumerate}}{\end{enumerate}}
 \newenvironment{enumn}{\begin{enumerate}[label=(\arabic*), ref=\arabic*]}{\end{enumerate}}
 \newenvironment{enumrB}{\begin{enumerate}[label=(\emph{\roman*}), ref=\roman*]}{\end{enumerate}}
 \newenvironment{enumr}{\begin{enumerate}[label=({\roman*}), ref=\roman*]}{\end{enumerate}}
 \newenvironment{enumR}{\begin{enumerate}[label=({\Roman*}), ref=\Roman*]}{\end{enumerate}}
+\newenvironment{descr}{\begin{description}[font=\normalfont\sffamily, labelindent=\parindent, leftmargin=\parindent]}{\end{description}}
 
 %% colors
 \definecolor{airforceblue}{rgb}{0.36, 0.54, 0.66}
@@ -934,6 +957,9 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 
 % convenience macros
 
+\renewcommand{\le}{\leqslant}
+\renewcommand{\ge}{\geqslant}
+
 \newcommand{\intentblank}{%
 \vspace*{\fill}%
 \begin{center}%
@@ -942,20 +968,23 @@ This page is intentionally left blank.%
 \vspace{\fill}%
 }
 
+\newcommand{\qz}[1]{\ZZ/#1\ZZ}
 \newcommand{\cp}{\ensuremath{^{\complement}}}
 \newcommand{\cro}{\ensuremath{^{\times}}}
 \newcommand{\cycprod}{\prod_{\mathrm{cyc}}}
 \newcommand{\cycsum}{\sum_{\mathrm{cyc}}}
 \newcommand{\defeq}{\ensuremath \stackrel{\Delta}{=}}
-\newcommand{\degrees}{\ensuremath{^{\circ}}}
 \newcommand{\eins}{\ensuremath{\mathbbm{1}}}
-\newcommand{\emphg}[1]{\emph{\textcolor{ForestGreen}{#1}}}
-\newcommand{\emphr}[1]{\emph{\textcolor{Maroon}{#1}}}
+\newcommand{\emphg}[1]{\emph{\textcolor{ForestGreen}{\textbf{#1}}}}
+\newcommand{\emphr}[1]{\emph{\textcolor{darkcoral}{\textbf{#1}}}}
+\newcommand{\emphv}[1]{\emph{\textcolor{violet}{\textbf{#1}}}}
+\newcommand{\emphb}[1]{\emph{\textbf{#1}}}
 \newcommand{\eps}{\varepsilon}
 \newcommand{\icr}{\ensuremath{^{\times}}}
 \newcommand{\ignore}[1]{}
 \newcommand{\ilim}[1]{\lim_{#1\to\infty}}
 \newcommand{\img}{\ensuremath{^{\varto}}}
+\newcommand{\injto}{\hookrightarrow}
 \newcommand{\inv}{\ensuremath{^{-1}}}
 \newcommand{\iprod}[1]{\prod_{#1}^\infty}
 \newcommand{\isum}[1]{\sum_{#1}^\infty}
@@ -970,16 +999,24 @@ This page is intentionally left blank.%
 \newcommand{\nsubgeq}{\mathrel{\trianglelefteq}}
 \newcommand{\nsupg}{\mathrel{\rhd}}
 \newcommand{\nsupgeq}{\mathrel{\trianglerighteq}}
+\newcommand{\dg}{\ensuremath{^{\circ}}}
 \newcommand{\phiv}{\varphi}
 \newcommand{\pimg}{\ensuremath{^{\varleftarrow}}}
-\newcommand{\seq}[1]{#1_1, #1_2, \dotsc,#1_n}
 \newcommand{\sq}[1]{\ensuremath{#1 \times #1}}
+\newcommand{\surjto}{\twoheadrightarrow}
 \newcommand{\symprod}{\prod_{\mathrm{sym}}}
 \newcommand{\symsum}{\sum_{\mathrm{sym}}}
 \newcommand{\transp}{\ensuremath{^\top}}
+\newcommand{\varempty}{\diameter}
 \newcommand{\vseq}[1]{(#1_i)_{i\in\mathbb{N}}}
 \newcommand{\w}{\hspace*{-3pt}}
-\renewcommand{\emptyset}{\diameter}
+\newcommand{\ol}[1]{\overbar{#1}}
+\newcommand{\ul}[1]{\underbar{#1}}
+\newcommand{\ray}[1]{\overrightarrow{#1}}
+
+\newcommand{\seq@noargs}[1]{#1_1, #1_2, \dotsc,#1_n}
+\newcommand{\seq@withargs}[2]{#1_1, #1_2, \dotsc,#1_#2}
+\newcommand{\seq}[2][]{\ifthenelse{\equal{#1}{}}{\seq@noargs{#2}}{\seq@withargs{#2}{#1}}}
 
 % Boxes
 \tcbset{highlight math style={enhanced,colframe=black,colback=white,arc=2.5pt,boxrule=0.6pt}}%
@@ -987,15 +1024,13 @@ This page is intentionally left blank.%
 \newcommand{\cmb}[2]{\tcbhighmath[on line,boxsep=4pt,boxrule=0.6pt,left=0pt,right=0pt,top=0pt,bottom=0pt,colback=#1,highlight math style={enhanced}]{#2}}
 
 % center not
-\makeatletter
 \def\@nll#1#2{\m@th\ooalign{\hfil$#1#2$\hfil\cr\hfil$#1/$\hfil\cr}}
 \newcommand{\nll}{\mathrel{\mathpalette\@nll{\ll}}}
 \newcommand{\ngg}{\mathrel{\mathpalette\@nll{\gg}}}
 \newcommand{\varnmid}{\mathrel{\mathpalette\@nll{\mid}}}
 \newcommand{\centernot}[1]{\mathrel{\mathpalette\@nll{#1}}}
-\makeatother
 
-% Bold mathbb characters
+% Special characters
 \newcommand{\NN}{\ensuremath{\mathbb{N}}}
 \newcommand{\RR}{\ensuremath{\mathbb{R}}}
 \newcommand{\ZZ}{\ensuremath{\mathbb{Z}}}
@@ -1010,11 +1045,11 @@ This page is intentionally left blank.%
 \DeclareMathAlphabet{\mathrsfs}{U}{rsfso}{m}{n}
 \DeclareMathAlphabet{\mathssss}{U}{rsfs}{m}{n}
 \newcommand{\mb}[1]{\ensuremath{\mathbf{#1}}}
-\newcommand{\mbi}[1]{\ensuremath{\mathbfit{#1}}}
+\newcommand{\mv}[1]{\ensuremath{\mathbfit{#1}}}
+\newcommand{\ml}[1]{\ensuremath{\mathsf{#1}}}
 \newcommand{\mc}[1]{\ensuremath{\mathcal{#1}}}
 \newcommand{\mf}[1]{\ensuremath{\mathbb{#1}}}
 \newcommand{\mk}[1]{\ensuremath{\mathfrak{#1}}}
-\newcommand{\mv}[1]{\ensuremath{\boldsymbol{#1}}}
 \newcommand{\me}[1]{\ensuremath{\mathscr{#1}}}
 \newcommand{\ms}[1]{\ensuremath{\mathrsfs{#1}}}
 \newcommand{\mh}[1]{\ensuremath{\mathssss{#1}}}
@@ -1086,6 +1121,7 @@ This page is intentionally left blank.%
 \renewcommand{\set}[2][0]{\delimit{#1}{\{}{#2}{\}}}
 \renewcommand{\norm}[2][0]{\delimit{#1}{\lVert}{#2}{\rVert}}
 \renewcommand{\abs}[2][0]{\delimit{#1}{|}{#2}{|}}
+\newcommand{\reval}[2][0]{\delimit{#1}{.}{#2}{|}}
 \newcommand{\bra}[2][0]{\delimit{#1}{\langle}{#2}{|}}
 \newcommand{\ket}[2][0]{\delimit{#1}{|}{#2}{\rangle}}
 \newcommand{\braket}[3][0]{\delb{#1}{\langle}{#2}{#3}{\rangle}}
@@ -1152,6 +1188,7 @@ This page is intentionally left blank.%
 \DeclareMathOperator{\dvg}{\ensuremath{div}}
 \DeclareMathOperator{\E}{\ensuremath{\mathsf{E}}}
 \DeclareMathOperator{\End}{\ensuremath{End}}
+\DeclareMathOperator{\Epi}{\ensuremath{Epi}}
 \DeclareMathOperator{\Ext}{\ensuremath{Ext}}
 \DeclareMathOperator{\ffrac}{\ensuremath{frac}}
 \DeclareMathOperator{\fr}{\ensuremath{fr}}
@@ -1163,13 +1200,11 @@ This page is intentionally left blank.%
 \DeclareMathOperator{\grad}{\ensuremath{grad}}
 \DeclareMathOperator{\Hol}{\ensuremath{Hol}}
 \DeclareMathOperator{\Hom}{\ensuremath{Hom}}
-\DeclareMathOperator{\idm}{\ensuremath{id}}
 \DeclareMathOperator{\im}{\ensuremath{im}}
 \DeclareMathOperator{\Ind}{\ensuremath{Ind}}
 \DeclareMathOperator{\Inn}{\ensuremath{Inn}}
 \DeclareMathOperator{\Int}{\ensuremath{Int}}
 \DeclareMathOperator{\itr}{\ensuremath{int}}
-\DeclareMathOperator{\Ker}{\ensuremath{ker}}
 \DeclareMathOperator{\Lb}{\ensuremath{Lb}}
 \DeclareMathOperator{\lcm}{\ensuremath{lcm}}
 \DeclareMathOperator{\len}{\ensuremath{len}}
@@ -1177,6 +1212,7 @@ This page is intentionally left blank.%
 \DeclareMathOperator{\lip}{\ensuremath{lip}}
 \DeclareMathOperator{\Mat}{\ensuremath{Mat}}
 \DeclareMathOperator{\Mer}{\ensuremath{Mer}}
+\DeclareMathOperator{\Mono}{\ensuremath{Mono}}
 \DeclareMathOperator{\Norm}{\ensuremath{\mathsf{Norm}}}
 \DeclareMathOperator{\nul}{\ensuremath{null}}
 \DeclareMathOperator{\nullity}{\ensuremath{nullity}}
@@ -1233,6 +1269,13 @@ This page is intentionally left blank.%
 \newcommand{\tstirlingIII}[2]{\genfrac{\lBrack}{\rBrack}{0pt}{1}{#1}{#2}}
 \newcommand{\teulerianI}[2]{\genfrac{\langle}{\rangle}{0pt}{1}{#1}{#2}}
 \newcommand{\teulerianII}[2]{\genfrac{\lAngle}{\rAngle}{0pt}{1}{#1}{#2}}
+
+% https://tex.stackexchange.com/a/292090/76888
+% https://github.com/marcodaniel/mdframed/issues/12
+\xpatchcmd{\endmdframed}
+  {\aftergroup\endmdf@trivlist\color@endgroup}
+  {\endmdf@trivlist\color@endgroup\@doendpe}
+  {}{}
 
 % Theorem environment
 \mdfdefinestyle{mdbox}{%
@@ -1444,9 +1487,38 @@ This page is intentionally left blank.%
 \declaretheorem[style=remarkhead,name=Remark,numberwithin=problem]{remark}
 \declaretheorem[style=remarkhead,name=Remark,numbered=no]{remark*}
 
+% Fancier
+\mdfdefinestyle{mdboxybox}{%
+  roundcorner=10pt,
+  linewidth=0.75pt,
+  skipabove=12pt,
+  skipbelow=12pt,
+  linecolor=black,
+  nobreak=true,
+  backgroundcolor=violet!10,
+  shadow=true,
+  shadowsize=6pt,
+  shadowcolor=black!30,
+  frametitleaboveskip=8pt,
+  frametitlebelowskip=8pt,
+  innermargin=3pt,
+  frametitleaboveskip=7pt,
+  frametitlebelowskip=7pt,
+  outermargin=3pt,
+  innertopmargin=7pt,
+  innerbottommargin=7pt,
+  frametitlebackgroundcolor=Violet!50!black,
+  frametitlefont=\bfseries\sffamily\color{white},
+  frametitlerule=true,
+}
+
+\mdfdefinestyle{problemstatement}{style=mdboxybox,frametitle={Problem Statement}}
+\newmdenv[style=problemstatement]{probstat}
+
 \newenvironment{solution}{\renewcommand{\proofname}{Solution}\begin{proof}\renewcommand{\proofname}{Proof}}{\renewcommand\qedsymbol{$\blacksquare$}\end{proof}}
 \newenvironment{Solution}[1][\proofname]{\renewcommand{\proofname}{Solution}\proof[\normalfont\sffamily\bfseries #1]\renewcommand{\proofname}{Proof}}{\renewcommand\qedsymbol{$\blacksquare$}\endproof}
 \newenvironment{Proof}[1][\proofname]{\renewcommand\qedsymbol{$\square$}\renewcommand{\proofname}{Proof}\proof[\normalfont\sffamily\bfseries #1]}{\endproof}
+\newenvironment{Subproof}[1][\proofname]{\renewcommand\qedsymbol{$\triangle$}\renewcommand{\proofname}{Proof}\proof[\normalfont\sffamily\bfseries #1]}{\endproof}
 
 \makeatletter
 \newcommand{\raisemath}[1]{\mathpalette{\raisem@th{#1}}}% \raisemath{<len>}{...}
@@ -1464,19 +1536,35 @@ This page is intentionally left blank.%
 \newcommand{\hsbar}{\newhbar{0pt}{-0.7pt}{h}}
 \newcommand{\dsbar}{\newhbar{2pt}{-0.7pt}{d}}
 
-%%%%%%
-% This should be at the end of the file
-%%%%%%
-\usepackage{unicode-math}
-\usepackage{mathtools}
-\setmathfont{NewCMMath-Regular.otf}
-\DeclareMathAlphabet{\mathcal}{OMS}{cmsy}{m}{n}
-
 \NewOverArrowCommand{overhookleft}{start=\lhook, end=\rightarrow, middle=\relbar, trim start=0, trim end=3, trim middle=5,}
+\DeclareMathOperator*{\dalam}{\scalerel*{\square}{\prod}}
+\DeclareMathOperator*{\lapl}{\scalerel*{\triangle}{\prod}}
 
-% customize
+% Customize style
 \addtokomafont{disposition}{\rmfamily}
+\addtokomafont{section}{\sffamily}
+\addtokomafont{subsection}{\sffamily}
+\addtokomafont{subsubsection}{\sffamily}
+\addtokomafont{paragraph}{\sffamily\color{navyblue!35!brown}\P\ }
 \addtokomafont{subtitle}{\Large}
-\setkomafont{pageheadfoot}{\normalfont\sffamily}
+%\setkomafont{pageheadfoot}{\normalfont\sffamily}
+\setkomafont{pageheadfoot}{\small}
 \setkomafont{author}{\Large\scshape}
 \setkomafont{date}{\Large\normalsize}
+
+
+% \@ifundefined{chapter}{}{
+%   \addtokomafont{partprefix}{\rmfamily}
+%   \renewcommand*{\partformat}{\color{purple}
+%     \scalebox{2.5}{\thepart}\enlargethispage{2em}}
+%   \addtokomafont{chapterprefix}{\raggedleft}
+%   \RedeclareSectionCommand[beforeskip=0.5em]{chapter}
+%   \renewcommand*{\chapterformat}{\mbox{%
+%     \scalebox{1.5}{\chapappifchapterprefix{\nobreakspace}}%
+%     \scalebox{2.718}{\color{purple}\thechapter}\enskip}}
+% }
+\renewcommand*{\sectionformat}{\color{purple}\S\thesection\enskip}
+\renewcommand*{\subsectionformat}{\color{purple}\S\thesubsection\enskip}
+\renewcommand*{\subsubsectionformat}{\color{purple}\S\thesubsubsection\enskip}
+\KOMAoptions{numbers=noenddot}
+%\usetocstyle{KOMAlike}
