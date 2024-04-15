@@ -1,15 +1,12 @@
 # LaTeX Homework Template
 
-This repository contains a basic LaTeX homework template.
-This has been tested on SharedLaTeX and TeXLive on Mac OSX.
-To use this repository, copy the `template.tex`.  For example
+This repository contains a basic LaTeX homework template. This has been tested on [Overleaf](https://www.overleaf.com/) and [MacTex](https://tug.org/mactex/).
+To use this repository, copy the `template.tex` to use for your homework.
 
 ```bash
-$ cp template.tex hw01.tex
+$ cp template.tex math1234-hw01.tex
 ```
 
-Make the changes needed and compile the file as usual. Use `XeLaTeX` to compile your source code.
+This distribution uses `xelatex` to compile the source code as it depends on [unicode-math](https://ctan.org/pkg/unicode-math).
 
-```bash
-$ xelatex hw01.tex
-```
+Feel free to open questions/issues [here](https://github.com/stannum-l/latex-template/issues).

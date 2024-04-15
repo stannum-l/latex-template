@@ -89,7 +89,7 @@
 \usepackage{upgreek, bold-extra, mathrsfs, tensor, multirow, ellipsis, chemfig, stackengine, asymptote, bbm}
 \usepackage{xpatch, longtable, tabu, enumerate, xparse, array}
 \usepackage{float, wrapfig, picinpar, siunitx, derivative, lastpage, textcomp, nicefrac}
-\usepackage{interval, calc, framed, fancybox, quoting, empheq, stackrel, adjustbox}
+\usepackage{interval, calc, framed, fancybox, quoting, empheq, stackrel, adjustbox, ragged2e}
 \usepackage[makeroom]{cancel}
 \usepackage[obeyFinal,textsize=scriptsize,shadow,loadshadowlibrary]{todonotes}
 \usepackage[font=small,labelsep=none]{caption}
@@ -1502,11 +1502,11 @@ This page is intentionally left blank.%
   frametitleaboveskip=8pt,
   frametitlebelowskip=8pt,
   innermargin=3pt,
-  frametitleaboveskip=5pt,
-  frametitlebelowskip=5pt,
+  frametitleaboveskip=7pt,
+  frametitlebelowskip=7pt,
   outermargin=3pt,
-  innertopmargin=5pt,
-  innerbottommargin=5pt,
+  innertopmargin=7pt,
+  innerbottommargin=7pt,
   frametitlebackgroundcolor=Violet!50!black,
   frametitlefont=\bfseries\sffamily\color{white},
   frametitlerule=true,
@@ -1514,15 +1514,6 @@ This page is intentionally left blank.%
 
 \mdfdefinestyle{problemstatement}{style=mdboxybox,frametitle={Problem Statement}}
 \newmdenv[style=problemstatement]{probstat}
-
-% Recreating using mdthereorem for a box, there is no need to define the * version here.
-\makeatletter
-\define@key{thmdef}{mdthm}[{}]{%
-\thmt@trytwice{\RequirePackage{thm-patch}\def\thmt@theoremdefiner{\mdtheorem[#1]}}{}}
-\makeatother
-\declaretheorem[mdthm={style=problemstatement},name={Problem Statement},numberwithin=section]{psenv}
-
-
 
 \newenvironment{solution}{\renewcommand{\proofname}{Solution}\begin{proof}\renewcommand{\proofname}{Proof}}{\renewcommand\qedsymbol{$\blacksquare$}\end{proof}}
 \newenvironment{Solution}[1][\proofname]{\renewcommand{\proofname}{Solution}\proof[\normalfont\sffamily\bfseries #1]\renewcommand{\proofname}{Proof}}{\renewcommand\qedsymbol{$\blacksquare$}\endproof}
