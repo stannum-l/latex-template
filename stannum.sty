@@ -61,18 +61,23 @@
 \AtBeginDocument{\setlength{\footskip}{2.5\baselineskip}}%
 \AtBeginDocument{\setlength{\footnotesep}{0.75\baselineskip}}%
 %\AtBeginDocument{\setlength{\parindent}{0cm}}%
-\AtBeginDocument{\setlength {\marginparwidth }{1in}}
+\AtBeginDocument{\setlength {\marginparwidth}{1in}}
 \AtBeginDocument{\setlength{\parskip}{3pt plus0pt minus2pt}}%
 \AtBeginDocument{\setlength{\multicolsep}{2.0pt plus 0pt minus 0pt}}
 
 \newif\if@footsepline\@footseplinefalse
 \DeclareOption{footsepline}{\@footseplinetrue}
-\ProcessOptions\relax
+\ProcessOptions \relax
 
 \usepackage[usenames,dvipsnames]{xcolor}
-\usepackage[T1]{fontenc}
 \usepackage[english]{babel}
-\usepackage{lmodern, bbding}
+
+\RequirePackage{fontspec}
+% \usepackage{lmodern} \normalfont \sffamily
+\usepackage{bold-extra}
+\DeclareFontShape{TU}{lmr}{bx}{sc} { <-> cmbcsc10 }{}
+% \DeclareFontShape{TU}{lmr}{m}{sc} { <-> ssub * cmr/m/sc }{}
+
 
 \if@footsepline
 \usepackage[plainfootsepline=off,headsepline=0.5pt,footsepline=0.5pt]{scrlayer-scrpage}
@@ -84,12 +89,12 @@
 \usepackage{typearea}
 \usepackage{geometry}
 
-
 \usepackage{commath, yhmath, amsmath, amsopn, multicol, amsfonts, amssymb, esint, amsthm, thmtools, subfig, mathdots}
 \usepackage{upgreek, bold-extra, mathrsfs, tensor, multirow, ellipsis, chemfig, stackengine, asymptote, bbm}
 \usepackage{xpatch, longtable, tabu, enumerate, xparse, array}
+\usepackage{bbding}
 \usepackage{float, wrapfig, picinpar, siunitx, derivative, lastpage, textcomp, nicefrac}
-\usepackage{interval, calc, framed, fancybox, quoting, empheq, stackrel, adjustbox, ragged2e}
+\usepackage{interval, calc, framed, fancybox, quoting, empheq, stackrel, adjustbox, ragged2e, adjustbox}
 \usepackage[makeroom]{cancel}
 \usepackage[obeyFinal,textsize=scriptsize,shadow,loadshadowlibrary]{todonotes}
 \usepackage[font=small,labelsep=none]{caption}
@@ -104,6 +109,9 @@
 \usepackage{mathtools}
 \setmathfont{NewCMMath-Regular.otf}
 \DeclareMathAlphabet{\mathcal}{OMS}{cmsy}{m}{n}
+% \rmfamily
+% \DeclareFontShape{TU}{lmr}{b}{sc}{<->ssub*cmr/bx/sc}{}
+% \DeclareFontShape{TU}{lmr}{bx}{sc}{<->ssub*cmr/bx/sc}{}
 
 \usepackage[new]{old-arrows} % must be loaded after amsmath, lmodern, mathtools, and stmaryrd
 \usepackage[allcommands,esvectf]{overarrows} % This needs to be loaded at the end for overbar to work
@@ -187,7 +195,6 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 \newenvironment{enumr}{\begin{enumerate}[label=({\roman*}), ref=\roman*]}{\end{enumerate}}
 \newenvironment{enumR}{\begin{enumerate}[label=({\Roman*}), ref=\Roman*]}{\end{enumerate}}
 \newenvironment{descr}{\begin{description}[font=\normalfont\sffamily, labelindent=\parindent, leftmargin=\parindent]}{\end{description}}
-
 
 %% colors
 \definecolor{airforceblue}{rgb}{0.36, 0.54, 0.66}
@@ -1569,3 +1576,12 @@ This page is intentionally left blank.%
 \renewcommand*{\subsubsectionformat}{\color{purple}\S\thesubsubsection\enskip}
 \KOMAoptions{numbers=noenddot}
 %\usetocstyle{KOMAlike}
+
+\newenvironment{mybox}[2]{%
+    \begin{tcolorbox}[breakable, titlerule=5mm,%
+    colback=#1!5!white,colframe=#1!75!black,adjusted title=\adjustbox{set height=1.25em,raise={0.15em}{\height}}{#2},%
+    fonttitle=\sffamily\bfseries\large,%
+    drop fuzzy shadow, arc=0.3em, boxrule=1pt]}{%
+    \end{tcolorbox}}
+
+\usepackage{bold-extra}
