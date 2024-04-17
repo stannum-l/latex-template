@@ -90,7 +90,7 @@
 \usepackage{geometry}
 
 \usepackage{commath, yhmath, amsmath, amsopn, multicol, amsfonts, amssymb, esint, amsthm, thmtools, subfig, mathdots}
-\usepackage{upgreek, bold-extra, mathrsfs, tensor, multirow, ellipsis, chemfig, stackengine, asymptote, bbm}
+\usepackage{upgreek, bold-extra, mathrsfs, tensor, multirow, ellipsis, chemfig, stackengine, asymptote, bbm, bookmark}
 \usepackage{xpatch, longtable, tabu, enumerate, xparse, array}
 \usepackage{bbding, bold-extra}
 \usepackage{float, wrapfig, picinpar, siunitx, derivative, lastpage, textcomp, nicefrac}
@@ -1335,6 +1335,12 @@ This page is intentionally left blank.%
   linecolor=CarnationPink,
 }
 
+\mdfdefinestyle{remarkbox}{%
+  style=mdbox,
+  backgroundcolor=CarnationPink!5,
+  linecolor=CarnationPink,
+}
+
 \declaretheoremstyle[
   headfont=\bfseries\color{CarnationPink},
   mdframed={style=mdredbox},
@@ -1418,7 +1424,7 @@ This page is intentionally left blank.%
 \mdfdefinestyle{remarkbox}{%
   style=mdbox,
   linecolor=WildStrawberry,
-  backgroundcolor=WildStrawberry!5,
+  backgroundcolor=WildStrawberry!10,
 }
 
 \declaretheoremstyle[
@@ -1460,6 +1466,14 @@ This page is intentionally left blank.%
   bodyfont=\normalfont,
 ]{remarkhead}
 
+\declaretheoremstyle[
+  headfont=\color{WildStrawberry}\sffamily\bfseries,
+  spaceabove=2pt,
+  spacebelow=1pt,
+  bodyfont=\normalfont,
+  mdframed={style=remarkbox}
+]{fancyremarkhead}
+
 \theoremstyle{definition}
 % \declaretheorem[style=thmbluebox,name=Theorem,numberwithin=section]{cstheorem}
 \declaretheorem[style=thmbluebox,name=Theorem]{theorem}
@@ -1496,6 +1510,8 @@ This page is intentionally left blank.%
 \declaretheorem[style=thmgreenbox,name=Claim,numbered=no]{claim*}
 \declaretheorem[style=remarkhead,name=Remark,numberwithin=problem]{remark}
 \declaretheorem[style=remarkhead,name=Remark,numbered=no]{remark*}
+\declaretheorem[style=fancyremarkhead,name=Remark,numberwithin=problem]{fancyremark}
+\declaretheorem[style=fancyremarkhead,name=Remark,numbered=no]{fancyremark*}
 
 % Fancier
 \mdfdefinestyle{mdboxybox}{%
@@ -1586,4 +1602,4 @@ This page is intentionally left blank.%
     drop fuzzy shadow, arc=0.3em, boxrule=1pt]}{%
     \end{tcolorbox}}
 
-\newcommand{\imp}{\mathcolor{brown}{\Longrightarrow}}
+\newcommand{\soimp}{\mathcolor{brown}{\Longrightarrow}}
