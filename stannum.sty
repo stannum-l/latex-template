@@ -61,18 +61,19 @@
 \AtBeginDocument{\setlength{\footskip}{2.5\baselineskip}}%
 \AtBeginDocument{\setlength{\footnotesep}{0.75\baselineskip}}%
 %\AtBeginDocument{\setlength{\parindent}{0cm}}%
-\AtBeginDocument{\setlength {\marginparwidth }{1in}}
+\AtBeginDocument{\setlength {\marginparwidth}{1in}}
 \AtBeginDocument{\setlength{\parskip}{3pt plus0pt minus2pt}}%
 \AtBeginDocument{\setlength{\multicolsep}{2.0pt plus 0pt minus 0pt}}
 
 \newif\if@footsepline\@footseplinefalse
 \DeclareOption{footsepline}{\@footseplinetrue}
-\ProcessOptions\relax
+\ProcessOptions \relax
 
-\usepackage[usenames,dvipsnames]{xcolor}
-\usepackage[T1]{fontenc}
+\usepackage[dvipsnames]{xcolor}
 \usepackage[english]{babel}
-\usepackage{lmodern, bbding}
+
+\RequirePackage{fontspec}
+\usepackage{lmodern}
 
 \if@footsepline
 \usepackage[plainfootsepline=off,headsepline=0.5pt,footsepline=0.5pt]{scrlayer-scrpage}
@@ -84,12 +85,12 @@
 \usepackage{typearea}
 \usepackage{geometry}
 
-
 \usepackage{commath, yhmath, amsmath, amsopn, multicol, amsfonts, amssymb, esint, amsthm, thmtools, subfig, mathdots}
-\usepackage{upgreek, bold-extra, mathrsfs, tensor, multirow, ellipsis, chemfig, stackengine, asymptote, bbm}
+\usepackage{upgreek, bold-extra, mathrsfs, tensor, multirow, ellipsis, chemfig, stackengine, asymptote, bbm, bookmark}
 \usepackage{xpatch, longtable, tabu, enumerate, xparse, array}
+\usepackage{bbding, bold-extra}
 \usepackage{float, wrapfig, picinpar, siunitx, derivative, lastpage, textcomp, nicefrac}
-\usepackage{interval, calc, framed, fancybox, quoting, empheq, stackrel, adjustbox, ragged2e}
+\usepackage{interval, calc, framed, fancybox, quoting, empheq, stackrel, adjustbox, ragged2e, adjustbox}
 \usepackage[makeroom]{cancel}
 \usepackage[obeyFinal,textsize=scriptsize,shadow,loadshadowlibrary]{todonotes}
 \usepackage[font=small,labelsep=none]{caption}
@@ -103,7 +104,6 @@
 \usepackage[warnings-off={mathtools-colon,mathtools-overbracket}]{unicode-math}
 \usepackage{mathtools}
 \setmathfont{NewCMMath-Regular.otf}
-\DeclareMathAlphabet{\mathcal}{OMS}{cmsy}{m}{n}
 
 \usepackage[new]{old-arrows} % must be loaded after amsmath, lmodern, mathtools, and stmaryrd
 \usepackage[allcommands,esvectf]{overarrows} % This needs to be loaded at the end for overbar to work
@@ -187,7 +187,6 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 \newenvironment{enumr}{\begin{enumerate}[label=({\roman*}), ref=\roman*]}{\end{enumerate}}
 \newenvironment{enumR}{\begin{enumerate}[label=({\Roman*}), ref=\Roman*]}{\end{enumerate}}
 \newenvironment{descr}{\begin{description}[font=\normalfont\sffamily, labelindent=\parindent, leftmargin=\parindent]}{\end{description}}
-
 
 %% colors
 \definecolor{airforceblue}{rgb}{0.36, 0.54, 0.66}
@@ -976,9 +975,9 @@ This page is intentionally left blank.%
 \newcommand{\cycsum}{\sum_{\mathrm{cyc}}}
 \newcommand{\defeq}{\ensuremath \stackrel{\Delta}{=}}
 \newcommand{\eins}{\ensuremath{\mathbbm{1}}}
-\newcommand{\emphg}[1]{\emph{\textcolor{ForestGreen}{\textbf{#1}}}}
-\newcommand{\emphr}[1]{\emph{\textcolor{darkcoral}{\textbf{#1}}}}
-\newcommand{\emphv}[1]{\emph{\textcolor{violet}{\textbf{#1}}}}
+\newcommand{\emphg}[1]{\emph{\textcolor{ForestGreen}{{#1}}}}
+\newcommand{\emphr}[1]{\emph{\textcolor{darkcoral}{{#1}}}}
+\newcommand{\emphv}[1]{\emph{\textcolor{violet}{{#1}}}}
 \newcommand{\emphb}[1]{\emph{\textbf{#1}}}
 \newcommand{\eps}{\varepsilon}
 \newcommand{\icr}{\ensuremath{^{\times}}}
@@ -1043,18 +1042,78 @@ This page is intentionally left blank.%
 \newcommand{\RP}{\ensuremath{\mathbb{RP}}}
 
 % Declares different font
+\setmathfont{texgyredejavu-math.otf}[range={cal}, Scale=MatchUppercase]
+\setmathfontface\mm{GFSNeohellenicMath.otf}[Scale=MatchUppercase]
+\usepackage{expl3}
+
+\ExplSyntaxOn
+\NewDocumentCommand{\newcasecommand}{ m m O{No~default~value} }%
+{\cs_new_protected:Npn #1 ##1{\str_case:nnF {##1}{#2}{#3}}}%
+\ExplSyntaxOff
+
+\newcasecommand{\unicodemap}{%
+  {A}{\mm 𝒜}
+  {B}{\mm ℬ}
+  {C}{\mm 𝒞}
+  {D}{\mm 𝒟}
+  {E}{\mm ℰ}
+  {F}{\mm ℱ}
+  {G}{\mm 𝒢}
+  {H}{\mm ℋ}
+  {I}{\mm ℐ}
+  {J}{\mm ℐ}
+  {K}{\mm 𝒦}
+  {L}{\mm ℒ}
+  {M}{\mm ℳ}
+  {N}{\mm 𝒩}
+  {O}{\mm 𝒪}
+  {P}{\mm 𝒫}
+  {Q}{\mm 𝒬}
+  {R}{\mm ℛ}
+  {S}{\mm 𝒮}
+  {T}{\mm 𝒯}
+  {U}{\mm 𝒰}
+  {V}{\mm 𝒱}
+  {W}{\mm 𝒲}
+  {X}{\mm 𝒳}
+  {Y}{\mm 𝒴}
+  {Z}{\mm 𝒵}
+}[boo!]
+
+\ExplSyntaxOn
+
+\newcommand{\applyMethod}[2]{%
+    \tl_set:Nn \l_tmpa_tl {#2} % Store the input string in a token list
+    \tl_clear:N \l_tmpb_tl % Clear a token list to store the result
+    \tl_map_inline:Nn \l_tmpa_tl {%
+        % Apply the method to each character and append the result to the token list
+        \tl_put_right:Nx \l_tmpb_tl {#1{##1}}
+    }
+    % Output the result
+    \tl_use:N \l_tmpb_tl
+}
+\ExplSyntaxOff
+
+\newcommand{\toCurve}[1]{\unicodemap{#1}}
+
 \DeclareMathAlphabet{\mathrsfs}{U}{rsfso}{m}{n}
 \DeclareMathAlphabet{\mathssss}{U}{rsfs}{m}{n}
+\DeclareMathAlphabet{\mathzeus}{U}{zeus}{m}{n}
+\DeclareMathAlphabet{\mathcalx}{OMS}{cmsy}{m}{n}
+\DeclareFontShape{TU}{lmr}{bx}{sc} {<-> cmbcsc10}{}
+
+\newcommand{\mr}[1]{\ensuremath{\mathcal{#1}}}
+\newcommand{\mj}[1]{\ensuremath{\applyMethod{\toCurve}{#1}}}
 \newcommand{\mb}[1]{\ensuremath{\mathbf{#1}}}
 \newcommand{\mv}[1]{\ensuremath{\mathbfit{#1}}}
 \newcommand{\ml}[1]{\ensuremath{\mathsf{#1}}}
-\newcommand{\mc}[1]{\ensuremath{\mathcal{#1}}}
+\newcommand{\mc}[1]{\ensuremath{\mathcalx{#1}}}
+\newcommand{\meu}[1]{\ensuremath{\mathzeus{#1}}}
 \newcommand{\mf}[1]{\ensuremath{\mathbb{#1}}}
 \newcommand{\mk}[1]{\ensuremath{\mathfrak{#1}}}
 \newcommand{\me}[1]{\ensuremath{\mathscr{#1}}}
 \newcommand{\ms}[1]{\ensuremath{\mathrsfs{#1}}}
 \newcommand{\mh}[1]{\ensuremath{\mathssss{#1}}}
-
 
 % Generalize delimiters
 \newcommand{\delimit}[4]{
@@ -1328,6 +1387,12 @@ This page is intentionally left blank.%
   linecolor=CarnationPink,
 }
 
+\mdfdefinestyle{remarkbox}{%
+  style=mdbox,
+  backgroundcolor=CarnationPink!5,
+  linecolor=CarnationPink,
+}
+
 \declaretheoremstyle[
   headfont=\bfseries\color{CarnationPink},
   mdframed={style=mdredbox},
@@ -1411,7 +1476,7 @@ This page is intentionally left blank.%
 \mdfdefinestyle{remarkbox}{%
   style=mdbox,
   linecolor=WildStrawberry,
-  backgroundcolor=WildStrawberry!5,
+  backgroundcolor=WildStrawberry!10,
 }
 
 \declaretheoremstyle[
@@ -1453,6 +1518,14 @@ This page is intentionally left blank.%
   bodyfont=\normalfont,
 ]{remarkhead}
 
+\declaretheoremstyle[
+  headfont=\color{WildStrawberry}\sffamily\bfseries,
+  spaceabove=2pt,
+  spacebelow=1pt,
+  bodyfont=\normalfont,
+  mdframed={style=remarkbox}
+]{fancyremarkhead}
+
 \theoremstyle{definition}
 % \declaretheorem[style=thmbluebox,name=Theorem,numberwithin=section]{cstheorem}
 \declaretheorem[style=thmbluebox,name=Theorem]{theorem}
@@ -1471,6 +1544,8 @@ This page is intentionally left blank.%
 \declaretheorem[style=thmredbox,name=Example,numbered=no]{example*}
 \declaretheorem[style=normhead,name=Answer,numberwithin=problem]{answer}
 \declaretheorem[style=normhead,name=Answer,numbered=no]{answer*}
+\declaretheorem[style=answerhead,name=Answer,numberwithin=problem]{fancyanswer}
+\declaretheorem[style=answerhead,name=Answer,numbered=no]{fancyanswer*}
 \declaretheorem[style=answerhead,name=Fact,numberwithin=problem]{fact}
 \declaretheorem[style=answerhead,name=Fact,numbered=no]{fact*}
 \declaretheorem[style=thmdefbox,name=Conjecture,sibling=theorem]{conjecture}
@@ -1487,6 +1562,8 @@ This page is intentionally left blank.%
 \declaretheorem[style=thmgreenbox,name=Claim,numbered=no]{claim*}
 \declaretheorem[style=remarkhead,name=Remark,numberwithin=problem]{remark}
 \declaretheorem[style=remarkhead,name=Remark,numbered=no]{remark*}
+\declaretheorem[style=fancyremarkhead,name=Remark,numberwithin=problem]{fancyremark}
+\declaretheorem[style=fancyremarkhead,name=Remark,numbered=no]{fancyremark*}
 
 % Fancier
 \mdfdefinestyle{mdboxybox}{%
@@ -1569,3 +1646,12 @@ This page is intentionally left blank.%
 \renewcommand*{\subsubsectionformat}{\color{purple}\S\thesubsubsection\enskip}
 \KOMAoptions{numbers=noenddot}
 %\usetocstyle{KOMAlike}
+
+\newenvironment{mybox}[2]{%
+    \begin{tcolorbox}[breakable, titlerule=5mm,%
+    colback=#1!5!white,colframe=#1!75!black,adjusted title=\adjustbox{set height=1.25em,raise={0.15em}{\height}}{#2},%
+    fonttitle=\sffamily\bfseries\large,%
+    drop fuzzy shadow, arc=0.3em, boxrule=1pt]}{%
+    \end{tcolorbox}}
+
+\newcommand{\soimp}{\mathcolor{brown}{\Longrightarrow}}
