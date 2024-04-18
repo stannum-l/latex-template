@@ -69,15 +69,11 @@
 \DeclareOption{footsepline}{\@footseplinetrue}
 \ProcessOptions \relax
 
-\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[dvipsnames]{xcolor}
 \usepackage[english]{babel}
 
 \RequirePackage{fontspec}
-% \usepackage{lmodern} \normalfont \sffamily
-\usepackage{bold-extra}
-\DeclareFontShape{TU}{lmr}{bx}{sc} { <-> cmbcsc10 }{}
-% \DeclareFontShape{TU}{lmr}{m}{sc} { <-> ssub * cmr/m/sc }{}
-
+\usepackage{lmodern}
 
 \if@footsepline
 \usepackage[plainfootsepline=off,headsepline=0.5pt,footsepline=0.5pt]{scrlayer-scrpage}
@@ -108,10 +104,6 @@
 \usepackage[warnings-off={mathtools-colon,mathtools-overbracket}]{unicode-math}
 \usepackage{mathtools}
 \setmathfont{NewCMMath-Regular.otf}
-\DeclareMathAlphabet{\mathcal}{OMS}{cmsy}{m}{n}
-% \rmfamily
-% \DeclareFontShape{TU}{lmr}{b}{sc}{<->ssub*cmr/bx/sc}{}
-% \DeclareFontShape{TU}{lmr}{bx}{sc}{<->ssub*cmr/bx/sc}{}
 
 \usepackage[new]{old-arrows} % must be loaded after amsmath, lmodern, mathtools, and stmaryrd
 \usepackage[allcommands,esvectf]{overarrows} % This needs to be loaded at the end for overbar to work
@@ -983,9 +975,9 @@ This page is intentionally left blank.%
 \newcommand{\cycsum}{\sum_{\mathrm{cyc}}}
 \newcommand{\defeq}{\ensuremath \stackrel{\Delta}{=}}
 \newcommand{\eins}{\ensuremath{\mathbbm{1}}}
-\newcommand{\emphg}[1]{\emph{\textcolor{ForestGreen}{\textbf{#1}}}}
-\newcommand{\emphr}[1]{\emph{\textcolor{darkcoral}{\textbf{#1}}}}
-\newcommand{\emphv}[1]{\emph{\textcolor{violet}{\textbf{#1}}}}
+\newcommand{\emphg}[1]{\emph{\textcolor{ForestGreen}{{#1}}}}
+\newcommand{\emphr}[1]{\emph{\textcolor{darkcoral}{{#1}}}}
+\newcommand{\emphv}[1]{\emph{\textcolor{violet}{{#1}}}}
 \newcommand{\emphb}[1]{\emph{\textbf{#1}}}
 \newcommand{\eps}{\varepsilon}
 \newcommand{\icr}{\ensuremath{^{\times}}}
@@ -1050,18 +1042,78 @@ This page is intentionally left blank.%
 \newcommand{\RP}{\ensuremath{\mathbb{RP}}}
 
 % Declares different font
+\setmathfont{texgyredejavu-math.otf}[range={cal}, Scale=MatchUppercase]
+\setmathfontface\mm{GFSNeohellenicMath.otf}[Scale=MatchUppercase]
+\usepackage{expl3}
+
+\ExplSyntaxOn
+\NewDocumentCommand{\newcasecommand}{ m m O{No~default~value} }%
+{\cs_new_protected:Npn #1 ##1{\str_case:nnF {##1}{#2}{#3}}}%
+\ExplSyntaxOff
+
+\newcasecommand{\unicodemap}{%
+  {A}{\mm 𝒜}
+  {B}{\mm ℬ}
+  {C}{\mm 𝒞}
+  {D}{\mm 𝒟}
+  {E}{\mm ℰ}
+  {F}{\mm ℱ}
+  {G}{\mm 𝒢}
+  {H}{\mm ℋ}
+  {I}{\mm ℐ}
+  {J}{\mm ℐ}
+  {K}{\mm 𝒦}
+  {L}{\mm ℒ}
+  {M}{\mm ℳ}
+  {N}{\mm 𝒩}
+  {O}{\mm 𝒪}
+  {P}{\mm 𝒫}
+  {Q}{\mm 𝒬}
+  {R}{\mm ℛ}
+  {S}{\mm 𝒮}
+  {T}{\mm 𝒯}
+  {U}{\mm 𝒰}
+  {V}{\mm 𝒱}
+  {W}{\mm 𝒲}
+  {X}{\mm 𝒳}
+  {Y}{\mm 𝒴}
+  {Z}{\mm 𝒵}
+}[boo!]
+
+\ExplSyntaxOn
+
+\newcommand{\applyMethod}[2]{%
+    \tl_set:Nn \l_tmpa_tl {#2} % Store the input string in a token list
+    \tl_clear:N \l_tmpb_tl % Clear a token list to store the result
+    \tl_map_inline:Nn \l_tmpa_tl {%
+        % Apply the method to each character and append the result to the token list
+        \tl_put_right:Nx \l_tmpb_tl {#1{##1}}
+    }
+    % Output the result
+    \tl_use:N \l_tmpb_tl
+}
+\ExplSyntaxOff
+
+\newcommand{\toCurve}[1]{\unicodemap{#1}}
+
 \DeclareMathAlphabet{\mathrsfs}{U}{rsfso}{m}{n}
 \DeclareMathAlphabet{\mathssss}{U}{rsfs}{m}{n}
+\DeclareMathAlphabet{\mathzeus}{U}{zeus}{m}{n}
+\DeclareMathAlphabet{\mathcalx}{OMS}{cmsy}{m}{n}
+\DeclareFontShape{TU}{lmr}{bx}{sc} {<-> cmbcsc10}{}
+
+\newcommand{\mr}[1]{\ensuremath{\mathcal{#1}}}
+\newcommand{\mj}[1]{\ensuremath{\applyMethod{\toCurve}{#1}}}
 \newcommand{\mb}[1]{\ensuremath{\mathbf{#1}}}
 \newcommand{\mv}[1]{\ensuremath{\mathbfit{#1}}}
 \newcommand{\ml}[1]{\ensuremath{\mathsf{#1}}}
-\newcommand{\mc}[1]{\ensuremath{\mathcal{#1}}}
+\newcommand{\mc}[1]{\ensuremath{\mathcalx{#1}}}
+\newcommand{\meu}[1]{\ensuremath{\mathzeus{#1}}}
 \newcommand{\mf}[1]{\ensuremath{\mathbb{#1}}}
 \newcommand{\mk}[1]{\ensuremath{\mathfrak{#1}}}
 \newcommand{\me}[1]{\ensuremath{\mathscr{#1}}}
 \newcommand{\ms}[1]{\ensuremath{\mathrsfs{#1}}}
 \newcommand{\mh}[1]{\ensuremath{\mathssss{#1}}}
-
 
 % Generalize delimiters
 \newcommand{\delimit}[4]{
