@@ -103,7 +103,12 @@
 
 \usepackage[warnings-off={mathtools-colon,mathtools-overbracket}]{unicode-math}
 \usepackage{mathtools}
-\setmathfont{NewCMMath-Regular.otf}
+% \setmathfont{NewCMMath-Regular.otf}
+\usepackage[default]{fontsetup}
+% \setmathfont[range={\pm,\mp}]{Libertinus Math}
+\setmathfont{texgyredejavu-math.otf}[range={cal}, Scale=MatchUppercase]
+\setmathfontface\mm{GFSNeohellenicMath.otf}[Scale=MatchUppercase]
+\usepackage{expl3}
 
 \usepackage[new]{old-arrows} % must be loaded after amsmath, lmodern, mathtools, and stmaryrd
 \usepackage[allcommands,esvectf]{overarrows} % This needs to be loaded at the end for overbar to work
@@ -116,14 +121,8 @@
 \ModifyLayer[addvoffset=.6ex]{plain.scrheadings.foot.even}
 \ModifyLayer[addvoffset=.6ex]{plain.scrheadings.foot.oneside}
 
-% Backup package:
-% \usepackage[e]{esvect}
-% \usepackage{url}
-
-%% Experimental
-% \linespread{0.95}
-
 \renewcommand{\arraystretch}{1}
+
 % Tikz
 \usepackage{tikz, tikz-3dplot, tikz-cd, tkz-euclide, tkz-graph}
 \usepackage[framemethod=TikZ]{mdframed}
@@ -1041,10 +1040,6 @@ This page is intentionally left blank.%
 \newcommand{\RP}{\ensuremath{\mathbb{RP}}}
 
 % Declares different font
-\setmathfont{texgyredejavu-math.otf}[range={cal}, Scale=MatchUppercase]
-\setmathfontface\mm{GFSNeohellenicMath.otf}[Scale=MatchUppercase]
-\usepackage{expl3}
-
 \ExplSyntaxOn
 \NewDocumentCommand{\newcasecommand}{ m m O{No~default~value} }%
 {\cs_new_protected:Npn #1 ##1{\str_case:nnF {##1}{#2}{#3}}}%
@@ -1080,7 +1075,6 @@ This page is intentionally left blank.%
 }[boo!]
 
 \ExplSyntaxOn
-
 \newcommand{\applyMethod}[2]{%
     \tl_set:Nn \l_tmpa_tl {#2} % Store the input string in a token list
     \tl_clear:N \l_tmpb_tl % Clear a token list to store the result
