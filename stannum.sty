@@ -103,9 +103,14 @@
 
 \usepackage[warnings-off={mathtools-colon,mathtools-overbracket}]{unicode-math}
 \usepackage{mathtools}
-\setmathfont{NewCMMath-Regular.otf}
+% \setmathfont{NewCMMath-Regular.otf}
+\usepackage[default]{fontsetup}
+%\setmathfont[range={\pm,\mp}]{FiraMath-Regular}
+\setmathfont{texgyredejavu-math.otf}[range={cal}, Scale=MatchUppercase]
+\setmathfontface\mm{GFSNeohellenicMath.otf}[Scale=MatchUppercase]
+\usepackage{expl3}
 
-\usepackage[new]{old-arrows} % must be loaded after amsmath, lmodern, mathtools, and stmaryrd
+\usepackage[old]{old-arrows} % must be loaded after amsmath, lmodern, mathtools, and stmaryrd
 \usepackage[allcommands,esvectf]{overarrows} % This needs to be loaded at the end for overbar to work
 
 % Shift foot down
@@ -115,13 +120,6 @@
 \ModifyLayer[addvoffset=.6ex]{plain.scrheadings.foot.odd}
 \ModifyLayer[addvoffset=.6ex]{plain.scrheadings.foot.even}
 \ModifyLayer[addvoffset=.6ex]{plain.scrheadings.foot.oneside}
-
-% Backup package:
-% \usepackage[e]{esvect}
-% \usepackage{url}
-
-%% Experimental
-% \linespread{0.95}
 
 \renewcommand{\arraystretch}{1}
 
@@ -140,6 +138,11 @@ extended line/.default=.5cm,%
 wpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=white, draw},%
 bpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=black, draw},%
 rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
+blpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
+wspoint/.style={circle, inner sep=0pt, minimum size=2pt, fill=white, draw},%
+bspoint/.style={circle, inner sep=0pt, minimum size=2pt, fill=black, draw},%
+rspoint/.style={circle, inner sep=0pt, minimum size=2pt, fill=red, draw},%
+blspoint/.style={circle, inner sep=0pt, minimum size=2pt, fill=red, draw},%
 }
 
 \usepackage[most]{tcolorbox}
@@ -183,6 +186,7 @@ rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
 \newenvironment{enumA}{\begin{enumerate}[label=(\Alph*), ref=\Alpha*]}{\end{enumerate}}
 \newenvironment{enumI}{\begin{enumerate}}{\end{enumerate}}
 \newenvironment{enumn}{\begin{enumerate}[label=(\arabic*), ref=\arabic*]}{\end{enumerate}}
+\newenvironment{enumnn}{\begin{enumerate}[label=\arabic*., ref=\arabic*]}{\end{enumerate}}
 \newenvironment{enumrB}{\begin{enumerate}[label=(\emph{\roman*}), ref=\roman*]}{\end{enumerate}}
 \newenvironment{enumr}{\begin{enumerate}[label=({\roman*}), ref=\roman*]}{\end{enumerate}}
 \newenvironment{enumR}{\begin{enumerate}[label=({\Roman*}), ref=\Roman*]}{\end{enumerate}}
@@ -976,8 +980,9 @@ This page is intentionally left blank.%
 \newcommand{\defeq}{\ensuremath \stackrel{\Delta}{=}}
 \newcommand{\eins}{\ensuremath{\mathbbm{1}}}
 \newcommand{\emphg}[1]{\emph{\textcolor{ForestGreen}{{#1}}}}
-\newcommand{\emphr}[1]{\emph{\textcolor{darkcoral}{{#1}}}}
+\newcommand{\emphr}[1]{\emph{\textcolor{red}{{#1}}}}
 \newcommand{\emphv}[1]{\emph{\textcolor{violet}{{#1}}}}
+\newcommand{\emphbb}[1]{\emph{\textcolor{blue}{{#1}}}}
 \newcommand{\emphb}[1]{\emph{\textbf{#1}}}
 \newcommand{\eps}{\varepsilon}
 \newcommand{\icr}{\ensuremath{^{\times}}}
@@ -1000,7 +1005,7 @@ This page is intentionally left blank.%
 \newcommand{\nsupg}{\mathrel{\rhd}}
 \newcommand{\nsupgeq}{\mathrel{\trianglerighteq}}
 \newcommand{\dg}{\ensuremath{^{\circ}}}
-\newcommand{\phiv}{\varphi}
+\newcommand{\vphi}{\varphi}
 \newcommand{\pimg}{\ensuremath{^{\varleftarrow}}}
 \newcommand{\sq}[1]{\ensuremath{#1 \times #1}}
 \newcommand{\surjto}{\twoheadrightarrow}
@@ -1013,6 +1018,7 @@ This page is intentionally left blank.%
 \newcommand{\ol}[1]{\overbar{#1}}
 \newcommand{\ul}[1]{\underbar{#1}}
 \newcommand{\ray}[1]{\overrightarrow{#1}}
+\newcommand{\rhex}{\hexagon}
 
 \newcommand{\seq@noargs}[1]{#1_1, #1_2, \dotsc,#1_n}
 \newcommand{\seq@withargs}[2]{#1_1, #1_2, \dotsc,#1_#2}
@@ -1042,46 +1048,41 @@ This page is intentionally left blank.%
 \newcommand{\RP}{\ensuremath{\mathbb{RP}}}
 
 % Declares different font
-\setmathfont{texgyredejavu-math.otf}[range={cal}, Scale=MatchUppercase]
-\setmathfontface\mm{GFSNeohellenicMath.otf}[Scale=MatchUppercase]
-\usepackage{expl3}
-
 \ExplSyntaxOn
 \NewDocumentCommand{\newcasecommand}{ m m O{No~default~value} }%
 {\cs_new_protected:Npn #1 ##1{\str_case:nnF {##1}{#2}{#3}}}%
 \ExplSyntaxOff
 
 \newcasecommand{\unicodemap}{%
-  {A}{\mm 𝒜}
-  {B}{\mm ℬ}
-  {C}{\mm 𝒞}
-  {D}{\mm 𝒟}
-  {E}{\mm ℰ}
-  {F}{\mm ℱ}
-  {G}{\mm 𝒢}
-  {H}{\mm ℋ}
-  {I}{\mm ℐ}
-  {J}{\mm ℐ}
-  {K}{\mm 𝒦}
-  {L}{\mm ℒ}
-  {M}{\mm ℳ}
-  {N}{\mm 𝒩}
-  {O}{\mm 𝒪}
-  {P}{\mm 𝒫}
-  {Q}{\mm 𝒬}
-  {R}{\mm ℛ}
-  {S}{\mm 𝒮}
-  {T}{\mm 𝒯}
-  {U}{\mm 𝒰}
-  {V}{\mm 𝒱}
-  {W}{\mm 𝒲}
-  {X}{\mm 𝒳}
-  {Y}{\mm 𝒴}
-  {Z}{\mm 𝒵}
+  {A}{\mm \mscrA}
+  {B}{\mm \mscrB}
+  {C}{\mm \mscrC}
+  {D}{\mm \mscrD}
+  {E}{\mm \mscrE}
+  {F}{\mm \mscrF}
+  {G}{\mm \mscrG}
+  {H}{\mm \mscrH}
+  {I}{\mm \mscrI}
+  {J}{\mm \mscrJ}
+  {K}{\mm \mscrK}
+  {L}{\mm \mscrL}
+  {M}{\mm \mscrM}
+  {N}{\mm \mscrN}
+  {O}{\mm \mscrO}
+  {P}{\mm \mscrP}
+  {Q}{\mm \mscrQ}
+  {R}{\mm \mscrR}
+  {S}{\mm \mscrS}
+  {T}{\mm \mscrT}
+  {U}{\mm \mscrU}
+  {V}{\mm \mscrV}
+  {W}{\mm \mscrW}
+  {X}{\mm \mscrX}
+  {Y}{\mm \mscrY}
+  {Z}{\mm \mscrZ}
 }[boo!]
 
 \ExplSyntaxOn
-
 \newcommand{\applyMethod}[2]{%
     \tl_set:Nn \l_tmpa_tl {#2} % Store the input string in a token list
     \tl_clear:N \l_tmpb_tl % Clear a token list to store the result
@@ -1190,6 +1191,7 @@ This page is intentionally left blank.%
 \newcommand{\Angbr}[2][0]{\delimit{#1}{\lAngle}{#2}{\rAngle}}
 \newcommand{\brac}[2][0]{\delimit{#1}{\lbrack}{#2}{\rbrack}}
 \newcommand{\Brac}[2][0]{\delimit{#1}{\lBrack}{#2}{\rBrack}}
+\newcommand{\Brace}[2][0]{\delimit{#1}{\lBrace}{#2}{\rBrace}}
 \newcommand{\floor}[2][0]{\delimit{#1}{\lfloor}{#2}{\rfloor}}
 \newcommand{\ceil}[2][0]{\delimit{#1}{\lceil}{#2}{\rceil}}
 \newcommand{\pair}[2][0]{\delimit{#1}{(}{#2}{)}}
@@ -1211,6 +1213,7 @@ This page is intentionally left blank.%
 
 % Operators
 \DeclareMathOperator{\idsc}{\ensuremath{\textsc{id}}}
+\DeclareMathOperator{\iid}{\ensuremath{\textsc{iid}}}
 \DeclareMathOperator{\id}{\ensuremath{id}}
 \DeclareMathOperator{\Acc}{\ensuremath{acc}}
 \DeclareMathOperator{\Adj}{\ensuremath{Adj}}
@@ -1256,6 +1259,7 @@ This page is intentionally left blank.%
 \DeclareMathOperator{\Geo}{\ensuremath{\mathsf{Geo}}}
 \DeclareMathOperator{\GF}{\ensuremath{\mathrm{GF}}}
 \DeclareMathOperator{\GL}{\ensuremath{GL}} % General linear group
+\DeclareMathOperator{\gp}{\ensuremath{gp}}
 \DeclareMathOperator{\gr}{\ensuremath{Gr}}
 \DeclareMathOperator{\grad}{\ensuremath{grad}}
 \DeclareMathOperator{\Hol}{\ensuremath{Hol}}
@@ -1264,6 +1268,7 @@ This page is intentionally left blank.%
 \DeclareMathOperator{\Ind}{\ensuremath{Ind}}
 \DeclareMathOperator{\Inn}{\ensuremath{Inn}}
 \DeclareMathOperator{\Int}{\ensuremath{Int}}
+\DeclareMathOperator{\Iso}{\ensuremath{Iso}}
 \DeclareMathOperator{\itr}{\ensuremath{int}}
 \DeclareMathOperator{\Lb}{\ensuremath{Lb}}
 \DeclareMathOperator{\lcm}{\ensuremath{lcm}}
@@ -1530,8 +1535,12 @@ This page is intentionally left blank.%
 % \declaretheorem[style=thmbluebox,name=Theorem,numberwithin=section]{cstheorem}
 \declaretheorem[style=thmbluebox,name=Theorem]{theorem}
 \declaretheorem[style=thmbluebox,name=Theorem,numbered=no]{theorem*}
+\declaretheorem[style=thmbluebox,name=Axiom]{axiom}
+\declaretheorem[style=thmbluebox,name=Axiom,numbered=no]{axiom*}
 \declaretheorem[style=basehead,name=Problem,sibling=theorem]{problem}
 \declaretheorem[style=basehead,name=Problem,numbered=no]{problem*}
+\declaretheorem[style=basehead,name=Problem,sibling=theorem]{Problem}
+\declaretheorem[style=basehead,name=Problem,numbered=no]{Problem*}
 \declaretheorem[style=thmcerubox,name=Lemma,sibling=theorem,numberwithin=problem]{lemma}
 \declaretheorem[style=thmcerubox,name=Lemma,numbered=no]{lemma*}
 \declaretheorem[style=thmbluebox,name=Corollary,sibling=theorem]{corollary}
@@ -1550,8 +1559,6 @@ This page is intentionally left blank.%
 \declaretheorem[style=answerhead,name=Fact,numbered=no]{fact*}
 \declaretheorem[style=thmdefbox,name=Conjecture,sibling=theorem]{conjecture}
 \declaretheorem[style=thmdefbox,name=Conjecture,numbered=no]{conjecture*}
-\declaretheorem[style=thmdefbox,name=Definition,sibling=theorem]{definition}
-\declaretheorem[style=thmdefbox,name=Definition,numbered=no]{definition*}
 \declaretheorem[style=basehead,name=Exercise,sibling=theorem]{exercise}
 \declaretheorem[style=basehead,name=Exercise,numbered=no]{exercise*}
 \declaretheorem[style=basehead,name=Question,sibling=theorem]{ques}
@@ -1564,6 +1571,8 @@ This page is intentionally left blank.%
 \declaretheorem[style=remarkhead,name=Remark,numbered=no]{remark*}
 \declaretheorem[style=fancyremarkhead,name=Remark,numberwithin=problem]{fancyremark}
 \declaretheorem[style=fancyremarkhead,name=Remark,numbered=no]{fancyremark*}
+\declaretheorem[style=thmdefbox,name=Definition,sibling=theorem,numberwithin=problem]{definition}
+\declaretheorem[style=thmdefbox,name=Definition,numbered=no]{definition*}
 
 % Fancier
 \mdfdefinestyle{mdboxybox}{%
@@ -1624,28 +1633,20 @@ This page is intentionally left blank.%
 \addtokomafont{subsection}{\sffamily}
 \addtokomafont{subsubsection}{\sffamily}
 \addtokomafont{paragraph}{\sffamily\color{navyblue!35!brown}\P\ }
-\addtokomafont{subtitle}{\Large}
-%\setkomafont{pageheadfoot}{\normalfont\sffamily}
+
+\setkomafont{title}{\normalfont\bfseries\sffamily}
+\addtokomafont{subtitle}{\sffamily}
+\addtokomafont{author}{\normalfont}
+
+\setkomafont{pageheadfoot}{\normalfont\sffamily}
 \setkomafont{pageheadfoot}{\small}
 \setkomafont{author}{\Large\scshape}
 \setkomafont{date}{\Large\normalsize}
 
-
-% \@ifundefined{chapter}{}{
-%   \addtokomafont{partprefix}{\rmfamily}
-%   \renewcommand*{\partformat}{\color{purple}
-%     \scalebox{2.5}{\thepart}\enlargethispage{2em}}
-%   \addtokomafont{chapterprefix}{\raggedleft}
-%   \RedeclareSectionCommand[beforeskip=0.5em]{chapter}
-%   \renewcommand*{\chapterformat}{\mbox{%
-%     \scalebox{1.5}{\chapappifchapterprefix{\nobreakspace}}%
-%     \scalebox{2.718}{\color{purple}\thechapter}\enskip}}
-% }
 \renewcommand*{\sectionformat}{\color{purple}\S\thesection\enskip}
 \renewcommand*{\subsectionformat}{\color{purple}\S\thesubsection\enskip}
 \renewcommand*{\subsubsectionformat}{\color{purple}\S\thesubsubsection\enskip}
 \KOMAoptions{numbers=noenddot}
-%\usetocstyle{KOMAlike}
 
 \newenvironment{mybox}[2]{%
     \begin{tcolorbox}[breakable, titlerule=5mm,%
@@ -1654,4 +1655,5 @@ This page is intentionally left blank.%
     drop fuzzy shadow, arc=0.3em, boxrule=1pt]}{%
     \end{tcolorbox}}
 
-\newcommand{\soimp}{\mathcolor{brown}{\Longrightarrow}}
+\newcommand{\soimp}{\mathcolor{cerulean}{\Longrightarrow}}
+\setmathfont{XITS Math}[range={\hexagon,\varhexagon}]
