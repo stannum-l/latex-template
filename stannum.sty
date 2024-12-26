@@ -111,7 +111,6 @@
 \usepackage{expl3}
 
 \usepackage[old]{old-arrows} % must be loaded after amsmath, lmodern, mathtools, and stmaryrd
-\usepackage[allcommands,esvectf]{overarrows} % This needs to be loaded at the end for overbar to work
 
 % Shift foot down
 \ModifyLayer[addvoffset=.6ex]{scrheadings.foot.odd}
@@ -953,9 +952,7 @@ blspoint/.style={circle, inner sep=0pt, minimum size=2pt, fill=red, draw},%
 
 % Hacks
 \newcommand{\powerset}{\raisebox{.15\baselineskip}{\Large\ensuremath{\wp}}}
-\newcommand{\arc}[1]{%
-  \setbox9=\hbox{\ensuremath{#1}}%
-  \ooalign{\raisebox{8pt}{\resizebox{\wd9}{\height}{\ensuremath{\frown}}}\cr\ensuremath{#1}}}
+
 \newcommand*{\Laplace}{\mathop{}\!\mathbin\bigtriangleup}
 \newcommand*{\DAlambert}{\mathop{}\!\mathbin\Box}
 
@@ -1623,7 +1620,6 @@ This page is intentionally left blank.%
 \newcommand{\hsbar}{\newhbar{0pt}{-0.7pt}{h}}
 \newcommand{\dsbar}{\newhbar{2pt}{-0.7pt}{d}}
 
-\NewOverArrowCommand{overhookleft}{start=\lhook, end=\rightarrow, middle=\relbar, trim start=0, trim end=3, trim middle=5,}
 \DeclareMathOperator*{\dalam}{\scalerel*{\square}{\prod}}
 \DeclareMathOperator*{\lapl}{\scalerel*{\triangle}{\prod}}
 
@@ -1657,3 +1653,16 @@ This page is intentionally left blank.%
 
 \newcommand{\soimp}{\mathcolor{cerulean}{\Longrightarrow}}
 \setmathfont{XITS Math}[range={\hexagon,\varhexagon}]
+
+\usepackage{pstricks, auto-pst-pdf, pst-node}
+\usepackage[old-arrows,tikz,pstricks,pstarrows,esvectf]{overarrows} % This needs to be loaded at the end for overbar to work
+\NewOverArrowCommand{overhookleft}{start=\lhook, end=\rightarrow, middle=\relbar, trim start=0, trim end=3, trim middle=5,}
+\newcommand{\vararc}[1]{%
+  \setbox9=\hbox{\ensuremath{#1}}%
+  \ooalign{\raisebox{8pt}{\resizebox{\wd9}{\height}{\ensuremath{\frown}}}\cr\ensuremath{#1}}}
+
+\NewOverArrowCommand[tikz]{overarc}{%
+path options={x=\overarrowlength, line width=1.3*\overarrowsmallerthickness},
+path={(0,0) parabola[parabola height=0.2\overarrowlength] (1,0)},
+arrows={-}, center arrow,
+}
