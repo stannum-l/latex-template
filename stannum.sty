@@ -1657,6 +1657,7 @@ This page is intentionally left blank.%
 \usepackage{pstricks, auto-pst-pdf, pst-node}
 \usepackage[old-arrows,tikz,pstricks,pstarrows,esvectf]{overarrows} % This needs to be loaded at the end for overbar to work
 \NewOverArrowCommand{overhookleft}{start=\lhook, end=\rightarrow, middle=\relbar, trim start=0, trim end=3, trim middle=5,}
+
 \newcommand{\vararc}[1]{%
   \setbox9=\hbox{\ensuremath{#1}}%
   \ooalign{\raisebox{8pt}{\resizebox{\wd9}{\height}{\ensuremath{\frown}}}\cr\ensuremath{#1}}}
@@ -1665,4 +1666,14 @@ This page is intentionally left blank.%
 path options={x=\overarrowlength, line width=1.3*\overarrowsmallerthickness},
 path={(0,0) parabola[parabola height=0.2\overarrowlength] (1,0)},
 arrows={-}, center arrow,
+}
+
+\NewOverArrowCommand[tikz]{varc}{%
+add tikz options={x=\overarrowlength},
+add tikz options={line width={1.35*\overarrowsmallerthickness}},
+path options={arrows={-}},
+path={(0,0) arc(360:180:-0.5 and -0.1)},
+center arrow,
+% min length=25,
+space after arrow=0.1ex,
 }
