@@ -99,8 +99,6 @@
 \usepackage{hyperref}
 \hypersetup{colorlinks=true,urlcolor=RubineRed,linkcolor=RoyalBlue,citecolor=ForestGreen,filecolor=Magenta}
 
-\usepackage{algorithm}
-
 \usepackage[warnings-off={mathtools-colon,mathtools-overbracket}]{unicode-math}
 \usepackage{mathtools}
 % \setmathfont{NewCMMath-Regular.otf}
@@ -146,7 +144,8 @@ blspoint/.style={circle, inner sep=0pt, minimum size=2pt, fill=red, draw},%
 
 \usepackage[most]{tcolorbox}
 
-\usepackage{algpseudocode}
+% May use `algorithm2e` instead. See https://www.overleaf.com/learn/latex/Algorithms.
+\usepackage{algpseudocodex, algorithm}
 \algrenewcommand\algorithmicprocedure{\textbf{function}}
 \algrenewcommand{\algorithmiccomment}[1]{\hskip3em$\triangleright$ #1}
 
@@ -1008,7 +1007,7 @@ This page is intentionally left blank.%
 \newcommand{\surjto}{\twoheadrightarrow}
 \newcommand{\symprod}{\prod_{\mathrm{sym}}}
 \newcommand{\symsum}{\sum_{\mathrm{sym}}}
-\newcommand{\transp}{\ensuremath{^\top}}
+\newcommand{\tsp}{\ensuremath{^\intercal}}
 \newcommand{\varempty}{\diameter}
 \newcommand{\vseq}[1]{(#1_i)_{i\in\mathbb{N}}}
 \newcommand{\w}{\hspace*{-3pt}}
@@ -1677,3 +1676,5 @@ center arrow,
 % min length=25,
 space after arrow=0.1ex,
 }
+
+\setmathfont{Erewhon Math}[range={\intercal}]
