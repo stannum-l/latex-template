@@ -84,17 +84,18 @@
 %\usepackage[margin=1in]{geometry}
 \usepackage{typearea}
 \usepackage{geometry}
+\setlength{\textheight}{1.1\textheight}
 
 \usepackage{commath, yhmath, amsmath, amsopn, multicol, amsfonts, amssymb, esint, amsthm, thmtools, subfig, mathdots}
 \usepackage{upgreek, bold-extra, mathrsfs, tensor, multirow, ellipsis, chemfig, stackengine, asymptote, bbm, bookmark}
-\usepackage{xpatch, longtable, tabu, enumerate, xparse, array}
+\usepackage{xpatch, longtable, tabu, enumerate, xparse, array, witharrows}
 \usepackage{bbding, bold-extra}
 \usepackage{float, wrapfig, picinpar, siunitx, derivative, lastpage, textcomp, nicefrac}
 \usepackage{interval, calc, framed, fancybox, quoting, empheq, stackrel, adjustbox, ragged2e, adjustbox}
 \usepackage[makeroom]{cancel}
 \usepackage[obeyFinal,textsize=scriptsize,shadow,loadshadowlibrary]{todonotes}
 \usepackage[font=small,labelsep=none]{caption}
-\usepackage{scalerel}
+\usepackage{scalerel, eqparbox}
 
 \usepackage{hyperref}
 \hypersetup{colorlinks=true,urlcolor=RubineRed,linkcolor=RoyalBlue,citecolor=ForestGreen,filecolor=Magenta}
@@ -1289,6 +1290,7 @@ This page is intentionally left blank.%
 \DeclareMathOperator{\range}{\ensuremath{range}}
 \DeclareMathOperator{\rank}{\ensuremath{rank}}
 \DeclareMathOperator{\re}{\ensuremath{re}}
+\DeclareMathOperator{\Ric}{\ensuremath{Ric}}
 \DeclareMathOperator{\rng}{\ensuremath{Rng}}
 \DeclareMathOperator{\sech}{\ensuremath{sech}}
 \DeclareMathOperator{\sf}{\ensuremath{sf}}
@@ -1655,7 +1657,7 @@ This page is intentionally left blank.%
 \setmathfont{XITS Math}[range={\hexagon,\varhexagon}]
 
 \usepackage{pstricks, auto-pst-pdf, pst-node}
-\usepackage[old-arrows,tikz,pstricks,pstarrows,esvectf]{overarrows} % This needs to be loaded at the end for overbar to work
+\usepackage[old-arrows,tikz,pstarrows,esvectf]{overarrows} % This needs to be loaded at the end for overbar to work
 \NewOverArrowCommand{overhookleft}{start=\lhook, end=\rightarrow, middle=\relbar, trim start=0, trim end=3, trim middle=5,}
 
 \newcommand{\vararc}[1]{%
