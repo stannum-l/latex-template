@@ -84,7 +84,7 @@
 %\usepackage[margin=1in]{geometry}
 \usepackage{typearea}
 \usepackage{geometry}
-\setlength{\textheight}{1.1\textheight}
+%\setlength{\textheight}{1.1\textheight}
 
 \usepackage{commath, yhmath, amsmath, amsopn, multicol, amsfonts, amssymb, esint, amsthm, thmtools, subfig, mathdots}
 \usepackage{upgreek, bold-extra, mathrsfs, tensor, multirow, ellipsis, chemfig, stackengine, asymptote, bbm, bookmark}
@@ -1209,8 +1209,6 @@ This page is intentionally left blank.%
 	\vspace{-1em} }
 
 % Operators
-\DeclareMathOperator{\idsc}{\ensuremath{\textsc{id}}}
-\DeclareMathOperator{\iid}{\ensuremath{\textsc{iid}}}
 \DeclareMathOperator{\id}{\ensuremath{id}}
 \DeclareMathOperator{\Acc}{\ensuremath{acc}}
 \DeclareMathOperator{\Adj}{\ensuremath{Adj}}
@@ -1315,6 +1313,11 @@ This page is intentionally left blank.%
 \DeclareMathOperator{\vol}{\ensuremath{vol}}
 \DeclareMathOperator{\Vol}{\ensuremath{Vol}} % Special linear group
 \DeclareMathOperator{\Wern}{\ensuremath{\mathsf{Wern}}}
+
+
+\newcommand{\ufd}{\ensuremath{\textsc{ufd}}}
+\newcommand{\idsc}{\ensuremath{\textsc{id}}}
+\newcommand{\iid}{\ensuremath{\textsc{iid}}}
 
 % Fraction environment
 \newcommand{\stirlingI}[2]{\genfrac{[}{]}{0pt}{}{#1}{#2}}
