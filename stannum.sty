@@ -1633,6 +1633,16 @@ This page is intentionally left blank.%
 
 % Customize style
 \addtokomafont{disposition}{\rmfamily}
+
+\ifdefined\chapter
+    \addtokomafont{chapter}{\sffamily}
+    \addtokomafont{chapterprefix}{\raggedleft}
+    \RedeclareSectionCommand[beforeskip=0.5em]{chapter}
+    \renewcommand*{\chapterformat}{\mbox{%
+        \scalebox{1.5}{\chapappifchapterprefix{\nobreakspace}}%
+        \scalebox{2.25}{\color{purple}\thechapter}\enskip}}
+\fi
+
 \addtokomafont{section}{\sffamily}
 \addtokomafont{subsection}{\sffamily}
 \addtokomafont{subsubsection}{\sffamily}
@@ -1649,12 +1659,6 @@ This page is intentionally left blank.%
 
 \addtokomafont{partprefix}{\rmfamily}
 \renewcommand*{\partformat}{\color{purple}\scalebox{2.1}{\thepart}\enlargethispage{2em}}
-\addtokomafont{chapterprefix}{\raggedleft}
-\RedeclareSectionCommand[beforeskip=0.5em]{chapter}
-\renewcommand*{\chapterformat}{\mbox{%
-    \scalebox{1.5}{\chapappifchapterprefix{\nobreakspace}}%
-    \scalebox{2.25}{\color{purple}\thechapter}\enskip}}
-
 \renewcommand*{\sectionformat}{\color{purple}\S\thesection\enskip}
 \renewcommand*{\subsectionformat}{\color{purple}\S\thesubsection\enskip}
 \renewcommand*{\subsubsectionformat}{\color{purple}\S\thesubsubsection\enskip}
