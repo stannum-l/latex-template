@@ -81,6 +81,8 @@
 \usepackage[plainfootsepline=off,headsepline=0.5pt,footsepline=0pt]{scrlayer-scrpage}
 \fi
 
+\usepackage{scrhack}
+
 %\usepackage[margin=1in]{geometry}
 \usepackage{typearea}
 \usepackage{geometry}
@@ -1645,6 +1647,14 @@ This page is intentionally left blank.%
 \setkomafont{author}{\Large\scshape}
 \setkomafont{date}{\Large\normalsize}
 
+\addtokomafont{partprefix}{\rmfamily}
+\renewcommand*{\partformat}{\color{purple}\scalebox{2.1}{\thepart}\enlargethispage{2em}}
+\addtokomafont{chapterprefix}{\raggedleft}
+\RedeclareSectionCommand[beforeskip=0.5em]{chapter}
+\renewcommand*{\chapterformat}{\mbox{%
+    \scalebox{1.5}{\chapappifchapterprefix{\nobreakspace}}%
+    \scalebox{2.25}{\color{purple}\thechapter}\enskip}}
+
 \renewcommand*{\sectionformat}{\color{purple}\S\thesection\enskip}
 \renewcommand*{\subsectionformat}{\color{purple}\S\thesubsection\enskip}
 \renewcommand*{\subsubsectionformat}{\color{purple}\S\thesubsubsection\enskip}
@@ -1685,3 +1695,7 @@ space after arrow=0.1ex,
 }
 
 \setmathfont{Erewhon Math}[range={\intercal,\complement}]
+\newcommand{\Conv}{\mathop{\scalebox{3.1}{\raisebox{-0.4ex}{$\ast$}}}}
+
+\DeclareDifferential{\odif}{\mathnormal{d}}
+% \DeclareDerivative{\odv}{\mathnormal{d}}
