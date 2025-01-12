@@ -123,76 +123,6 @@
 
 \renewcommand{\arraystretch}{1}
 
-% Tikz
-\usepackage{tikz, tikz-3dplot, tikz-cd, tkz-euclide, tkz-graph}
-\usepackage[framemethod=TikZ]{mdframed}
-\usetikzlibrary{shapes, calendar, matrix, backgrounds, folding, knots, fadings, shadows}
-\usetikzlibrary{decorations.markings, calc, arrows, petri, topaths, decorations.pathreplacing}
-\usetikzlibrary{arrows.meta,bending,positioning}
-\usetikzlibrary{graphs, graphs.standard}
-\usetikzlibrary{patterns}
-\usetikzlibrary{shapes.geometric}
-\tikzset{%
-extended line/.style={shorten >=-#1,shorten <=-#1},%
-extended line/.default=.5cm,%
-wpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=white, draw},%
-bpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=black, draw},%
-rpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
-blpoint/.style={circle, inner sep=0pt, minimum size=4pt, fill=red, draw},%
-wspoint/.style={circle, inner sep=0pt, minimum size=2pt, fill=white, draw},%
-bspoint/.style={circle, inner sep=0pt, minimum size=2pt, fill=black, draw},%
-rspoint/.style={circle, inner sep=0pt, minimum size=2pt, fill=red, draw},%
-blspoint/.style={circle, inner sep=0pt, minimum size=2pt, fill=red, draw},%
-}
-
-\usepackage[most]{tcolorbox}
-
-% May use `algorithm2e` instead. See https://www.overleaf.com/learn/latex/Algorithms.
-\usepackage{algpseudocodex, algorithm}
-\algrenewcommand\algorithmicprocedure{\textbf{function}}
-\algrenewcommand{\algorithmiccomment}[1]{\hskip3em$\triangleright$ #1}
-
-\usepackage{epigraph}
-\renewcommand{\epigraphsize}{\scriptsize}
-\renewcommand{\epigraphwidth}{60ex}
-
-\usepackage{listings,lstautogobble}
-\lstset{
-    keywordstyle=\color{blue}
-  , basicstyle=\ttfamily\footnotesize\bfseries
-  , commentstyle={}
-  , columns=fullflexible
-  , numbers=left
-  , showstringspaces=false
-  , keepspaces=true
-  , xleftmargin=.2\textwidth
-  , xrightmargin=.2\textwidth
-  , frame=tb
-  }
-
-\usepackage{pgfplots}
-\pgfplotsset{compat=1.18}
-
-% enumerate
-\usepackage[shortlabels]{enumitem}
-\setlist[itemize,1]{listparindent=\parindent}
-\setlist[itemize,2]{label=$\circ$,leftmargin=\parindent,listparindent=\parindent}
-\setlist[description,1]{listparindent=\parindent}
-\setlist[enumerate,1]{label=(\emph{\alph*}), ref=\alph*, listparindent=\parindent}
-\setlist[enumerate,2]{label=(\emph{\roman*}), leftmargin=\parindent, ref=\roman*, listparindent=\parindent}
-\setlist[enumerate,3]{label=(\emph{\arabic*}), leftmargin=\parindent, ref=\arabic*, listparindent=\parindent}
-\setlist[enumerate,4]{label=(\emph{\roman*}), leftmargin=\parindent, ref=\roman*, listparindent=\parindent}
-% \newenvironment{enumI}{\begin{itemize}}{\end{itemize}}
-\newenvironment{enum}{\begin{enumerate}[label=(\alph*), ref=\alpha*]}{\end{enumerate}}
-\newenvironment{enumA}{\begin{enumerate}[label=(\Alph*), ref=\Alpha*]}{\end{enumerate}}
-\newenvironment{enumI}{\begin{enumerate}}{\end{enumerate}}
-\newenvironment{enumn}{\begin{enumerate}[label=(\arabic*), ref=\arabic*]}{\end{enumerate}}
-\newenvironment{enumnn}{\begin{enumerate}[label=\arabic*., ref=\arabic*]}{\end{enumerate}}
-\newenvironment{enumrB}{\begin{enumerate}[label=(\emph{\roman*}), ref=\roman*]}{\end{enumerate}}
-\newenvironment{enumr}{\begin{enumerate}[label=({\roman*}), ref=\roman*]}{\end{enumerate}}
-\newenvironment{enumR}{\begin{enumerate}[label=({\Roman*}), ref=\Roman*]}{\end{enumerate}}
-\newenvironment{descr}{\begin{description}[font=\normalfont\sffamily, labelindent=\parindent, leftmargin=\parindent]}{\end{description}}
-
 %% colors
 \definecolor{airforceblue}{rgb}{0.36, 0.54, 0.66}
 \definecolor{aliceblue}{rgb}{0.94, 0.97, 1.0}
@@ -952,6 +882,79 @@ blspoint/.style={circle, inner sep=0pt, minimum size=2pt, fill=red, draw},%
 \definecolor{zaffre}{rgb}{0.0, 0.08, 0.66}
 \definecolor{zinnwalditebrown}{rgb}{0.17, 0.09, 0.03}
 
+% Tikz
+\usepackage{tikz, tikz-3dplot, tikz-cd, tkz-euclide, tkz-graph}
+\usepackage[framemethod=TikZ]{mdframed}
+\usetikzlibrary{shapes, calendar, matrix, backgrounds, folding, knots, fadings, shadows}
+\usetikzlibrary{decorations.markings, calc, arrows, petri, topaths, decorations.pathreplacing}
+\usetikzlibrary{arrows.meta,bending,positioning}
+\usetikzlibrary{graphs, graphs.standard}
+\usetikzlibrary{patterns}
+\usetikzlibrary{shapes.geometric}
+\tikzset{%
+extended line/.style={shorten >=-#1,shorten <=-#1},%
+extended line/.default=.5cm,%
+wpoint/.style={circle, inner sep=0pt, minimum size=3pt, fill=White, draw},%
+bpoint/.style={circle, inner sep=0pt, minimum size=3pt, fill=Black, draw},%
+rpoint/.style={circle, inner sep=0pt, minimum size=3pt, fill=Red, draw},%
+blpoint/.style={circle, inner sep=0pt, minimum size=3pt, fill=Blue, draw},%
+gpoint/.style={circle, inner sep=0pt, minimum size=3pt, fill=ForestGreen, draw},%
+ppoint/.style={circle, inner sep=0pt, minimum size=3pt, fill=Purple, draw},%
+cpoint/.style={circle, inner sep=0pt, minimum size=3pt, fill=Cerulean, draw},%
+opoint/.style={circle, inner sep=0pt, minimum size=3pt, fill=Orange, draw},%
+svpoint/.style={circle, inner sep=0pt, minimum size=3pt, fill=silver, draw},%
+mpoint/.style={circle, inner sep=0pt, minimum size=3pt, fill=magenta, draw},%
+ypoint/.style={circle, inner sep=0pt, minimum size=3pt, fill=Yellow, draw},%
+}
+
+\usepackage[most]{tcolorbox}
+
+% May use `algorithm2e` instead. See https://www.overleaf.com/learn/latex/Algorithms.
+\usepackage{algpseudocodex, algorithm}
+\algrenewcommand\algorithmicprocedure{\textbf{function}}
+\algrenewcommand{\algorithmiccomment}[1]{\hskip3em$\triangleright$ #1}
+
+\usepackage{epigraph}
+\renewcommand{\epigraphsize}{\scriptsize}
+\renewcommand{\epigraphwidth}{60ex}
+
+\usepackage{listings,lstautogobble}
+\lstset{
+    keywordstyle=\color{blue}
+  , basicstyle=\ttfamily\footnotesize\bfseries
+  , commentstyle={}
+  , columns=fullflexible
+  , numbers=left
+  , showstringspaces=false
+  , keepspaces=true
+  , xleftmargin=.2\textwidth
+  , xrightmargin=.2\textwidth
+  , frame=tb
+  }
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+% enumerate
+\usepackage[shortlabels]{enumitem}
+\setlist[itemize,1]{listparindent=\parindent}
+\setlist[itemize,2]{label=$\circ$,leftmargin=\parindent,listparindent=\parindent}
+\setlist[description,1]{listparindent=\parindent}
+\setlist[enumerate,1]{label=(\emph{\alph*}), ref=\alph*, listparindent=\parindent}
+\setlist[enumerate,2]{label=(\emph{\roman*}), leftmargin=\parindent, ref=\roman*, listparindent=\parindent}
+\setlist[enumerate,3]{label=(\emph{\arabic*}), leftmargin=\parindent, ref=\arabic*, listparindent=\parindent}
+\setlist[enumerate,4]{label=(\emph{\roman*}), leftmargin=\parindent, ref=\roman*, listparindent=\parindent}
+% \newenvironment{enumI}{\begin{itemize}}{\end{itemize}}
+\newenvironment{enum}{\begin{enumerate}[label=(\alph*), ref=\alpha*]}{\end{enumerate}}
+\newenvironment{enumA}{\begin{enumerate}[label=(\Alph*), ref=\Alpha*]}{\end{enumerate}}
+\newenvironment{enumI}{\begin{enumerate}}{\end{enumerate}}
+\newenvironment{enumn}{\begin{enumerate}[label=(\arabic*), ref=\arabic*]}{\end{enumerate}}
+\newenvironment{enumnn}{\begin{enumerate}[label=\arabic*., ref=\arabic*]}{\end{enumerate}}
+\newenvironment{enumrB}{\begin{enumerate}[label=(\emph{\roman*}), ref=\roman*]}{\end{enumerate}}
+\newenvironment{enumr}{\begin{enumerate}[label=({\roman*}), ref=\roman*]}{\end{enumerate}}
+\newenvironment{enumR}{\begin{enumerate}[label=({\Roman*}), ref=\Roman*]}{\end{enumerate}}
+\newenvironment{descr}{\begin{description}[font=\normalfont\sffamily, labelindent=\parindent, leftmargin=\parindent]}{\end{description}}
+
 % Hacks
 \newcommand{\powerset}{\raisebox{.15\baselineskip}{\Large\ensuremath{\wp}}}
 
@@ -1703,3 +1706,10 @@ space after arrow=0.1ex,
 
 \DeclareDifferential{\odif}{\mathnormal{d}}
 % \DeclareDerivative{\odv}{\mathnormal{d}}
+
+\def\centerarc[#1](#2)(#3:#4:#5);%
+%Syntax: [draw options] (center) (initial angle:final angle:radius)
+    {
+    %\draw[#1] ($(#2)+({#5*cos(#3)},{#5*sin(#3)})$) arc (#3:#4:#5);
+    \draw[#1]([shift=(#3:#5)]#2) arc (#3:#4:#5);
+    }
