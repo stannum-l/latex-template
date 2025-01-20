@@ -98,8 +98,7 @@
 \usepackage[obeyFinal,textsize=scriptsize,shadow,loadshadowlibrary]{todonotes}
 \usepackage[font=small,labelsep=none]{caption}
 \usepackage{scalerel, eqparbox}
-\usepackage{mhchem}
-
+\usepackage[version=4]{mhchem}
 \usepackage{hyperref}
 \hypersetup{colorlinks=true,urlcolor=RubineRed,linkcolor=RoyalBlue,citecolor=ForestGreen,filecolor=Magenta}
 
@@ -888,7 +887,7 @@
 \usepackage[framemethod=TikZ]{mdframed}
 \usetikzlibrary{shapes, calendar, matrix, backgrounds, folding, knots, fadings, shadows}
 \usetikzlibrary{decorations.markings, calc, arrows, petri, topaths, decorations.pathreplacing}
-\usetikzlibrary{arrows.meta,bending,positioning}
+\usetikzlibrary{arrows.meta,bending, positioning, automata}
 \usetikzlibrary{graphs, graphs.standard}
 \usetikzlibrary{patterns}
 \usetikzlibrary{shapes.geometric}
@@ -1540,14 +1539,15 @@ This page is intentionally left blank.%
 
 \theoremstyle{definition}
 % \declaretheorem[style=thmbluebox,name=Theorem,numberwithin=section]{cstheorem}
-\declaretheorem[style=thmbluebox,name=Theorem]{theorem}
-\declaretheorem[style=thmbluebox,name=Theorem,numbered=no]{theorem*}
-\declaretheorem[style=thmbluebox,name=Axiom]{axiom}
-\declaretheorem[style=thmbluebox,name=Axiom,numbered=no]{axiom*}
-\declaretheorem[style=basehead,name=Problem,sibling=theorem]{problem}
+\declaretheorem[style=basehead,name=Problem]{problem}
 \declaretheorem[style=basehead,name=Problem,numbered=no]{problem*}
-\declaretheorem[style=basehead,name=Problem,sibling=theorem]{Problem}
+\declaretheorem[style=basehead,name=Problem]{Problem}
 \declaretheorem[style=basehead,name=Problem,numbered=no]{Problem*}
+
+\declaretheorem[style=thmbluebox,name=Theorem,numberwithin=Problem]{theorem}
+\declaretheorem[style=thmbluebox,name=Theorem,numbered=no]{theorem*}
+\declaretheorem[style=thmbluebox,name=Axiomnumberwithin=Problem]{axiom}
+\declaretheorem[style=thmbluebox,name=Axiom,numbered=no]{axiom*}
 \declaretheorem[style=thmcerubox,name=Lemma,sibling=theorem,numberwithin=problem]{lemma}
 \declaretheorem[style=thmcerubox,name=Lemma,numbered=no]{lemma*}
 \declaretheorem[style=thmbluebox,name=Corollary,sibling=theorem]{corollary}
@@ -1700,9 +1700,8 @@ space after arrow=0.1ex,
 }
 
 \setmathfont{Erewhon Math}[range={\intercal,\complement}]
-\newcommand{\Conv}{\mathop{\scalebox{3.1}{\raisebox{-0.4ex}{$\ast$}}}}
 
-\DeclareDifferential{\odif}{\mathnormal{d}}
+% \DeclareDifferential{\odif}{\mathnormal{d}}
 % \DeclareDerivative{\odv}{\mathnormal{d}}
 
 \def\centerarc[#1](#2)(#3:#4:#5);%
@@ -1724,5 +1723,30 @@ space after arrow=0.1ex,
 \newcommand{\tsp}{\ensuremath{^{\transpose}}}
 \makeatother
 
-\newcommand{\ifind}{\ensuremath{[\mathcolor{cerulean}{\Rightarrow}]}}
-\newcommand{\iffind}{\ensuremath{[\mathcolor{magenta}{\Leftarrow}]}}
+\newcommand{\ifind}{\ensuremath{[\mathcolor{cerulean}{\Rightarrow}]\ }}
+\newcommand{\iffind}{\ensuremath{[\mathcolor{magenta}{\Leftarrow}]\ }}
+
+\DeclareFontFamily{U}{mathb}{\hyphenchar\font45}
+\DeclareFontShape{U}{mathb}{m}{n}{
+  <-5.5>    mathb5
+  <5.5-6.5> mathb6
+  <6.5-7.5> mathb7
+  <7.5-8.5> mathb8
+  <8.5-9.5> mathb9
+  <9.5-11>  mathb10
+  <11->     mathb12
+}{}
+
+\DeclareSymbolFont{mathb}{U}{mathb}{m}{n}
+\DeclareFontSubstitution{U}{mathb}{m}{n}
+\DeclareMathSymbol{\smalltriangleup}   {\mathbin}{mathb}{"98}
+\DeclareMathSymbol{\smalltriangledown} {\mathbin}{mathb}{"99}
+\DeclareMathSymbol{\blacktriangleup}   {\mathbin}{mathb}{"9C}
+\DeclareMathSymbol{\bigast}            {\mathop}{mathb}{"07}
+
+\newcommand{\Conv}{\mathop{\scalebox{1.75}{\raisebox{-0.3ex}{$\bigast$}}}}
+
+\newcommand{\binmod}{\mathbin{\%}}
+\newcommand{\symdiff}{\mathbin{\triangle}}
+\newcommand{\basecase}{\textcolor{teal}{\textsc{[Base case]}} }
+\newcommand{\indstep}{\textcolor{maroon}{\textsc{[Inductive Step]}} }
