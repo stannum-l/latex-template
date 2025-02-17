@@ -1231,6 +1231,7 @@ This page is intentionally left blank.%
 \DeclareMathOperator{\Bern}{\ensuremath{\mathsf{Bern}}}
 \DeclareMathOperator{\Beta}{\ensuremath{\mathsf{Beta}}}
 \DeclareMathOperator{\Bin}{\ensuremath{\mathsf{Bin}}}
+\DeclareMathOperator{\cty}{\ensuremath{cap}}
 \DeclareMathOperator{\cdf}{\ensuremath{cdf}}
 \DeclareMathOperator{\ch}{\ensuremath{ch}}
 \DeclareMathOperator{\cis}{\ensuremath{cis}}
@@ -1313,6 +1314,7 @@ This page is intentionally left blank.%
 \DeclareMathOperator{\tr}{\ensuremath{tr}}
 \DeclareMathOperator{\Ub}{\ensuremath{Ub}}
 \DeclareMathOperator{\Unif}{\ensuremath{\mathsf{Unif}}}
+\DeclareMathOperator{\val}{\ensuremath{val}}
 \DeclareMathOperator{\var}{\ensuremath{\mathsf{Var}}}
 \DeclareMathOperator{\varvar}{\ensuremath{\mathrm{Var}}}
 \DeclareMathOperator{\vol}{\ensuremath{vol}}
@@ -1516,6 +1518,14 @@ This page is intentionally left blank.%
 
 \declaretheoremstyle[
   % headfont=\color{blue!40!black}\normalfont\bfseries,
+  headfont=\color{teal}\sffamily\bfseries,
+  spaceabove=2pt,
+  spacebelow=1pt,
+  bodyfont=\normalfont
+]{solnhead}
+
+\declaretheoremstyle[
+  % headfont=\color{blue!40!black}\normalfont\bfseries,
   headfont=\color{Black}\sffamily\bfseries,
   spaceabove=2pt,
   spacebelow=1pt,
@@ -1541,12 +1551,12 @@ This page is intentionally left blank.%
 % \declaretheorem[style=thmbluebox,name=Theorem,numberwithin=section]{cstheorem}
 \declaretheorem[style=basehead,name=Problem]{problem}
 \declaretheorem[style=basehead,name=Problem,numbered=no]{problem*}
-\declaretheorem[style=basehead,name=Problem]{Problem}
-\declaretheorem[style=basehead,name=Problem,numbered=no]{Problem*}
+\declaretheorem[style=solnhead,name=Solution]{solution}
+\declaretheorem[style=solnhead,name=Solution,numbered=no]{solution*}
 
-\declaretheorem[style=thmbluebox,name=Theorem,numberwithin=Problem]{theorem}
+\declaretheorem[style=thmbluebox,name=Theorem,numberwithin=problem]{theorem}
 \declaretheorem[style=thmbluebox,name=Theorem,numbered=no]{theorem*}
-\declaretheorem[style=thmbluebox,name=Axiomnumberwithin=Problem]{axiom}
+\declaretheorem[style=thmbluebox,name=Axiomnumberwithin=problem]{axiom}
 \declaretheorem[style=thmbluebox,name=Axiom,numbered=no]{axiom*}
 \declaretheorem[style=thmcerubox,name=Lemma,sibling=theorem,numberwithin=problem]{lemma}
 \declaretheorem[style=thmcerubox,name=Lemma,numbered=no]{lemma*}
@@ -1609,10 +1619,10 @@ This page is intentionally left blank.%
 \mdfdefinestyle{problemstatement}{style=mdboxybox,frametitle={Problem Statement}}
 \newmdenv[style=problemstatement]{probstat}
 
-\newenvironment{solution}{\renewcommand{\proofname}{Solution}\begin{proof}\renewcommand{\proofname}{Proof}}{\renewcommand\qedsymbol{$\blacksquare$}\end{proof}}
-\newenvironment{Solution}[1][\proofname]{\renewcommand{\proofname}{Solution}\proof[\normalfont\sffamily\bfseries #1]\renewcommand{\proofname}{Proof}}{\renewcommand\qedsymbol{$\blacksquare$}\endproof}
-\newenvironment{Proof}[1][\proofname]{\renewcommand\qedsymbol{$\square$}\renewcommand{\proofname}{Proof}\proof[\normalfont\sffamily\bfseries #1]}{\endproof}
-\newenvironment{Subproof}[1][\proofname]{\renewcommand\qedsymbol{$\triangle$}\renewcommand{\proofname}{Proof}\proof[\normalfont\sffamily\bfseries #1]}{\endproof}
+% \newenvironment{solution}{\renewcommand{\proofname}{Solution}\begin{proof}\renewcommand{\proofname}{Proof}}{\renewcommand\qedsymbol{$\blacksquare$}\end{proof}}
+% \newenvironment{Solution}[1][\proofname]{\renewcommand{\proofname}{Solution}\proof[\normalfont\sffamily\bfseries #1]\renewcommand{\proofname}{Proof}}{\renewcommand\qedsymbol{$\blacksquare$}\endproof}
+\newenvironment{Proof}[1][\textcolor{teal}{\proofname}]{\renewcommand\qedsymbol{$\square$}\renewcommand{\proofname}{Proof}\proof[\normalfont\sffamily\bfseries \textcolor{teal}{#1}]}{\endproof}
+\newenvironment{Subproof}[1][\textcolor{teal}{\proofname}]{\renewcommand\qedsymbol{$\triangle$}\renewcommand{\proofname}{Proof}\proof[\normalfont\sffamily\bfseries \textcolor{teal}{#1}]}{\endproof}
 
 \makeatletter
 \newcommand{\raisemath}[1]{\mathpalette{\raisem@th{#1}}}% \raisemath{<len>}{...}
@@ -1672,7 +1682,7 @@ This page is intentionally left blank.%
     drop fuzzy shadow, arc=0.3em, boxrule=1pt]}{%
     \end{tcolorbox}}
 
-\newcommand{\soimp}{\mathcolor{cerulean}{\Longrightarrow}}
+\newcommand{\soimp}{\mathcolor{cadmiumgreen}{\Longrightarrow}}
 \setmathfont{XITS Math}[range={\hexagon,\varhexagon}]
 
 \usepackage{pstricks, auto-pst-pdf, pst-node}
