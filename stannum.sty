@@ -979,7 +979,8 @@ This page is intentionally left blank.%
 \newcommand{\cro}{\ensuremath{^{\times}}}
 \newcommand{\cycprod}{\prod_{\mathrm{cyc}}}
 \newcommand{\cycsum}{\sum_{\mathrm{cyc}}}
-\newcommand{\defeq}{\ensuremath \stackrel{\Delta}{=}}
+\newcommand{\Defeq}{\ensuremath \stackrel{\Delta}{=}}
+\newcommand{\defeq}{\ensuremath \stackrel{\text{def}}{=}}
 \newcommand{\eins}{\ensuremath{\mathbbm{1}}}
 \newcommand{\emphg}[1]{\emph{\textcolor{ForestGreen}{{#1}}}}
 \newcommand{\emphr}[1]{\emph{\textcolor{red}{{#1}}}}
@@ -1549,16 +1550,19 @@ This page is intentionally left blank.%
 
 \theoremstyle{definition}
 % \declaretheorem[style=thmbluebox,name=Theorem,numberwithin=section]{cstheorem}
-\declaretheorem[style=basehead,name=Problem]{problem}
-\declaretheorem[style=basehead,name=Problem,numbered=no]{problem*}
-\declaretheorem[style=solnhead,name=Solution]{solution}
-\declaretheorem[style=solnhead,name=Solution,numbered=no]{solution*}
+\declaretheorem[style=basehead,name=Problem]{Problem}
+\declaretheorem[style=basehead,name=Problem,numbered=no]{Problem*}
+\declaretheorem[style=solnhead,name=Solution]{Solution}
+\declaretheorem[style=solnhead,name=Solution,numbered=no]{Solution*}
+\declaretheorem[style=solnhead,name=Proof,sibling=Solution]{Proof}
+\declaretheorem[style=solnhead,name=Proof,numbered=no,sibling=Solution]{Proof*}
 
-\declaretheorem[style=thmbluebox,name=Theorem,numberwithin=problem]{theorem}
+
+\declaretheorem[style=thmbluebox,name=Theorem,numberwithin=Problem]{theorem}
 \declaretheorem[style=thmbluebox,name=Theorem,numbered=no]{theorem*}
 \declaretheorem[style=thmbluebox,name=Axiomnumberwithin=problem]{axiom}
 \declaretheorem[style=thmbluebox,name=Axiom,numbered=no]{axiom*}
-\declaretheorem[style=thmcerubox,name=Lemma,sibling=theorem,numberwithin=problem]{lemma}
+\declaretheorem[style=thmcerubox,name=Lemma,sibling=theorem,numberwithin=Problem]{lemma}
 \declaretheorem[style=thmcerubox,name=Lemma,numbered=no]{lemma*}
 \declaretheorem[style=thmbluebox,name=Corollary,sibling=theorem]{corollary}
 \declaretheorem[style=thmbluebox,name=Corollary,numbered=no]{corollary*}
@@ -1568,11 +1572,11 @@ This page is intentionally left blank.%
 \declaretheorem[style=thmgreenbox,name=Algorithm,numbered=no]{algo*}
 \declaretheorem[style=thmredbox,name=Example,sibling=theorem]{example}
 \declaretheorem[style=thmredbox,name=Example,numbered=no]{example*}
-\declaretheorem[style=normhead,name=Answer,numberwithin=problem]{answer}
+\declaretheorem[style=normhead,name=Answer,numberwithin=Problem]{answer}
 \declaretheorem[style=normhead,name=Answer,numbered=no]{answer*}
-\declaretheorem[style=answerhead,name=Answer,numberwithin=problem]{fancyanswer}
+\declaretheorem[style=answerhead,name=Answer,numberwithin=Problem]{fancyanswer}
 \declaretheorem[style=answerhead,name=Answer,numbered=no]{fancyanswer*}
-\declaretheorem[style=answerhead,name=Fact,numberwithin=problem]{fact}
+\declaretheorem[style=answerhead,name=Fact,numberwithin=Problem]{fact}
 \declaretheorem[style=answerhead,name=Fact,numbered=no]{fact*}
 \declaretheorem[style=thmdefbox,name=Conjecture,sibling=theorem]{conjecture}
 \declaretheorem[style=thmdefbox,name=Conjecture,numbered=no]{conjecture*}
@@ -1580,15 +1584,15 @@ This page is intentionally left blank.%
 \declaretheorem[style=basehead,name=Exercise,numbered=no]{exercise*}
 \declaretheorem[style=basehead,name=Question,sibling=theorem]{ques}
 \declaretheorem[style=basehead,name=Question,numbered=no]{ques*}
-\declaretheorem[style=thmgreenbox,name=Proposition,numberwithin=problem]{proposition}
+\declaretheorem[style=thmgreenbox,name=Proposition,numberwithin=Problem]{proposition}
 \declaretheorem[style=thmgreenbox,name=Proposition,numbered=no]{proposition*}
-\declaretheorem[style=thmgreenbox,name=Claim,numberwithin=problem]{claim}
+\declaretheorem[style=thmgreenbox,name=Claim,numberwithin=Problem]{claim}
 \declaretheorem[style=thmgreenbox,name=Claim,numbered=no]{claim*}
-\declaretheorem[style=remarkhead,name=Remark,numberwithin=problem]{remark}
+\declaretheorem[style=remarkhead,name=Remark,numberwithin=Problem]{remark}
 \declaretheorem[style=remarkhead,name=Remark,numbered=no]{remark*}
-\declaretheorem[style=fancyremarkhead,name=Remark,numberwithin=problem]{fancyremark}
+\declaretheorem[style=fancyremarkhead,name=Remark,numberwithin=Problem]{fancyremark}
 \declaretheorem[style=fancyremarkhead,name=Remark,numbered=no]{fancyremark*}
-\declaretheorem[style=thmdefbox,name=Definition,sibling=theorem,numberwithin=problem]{definition}
+\declaretheorem[style=thmdefbox,name=Definition,sibling=theorem,numberwithin=Problem]{definition}
 \declaretheorem[style=thmdefbox,name=Definition,numbered=no]{definition*}
 
 % Fancier
@@ -1621,8 +1625,8 @@ This page is intentionally left blank.%
 
 % \newenvironment{solution}{\renewcommand{\proofname}{Solution}\begin{proof}\renewcommand{\proofname}{Proof}}{\renewcommand\qedsymbol{$\blacksquare$}\end{proof}}
 % \newenvironment{Solution}[1][\proofname]{\renewcommand{\proofname}{Solution}\proof[\normalfont\sffamily\bfseries #1]\renewcommand{\proofname}{Proof}}{\renewcommand\qedsymbol{$\blacksquare$}\endproof}
-\newenvironment{Proof}[1][\textcolor{teal}{\proofname}]{\renewcommand\qedsymbol{$\square$}\renewcommand{\proofname}{Proof}\proof[\normalfont\sffamily\bfseries \textcolor{teal}{#1}]}{\endproof}
-\newenvironment{Subproof}[1][\textcolor{teal}{\proofname}]{\renewcommand\qedsymbol{$\triangle$}\renewcommand{\proofname}{Proof}\proof[\normalfont\sffamily\bfseries \textcolor{teal}{#1}]}{\endproof}
+\newenvironment{vproof}[1][\textcolor{teal}{\proofname}]{\renewcommand\qedsymbol{$\square$}\renewcommand{\proofname}{Proof}\proof[\normalfont\sffamily\bfseries \textcolor{teal}{#1}]}{\endproof}
+\newenvironment{subproof}[1][\textcolor{teal}{\proofname}]{\renewcommand\qedsymbol{$\triangle$}\renewcommand{\proofname}{Proof}\proof[\normalfont\sffamily\bfseries \textcolor{teal}{#1}]}{\endproof}
 
 \makeatletter
 \newcommand{\raisemath}[1]{\mathpalette{\raisem@th{#1}}}% \raisemath{<len>}{...}
@@ -1762,3 +1766,4 @@ space after arrow=0.1ex,
 \newcommand{\symdiff}{\mathbin{\triangle}}
 \newcommand{\basecase}{\textcolor{teal}{\textsc{[Base case]}} }
 \newcommand{\indstep}{\textcolor{maroon}{\textsc{[Inductive Step]}} }
+\newcommand{\lsep}{\noindent\hrulefill}
