@@ -81,8 +81,6 @@
 \usepackage[plainfootsepline=off,headsepline=0.5pt,footsepline=0pt]{scrlayer-scrpage}
 \fi
 
-\usepackage{scrhack}
-
 %\usepackage[margin=1in]{geometry}
 \usepackage{typearea}
 \usepackage{geometry}
@@ -1694,30 +1692,31 @@ This page is intentionally left blank.%
 \setmathfont{XITS Math}[range={\hexagon,\varhexagon}]
 
 \usepackage{pstricks, auto-pst-pdf, pst-node}
-\usepackage[old-arrows,tikz,pstarrows,esvectf]{overarrows} % This needs to be loaded at the end for overbar to work
-\NewOverArrowCommand{overhookleft}{start=\lhook, end=\rightarrow, middle=\relbar, trim start=0, trim end=3, trim middle=5,}
-
-\newcommand{\vararc}[1]{%
-  \setbox9=\hbox{\ensuremath{#1}}%
-  \ooalign{\raisebox{8pt}{\resizebox{\wd9}{\height}{\ensuremath{\frown}}}\cr\ensuremath{#1}}}
-
-\NewOverArrowCommand[tikz]{overarc}{%
-path options={x=\overarrowlength, line width=1.3*\overarrowsmallerthickness},
-path={(0,0) parabola[parabola height=0.2\overarrowlength] (1,0)},
-arrows={-}, center arrow,
-}
-
-\NewOverArrowCommand[tikz]{varc}{%
-add tikz options={x=\overarrowlength},
-add tikz options={line width={1.35*\overarrowsmallerthickness}},
-path options={arrows={-}},
-path={(0,0) arc(360:180:-0.5 and -0.1)},
-center arrow,
-% min length=25,
-space after arrow=0.1ex,
-}
-
 \setmathfont{Erewhon Math}[range={\intercal,\complement}]
+
+% \usepackage[old-arrows,tikz,pstarrows,esvectf]{overarrows} % This needs to be loaded at the end for overbar to work
+% \NewOverArrowCommand{overhookleft}{start=\lhook, end=\rightarrow, middle=\relbar, trim start=0, trim end=3, trim middle=5,}
+
+% \newcommand{\vararc}[1]{%
+%   \setbox9=\hbox{\ensuremath{#1}}%
+%   \ooalign{\raisebox{8pt}{\resizebox{\wd9}{\height}{\ensuremath{\frown}}}\cr\ensuremath{#1}}}
+
+% \NewOverArrowCommand[tikz]{overarc}{%
+% path options={x=\overarrowlength, line width=1.3*\overarrowsmallerthickness},
+% path={(0,0) parabola[parabola height=0.2\overarrowlength] (1,0)},
+% arrows={-}, center arrow,
+% }
+
+% \NewOverArrowCommand[tikz]{varc}{%
+% add tikz options={x=\overarrowlength},
+% add tikz options={line width={1.35*\overarrowsmallerthickness}},
+% path options={arrows={-}},
+% path={(0,0) arc(360:180:-0.5 and -0.1)},
+% center arrow,
+% % min length=25,
+% space after arrow=0.1ex,
+% }
+
 
 % \DeclareDifferential{\odif}{\mathnormal{d}}
 % \DeclareDerivative{\odv}{\mathnormal{d}}
@@ -1743,25 +1742,6 @@ space after arrow=0.1ex,
 
 \newcommand{\ifind}{\ensuremath{[\mathcolor{cerulean}{\Rightarrow}]\ }}
 \newcommand{\iffind}{\ensuremath{[\mathcolor{magenta}{\Leftarrow}]\ }}
-
-\DeclareFontFamily{U}{mathb}{\hyphenchar\font45}
-\DeclareFontShape{U}{mathb}{m}{n}{
-  <-5.5>    mathb5
-  <5.5-6.5> mathb6
-  <6.5-7.5> mathb7
-  <7.5-8.5> mathb8
-  <8.5-9.5> mathb9
-  <9.5-11>  mathb10
-  <11->     mathb12
-}{}
-
-\DeclareSymbolFont{mathb}{U}{mathb}{m}{n}
-\DeclareFontSubstitution{U}{mathb}{m}{n}
-\DeclareMathSymbol{\smalltriangleup}   {\mathbin}{mathb}{"98}
-\DeclareMathSymbol{\smalltriangledown} {\mathbin}{mathb}{"99}
-\DeclareMathSymbol{\blacktriangleup}   {\mathbin}{mathb}{"9C}
-\DeclareMathSymbol{\bigast}            {\mathop}{mathb}{"07}
-\DeclareMathSymbol{\bigcoast}          {\mathop}{mathb}{"06}
 
 \newcommand{\Ast}{\mathop{\scalebox{1.75}{\raisebox{-0.3ex}{$\bigast$}}}}
 \newcommand{\Coast}{\mathop{\scalebox{1.75}{\raisebox{-0.3ex}{$\bigcoast$}}}}
