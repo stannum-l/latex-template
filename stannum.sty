@@ -950,9 +950,10 @@ ypoint/.style={circle, inner sep=0pt, minimum size=3pt, fill=Yellow, draw},%
 \newenvironment{enumI}{\begin{enumerate}}{\end{enumerate}}
 \newenvironment{enumn}{\begin{enumerate}[label=(\arabic*), ref=\arabic*]}{\end{enumerate}}
 \newenvironment{enumnn}{\begin{enumerate}[label=\arabic*., ref=\arabic*]}{\end{enumerate}}
-\newenvironment{enumrB}{\begin{enumerate}[label=(\emph{\roman*}), ref=\roman*]}{\end{enumerate}}
+\newenvironment{enumri}{\begin{enumerate}[label=(\emph{\roman*}), ref=\roman*]}{\end{enumerate}}
 \newenvironment{enumr}{\begin{enumerate}[label=({\roman*}), ref=\roman*]}{\end{enumerate}}
 \newenvironment{enumR}{\begin{enumerate}[label=({\Roman*}), ref=\Roman*]}{\end{enumerate}}
+
 \newenvironment{descr}{\begin{description}[font=\normalfont\sffamily, labelindent=\parindent, leftmargin=\parindent]}{\end{description}}
 
 % Hacks
@@ -1100,6 +1101,50 @@ This page is intentionally left blank.%
 \newcommand{\toCurve}[1]{\unicodemap{#1}}
 
 \DeclareMathAlphabet{\mathrsfs}{U}{rsfso}{m}{n}
+
+\makeatletter
+% do this after any "classic" allocations such as mathrsfs
+
+\makeatletter
+\def\DeclareSymbolFont@m@dropped #1#2#3#4#5{%
+ \@tempswafalse
+ \edef\reserved@b{#2}%
+ \def\cdp@elt##1##2##3##4{\def\reserved@c{##1}%
+      \ifx\reserved@b\reserved@c \@tempswatrue\fi}%
+ \cdp@list
+ \if@tempswa
+   \@ifundefined{sym#1}{%
+      \ifnum\count18< 255 % was 15 %
+        \expandafter\new@mathgroup\csname sym#1\endcsname
+        \expandafter\new@symbolfont\csname sym#1\endcsname
+                        {#2}{#3}{#4}{#5}%
+      \else
+         \@latex@error{Too many symbol fonts declared}\@eha
+      \fi
+     }%
+     {%
+      \@font@info{Redeclaring symbol font `#1'}%
+      \def\group@elt##1##2{%
+           \noexpand\group@elt\noexpand##1%
+           \expandafter\ifx\csname sym#1\endcsname##1%
+             \expandafter\noexpand\csname#2/#3/#4/#5\endcsname
+           \else
+               \noexpand##2%
+           \fi}%
+      \xdef\group@list{\group@list}%
+      \def\version@elt##1{%
+          \expandafter
+          \SetSymbolFont@\expandafter##1\csname#2/#3/#4/#5\expandafter
+              \endcsname \csname sym#1\endcsname
+          }%
+      \version@list
+     }%
+  \else
+    \@latex@error{Encoding scheme  `#2' unknown}\@eha
+  \fi
+  }
+\makeatother
+
 \DeclareMathAlphabet{\mathssss}{U}{rsfs}{m}{n}
 \DeclareMathAlphabet{\mathzeus}{U}{zeus}{m}{n}
 \DeclareMathAlphabet{\mathcalx}{OMS}{cmsy}{m}{n}
@@ -1692,7 +1737,22 @@ This page is intentionally left blank.%
 
 \usepackage{pstricks, auto-pst-pdf, pst-node}
 \setmathfont{XITS Math}[range={\hexagon,\varhexagon}]
-% \setmathfont{Erewhon Math}[range={\intercal,\complement}]
+\setmathfont{Erewhon Math}[range={\intercal,\complement}]
+
+\DeclareDifferential{\odif}{\mathnormal{d}}
+\DeclareDerivative{\odv}{\mathnormal{d}}
+
+\newcommand{\tsp}{\ensuremath{^{\intercal}}}
+\newcommand{\Ast}{\mathop{\scalebox{3.5}{\raisebox{-0.45ex}{$\ast$}}}}
+
+\newcommand{\ifind}{\ensuremath{[\mathcolor{cerulean}{\Rightarrow}]\ }}
+\newcommand{\iffind}{\ensuremath{[\mathcolor{magenta}{\Leftarrow}]\ }}
+
+\newcommand{\binmod}{\mathbin{\%}}
+\newcommand{\symdiff}{\mathbin{\triangle}}
+\newcommand{\basecase}{\textcolor{teal}{\textsc{[Base case]}} }
+\newcommand{\indstep}{\textcolor{maroon}{\textsc{[Inductive Step]}} }
+\newcommand{\lsep}{\noindent\hrulefill}
 
 \usepackage[old-arrows,tikz,pstarrows,esvectf]{overarrows} % This needs to be loaded at the end for overbar to work
 \NewOverArrowCommand{overhookleft}{start=\lhook, end=\rightarrow, middle=\relbar, trim start=0, trim end=3, trim middle=5,}
@@ -1715,19 +1775,3 @@ path={(0,0) arc(360:180:-0.5 and -0.1)},
 center arrow,
 space after arrow=0.1ex,
 }
-
-
-\DeclareDifferential{\odif}{\mathnormal{d}}
-\DeclareDerivative{\odv}{\mathnormal{d}}
-
-\newcommand{\tsp}{\ensuremath{^{\intercal}}}
-\newcommand{\Ast}{\mathop{\scalebox{3.5}{\raisebox{-0.45ex}{$\ast$}}}}
-
-\newcommand{\ifind}{\ensuremath{[\mathcolor{cerulean}{\Rightarrow}]\ }}
-\newcommand{\iffind}{\ensuremath{[\mathcolor{magenta}{\Leftarrow}]\ }}
-
-\newcommand{\binmod}{\mathbin{\%}}
-\newcommand{\symdiff}{\mathbin{\triangle}}
-\newcommand{\basecase}{\textcolor{teal}{\textsc{[Base case]}} }
-\newcommand{\indstep}{\textcolor{maroon}{\textsc{[Inductive Step]}} }
-\newcommand{\lsep}{\noindent\hrulefill}
