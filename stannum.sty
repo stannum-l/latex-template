@@ -81,7 +81,7 @@
 \usepackage[plainfootsepline=off,headsepline=0.5pt,footsepline=0pt]{scrlayer-scrpage}
 \fi
 
-% \usepackage{scrhack}
+\usepackage{scrhack}
 
 %\usepackage[margin=1in]{geometry}
 \usepackage{typearea}
@@ -120,6 +120,28 @@
 \ModifyLayer[addvoffset=.6ex]{plain.scrheadings.foot.odd}
 \ModifyLayer[addvoffset=.6ex]{plain.scrheadings.foot.even}
 \ModifyLayer[addvoffset=.6ex]{plain.scrheadings.foot.oneside}
+
+\DeclareFontFamily{U}{mathb}{\hyphenchar\font45}
+\DeclareFontShape{U}{mathb}{m}{n}{
+  <-5.5>    mathb5
+  <5.5-6.5> mathb6
+  <6.5-7.5> mathb7
+  <7.5-8.5> mathb8
+  <8.5-9.5> mathb9
+  <9.5-11>  mathb10
+  <12->     mathb12
+}{}
+
+\DeclareSymbolFont{mathb}{U}{mathb}{m}{n}
+\DeclareFontSubstitution{U}{mathb}{m}{n}
+\DeclareMathSymbol{\smalltriangleup}   {\mathbin}{mathb}{"98}
+\DeclareMathSymbol{\smalltriangledown} {\mathbin}{mathb}{"99}
+\DeclareMathSymbol{\blacktriangleup}   {\mathbin}{mathb}{"9C}
+\DeclareMathSymbol{\bigast}            {\mathop}{mathb}{"07}
+\DeclareMathSymbol{\bigcoast}          {\mathop}{mathb}{"06}
+
+\newcommand{\Ast}{\mathop{\scalebox{2.4}{\raisebox{-0.4ex}{$\bigast$}}}}
+\newcommand{\Coast}{\mathop{\scalebox{2.4}{\raisebox{-0.4ex}{$\bigcoast$}}}}
 
 \renewcommand{\arraystretch}{1}
 
@@ -1046,6 +1068,7 @@ This page is intentionally left blank.%
 \newcommand{\QQ}{\ensuremath{\mathbb{Q}}}
 \newcommand{\FF}{\ensuremath{\mathbb{F}}}
 \newcommand{\PP}{\ensuremath{\mathbb{P}}}
+\newcommand{\II}{\ensuremath{\mathbb{I}}}
 \newcommand{\EE}{\ensuremath{\mathbb{E}}}
 \newcommand{\CC}{\ensuremath{\mathbb{C}}}
 \newcommand{\RP}{\ensuremath{\mathbb{RP}}}
@@ -1599,9 +1622,9 @@ This page is intentionally left blank.%
 
 \theoremstyle{definition}
 % \declaretheorem[style=thmbluebox,name=Theorem,numberwithin=section]{cstheorem}
-\declaretheorem[style=basehead,name=Problem]{Problem}
+\declaretheorem[style=basehead,name=Problem,numberwithin=section]{Problem}
 \declaretheorem[style=basehead,name=Problem,numbered=no]{Problem*}
-\declaretheorem[style=solnhead,name=Solution]{Solution}
+\declaretheorem[style=solnhead,name=Solution,numberwithin=section]{Solution}
 \declaretheorem[style=solnhead,name=Solution,numbered=no]{Solution*}
 \declaretheorem[style=solnhead,name=Proof,sibling=Solution]{Proof}
 \declaretheorem[style=solnhead,name=Proof,numbered=no,sibling=Solution]{Proof*}
@@ -1743,7 +1766,6 @@ This page is intentionally left blank.%
 \DeclareDerivative{\odv}{\mathnormal{d}}
 
 \newcommand{\tsp}{\ensuremath{^{\intercal}}}
-\newcommand{\Ast}{\mathop{\scalebox{3.5}{\raisebox{-0.45ex}{$\ast$}}}}
 
 \newcommand{\ifind}{\ensuremath{[\mathcolor{cerulean}{\Rightarrow}]\ }}
 \newcommand{\iffind}{\ensuremath{[\mathcolor{magenta}{\Leftarrow}]\ }}
