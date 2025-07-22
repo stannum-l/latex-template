@@ -65,6 +65,8 @@
 \AtBeginDocument{\setlength{\parskip}{3pt plus0pt minus2pt}}%
 \AtBeginDocument{\setlength{\multicolsep}{2.0pt plus 0pt minus 0pt}}
 
+\usepackage{mlmodern}
+
 \newif\if@footsepline\@footseplinefalse
 \DeclareOption{footsepline}{\@footseplinetrue}
 \ProcessOptions \relax
@@ -73,15 +75,12 @@
 \usepackage[english]{babel}
 
 \RequirePackage{fontspec}
-\usepackage{lmodern}
 
 \if@footsepline
 \usepackage[plainfootsepline=off,headsepline=0.5pt,footsepline=0.5pt]{scrlayer-scrpage}
 \else
 \usepackage[plainfootsepline=off,headsepline=0.5pt,footsepline=0pt]{scrlayer-scrpage}
 \fi
-
-\usepackage{scrhack}
 
 %\usepackage[margin=1in]{geometry}
 \usepackage{typearea}
@@ -1044,6 +1043,7 @@ This page is intentionally left blank.%
 \newcommand{\ul}[1]{\underbar{#1}}
 \newcommand{\ray}[1]{\overrightarrow{#1}}
 \newcommand{\rhex}{\hexagon}
+\newcommand{\hconj}{\ensuremath{^{\mathsf{H}}}}
 
 \newcommand{\seq@noargs}[1]{#1_1, #1_2, \dotsc,#1_n}
 \newcommand{\seq@withargs}[2]{#1_1, #1_2, \dotsc,#1_#2}
@@ -1066,7 +1066,7 @@ This page is intentionally left blank.%
 \newcommand{\RR}{\ensuremath{\mathbb{R}}}
 \newcommand{\ZZ}{\ensuremath{\mathbb{Z}}}
 \newcommand{\QQ}{\ensuremath{\mathbb{Q}}}
-\newcommand{\FF}{\ensuremath{\mathbb{F}}}
+\newcommand{\F}{\ensuremath{\mathbb{F}}}
 \newcommand{\PP}{\ensuremath{\mathbb{P}}}
 \newcommand{\II}{\ensuremath{\mathbb{I}}}
 \newcommand{\EE}{\ensuremath{\mathbb{E}}}
@@ -1765,7 +1765,18 @@ This page is intentionally left blank.%
 \DeclareDifferential{\odif}{\mathnormal{d}}
 \DeclareDerivative{\odv}{\mathnormal{d}}
 
-\newcommand{\tsp}{\ensuremath{^{\intercal}}}
+\makeatletter
+\newcommand*{\transpose}{%
+  {\mathpalette\@transpose{}}%
+}
+\newcommand*{\@transpose}[2]{%
+  % #1: math style
+  % #2: unused
+  \raisebox{\depth}{$\m@th#1\intercal$}%
+}
+\makeatother
+
+\newcommand{\tsp}{\ensuremath{^{\transpose}}}
 
 \newcommand{\ifind}{\ensuremath{[\mathcolor{cerulean}{\Rightarrow}]\ }}
 \newcommand{\iffind}{\ensuremath{[\mathcolor{magenta}{\Leftarrow}]\ }}
@@ -1797,3 +1808,5 @@ path={(0,0) arc(360:180:-0.5 and -0.1)},
 center arrow,
 space after arrow=0.1ex,
 }
+
+% \usepackage{xskak}
