@@ -1072,6 +1072,7 @@ This page is intentionally left blank.%
 \newcommand{\EE}{\ensuremath{\mathbb{E}}}
 \newcommand{\CC}{\ensuremath{\mathbb{C}}}
 \newcommand{\RP}{\ensuremath{\mathbb{RP}}}
+\newcommand{\VV}{\ensuremath{\mathbb{V}}}
 
 % Declares different font
 \ExplSyntaxOn
@@ -1559,6 +1560,12 @@ This page is intentionally left blank.%
   backgroundcolor=YellowOrange!5,
 }
 
+\mdfdefinestyle{probbox}{%
+  style=mdbox,
+  linecolor=BrickRed,
+  backgroundcolor=NavyBlue!5,
+}
+
 \mdfdefinestyle{remarkbox}{%
   style=mdbox,
   linecolor=WildStrawberry,
@@ -1591,10 +1598,20 @@ This page is intentionally left blank.%
 
 \declaretheoremstyle[
   % headfont=\color{blue!40!black}\normalfont\bfseries,
+  headfont=\color{BrickRed}\sffamily\bfseries,
+  spaceabove=2pt,
+  spacebelow=1pt,
+  bodyfont=\normalfont,
+  mdframed={style=probbox}
+]{probhead}
+
+\declaretheoremstyle[
+  % headfont=\color{blue!40!black}\normalfont\bfseries,
   headfont=\color{teal}\sffamily\bfseries,
   spaceabove=2pt,
   spacebelow=1pt,
-  bodyfont=\normalfont
+  bodyfont=\normalfont,
+  qed=\qedsymbol
 ]{solnhead}
 
 \declaretheoremstyle[
@@ -1622,8 +1639,8 @@ This page is intentionally left blank.%
 
 \theoremstyle{definition}
 % \declaretheorem[style=thmbluebox,name=Theorem,numberwithin=section]{cstheorem}
-\declaretheorem[style=basehead,name=Problem,numberwithin=section]{Problem}
-\declaretheorem[style=basehead,name=Problem,numbered=no]{Problem*}
+\declaretheorem[style=probhead,name=Problem,numberwithin=section]{Problem}
+\declaretheorem[style=probhead,name=Problem,numbered=no]{Problem*}
 \declaretheorem[style=solnhead,name=Solution,numberwithin=section]{Solution}
 \declaretheorem[style=solnhead,name=Solution,numbered=no]{Solution*}
 \declaretheorem[style=solnhead,name=Proof,sibling=Solution]{Proof}
