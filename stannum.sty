@@ -52,6 +52,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ProvidesPackage{stannum}
 
+\usepackage{anyfontsize}
+
 \AtBeginDocument{\setlength{\abovedisplayshortskip}{2pt}}%
 \AtBeginDocument{\setlength{\belowdisplayshortskip}{4pt}}%
 \AtBeginDocument{\setlength{\abovedisplayskip}{4pt}}%
@@ -82,7 +84,7 @@
 \usepackage[plainfootsepline=off,headsepline=0.5pt,footsepline=0pt]{scrlayer-scrpage}
 \fi
 
-%\usepackage[margin=1in]{geometry}
+% \usepackage[margin=0.75in]{geometry}
 \usepackage{typearea}
 \usepackage{geometry}
 %\setlength{\textheight}{1.1\textheight}
@@ -1229,12 +1231,9 @@ This page is intentionally left blank.%
 }
 
 % SetMinus variants
-\newcommand{\mysetminusD}{\hbox{\tikz{\draw[line width=0.4pt,line cap=round] (3pt,0) -- (0,6pt);}}}
-\newcommand{\mysetminusT}{\mysetminusD}
-\newcommand{\mysetminusS}{\hbox{\tikz{\draw[line width=0.25pt,line cap=round] (2pt,0) -- (0,4pt);}}}
-\newcommand{\mysetminusSS}{\hbox{\tikz{\draw[line width=0.2pt,line cap=round] (1.5pt,0) -- (0,3pt);}}}
-\newcommand{\mysetminus}{\mathbin{\mathchoice{\mysetminusD}{\mysetminusT}{\mysetminusS}{\mysetminusSS}}}
+
 \newcommand{\varsetminus}{\mathbin{\backslash}}
+\newcommand{\vsetminus}{\mathbin{\backslash}}
 
 \lstdefinestyle{customCodeList}{
   belowcaptionskip=1\baselineskip,
@@ -1439,6 +1438,20 @@ This page is intentionally left blank.%
   bottomline=false
 }
 
+\mdfdefinestyle{mdfullbox}{%
+  linewidth=0.5pt,
+  skipabove=10pt,
+  innertopmargin=5pt,
+  innerbottommargin=5pt,
+  skipbelow=4pt,
+  frametitlefont=\bfseries,
+  nobreak=true,
+  rightline=true,
+  leftline=true,
+  topline=true,
+  bottomline=true
+}
+
 \mdfdefinestyle{mdbluebox}{%
   style=mdbox,
   linecolor=MidnightBlue,
@@ -1561,8 +1574,8 @@ This page is intentionally left blank.%
 }
 
 \mdfdefinestyle{probbox}{%
-  style=mdbox,
-  linecolor=BrickRed,
+  style=mdfullbox,
+  linecolor=Black,
   backgroundcolor=NavyBlue!5,
 }
 
@@ -1609,7 +1622,7 @@ This page is intentionally left blank.%
   % headfont=\color{blue!40!black}\normalfont\bfseries,
   headfont=\color{teal}\sffamily\bfseries,
   spaceabove=2pt,
-  spacebelow=1pt,
+  spacebelow=10pt,
   bodyfont=\normalfont,
   qed=\qedsymbol
 ]{solnhead}
