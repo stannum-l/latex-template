@@ -67,7 +67,9 @@
 \AtBeginDocument{\setlength{\parskip}{3pt plus0pt minus2pt}}%
 \AtBeginDocument{\setlength{\multicolsep}{2.0pt plus 0pt minus 0pt}}
 
-\usepackage{mlmodern}
+\linespread{1.075}
+
+\RequirePackage{mlmodern}
 
 \newif\if@footsepline\@footseplinefalse
 \DeclareOption{footsepline}{\@footseplinetrue}
@@ -76,7 +78,7 @@
 \usepackage[dvipsnames]{xcolor}
 \usepackage[english]{babel}
 
-\RequirePackage{fontspec}
+\usepackage[LSB,LSB2,T1]{fontenc}
 
 \if@footsepline
 \usepackage[plainfootsepline=off,headsepline=0.5pt,footsepline=0.5pt]{scrlayer-scrpage}
@@ -145,6 +147,13 @@
 \newcommand{\Coast}{\mathop{\scalebox{2.4}{\raisebox{-0.4ex}{$\bigcoast$}}}}
 
 \renewcommand{\arraystretch}{1}
+
+\usepackage{customdice}
+
+% \usepackage{xskak}
+\usepackage{chessfss}
+% \usesymfig
+% \setchessfontfamily{berlin}
 
 %% colors
 \definecolor{airforceblue}{rgb}{0.36, 0.54, 0.66}
@@ -1015,7 +1024,7 @@ This page is intentionally left blank.%
 \newcommand{\icr}{\ensuremath{^{\times}}}
 \newcommand{\ignore}[1]{}
 \newcommand{\ilim}[1]{\lim_{#1\to\infty}}
-\newcommand{\img}{\ensuremath{^{\varto}}}
+\newcommand{\img}{\ensuremath{^{\to}}}
 \newcommand{\injto}{\hookrightarrow}
 \newcommand{\inv}{\ensuremath{^{-1}}}
 \newcommand{\iprod}[1]{\prod_{#1}^\infty}
@@ -1033,7 +1042,7 @@ This page is intentionally left blank.%
 \newcommand{\nsupgeq}{\mathrel{\trianglerighteq}}
 \newcommand{\dg}{\ensuremath{^{\circ}}}
 \newcommand{\vphi}{\varphi}
-\newcommand{\pimg}{\ensuremath{^{\varleftarrow}}}
+\newcommand{\pimg}{\ensuremath{^{\gets}}}
 \newcommand{\sq}[1]{\ensuremath{#1 \times #1}}
 \newcommand{\surjto}{\twoheadrightarrow}
 \newcommand{\symprod}{\prod_{\mathrm{sym}}}
@@ -1133,30 +1142,30 @@ This page is intentionally left blank.%
 
 \makeatletter
 \def\DeclareSymbolFont@m@dropped #1#2#3#4#5{%
- \@tempswafalse
- \edef\reserved@b{#2}%
- \def\cdp@elt##1##2##3##4{\def\reserved@c{##1}%
+  \@tempswafalse
+  \edef\reserved@b{#2}%
+  \def\cdp@elt##1##2##3##4{\def\reserved@c{##1}%
       \ifx\reserved@b\reserved@c \@tempswatrue\fi}%
- \cdp@list
- \if@tempswa
-   \@ifundefined{sym#1}{%
+  \cdp@list
+  \if@tempswa
+    \@ifundefined{sym#1}{%
       \ifnum\count18< 255 % was 15 %
         \expandafter\new@mathgroup\csname sym#1\endcsname
         \expandafter\new@symbolfont\csname sym#1\endcsname
                         {#2}{#3}{#4}{#5}%
       \else
-         \@latex@error{Too many symbol fonts declared}\@eha
+        \@latex@error{Too many symbol fonts declared}\@eha
       \fi
-     }%
-     {%
+    }%
+    {%
       \@font@info{Redeclaring symbol font `#1'}%
       \def\group@elt##1##2{%
-           \noexpand\group@elt\noexpand##1%
-           \expandafter\ifx\csname sym#1\endcsname##1%
-             \expandafter\noexpand\csname#2/#3/#4/#5\endcsname
-           \else
-               \noexpand##2%
-           \fi}%
+        \noexpand\group@elt\noexpand##1%
+        \expandafter\ifx\csname sym#1\endcsname##1%
+          \expandafter\noexpand\csname#2/#3/#4/#5\endcsname
+        \else
+          \noexpand##2%
+        \fi}%
       \xdef\group@list{\group@list}%
       \def\version@elt##1{%
           \expandafter
@@ -1164,7 +1173,7 @@ This page is intentionally left blank.%
               \endcsname \csname sym#1\endcsname
           }%
       \version@list
-     }%
+    }%
   \else
     \@latex@error{Encoding scheme  `#2' unknown}\@eha
   \fi
@@ -1271,6 +1280,8 @@ This page is intentionally left blank.%
 \newcommand{\ropen}[2][0]{\delimit{#1}{[}{#2}{[}}
 \newcommand{\bopen}[2][0]{\delimit{#1}{]}{#2}{[}}
 
+\newcommand{\parte}[1]{\noindent\textcolor{teal}{(#1)}}
+
 % Headers
 \newcommand{\rudhead}[4]{%
 	\begin{center}
@@ -1297,6 +1308,7 @@ This page is intentionally left blank.%
 \DeclareMathOperator{\Aut}{\ensuremath{Aut}}
 \DeclareMathOperator{\avg}{\ensuremath{avg}}
 \DeclareMathOperator{\Bdy}{\ensuremath{Bdy}}
+\DeclareMathOperator{\bd}{\ensuremath{bd}}
 \DeclareMathOperator{\Bern}{\ensuremath{\mathsf{Bern}}}
 \DeclareMathOperator{\Beta}{\ensuremath{\mathsf{Beta}}}
 \DeclareMathOperator{\Bin}{\ensuremath{\mathsf{Bin}}}
@@ -1340,6 +1352,7 @@ This page is intentionally left blank.%
 \DeclareMathOperator{\Irr}{\ensuremath{Irr}}
 \DeclareMathOperator{\Iso}{\ensuremath{Iso}}
 \DeclareMathOperator{\itr}{\ensuremath{int}}
+\DeclareMathOperator{\Lap}{\ensuremath{Lapl}}
 \DeclareMathOperator{\Lb}{\ensuremath{Lb}}
 \DeclareMathOperator{\lcm}{\ensuremath{lcm}}
 \DeclareMathOperator{\len}{\ensuremath{len}}
@@ -1383,7 +1396,7 @@ This page is intentionally left blank.%
 \DeclareMathOperator{\Tor}{\ensuremath{Tor}}
 \DeclareMathOperator{\tr}{\ensuremath{tr}}
 \DeclareMathOperator{\Ub}{\ensuremath{Ub}}
-\DeclareMathOperator{\Unif}{\ensuremath{\mathsf{Unif}}}
+\DeclareMathOperator{\Uni}{\ensuremath{\mathsf{Unif}}}
 \DeclareMathOperator{\val}{\ensuremath{val}}
 \DeclareMathOperator{\var}{\ensuremath{\mathsf{Var}}}
 \DeclareMathOperator{\varvar}{\ensuremath{\mathrm{Var}}}
@@ -1620,9 +1633,9 @@ This page is intentionally left blank.%
 
 \declaretheoremstyle[
   % headfont=\color{blue!40!black}\normalfont\bfseries,
-  headfont=\color{teal}\sffamily\bfseries,
+  headfont=\color{azure}\sffamily\bfseries,
   spaceabove=2pt,
-  spacebelow=10pt,
+  spacebelow=12pt,
   bodyfont=\normalfont,
   qed=\qedsymbol
 ]{solnhead}
@@ -1651,10 +1664,10 @@ This page is intentionally left blank.%
 ]{fancyremarkhead}
 
 \theoremstyle{definition}
-% \declaretheorem[style=thmbluebox,name=Theorem,numberwithin=section]{cstheorem}
-\declaretheorem[style=probhead,name=Problem,numberwithin=section]{Problem}
+% \declaretheorem[style=probhead,name=Problem,numberwithin=section]{Problem}
+\declaretheorem[style=probhead,name=Problem]{Problem}
 \declaretheorem[style=probhead,name=Problem,numbered=no]{Problem*}
-\declaretheorem[style=solnhead,name=Solution,numberwithin=section]{Solution}
+\declaretheorem[style=solnhead,name=Solution]{Solution}
 \declaretheorem[style=solnhead,name=Solution,numbered=no]{Solution*}
 \declaretheorem[style=solnhead,name=Proof,sibling=Solution]{Proof}
 \declaretheorem[style=solnhead,name=Proof,numbered=no,sibling=Solution]{Proof*}
@@ -1725,8 +1738,11 @@ This page is intentionally left blank.%
 \mdfdefinestyle{problemstatement}{style=mdboxybox,frametitle={Problem Statement}}
 \newmdenv[style=problemstatement]{probstat}
 
-\newenvironment{vproof}[1][\textcolor{teal}{\proofname}]{\renewcommand\qedsymbol{$\square$}\renewcommand{\proofname}{Proof}\proof[\normalfont\sffamily\bfseries \textcolor{teal}{#1}]}{\endproof}
-\newenvironment{subproof}[1][\textcolor{teal}{\proofname}]{\renewcommand\qedsymbol{$\triangle$}\renewcommand{\proofname}{Proof}\proof[\normalfont\sffamily\bfseries \textcolor{teal}{#1}]}{\endproof}
+% \newenvironment{vproof}[1][\textcolor{teal}{\proofname}]{\renewcommand\qedsymbol{$\square$}\renewcommand{\proofname}{Proof}\proof[\normalfont\sffamily\bfseries \textcolor{teal}{#1}]}{\endproof}
+\newenvironment{vproof}[1][\textcolor{azure}{\proofname}]{\renewcommand\qedsymbol{$\square$}\renewcommand{\proofname}{Proof}\proof[\normalfont \itshape \textcolor{azure}{#1}]}{\endproof}
+\newenvironment{subproof}[1][\textcolor{azure}{\proofname}]{\renewcommand\qedsymbol{$\triangle$}\renewcommand{\proofname}{Proof}\proof[\normalfont \itshape \textcolor{azure}{#1}]}{\endproof}
+\newenvironment{vsoln}[1][\textcolor{azure}{\proofname}]{\renewcommand\qedsymbol{$\square$}\renewcommand{\proofname}{Solution}\proof[\normalfont \itshape \textcolor{azure}{#1}]}{\endproof}
+
 
 \makeatletter
 \newcommand{\raisemath}[1]{\mathpalette{\raisem@th{#1}}}% \raisemath{<len>}{...}
@@ -1786,7 +1802,8 @@ This page is intentionally left blank.%
     drop fuzzy shadow, arc=0.3em, boxrule=1pt]}{%
     \end{tcolorbox}}
 
-\newcommand{\soimp}{\mathcolor{cadmiumgreen}{\Longrightarrow}}
+\newcommand{\Imp}{\mathcolor{magenta}{\Longrightarrow}}
+\newcommand{\Iff}{\mathcolor{magenta}{\Longleftrightarrow}}
 
 \usepackage{pstricks, auto-pst-pdf, pst-node}
 \setmathfont{XITS Math}[range={\hexagon,\varhexagon}]
@@ -1838,5 +1855,3 @@ path={(0,0) arc(360:180:-0.5 and -0.1)},
 center arrow,
 space after arrow=0.1ex,
 }
-
-% \usepackage{xskak}
