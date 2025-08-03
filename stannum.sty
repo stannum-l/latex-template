@@ -482,7 +482,7 @@
 \definecolor{indianred}{rgb}{0.8, 0.36, 0.36}
 \definecolor{indianyellow}{rgb}{0.89, 0.66, 0.34}
 \definecolor{indigo(dye)}{rgb}{0.0, 0.25, 0.42}
-\definecolor{indigo(web)}{rgb}{0.29, 0.0, 0.51}
+\definecolor{indigo}{rgb}{0.29, 0.0, 0.51}
 \definecolor{internationalkleinblue}{rgb}{0.0, 0.18, 0.65}
 \definecolor{internationalorange}{rgb}{1.0, 0.31, 0.0}
 \definecolor{iris}{rgb}{0.35, 0.31, 0.81}
@@ -1145,19 +1145,19 @@ This page is intentionally left blank.%
   \@tempswafalse
   \edef\reserved@b{#2}%
   \def\cdp@elt##1##2##3##4{\def\reserved@c{##1}%
-      \ifx\reserved@b\reserved@c \@tempswatrue\fi}%
-  \cdp@list
-  \if@tempswa
-    \@ifundefined{sym#1}{%
-      \ifnum\count18< 255 % was 15 %
-        \expandafter\new@mathgroup\csname sym#1\endcsname
-        \expandafter\new@symbolfont\csname sym#1\endcsname
+    \ifx\reserved@b\reserved@c \@tempswatrue\fi}%
+    \cdp@list
+    \if@tempswa
+      \@ifundefined{sym#1}{%
+        \ifnum\count18< 255 % was 15 %
+          \expandafter\new@mathgroup\csname sym#1\endcsname
+          \expandafter\new@symbolfont\csname sym#1\endcsname
                         {#2}{#3}{#4}{#5}%
-      \else
-        \@latex@error{Too many symbol fonts declared}\@eha
-      \fi
-    }%
-    {%
+        \else
+          \@latex@error{Too many symbol fonts declared}\@eha
+        \fi
+      }%
+      {%
       \@font@info{Redeclaring symbol font `#1'}%
       \def\group@elt##1##2{%
         \noexpand\group@elt\noexpand##1%
@@ -1280,7 +1280,10 @@ This page is intentionally left blank.%
 \newcommand{\ropen}[2][0]{\delimit{#1}{[}{#2}{[}}
 \newcommand{\bopen}[2][0]{\delimit{#1}{]}{#2}{[}}
 
-\newcommand{\parte}[1]{\noindent\textcolor{teal}{(#1)}}
+\newcommand{\parte}[1]{\noindent{\color{indigo}{(#1)}}}
+\newcommand{\casee}[1]{\noindent{\color{indigo}{\textsc{Case #1}.}}}
+\newcommand{\basecase}{\noindent\textcolor{indigo}{\textsc{(Base case) }}}
+\newcommand{\indstep}{\noindent\textcolor{indigo}{\textsc{(Inductive step) }}}
 
 % Headers
 \newcommand{\rudhead}[4]{%
@@ -1825,13 +1828,11 @@ This page is intentionally left blank.%
 
 \newcommand{\tsp}{\ensuremath{^{\transpose}}}
 
-\newcommand{\ifind}{\ensuremath{[\mathcolor{cerulean}{\Rightarrow}]\ }}
-\newcommand{\iffind}{\ensuremath{[\mathcolor{magenta}{\Leftarrow}]\ }}
+\newcommand{\ifind}{\ensuremath{[\mathcolor{magenta}{\Rightarrow}]\ }}
+\newcommand{\iffind}{\ensuremath{[\mathcolor{jade}{\Leftarrow}]\ }}
 
 \newcommand{\binmod}{\mathbin{\%}}
 \newcommand{\symdiff}{\mathbin{\triangle}}
-\newcommand{\basecase}{\textcolor{teal}{\textsc{[Base case]}} }
-\newcommand{\indstep}{\textcolor{maroon}{\textsc{[Inductive Step]}} }
 \newcommand{\lsep}{\noindent\hrulefill}
 
 \usepackage[old-arrows,tikz,pstarrows,esvectf]{overarrows} % This needs to be loaded at the end for overbar to work
