@@ -1014,6 +1014,8 @@ This page is intentionally left blank.%
 \newcommand{\cycsum}{\sum_{\mathrm{cyc}}}
 \newcommand{\Defeq}{\ensuremath \stackrel{\Delta}{=}}
 \newcommand{\defeq}{\ensuremath \stackrel{\text{def}}{=}}
+\newcommand{\dg}{\ensuremath{^{\circ}}}
+\newcommand{\dual}{\ensuremath{^{\ast}}}
 \newcommand{\eins}{\ensuremath{\mathbbm{1}}}
 \newcommand{\emphg}[1]{\emph{\textcolor{ForestGreen}{{#1}}}}
 \newcommand{\emphr}[1]{\emph{\textcolor{red}{{#1}}}}
@@ -1040,7 +1042,6 @@ This page is intentionally left blank.%
 \newcommand{\nsubgeq}{\mathrel{\trianglelefteq}}
 \newcommand{\nsupg}{\mathrel{\rhd}}
 \newcommand{\nsupgeq}{\mathrel{\trianglerighteq}}
-\newcommand{\dg}{\ensuremath{^{\circ}}}
 \newcommand{\vphi}{\varphi}
 \newcommand{\pimg}{\ensuremath{^{\gets}}}
 \newcommand{\sq}[1]{\ensuremath{#1 \times #1}}
@@ -1050,8 +1051,8 @@ This page is intentionally left blank.%
 \newcommand{\varempty}{\diameter}
 \newcommand{\vseq}[1]{(#1_i)_{i\in\mathbb{N}}}
 \newcommand{\w}{\hspace*{-3pt}}
-\newcommand{\ol}[1]{\overbar{#1}}
-\newcommand{\ul}[1]{\underbar{#1}}
+\newcommand{\ol}[1]{\overline{#1}}
+\newcommand{\ul}[1]{\underline{#1}}
 \newcommand{\ray}[1]{\overrightarrow{#1}}
 \newcommand{\rhex}{\hexagon}
 \newcommand{\hconj}{\ensuremath{^{\mathsf{H}}}}
@@ -1077,13 +1078,14 @@ This page is intentionally left blank.%
 \newcommand{\RR}{\ensuremath{\mathbb{R}}}
 \newcommand{\ZZ}{\ensuremath{\mathbb{Z}}}
 \newcommand{\QQ}{\ensuremath{\mathbb{Q}}}
-\newcommand{\F}{\ensuremath{\mathbb{F}}}
+\newcommand{\FF}{\ensuremath{\mathbb{F}}}
 \newcommand{\PP}{\ensuremath{\mathbb{P}}}
 \newcommand{\II}{\ensuremath{\mathbb{I}}}
 \newcommand{\EE}{\ensuremath{\mathbb{E}}}
 \newcommand{\CC}{\ensuremath{\mathbb{C}}}
 \newcommand{\RP}{\ensuremath{\mathbb{RP}}}
 \newcommand{\VV}{\ensuremath{\mathbb{V}}}
+\newcommand{\WW}{\ensuremath{\mathbb{W}}}
 
 % Declares different font
 \ExplSyntaxOn
@@ -1324,7 +1326,7 @@ This page is intentionally left blank.%
 \DeclareMathOperator{\cod}{\ensuremath{Cod}}
 \DeclareMathOperator{\cof}{\ensuremath{cof}}
 \DeclareMathOperator{\Corr}{\ensuremath{Corr}}
-\DeclareMathOperator{\Cov}{\ensuremath{Cov}}
+\DeclareMathOperator{\cov}{\ensuremath{cov}}
 \DeclareMathOperator{\curl}{\ensuremath{curl}}
 \DeclareMathOperator{\diag}{\ensuremath{diag}}
 \DeclareMathOperator{\diam}{\ensuremath{diam}}
@@ -1397,6 +1399,7 @@ This page is intentionally left blank.%
 \DeclareMathOperator{\Syl}{\ensuremath{Syl}}
 \DeclareMathOperator{\Sym}{\ensuremath{Sym}}
 \DeclareMathOperator{\Tor}{\ensuremath{Tor}}
+\DeclareMathOperator{\Tot}{\ensuremath{Tot}}
 \DeclareMathOperator{\tr}{\ensuremath{tr}}
 \DeclareMathOperator{\Ub}{\ensuremath{Ub}}
 \DeclareMathOperator{\Uni}{\ensuremath{\mathsf{Unif}}}
@@ -1456,6 +1459,7 @@ This page is intentionally left blank.%
 
 \mdfdefinestyle{mdfullbox}{%
   linewidth=0.5pt,
+  roundcorner=2pt,
   skipabove=10pt,
   innertopmargin=5pt,
   innerbottommargin=5pt,
@@ -1668,19 +1672,19 @@ This page is intentionally left blank.%
 
 \theoremstyle{definition}
 % \declaretheorem[style=probhead,name=Problem,numberwithin=section]{Problem}
-\declaretheorem[style=probhead,name=Problem]{Problem}
-\declaretheorem[style=probhead,name=Problem,numbered=no]{Problem*}
-\declaretheorem[style=solnhead,name=Solution]{Solution}
-\declaretheorem[style=solnhead,name=Solution,numbered=no]{Solution*}
-\declaretheorem[style=solnhead,name=Proof,sibling=Solution]{Proof}
-\declaretheorem[style=solnhead,name=Proof,numbered=no,sibling=Solution]{Proof*}
+\declaretheorem[style=probhead,name=Problem]{problem}
+\declaretheorem[style=probhead,name=Problem,numbered=no]{problem*}
+\declaretheorem[style=solnhead,name=Solution]{solution}
+\declaretheorem[style=solnhead,name=Solution,numbered=no]{solution*}
+\declaretheorem[style=solnhead,name=Proof,sibling=solution]{prf}
+\declaretheorem[style=solnhead,name=Proof,numbered=no,sibling=solution]{prf*}
 
 
-\declaretheorem[style=thmbluebox,name=Theorem,numberwithin=Problem]{theorem}
+\declaretheorem[style=thmbluebox,name=Theorem,numberwithin=problem]{theorem}
 \declaretheorem[style=thmbluebox,name=Theorem,numbered=no]{theorem*}
 \declaretheorem[style=thmbluebox,name=Axiomnumberwithin=problem]{axiom}
 \declaretheorem[style=thmbluebox,name=Axiom,numbered=no]{axiom*}
-\declaretheorem[style=thmcerubox,name=Lemma,sibling=theorem,numberwithin=Problem]{lemma}
+\declaretheorem[style=thmcerubox,name=Lemma,sibling=theorem,numberwithin=problem]{lemma}
 \declaretheorem[style=thmcerubox,name=Lemma,numbered=no]{lemma*}
 \declaretheorem[style=thmbluebox,name=Corollary,sibling=theorem]{corollary}
 \declaretheorem[style=thmbluebox,name=Corollary,numbered=no]{corollary*}
@@ -1690,11 +1694,11 @@ This page is intentionally left blank.%
 \declaretheorem[style=thmgreenbox,name=Algorithm,numbered=no]{algo*}
 \declaretheorem[style=thmredbox,name=Example,sibling=theorem]{example}
 \declaretheorem[style=thmredbox,name=Example,numbered=no]{example*}
-\declaretheorem[style=normhead,name=Answer,numberwithin=Problem]{answer}
+\declaretheorem[style=normhead,name=Answer,numberwithin=problem]{answer}
 \declaretheorem[style=normhead,name=Answer,numbered=no]{answer*}
-\declaretheorem[style=answerhead,name=Answer,numberwithin=Problem]{fancyanswer}
+\declaretheorem[style=answerhead,name=Answer,numberwithin=problem]{fancyanswer}
 \declaretheorem[style=answerhead,name=Answer,numbered=no]{fancyanswer*}
-\declaretheorem[style=answerhead,name=Fact,numberwithin=Problem]{fact}
+\declaretheorem[style=answerhead,name=Fact,numberwithin=problem]{fact}
 \declaretheorem[style=answerhead,name=Fact,numbered=no]{fact*}
 \declaretheorem[style=thmdefbox,name=Conjecture,sibling=theorem]{conjecture}
 \declaretheorem[style=thmdefbox,name=Conjecture,numbered=no]{conjecture*}
@@ -1702,16 +1706,16 @@ This page is intentionally left blank.%
 \declaretheorem[style=basehead,name=Exercise,numbered=no]{exercise*}
 \declaretheorem[style=basehead,name=Question,sibling=theorem]{ques}
 \declaretheorem[style=basehead,name=Question,numbered=no]{ques*}
-\declaretheorem[style=thmgreenbox,name=Proposition,numberwithin=Problem]{proposition}
+\declaretheorem[style=thmgreenbox,name=Proposition,numberwithin=problem]{proposition}
 \declaretheorem[style=thmgreenbox,name=Proposition,numbered=no]{proposition*}
-\declaretheorem[style=thmgreenbox,name=Claim,numberwithin=Problem]{claim}
+\declaretheorem[style=thmgreenbox,name=Claim,numberwithin=problem]{claim}
 \declaretheorem[style=thmgreenbox,name=Claim,numbered=no]{claim*}
-\declaretheorem[style=remarkhead,name=Remark,numberwithin=Problem]{remark}
+\declaretheorem[style=remarkhead,name=Remark,numberwithin=problem]{remark}
 \declaretheorem[style=remarkhead,name=Remark,numbered=no]{remark*}
-\declaretheorem[style=fancyremarkhead,name=Remark,numberwithin=Problem]{fancyremark}
+\declaretheorem[style=fancyremarkhead,name=Remark,numberwithin=problem]{fancyremark}
 \declaretheorem[style=fancyremarkhead,name=Remark,numbered=no]{fancyremark*}
-\declaretheorem[style=thmdefbox,name=Definition,sibling=theorem,numberwithin=Problem]{definition}
-\declaretheorem[style=thmdefbox,name=Definition,numbered=no]{definition*}
+\declaretheorem[style=thmdefbox,name=Definition,sibling=theorem,numberwithin=problem]{defn}
+\declaretheorem[style=thmdefbox,name=Definition,numbered=no]{defn*}
 
 % Fancier
 \mdfdefinestyle{mdboxybox}{%
@@ -1785,10 +1789,10 @@ This page is intentionally left blank.%
 \addtokomafont{paragraph}{\sffamily\color{navyblue!35!brown}\P\ }
 
 %\setkomafont{title}{\normalfont\bfseries\sffamily}
-\setkomafont{title}{\normalfont}
+\setkomafont{title}{\normalfont\Large}
 \setkomafont{pageheadfoot}{\normalfont\sffamily}
 \setkomafont{pageheadfoot}{\small}
-\setkomafont{author}{\large\scshape}
+\setkomafont{author}{\large}
 \setkomafont{date}{\normalsize}
 
 \addtokomafont{partprefix}{\rmfamily}
@@ -1828,8 +1832,8 @@ This page is intentionally left blank.%
 
 \newcommand{\tsp}{\ensuremath{^{\transpose}}}
 
-\newcommand{\ifind}{\ensuremath{[\mathcolor{magenta}{\Rightarrow}]\ }}
-\newcommand{\iffind}{\ensuremath{[\mathcolor{jade}{\Leftarrow}]\ }}
+\newcommand{\ifind}{\noindent\ensuremath{[\mathcolor{magenta}{\Rightarrow}]\ }}
+\newcommand{\iffind}{\noindent\ensuremath{[\mathcolor{jade}{\Leftarrow}]\ }}
 
 \newcommand{\binmod}{\mathbin{\%}}
 \newcommand{\symdiff}{\mathbin{\triangle}}
