@@ -107,6 +107,8 @@
 
 \usepackage[warnings-off={mathtools-colon,mathtools-overbracket}]{unicode-math}
 \usepackage{mathtools}
+\usepackage{titling}
+\setlength{\droptitle}{-3cm}
 % \setmathfont{NewCMMath-Regular.otf}
 \usepackage[default]{fontsetup}
 %\setmathfont[range={\pm,\mp}]{FiraMath-Regular}
@@ -989,7 +991,7 @@ ypoint/.style={circle, inner sep=0pt, minimum size=3pt, fill=Yellow, draw},%
 \newenvironment{descr}{\begin{description}[font=\normalfont\sffamily, labelindent=\parindent, leftmargin=\parindent]}{\end{description}}
 
 % Hacks
-\newcommand{\powerset}{\raisebox{.15\baselineskip}{\Large\ensuremath{\wp}}}
+\newcommand{\powerset}{\raisebox{.15\baselineskip}{\large\ensuremath{\wp}}}
 
 \newcommand*{\Laplace}{\mathop{}\!\mathbin\bigtriangleup}
 \newcommand*{\DAlambert}{\mathop{}\!\mathbin\Box}
@@ -1021,6 +1023,7 @@ This page is intentionally left blank.%
 \newcommand{\emphr}[1]{\emph{\textcolor{red}{{#1}}}}
 \newcommand{\emphv}[1]{\emph{\textcolor{violet}{{#1}}}}
 \newcommand{\emphbb}[1]{\emph{\textcolor{blue}{{#1}}}}
+\newcommand{\emphc}[1]{\emph{\textcolor{cerulean}{{#1}}}}
 \newcommand{\emphb}[1]{\emph{\textbf{#1}}}
 \newcommand{\eps}{\varepsilon}
 \newcommand{\icr}{\ensuremath{^{\times}}}
@@ -1043,7 +1046,7 @@ This page is intentionally left blank.%
 \newcommand{\nsupg}{\mathrel{\rhd}}
 \newcommand{\nsupgeq}{\mathrel{\trianglerighteq}}
 \newcommand{\vphi}{\varphi}
-\newcommand{\pimg}{\ensuremath{^{\gets}}}
+\newcommand{\preimg}{\ensuremath{^{\gets}}}
 \newcommand{\sq}[1]{\ensuremath{#1 \times #1}}
 \newcommand{\surjto}{\twoheadrightarrow}
 \newcommand{\symprod}{\prod_{\mathrm{sym}}}
@@ -1182,8 +1185,12 @@ This page is intentionally left blank.%
   }
 \makeatother
 
+% Checkout https://mirrors.ibiblio.org/pub/mirrors/CTAN/macros/latex/contrib/mathalpha/tex/mathalpha.sty
+\usepackage{mathalfa}
+
 \DeclareMathAlphabet{\mathssss}{U}{rsfs}{m}{n}
 \DeclareMathAlphabet{\mathzeus}{U}{zeus}{m}{n}
+\DeclareMathAlphabet{\mathstix}{U}{stixtwofancys}{b}{n}
 \DeclareMathAlphabet{\mathcalx}{OMS}{cmsy}{m}{n}
 \DeclareFontShape{TU}{lmr}{bx}{sc} {<-> cmbcsc10}{}
 
@@ -1192,6 +1199,7 @@ This page is intentionally left blank.%
 \newcommand{\mb}[1]{\ensuremath{\mathbf{#1}}}
 \newcommand{\mv}[1]{\ensuremath{\mathbfit{#1}}}
 \newcommand{\ml}[1]{\ensuremath{\mathsf{#1}}}
+\newcommand{\mli}[1]{\ensuremath{\mathsfit{#1}}}
 \newcommand{\mc}[1]{\ensuremath{\mathcalx{#1}}}
 \newcommand{\meu}[1]{\ensuremath{\mathzeus{#1}}}
 \newcommand{\mf}[1]{\ensuremath{\mathbb{#1}}}
@@ -1199,6 +1207,13 @@ This page is intentionally left blank.%
 \newcommand{\me}[1]{\ensuremath{\mathscr{#1}}}
 \newcommand{\ms}[1]{\ensuremath{\mathrsfs{#1}}}
 \newcommand{\mh}[1]{\ensuremath{\mathssss{#1}}}
+
+\DeclareFontFamily{U}{stixtwofancys}{\skewchar\font =127}
+\DeclareFontShape{U}{stixtwofancys}{m}{n} {
+	<-> \mathalfa@scrscaled stix2-mathscr}{}
+% \DeclareFontShape{U}{stixtwofancys}{b}{n} {
+% 	<-> \mathalfa@scrscaled stix2-mathscr-bold}{}
+\newcommand{\mx}[1]{\ensuremath{\mathstix{#1}}}
 
 % Generalize delimiters
 \newcommand{\delimit}[4]{
@@ -1276,6 +1291,7 @@ This page is intentionally left blank.%
 \newcommand{\floor}[2][0]{\delimit{#1}{\lfloor}{#2}{\rfloor}}
 \newcommand{\ceil}[2][0]{\delimit{#1}{\lceil}{#2}{\rceil}}
 \newcommand{\pair}[2][0]{\delimit{#1}{(}{#2}{)}}
+\newcommand{\paren}[2][0]{\delimit{#1}{(}{#2}{)}}
 \newcommand{\Pair}[2][0]{\delimit{#1}{\lParen}{#2}{\rParen}}
 \newcommand{\pairc}[3][0]{\delb{#1}{(}{#2}{#3}{)}}
 \newcommand{\lopen}[2][0]{\delimit{#1}{]}{#2}{]}}
@@ -1458,7 +1474,7 @@ This page is intentionally left blank.%
 }
 
 \mdfdefinestyle{mdfullbox}{%
-  linewidth=0.5pt,
+  linewidth=0.4pt,
   roundcorner=2pt,
   skipabove=10pt,
   innertopmargin=5pt,
@@ -1816,8 +1832,8 @@ This page is intentionally left blank.%
 \setmathfont{XITS Math}[range={\hexagon,\varhexagon}]
 \setmathfont{Erewhon Math}[range={\intercal,\complement}]
 
-\DeclareDifferential{\odif}{\mathnormal{d}}
-\DeclareDerivative{\odv}{\mathnormal{d}}
+% \DeclareDifferential{\odif}{\mathnormal{d}}
+% \DeclareDerivative{\odv}{\mathnormal{d}}
 
 \makeatletter
 \newcommand*{\transpose}{%
@@ -1837,9 +1853,10 @@ This page is intentionally left blank.%
 
 \newcommand{\binmod}{\mathbin{\%}}
 \newcommand{\symdiff}{\mathbin{\triangle}}
+\newcommand{\odiam}{\mathbin{\concavediamond}}
 \newcommand{\lsep}{\noindent\hrulefill}
 
-\usepackage[old-arrows,tikz,pstarrows,esvectf]{overarrows} % This needs to be loaded at the end for overbar to work
+\usepackage[tikz,pstarrows,esvectf]{overarrows} % This needs to be loaded at the end for overbar to work
 \NewOverArrowCommand{overhookleft}{start=\lhook, end=\rightarrow, middle=\relbar, trim start=0, trim end=3, trim middle=5,}
 
 \newcommand{\vararc}[1]{%
@@ -1860,3 +1877,5 @@ path={(0,0) arc(360:180:-0.5 and -0.1)},
 center arrow,
 space after arrow=0.1ex,
 }
+
+\counterwithin{equation}{problem}
