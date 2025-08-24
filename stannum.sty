@@ -75,13 +75,15 @@
 \DeclareOption{footsepline}{\@footseplinetrue}
 \ProcessOptions \relax
 
+\@footseplinetrue
+
 \usepackage[dvipsnames]{xcolor}
 \usepackage[english]{babel}
 
 \usepackage[LSB,LSB2,T1]{fontenc}
 
 \if@footsepline
-\usepackage[plainfootsepline=off,headsepline=0.5pt,footsepline=0.5pt]{scrlayer-scrpage}
+\usepackage[plainfootsepline=on,headsepline=0.5pt,footsepline=0.5pt]{scrlayer-scrpage}
 \else
 \usepackage[plainfootsepline=off,headsepline=0.5pt,footsepline=0pt]{scrlayer-scrpage}
 \fi
@@ -1046,7 +1048,7 @@ This page is intentionally left blank.%
 \newcommand{\nsupg}{\mathrel{\rhd}}
 \newcommand{\nsupgeq}{\mathrel{\trianglerighteq}}
 \newcommand{\vphi}{\varphi}
-\newcommand{\preimg}{\ensuremath{^{\gets}}}
+\newcommand{\pimg}{\ensuremath{^{\gets}}}
 \newcommand{\sq}[1]{\ensuremath{#1 \times #1}}
 \newcommand{\surjto}{\twoheadrightarrow}
 \newcommand{\symprod}{\prod_{\mathrm{sym}}}
@@ -1298,7 +1300,8 @@ This page is intentionally left blank.%
 \newcommand{\ropen}[2][0]{\delimit{#1}{[}{#2}{[}}
 \newcommand{\bopen}[2][0]{\delimit{#1}{]}{#2}{[}}
 
-\newcommand{\parte}[1]{\noindent{\color{indigo}{(#1)}}}
+\newcommand{\nparte}[1]{\noindent{\color{indigo}{(#1)}}}
+\newcommand{\parte}[1]{{\color{indigo}{(#1)}}}
 \newcommand{\casee}[1]{\noindent{\color{indigo}{\textsc{Case #1}.}}}
 \newcommand{\basecase}{\noindent\textcolor{indigo}{\textsc{(Base case) }}}
 \newcommand{\indstep}{\noindent\textcolor{indigo}{\textsc{(Inductive step) }}}
@@ -1762,9 +1765,11 @@ This page is intentionally left blank.%
 \newmdenv[style=problemstatement]{probstat}
 
 % \newenvironment{vproof}[1][\textcolor{teal}{\proofname}]{\renewcommand\qedsymbol{$\square$}\renewcommand{\proofname}{Proof}\proof[\normalfont\sffamily\bfseries \textcolor{teal}{#1}]}{\endproof}
-\newenvironment{vproof}[1][\textcolor{azure}{\proofname}]{\renewcommand\qedsymbol{$\square$}\renewcommand{\proofname}{Proof}\proof[\normalfont \itshape \textcolor{azure}{#1}]}{\endproof}
-\newenvironment{subproof}[1][\textcolor{azure}{\proofname}]{\renewcommand\qedsymbol{$\triangle$}\renewcommand{\proofname}{Proof}\proof[\normalfont \itshape \textcolor{azure}{#1}]}{\endproof}
-\newenvironment{vsoln}[1][\textcolor{azure}{\proofname}]{\renewcommand\qedsymbol{$\square$}\renewcommand{\proofname}{Solution}\proof[\normalfont \itshape \textcolor{azure}{#1}]}{\endproof}
+%\newenvironment{vproof}[1][\textcolor{azure}{\proofname}]{\renewcommand\qedsymbol{$\square$}\renewcommand{\proofname}{Proof}\proof[\normalfont \itshape \textcolor{azure}{#1}]}{\endproof}
+
+\newenvironment{vproof}[1][\textcolor{azure}{\proofname}]{\renewcommand\qedsymbol{$\square$}\renewcommand{\proofname}{Proof}\proof[\normalfont \sffamily\bfseries \textcolor{azure}{#1}]}{\endproof}
+\newenvironment{subproof}[1][\textcolor{azure}{\proofname}]{\renewcommand\qedsymbol{$\triangle$}\renewcommand{\proofname}{Proof}\proof[\normalfont \sffamily\bfseries \textcolor{azure}{#1}]}{\endproof}
+\newenvironment{vsoln}[1][\textcolor{azure}{\proofname}]{\renewcommand\qedsymbol{$\square$}\renewcommand{\proofname}{Solution}\proof[\normalfont \sffamily\bfseries \textcolor{azure}{#1}]}{\endproof}
 
 
 \makeatletter
@@ -1825,8 +1830,8 @@ This page is intentionally left blank.%
     drop fuzzy shadow, arc=0.3em, boxrule=1pt]}{%
     \end{tcolorbox}}
 
-\newcommand{\Imp}{\mathcolor{magenta}{\Longrightarrow}}
-\newcommand{\Iff}{\mathcolor{magenta}{\Longleftrightarrow}}
+\newcommand{\Implies}{\mathcolor{darkcyan}{\Longrightarrow}}
+\newcommand{\Iff}{\mathcolor{tangerine}{\Longleftrightarrow}}
 
 \usepackage{pstricks, auto-pst-pdf, pst-node}
 \setmathfont{XITS Math}[range={\hexagon,\varhexagon}]
@@ -1850,6 +1855,8 @@ This page is intentionally left blank.%
 
 \newcommand{\ifind}{\noindent\ensuremath{[\mathcolor{magenta}{\Rightarrow}]\ }}
 \newcommand{\iffind}{\noindent\ensuremath{[\mathcolor{jade}{\Leftarrow}]\ }}
+\newcommand{\subind}{\noindent\ensuremath{[\mathcolor{magenta}{\subseteq}]\ }}
+\newcommand{\supind}{\noindent\ensuremath{[\mathcolor{jade}{\supseteq}]\ }}
 
 \newcommand{\binmod}{\mathbin{\%}}
 \newcommand{\symdiff}{\mathbin{\triangle}}
