@@ -988,6 +988,7 @@ ypoint/.style={circle, inner sep=0pt, minimum size=3pt, fill=Yellow, draw},%
 \newenvironment{enumnn}{\begin{enumerate}[label=\arabic*., ref=\arabic*]}{\end{enumerate}}
 \newenvironment{enumri}{\begin{enumerate}[label=(\emph{\roman*}), ref=\roman*]}{\end{enumerate}}
 \newenvironment{enumr}{\begin{enumerate}[label=({\roman*}), ref=\roman*]}{\end{enumerate}}
+\newenvironment{enumrnp}{\begin{enumerate}[label=\roman*., ref=\roman*]}{\end{enumerate}}
 \newenvironment{enumR}{\begin{enumerate}[label=({\Roman*}), ref=\Roman*]}{\end{enumerate}}
 
 \newenvironment{descr}{\begin{description}[font=\normalfont\sffamily, labelindent=\parindent, leftmargin=\parindent]}{\end{description}}
@@ -1278,6 +1279,7 @@ This page is intentionally left blank.%
 % Different setters
 \newcommand{\setc}[3][0]{\delb{#1}{\{}{#2}{#3}{\}}}
 \renewcommand{\set}[2][0]{\delimit{#1}{\{}{#2}{\}}}
+\renewcommand{\brace}[2][0]{\delimit{#1}{\{}{#2}{\}}}
 \renewcommand{\norm}[2][0]{\delimit{#1}{\lVert}{#2}{\rVert}}
 \renewcommand{\abs}[2][0]{\delimit{#1}{|}{#2}{|}}
 \newcommand{\reval}[2][0]{\delimit{#1}{.}{#2}{|}}
@@ -1370,6 +1372,7 @@ This page is intentionally left blank.%
 \DeclareMathOperator{\Hol}{\ensuremath{Hol}}
 \DeclareMathOperator{\Hom}{\ensuremath{Hom}}
 \DeclareMathOperator{\im}{\ensuremath{im}}
+\DeclareMathOperator{\Img}{\ensuremath{Img}}
 \DeclareMathOperator{\Ind}{\ensuremath{Ind}}
 \DeclareMathOperator{\Inn}{\ensuremath{Inn}}
 \DeclareMathOperator{\Int}{\ensuremath{Int}}
@@ -1659,6 +1662,16 @@ This page is intentionally left blank.%
 
 \declaretheoremstyle[
   % headfont=\color{blue!40!black}\normalfont\bfseries,
+  headfont=\color{BrickRed}\sffamily\bfseries,
+  spaceabove=2pt,
+  spacebelow=1pt,
+  bodyfont=\normalfont,
+  headpunct=$^\ast$.,
+  mdframed={style=probbox}
+]{hprobhead}
+
+\declaretheoremstyle[
+  % headfont=\color{blue!40!black}\normalfont\bfseries,
   headfont=\color{azure}\sffamily\bfseries,
   spaceabove=2pt,
   spacebelow=12pt,
@@ -1692,7 +1705,9 @@ This page is intentionally left blank.%
 \theoremstyle{definition}
 % \declaretheorem[style=probhead,name=Problem,numberwithin=section]{Problem}
 \declaretheorem[style=probhead,name=Problem]{problem}
+\declaretheorem[style=hprobhead,name=Problem,sibling=problem]{dproblem}
 \declaretheorem[style=probhead,name=Problem,numbered=no]{problem*}
+
 \declaretheorem[style=solnhead,name=Solution]{solution}
 \declaretheorem[style=solnhead,name=Solution,numbered=no]{solution*}
 \declaretheorem[style=solnhead,name=Proof,sibling=solution]{prf}
