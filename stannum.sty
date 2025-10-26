@@ -58,8 +58,8 @@
 \AtBeginDocument{\setlength{\belowdisplayshortskip}{4pt}}%
 \AtBeginDocument{\setlength{\abovedisplayskip}{4pt}}%
 \AtBeginDocument{\setlength{\belowdisplayskip}{4pt}}%
-\AtBeginDocument{\setlength{\headheight}{1.25\baselineskip}}%
-\AtBeginDocument{\setlength{\headsep}{0.5\baselineskip}}%
+\AtBeginDocument{\setlength{\headheight}{2.75\baselineskip}}%
+\AtBeginDocument{\setlength{\headsep}{0.75\baselineskip}}%
 \AtBeginDocument{\setlength{\footskip}{2.5\baselineskip}}%
 \AtBeginDocument{\setlength{\footnotesep}{0.75\baselineskip}}%
 %\AtBeginDocument{\setlength{\parindent}{0cm}}%
@@ -1342,6 +1342,7 @@ This page is intentionally left blank.%
 \DeclareMathOperator{\cty}{\ensuremath{cap}}
 \DeclareMathOperator{\cdf}{\ensuremath{cdf}}
 \DeclareMathOperator{\ch}{\ensuremath{ch}}
+\DeclareMathOperator{\chr}{\ensuremath{char}}
 \DeclareMathOperator{\cis}{\ensuremath{cis}}
 \DeclareMathOperator{\cl}{\ensuremath{cl}}
 \DeclareMathOperator{\Clo}{\ensuremath{Clo}}
@@ -1486,7 +1487,7 @@ This page is intentionally left blank.%
 }
 
 \mdfdefinestyle{mdfullbox}{%
-  linewidth=0.4pt,
+  linewidth=0.75pt,
   roundcorner=2pt,
   skipabove=10pt,
   innertopmargin=5pt,
@@ -1497,6 +1498,21 @@ This page is intentionally left blank.%
   rightline=true,
   leftline=true,
   topline=true,
+  bottomline=true
+}
+
+\mdfdefinestyle{mdhalfbox}{%
+  linewidth=0.75pt,
+  roundcorner=2pt,
+  skipabove=10pt,
+  innertopmargin=5pt,
+  innerbottommargin=5pt,
+  skipbelow=4pt,
+  frametitlefont=\bfseries,
+  nobreak=true,
+  rightline=false,
+  leftline=true,
+  topline=false,
   bottomline=true
 }
 
