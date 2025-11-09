@@ -981,15 +981,15 @@ ypoint/.style={circle, inner sep=0pt, minimum size=3pt, fill=Yellow, draw},%
 \setlist[enumerate,3]{label=(\emph{\arabic*}), leftmargin=\parindent, ref=\arabic*, listparindent=\parindent}
 \setlist[enumerate,4]{label=(\emph{\roman*}), leftmargin=\parindent, ref=\roman*, listparindent=\parindent}
 % \newenvironment{enumI}{\begin{itemize}}{\end{itemize}}
-\newenvironment{enum}{\begin{enumerate}[label=(\alph*), ref=\alpha*]}{\end{enumerate}}
-\newenvironment{enumA}{\begin{enumerate}[label=(\Alph*), ref=\Alpha*]}{\end{enumerate}}
-\newenvironment{enumI}{\begin{enumerate}}{\end{enumerate}}
-\newenvironment{enumn}{\begin{enumerate}[label=(\arabic*), ref=\arabic*]}{\end{enumerate}}
-\newenvironment{enumnn}{\begin{enumerate}[label=\arabic*., ref=\arabic*]}{\end{enumerate}}
-\newenvironment{enumri}{\begin{enumerate}[label=(\emph{\roman*}), ref=\roman*]}{\end{enumerate}}
-\newenvironment{enumr}{\begin{enumerate}[label=({\roman*}), ref=\roman*]}{\end{enumerate}}
-\newenvironment{enumrnp}{\begin{enumerate}[label=\roman*., ref=\roman*]}{\end{enumerate}}
-\newenvironment{enumR}{\begin{enumerate}[label=({\Roman*}), ref=\Roman*]}{\end{enumerate}}
+\newenvironment{enum}[1][]{\begin{enumerate}[label=(\alph*), ref=\alpha*, #1]}{\end{enumerate}}
+\newenvironment{enumA}[1][]{\begin{enumerate}[label=(\Alph*), ref=\Alpha*, #1]}{\end{enumerate}}
+\newenvironment{enumI}[1][]{\begin{enumerate}[#1]}{\end{enumerate}}
+\newenvironment{enumn}[1][]{\begin{enumerate}[label=(\arabic*), ref=\arabic*, #1]}{\end{enumerate}}
+\newenvironment{enumnn}[1][]{\begin{enumerate}[label=\arabic*., ref=\arabic*, #1]}{\end{enumerate}}
+\newenvironment{enumri}[1][]{\begin{enumerate}[label=(\emph{\roman*}), ref=\roman*, #1]}{\end{enumerate}}
+\newenvironment{enumr}[1][]{\begin{enumerate}[label=({\roman*}), ref=\roman*, #1]}{\end{enumerate}}
+\newenvironment{enumrnp}[1][]{\begin{enumerate}[label=\roman*., ref=\roman*, #1]}{\end{enumerate}}
+\newenvironment{enumR}[1][]{\begin{enumerate}[label=({\Roman*}), ref=\Roman*, #1]}{\end{enumerate}}
 
 \newenvironment{descr}{\begin{description}[font=\normalfont\sffamily, labelindent=\parindent, leftmargin=\parindent]}{\end{description}}
 
@@ -1727,6 +1727,8 @@ This page is intentionally left blank.%
 \theoremstyle{definition}
 % \declaretheorem[style=probhead,name=Problem,numberwithin=section]{Problem}
 \declaretheorem[style=probhead,name=Problem]{problem}
+\declaretheorem[style=probhead,name=,sibling=problem]{nproblem}
+\declaretheorem[style=hprobhead,name=,sibling=problem]{nhproblem}
 \declaretheorem[style=hprobhead,name=Problem,sibling=problem]{hproblem}
 \declaretheorem[style=probhead,name=Problem,numbered=no]{problem*}
 
@@ -1922,4 +1924,5 @@ center arrow,
 space after arrow=0.1ex,
 }
 
+% \counterwithin{defn}{section}
 \counterwithin{equation}{problem}
