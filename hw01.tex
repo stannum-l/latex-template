@@ -1,0 +1,47 @@
+\documentclass[10pt,oneside,numbers=endperiod,a4paper]{scrartcl}
+\usepackage{stannum}
+\pagestyle{scrheadings}
+%\everymath{\displaystyle}
+
+\ihead{\textsc{21-228}}
+\ohead{\textsc{Assignment 1}}
+
+\begin{document}
+\thispagestyle{plain}
+
+% \title{21-228: Discrete Mathematics - \#1}
+% \author{Anonymouse User}
+% \maketitle
+
+\begin{Problem}
+    Let $G = (V,E)$ be a graph and $M \subseteq E$ be a matching.  Prove
+    that $M$ is a maximum matching if and only if there is no augmenting path.
+\end{Problem}
+
+\begin{Proof} Let graph $G = (V,E)$ be give and $M \subseteq E$ be matching
+    $\ifind$ Prove by contrapositive. Suppose $M$ is not maximum, so there is a matching $M'$ where $\abs{M'} > \abs M$. Let $e = uv$ be an edge where $e \in M' \setminus M$.
+
+
+    $\iffind$
+\end{Proof}
+
+\begin{Problem}
+    Show a graph $G$ has a matching of size $k$ if and only if
+    $q(G-S) \le \abs S + \abs V - 2k$ for all $S \subseteq V$.
+\end{Problem}
+\begin{Problem}
+    Let $G$ be a graph such that $d(x) + d(y) \ge \nu - 1$ for all non-adjacent $x,y \in V$. Prove that
+    $\lambda(G) = \delta(G)$. Prove that if $H$ then $e(nb,H) \ge Cb^2$ for some constant $C > 0$.
+\end{Problem}
+
+\begin{theorem}
+    Let $(f_n)$ be a sequence of continuous functions on $[a,b]$. Suppose
+    there is $M$ such that $\abs{f_n(x)} \le M$ for all $x \in [a,b]$ and for all $n$.
+    Suppose furthermore that $f(x)$ is continuous function such that
+    $\ilim{n} f_n(x) = f(x)$ for ever $x \in [a,b]$. Then:
+    \[ \ilim{n} \int_a^b f_n(t) \dif t = \int_a^b f(t) \dif t.\]
+\end{theorem}
+
+
+$\mc P \me P \mj P \mh P$
+\end{document}

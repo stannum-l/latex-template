@@ -91,6 +91,7 @@
 % \usepackage[margin=0.75in]{geometry}
 \usepackage{typearea}
 \usepackage{geometry}
+% \usepackage{fixmath}
 %\setlength{\textheight}{1.1\textheight}
 
 \usepackage{commath, yhmath, amsmath, amsopn, multicol, amsfonts, amssymb, esint, amsthm, thmtools, subfig, mathdots}
@@ -919,13 +920,16 @@
 \definecolor{zinnwalditebrown}{rgb}{0.17, 0.09, 0.03}
 
 % Tikz
-\usepackage{tikz, tikz-3dplot, tikz-cd, tkz-euclide, tkz-graph}
+\usepackage{tikz, tikz-3dplot, tikz-cd, tkz-graph}
 \usepackage[framemethod=TikZ]{mdframed}
+
+\usepackage{tkz-euclide}
 \usetikzlibrary{shapes, calendar, matrix, backgrounds, folding, knots, fadings, shadows}
-\usetikzlibrary{decorations.markings, calc, arrows, petri, topaths, decorations.pathreplacing, hobby}
+\usetikzlibrary{decorations.pathmorphing, decorations.markings, calc, arrows, petri, topaths, decorations.pathreplacing, hobby}
 \usetikzlibrary{arrows.meta,bending, positioning, automata}
 \usetikzlibrary{graphs, graphs.standard}
 \usetikzlibrary{patterns}
+\usetikzlibrary{angles,quotes}
 \usetikzlibrary{shapes.geometric}
 \tikzset{%
 extended line/.style={shorten >=-#1,shorten <=-#1},%
@@ -942,6 +946,8 @@ svpoint/.style={circle, inner sep=0pt, minimum size=3pt, fill=silver, draw},%
 mpoint/.style={circle, inner sep=0pt, minimum size=3pt, fill=magenta, draw},%
 ypoint/.style={circle, inner sep=0pt, minimum size=3pt, fill=Yellow, draw},%
 }
+
+
 
 \usepackage[most]{tcolorbox}
 
@@ -1320,132 +1326,131 @@ This page is intentionally left blank.%
 	\vspace{0em} }
 
 % Operators
-\DeclareMathOperator{\id}{\ensuremath{id}}
-\DeclareMathOperator{\Acc}{\ensuremath{acc}}
-\DeclareMathOperator{\Adj}{\ensuremath{Adj}}
-\DeclareMathOperator{\Ann}{\ensuremath{Ann}}
-\DeclareMathOperator{\arcosh}{\ensuremath{arcosh}}
-\DeclareMathOperator{\arcoth}{\ensuremath{arcoth}}
-\DeclareMathOperator{\arcsch}{\ensuremath{arcsch}}
-\DeclareMathOperator{\area}{\ensuremath{area}}
-\DeclareMathOperator{\arsech}{\ensuremath{arsech}}
-\DeclareMathOperator{\arsinh}{\ensuremath{arsinh}}
-\DeclareMathOperator{\artanh}{\ensuremath{artanh}}
-\DeclareMathOperator{\atan2}{\ensuremath{atan2}}
-\DeclareMathOperator{\Aut}{\ensuremath{Aut}}
-\DeclareMathOperator{\avg}{\ensuremath{avg}}
-\DeclareMathOperator{\Bdy}{\ensuremath{Bdy}}
-\DeclareMathOperator{\bd}{\ensuremath{bd}}
-\DeclareMathOperator{\Bern}{\ensuremath{\mathsf{Bern}}}
-\DeclareMathOperator{\Beta}{\ensuremath{\mathsf{Beta}}}
-\DeclareMathOperator{\Bin}{\ensuremath{\mathsf{Bin}}}
-\DeclareMathOperator{\cty}{\ensuremath{cap}}
-\DeclareMathOperator{\cdf}{\ensuremath{cdf}}
-\DeclareMathOperator{\ch}{\ensuremath{ch}}
-\DeclareMathOperator{\chr}{\ensuremath{char}}
-\DeclareMathOperator{\cis}{\ensuremath{cis}}
-\DeclareMathOperator{\cl}{\ensuremath{cl}}
-\DeclareMathOperator{\Clo}{\ensuremath{Clo}}
-\DeclareMathOperator{\cod}{\ensuremath{Cod}}
-\DeclareMathOperator{\cof}{\ensuremath{cof}}
-\DeclareMathOperator{\Corr}{\ensuremath{Corr}}
-\DeclareMathOperator{\cov}{\ensuremath{cov}}
-\DeclareMathOperator{\curl}{\ensuremath{curl}}
-\DeclareMathOperator{\diag}{\ensuremath{diag}}
-\DeclareMathOperator{\diam}{\ensuremath{diam}}
-\DeclareMathOperator{\Dih}{\ensuremath{Dih}}
-\DeclareMathOperator{\dil}{\ensuremath{dil}}
-\DeclareMathOperator{\dist}{\ensuremath{dist}}
-\DeclareMathOperator{\dom}{\ensuremath{Dom}}
-\DeclareMathOperator{\dvg}{\ensuremath{div}}
-\DeclareMathOperator{\E}{\ensuremath{\mathsf{E}}}
-\DeclareMathOperator{\End}{\ensuremath{End}}
-\DeclareMathOperator{\Epi}{\ensuremath{Epi}}
-\DeclareMathOperator{\Ext}{\ensuremath{Ext}}
-\DeclareMathOperator{\evIm}{\ensuremath{evIm}}
-\DeclareMathOperator{\ffrac}{\ensuremath{frac}}
-\DeclareMathOperator{\fr}{\ensuremath{fr}}
-\DeclareMathOperator{\Gal}{\ensuremath{Gal}}
-\DeclareMathOperator{\Geo}{\ensuremath{\mathsf{Geo}}}
-\DeclareMathOperator{\GF}{\ensuremath{\mathrm{GF}}}
-\DeclareMathOperator{\GL}{\ensuremath{GL}} % General linear group
-\DeclareMathOperator{\gKer}{\ensuremath{gKer}}
-\DeclareMathOperator{\gp}{\ensuremath{gp}}
-\DeclareMathOperator{\gr}{\ensuremath{Gr}}
-\DeclareMathOperator{\grad}{\ensuremath{grad}}
-\DeclareMathOperator{\Hol}{\ensuremath{Hol}}
-\DeclareMathOperator{\Hom}{\ensuremath{Hom}}
-\DeclareMathOperator{\im}{\ensuremath{im}}
-\DeclareMathOperator{\IIm}{\ensuremath{Im}}
-\DeclareMathOperator{\Img}{\ensuremath{img}}
-\DeclareMathOperator{\Ind}{\ensuremath{Ind}}
-\DeclareMathOperator{\Inn}{\ensuremath{Inn}}
-\DeclareMathOperator{\Int}{\ensuremath{Int}}
-\DeclareMathOperator{\Irr}{\ensuremath{Irr}}
-\DeclareMathOperator{\Iso}{\ensuremath{Iso}}
-\DeclareMathOperator{\itr}{\ensuremath{int}}
-\DeclareMathOperator{\Lap}{\ensuremath{Lapl}}
-\DeclareMathOperator{\Lb}{\ensuremath{Lb}}
-\DeclareMathOperator{\lcm}{\ensuremath{lcm}}
-\DeclareMathOperator{\len}{\ensuremath{len}}
-\DeclareMathOperator{\Lin}{\ensuremath{Lin}}
-\DeclareMathOperator{\lip}{\ensuremath{lip}}
-\DeclareMathOperator{\Mat}{\ensuremath{Mat}}
-\DeclareMathOperator{\Mer}{\ensuremath{Mer}}
-\DeclareMathOperator{\Mono}{\ensuremath{Mono}}
-\DeclareMathOperator{\Norm}{\ensuremath{\mathsf{Norm}}}
-\DeclareMathOperator{\nul}{\ensuremath{null}}
-\DeclareMathOperator{\nullity}{\ensuremath{nullity}}
-\DeclareMathOperator{\ord}{\ensuremath{ord}}
-\DeclareMathOperator{\Pare}{\ensuremath{\mathsf{Pare}}}
-\DeclareMathOperator{\pdf}{\ensuremath{pdf}}
-\DeclareMathOperator{\Perm}{\ensuremath{Perm}}
-\DeclareMathOperator{\Poi}{\ensuremath{\mathsf{Poi}}}
-\DeclareMathOperator{\polylog}{\ensuremath{polylog}}
-\DeclareMathOperator{\pr}{\ensuremath{\mathsf{Pr}}}
-\DeclareMathOperator{\proj}{\ensuremath{proj}}
-\DeclareMathOperator{\rad}{\ensuremath{rad}}
-\DeclareMathOperator{\range}{\ensuremath{range}}
-\DeclareMathOperator{\rank}{\ensuremath{rank}}
-\DeclareMathOperator{\re}{\ensuremath{re}}
-\DeclareMathOperator{\RRe}{\ensuremath{Re}}
-\DeclareMathOperator{\Ric}{\ensuremath{Ric}}
-\DeclareMathOperator{\rot}{\ensuremath{rot}}
-\DeclareMathOperator{\rng}{\ensuremath{Rng}}
-\DeclareMathOperator{\sech}{\ensuremath{sech}}
-\DeclareMathOperator{\sf}{\ensuremath{sf}}
-\DeclareMathOperator{\sign}{\ensuremath{sign}}
-\DeclareMathOperator{\sinc}{\ensuremath{sinc}}
-\DeclareMathOperator{\SL}{\ensuremath{SL}} % Special linear group
-\DeclareMathOperator{\So}{\ensuremath{SO}}
-\DeclareMathOperator{\Span}{\ensuremath{span}}
-\DeclareMathOperator{\Spin}{\ensuremath{Spin}}
-\DeclareMathOperator{\Stab}{\ensuremath{Stab}}
-\DeclareMathOperator{\Su}{\ensuremath{SU}}
-\DeclareMathOperator{\Sub}{\ensuremath{Sub}}
-\DeclareMathOperator{\Supp}{\ensuremath{Supp}}
-\DeclareMathOperator{\Syl}{\ensuremath{Syl}}
-\DeclareMathOperator{\Sym}{\ensuremath{Sym}}
-\DeclareMathOperator{\Tor}{\ensuremath{Tor}}
-\DeclareMathOperator{\Tot}{\ensuremath{Tot}}
-\DeclareMathOperator{\tr}{\ensuremath{tr}}
-\DeclareMathOperator{\Ub}{\ensuremath{Ub}}
-\DeclareMathOperator{\Uni}{\ensuremath{\mathsf{Unif}}}
-\DeclareMathOperator{\val}{\ensuremath{val}}
-\DeclareMathOperator{\var}{\ensuremath{\mathsf{Var}}}
-\DeclareMathOperator{\varvar}{\ensuremath{\mathrm{Var}}}
-\DeclareMathOperator{\Vect}{\ensuremath{Vect}}
-\DeclareMathOperator{\vol}{\ensuremath{vol}}
-\DeclareMathOperator{\Vol}{\ensuremath{Vol}} % Special linear group
-\DeclareMathOperator{\Wern}{\ensuremath{\mathsf{Wern}}}
+\newcommand{\id}{\ensuremath{\operatorname{id}}}
+\newcommand{\Acc}{\ensuremath{\operatorname{acc}}}
+\newcommand{\Adj}{\ensuremath{\operatorname{Adj}}}
+\newcommand{\Ann}{\ensuremath{\operatorname{Ann}}}
+\newcommand{\arcosh}{\ensuremath{\operatorname{arcosh}}}
+\newcommand{\arcoth}{\ensuremath{\operatorname{arcoth}}}
+\newcommand{\arcsch}{\ensuremath{\operatorname{arcsch}}}
+\newcommand{\area}{\ensuremath{\operatorname{area}}}
+\newcommand{\arsech}{\ensuremath{\operatorname{arsech}}}
+\newcommand{\arsinh}{\ensuremath{\operatorname{arsinh}}}
+\newcommand{\artanh}{\ensuremath{\operatorname{artanh}}}
+\newcommand{\atant}{\ensuremath{\operatorname{atan2}}}
+\newcommand{\Aut}{\ensuremath{\operatorname{Aut}}}
+\newcommand{\avg}{\ensuremath{\operatorname{avg}}}
+\newcommand{\Bdy}{\ensuremath{\operatorname{Bdy}}}
+\newcommand{\bd}{\ensuremath{\operatorname{bd}}}
+\newcommand{\Bern}{\ensuremath{\operatorname{\mathsf{Bern}}}}
+\newcommand{\Beta}{\ensuremath{\operatorname{\mathsf{Beta}}}}
+\newcommand{\Bin}{\ensuremath{\operatorname{\mathsf{Bin}}}}
+\newcommand{\cty}{\ensuremath{\operatorname{cap}}}
+\newcommand{\cdf}{\ensuremath{\operatorname{cdf}}}
+\newcommand{\ch}{\ensuremath{\operatorname{ch}}}
+\newcommand{\chr}{\ensuremath{\operatorname{char}}}
+\newcommand{\cis}{\ensuremath{\operatorname{cis}}}
+\newcommand{\cl}{\ensuremath{\operatorname{cl}}}
+\newcommand{\Clo}{\ensuremath{\operatorname{Clo}}}
+\newcommand{\cod}{\ensuremath{\operatorname{Cod}}}
+\newcommand{\cof}{\ensuremath{\operatorname{cof}}}
+\newcommand{\Corr}{\ensuremath{\operatorname{Corr}}}
+\newcommand{\cov}{\ensuremath{\operatorname{cov}}}
+\newcommand{\curl}{\ensuremath{\operatorname{curl}}}
+\newcommand{\diag}{\ensuremath{\operatorname{diag}}}
+\newcommand{\diam}{\ensuremath{\operatorname{diam}}}
+\newcommand{\Dih}{\ensuremath{\operatorname{Dih}}}
+\newcommand{\dil}{\ensuremath{\operatorname{dil}}}
+\newcommand{\dist}{\ensuremath{\operatorname{dist}}}
+\newcommand{\dom}{\ensuremath{\operatorname{Dom}}}
+\newcommand{\dvg}{\ensuremath{\operatorname{div}}}
+\newcommand{\E}{\ensuremath{\operatorname{\mathsf{E}}}}
+\newcommand{\End}{\ensuremath{\operatorname{End}}}
+\newcommand{\Epi}{\ensuremath{\operatorname{Epi}}}
+\newcommand{\Ext}{\ensuremath{\operatorname{Ext}}}
+\newcommand{\evIm}{\ensuremath{\operatorname{evIm}}}
+\newcommand{\ffrac}{\ensuremath{\operatorname{frac}}}
+\newcommand{\fr}{\ensuremath{\operatorname{fr}}}
+\newcommand{\Gal}{\ensuremath{\operatorname{Gal}}}
+\newcommand{\Geo}{\ensuremath{\operatorname{\mathsf{Geo}}}}
+\newcommand{\GF}{\ensuremath{\operatorname{\mathrm{GF}}}}
+\newcommand{\GL}{\ensuremath{\operatorname{GL}}} % General linear group
+\newcommand{\gKer}{\ensuremath{\operatorname{gKer}}}
+\newcommand{\gp}{\ensuremath{\operatorname{gp}}}
+\newcommand{\gr}{\ensuremath{\operatorname{Gr}}}
+\newcommand{\grad}{\ensuremath{\operatorname{grad}}}
+\newcommand{\Hol}{\ensuremath{\operatorname{Hol}}}
+\newcommand{\Hom}{\ensuremath{\operatorname{Hom}}}
+\newcommand{\im}{\ensuremath{\operatorname{im}}}
+\newcommand{\IIm}{\ensuremath{\operatorname{Im}}}
+\newcommand{\Img}{\ensuremath{\operatorname{img}}}
+\newcommand{\Ind}{\ensuremath{\operatorname{Ind}}}
+\newcommand{\Inn}{\ensuremath{\operatorname{Inn}}}
+\newcommand{\Int}{\ensuremath{\operatorname{Int}}}
+\newcommand{\Irr}{\ensuremath{\operatorname{Irr}}}
+\newcommand{\Iso}{\ensuremath{\operatorname{Iso}}}
+\newcommand{\itr}{\ensuremath{\operatorname{int}}}
+\newcommand{\Lap}{\ensuremath{\operatorname{Lapl}}}
+\newcommand{\Lb}{\ensuremath{\operatorname{Lb}}}
+\newcommand{\lcm}{\ensuremath{\operatorname{lcm}}}
+\newcommand{\len}{\ensuremath{\operatorname{len}}}
+\newcommand{\Lin}{\ensuremath{\operatorname{Lin}}}
+\newcommand{\lip}{\ensuremath{\operatorname{lip}}}
+\newcommand{\Mat}{\ensuremath{\operatorname{Mat}}}
+\newcommand{\Mer}{\ensuremath{\operatorname{Mer}}}
+\newcommand{\Mono}{\ensuremath{\operatorname{Mono}}}
+\newcommand{\Norm}{\ensuremath{\operatorname{\mathsf{Norm}}}}
+\newcommand{\nul}{\ensuremath{\operatorname{null}}}
+\newcommand{\nullity}{\ensuremath{\operatorname{nullity}}}
+\newcommand{\ord}{\ensuremath{\operatorname{ord}}}
+\newcommand{\Pare}{\ensuremath{\operatorname{\mathsf{Pare}}}}
+\newcommand{\pdf}{\ensuremath{\operatorname{pdf}}}
+\newcommand{\Perm}{\ensuremath{\operatorname{Perm}}}
+\newcommand{\Poi}{\ensuremath{\operatorname{\mathsf{Poi}}}}
+\newcommand{\polylog}{\ensuremath{\operatorname{polylog}}}
+\newcommand{\pr}{\ensuremath{\operatorname{\mathsf{Pr}}}}
+\newcommand{\proj}{\ensuremath{\operatorname{proj}}}
+\newcommand{\rad}{\ensuremath{\operatorname{rad}}}
+\newcommand{\range}{\ensuremath{\operatorname{range}}}
+\newcommand{\rank}{\ensuremath{\operatorname{rank}}}
+\newcommand{\re}{\ensuremath{\operatorname{re}}}
+\newcommand{\RRe}{\ensuremath{\operatorname{Re}}}
+\newcommand{\Ric}{\ensuremath{\operatorname{Ric}}}
+\newcommand{\rot}{\ensuremath{\operatorname{rot}}}
+\newcommand{\rng}{\ensuremath{\operatorname{Rng}}}
+\newcommand{\sech}{\ensuremath{\operatorname{sech}}}
+\newcommand{\sf}{\ensuremath{\operatorname{sf}}}
+\newcommand{\sign}{\ensuremath{\operatorname{sign}}}
+\newcommand{\sinc}{\ensuremath{\operatorname{sinc}}}
+\newcommand{\SL}{\ensuremath{\operatorname{SL}}} % Special linear group
+\newcommand{\So}{\ensuremath{\operatorname{SO}}}
+\newcommand{\Span}{\ensuremath{\operatorname{span}}}
+\newcommand{\Spin}{\ensuremath{\operatorname{Spin}}}
+\newcommand{\Stab}{\ensuremath{\operatorname{Stab}}}
+\newcommand{\Su}{\ensuremath{\operatorname{SU}}}
+\newcommand{\Sub}{\ensuremath{\operatorname{Sub}}}
+\newcommand{\Supp}{\ensuremath{\operatorname{Supp}}}
+\newcommand{\Syl}{\ensuremath{\operatorname{Syl}}}
+\newcommand{\Sym}{\ensuremath{\operatorname{Sym}}}
+\newcommand{\Tor}{\ensuremath{\operatorname{Tor}}}
+\newcommand{\Tot}{\ensuremath{\operatorname{Tot}}}
+\newcommand{\tr}{\ensuremath{\operatorname{tr}}}
+\newcommand{\Ub}{\ensuremath{\operatorname{Ub}}}
+\newcommand{\Uni}{\ensuremath{\operatorname{\mathsf{Unif}}}}
+\newcommand{\val}{\ensuremath{\operatorname{val}}}
+\newcommand{\var}{\ensuremath{\operatorname{\mathsf{Var}}}}
+\newcommand{\varvar}{\ensuremath{\operatorname{\mathrm{Var}}}}
+\newcommand{\Vect}{\ensuremath{\operatorname{Vect}}}
+\newcommand{\vol}{\ensuremath{\operatorname{vol}}}
+\newcommand{\Vol}{\ensuremath{\operatorname{Vol}}} % Special linear group
+\newcommand{\Wern}{\ensuremath{\operatorname{\mathsf{Wern}}}}
+
 \DeclareMathOperator*{\argmin}{arg\,min}
 \DeclareMathOperator*{\argmax}{arg\,max}
 
-
-
-\newcommand{\ufd}{\ensuremath{\textsc{ufd}}}
-\newcommand{\idsc}{\ensuremath{\textsc{id}}}
-\newcommand{\iid}{\ensuremath{\textsc{iid}}}
+\newcommand{\ufd}{\ensuremath{\operatorname{\textsc{ufd}}}}
+\newcommand{\idsc}{\ensuremath{\operatorname{\textsc{id}}}}
+\newcommand{\iid}{\ensuremath{\operatorname{\textsc{iid}}}}
 
 % Fraction environment
 \newcommand{\stirlingI}[2]{\genfrac{[}{]}{0pt}{}{#1}{#2}}
