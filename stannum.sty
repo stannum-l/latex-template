@@ -94,6 +94,7 @@
 % \usepackage{fixmath}
 %\setlength{\textheight}{1.1\textheight}
 
+\usepackage[f]{esvect}
 \usepackage{commath, yhmath, amsmath, amsopn, multicol, amsfonts, amssymb, esint, amsthm, thmtools, subfig, mathdots}
 \usepackage{upgreek, bold-extra, mathrsfs, tensor, multirow, ellipsis, chemfig, stackengine, asymptote, bbm, bookmark}
 \usepackage{xpatch, longtable, tabu, enumerate, xparse, array, witharrows}
@@ -1309,11 +1310,11 @@ This page is intentionally left blank.%
 \newcommand{\ropen}[2][0]{\delimit{#1}{[}{#2}{[}}
 \newcommand{\bopen}[2][0]{\delimit{#1}{]}{#2}{[}}
 
-\newcommand{\nparte}[1]{\noindent{\color{indigo}{(#1)}}}
-\newcommand{\parte}[1]{{\color{indigo}{(#1)}}}
-\newcommand{\casee}[1]{{\color{indigo}{{\textbf{Case} #1}.}}}
+\newcommand{\nparte}[1]{\noindent{\color{indigo!75!white}{(#1)}}}
+\newcommand{\parte}[1]{{\color{indigo!75!white}{(#1)}}}
+\newcommand{\casee}[1]{{\color{indigo!75!white}{{\textbf{Case} #1}.}}}
 \newcommand{\scasee}[1]{{\color{lightbrown}{{\textbf{Case} #1}.}}}
-\newcommand{\ncasee}[1]{\noindent{\color{indigo}{{\textbf{Case} #1}.}}}
+\newcommand{\ncasee}[1]{\noindent{\color{indigo!75!white}{{\textbf{Case} #1}.}}}
 \newcommand{\nscasee}[1]{\noindent{\color{lightbrown}{{\textbf{Case} #1}.}}}
 \newcommand{\basecase}{\noindent\textcolor{magenta}{\textsc{(Base case) }}}
 \newcommand{\indstep}{\noindent\textcolor{magenta}{\textsc{(Inductive step) }}}
