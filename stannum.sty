@@ -457,11 +457,11 @@
 \definecolor{gray}{rgb}{0.75, 0.75, 0.75}
 \definecolor{gray-asparagus}{rgb}{0.27, 0.35, 0.27}
 \definecolor{green}{rgb}{0.0, 1.0, 0.0}
-\definecolor{green(html/cssgreen)}{rgb}{0.0, 0.5, 0.0}
-\definecolor{green(munsell)}{rgb}{0.0, 0.66, 0.47}
-\definecolor{green(ncs)}{rgb}{0.0, 0.62, 0.42}
-\definecolor{green(pigment)}{rgb}{0.0, 0.65, 0.31}
-\definecolor{green(ryb)}{rgb}{0.4, 0.69, 0.2}
+\definecolor{greenh}{rgb}{0.0, 0.5, 0.0}
+\definecolor{greenm)}{rgb}{0.0, 0.66, 0.47}
+\definecolor{greent}{rgb}{0.0, 0.62, 0.42}
+\definecolor{greenp}{rgb}{0.0, 0.65, 0.31}
+\definecolor{greenr}{rgb}{0.4, 0.69, 0.2}
 \definecolor{green-yellow}{rgb}{0.68, 1.0, 0.18}
 \definecolor{grullo}{rgb}{0.66, 0.6, 0.53}
 \definecolor{guppiegreen}{rgb}{0.0, 1.0, 0.5}
@@ -1311,7 +1311,10 @@ This page is intentionally left blank.%
 
 \newcommand{\nparte}[1]{\noindent{\color{indigo}{(#1)}}}
 \newcommand{\parte}[1]{{\color{indigo}{(#1)}}}
-\newcommand{\casee}[1]{\noindent{\color{magenta}{\textsc{\textbf{Case} #1}.}}}
+\newcommand{\casee}[1]{{\color{indigo}{{\textbf{Case} #1}.}}}
+\newcommand{\scasee}[1]{{\color{lightbrown}{{\textbf{Case} #1}.}}}
+\newcommand{\ncasee}[1]{\noindent{\color{indigo}{{\textbf{Case} #1}.}}}
+\newcommand{\nscasee}[1]{\noindent{\color{lightbrown}{{\textbf{Case} #1}.}}}
 \newcommand{\basecase}{\noindent\textcolor{magenta}{\textsc{(Base case) }}}
 \newcommand{\indstep}{\noindent\textcolor{magenta}{\textsc{(Inductive step) }}}
 
@@ -1708,6 +1711,15 @@ This page is intentionally left blank.%
 
 \declaretheoremstyle[
   % headfont=\color{blue!40!black}\normalfont\bfseries,
+  headfont=\color{azure}\sffamily\itshape,
+  spaceabove=2pt,
+  spacebelow=12pt,
+  bodyfont=\normalfont,
+  qed=\qedsymbol
+]{subsolnhead}
+
+\declaretheoremstyle[
+  % headfont=\color{blue!40!black}\normalfont\bfseries,
   headfont=\color{Black}\sffamily\bfseries,
   spaceabove=2pt,
   spacebelow=1pt,
@@ -1739,9 +1751,10 @@ This page is intentionally left blank.%
 
 \declaretheorem[style=solnhead,name=Solution]{solution}
 \declaretheorem[style=solnhead,name=Solution,numbered=no]{solution*}
-\declaretheorem[style=solnhead,name=Proof,sibling=solution]{prf}
-\declaretheorem[style=solnhead,name=Proof,numbered=no,sibling=solution]{prf*}
-
+\declaretheorem[style=solnhead,name=Proof,sibling=solution]{vproof}
+\declaretheorem[style=solnhead,name=Proof,numbered=no,sibling=solution]{vproof*}
+\declaretheorem[style=subsolnhead,name=Proof,sibling=solution]{vsproof}
+\declaretheorem[style=subsolnhead,name=Proof,numbered=no,sibling=solution]{vsproof*}
 
 \declaretheorem[style=thmbluebox,name=Theorem,numberwithin=problem]{theorem}
 \declaretheorem[style=thmbluebox,name=Theorem,numbered=no]{theorem*}
@@ -1811,9 +1824,9 @@ This page is intentionally left blank.%
 % \newenvironment{vproof}[1][\textcolor{teal}{\proofname}]{\renewcommand\qedsymbol{$\square$}\renewcommand{\proofname}{Proof}\proof[\normalfont\sffamily\bfseries \textcolor{teal}{#1}]}{\endproof}
 %\newenvironment{vproof}[1][\textcolor{azure}{\proofname}]{\renewcommand\qedsymbol{$\square$}\renewcommand{\proofname}{Proof}\proof[\normalfont \itshape \textcolor{azure}{#1}]}{\endproof}
 
-\newenvironment{vproof}[1][\textcolor{azure}{\proofname}]{\renewcommand\qedsymbol{$\square$}\renewcommand{\proofname}{Proof}\proof[\normalfont \sffamily\bfseries \textcolor{azure}{#1}]}{\endproof}
-\newenvironment{subproof}[1][\textcolor{azure}{\proofname}]{\renewcommand\qedsymbol{$\triangle$}\renewcommand{\proofname}{Proof}\proof[\normalfont \sffamily\bfseries \textcolor{azure}{#1}]}{\endproof}
-\newenvironment{vsoln}[1][\textcolor{azure}{\proofname}]{\renewcommand\qedsymbol{$\square$}\renewcommand{\proofname}{Solution}\proof[\normalfont \sffamily\bfseries \textcolor{azure}{#1}]}{\endproof}
+\newenvironment{varproof}[1][\textcolor{azure}{\proofname}]{\renewcommand\qedsymbol{$\square$}\renewcommand{\proofname}{Proof}\proof[\normalfont \sffamily\bfseries \textcolor{azure}{#1}]}{\endproof}
+\newenvironment{varsubproof}[1][\textcolor{azure}{\proofname}]{\renewcommand\qedsymbol{$\triangle$}\renewcommand{\proofname}{Proof}\proof[\normalfont \sffamily\bfseries \textcolor{azure}{#1}]}{\endproof}
+\newenvironment{varsoln}[1][\textcolor{azure}{\proofname}]{\renewcommand\qedsymbol{$\square$}\renewcommand{\proofname}{Solution}\proof[\normalfont \sffamily\bfseries \textcolor{azure}{#1}]}{\endproof}
 
 
 \makeatletter
