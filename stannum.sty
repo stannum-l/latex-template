@@ -108,6 +108,7 @@
 \usepackage[version=4]{mhchem}
 \usepackage{hyperref}
 \hypersetup{colorlinks=true,urlcolor=RubineRed,linkcolor=RoyalBlue,citecolor=ForestGreen,filecolor=Magenta}
+\usepackage{relsize}
 
 \usepackage[warnings-off={mathtools-colon,mathtools-overbracket}]{unicode-math}
 \usepackage{mathtools}
@@ -1312,7 +1313,14 @@ This page is intentionally left blank.%
 
 \newcommand{\nparte}[1]{\noindent{\color{indigo!75!white}{(#1)}}}
 \newcommand{\parte}[1]{{\color{indigo!75!white}{(#1)}}}
-\newcommand{\casee}[1]{{\color{indigo!75!white}{{\textbf{Case} \textsc{#1}}.}}}
+\newcommand{\nsparte}[1]{\noindent{\color{maroon!75!white}{(#1)}}}
+\newcommand{\sparte}[1]{{\color{maroon!75!white}{(#1)}}}
+\newcommand{\casee}[1]{{\color{indigo!75!white}{{\textbf{Case} \textsc{#1}}}}}
+
+\newcommand{\nparteb}[1]{\noindent{\color{indigo!75!white}{(\textbf{#1})}}}
+\newcommand{\parteb}[1]{{\color{indigo!75!white}{(\textbf{#1})}}}
+\newcommand{\caseeb}[1]{{\color{indigo!75!white}{{\textbf{Case} \textsc{\textbf{#1}}}}}}
+
 \newcommand{\scasee}[1]{{\color{lightbrown}{{\textbf{Case} \textsc{#1}}.}}}
 \newcommand{\ncasee}[1]{\noindent{\color{indigo!75!white}{{\textbf{Case} \textsc{#1}}.}}}
 \newcommand{\nscasee}[1]{\noindent{\color{lightbrown}{{\textbf{Case} \textsc{#1}}.}}}
@@ -1683,7 +1691,7 @@ This page is intentionally left blank.%
 
 \declaretheoremstyle[
   % headfont=\color{blue!40!black}\normalfont\bfseries,
-  headfont=\color{BrickRed}\sffamily\bfseries,
+  headfont=\color{BrickRed}\sffamily,
   spaceabove=2pt,
   spacebelow=1pt,
   bodyfont=\normalfont,
@@ -1692,7 +1700,7 @@ This page is intentionally left blank.%
 
 \declaretheoremstyle[
   % headfont=\color{blue!40!black}\normalfont\bfseries,
-  headfont=\color{BrickRed}\sffamily\bfseries,
+  headfont=\color{BrickRed}\sffamily,
   spaceabove=2pt,
   spacebelow=1pt,
   bodyfont=\normalfont,
@@ -1702,7 +1710,7 @@ This page is intentionally left blank.%
 
 \declaretheoremstyle[
   % headfont=\color{blue!40!black}\normalfont\bfseries,
-  headfont=\color{azure}\sffamily\bfseries,
+  headfont=\color{azure}\sffamily,
   spaceabove=2pt,
   spacebelow=12pt,
   bodyfont=\normalfont,
@@ -1711,7 +1719,7 @@ This page is intentionally left blank.%
 
 \declaretheoremstyle[
   % headfont=\color{blue!40!black}\normalfont\bfseries,
-  headfont=\color{azure}\sffamily\itshape,
+  headfont=\color{Orange}\sffamily\itshape,
   spaceabove=2pt,
   spacebelow=12pt,
   bodyfont=\normalfont,
@@ -1888,6 +1896,7 @@ This page is intentionally left blank.%
     \end{tcolorbox}}
 
 \newcommand{\Implies}{\mathcolor{darkcyan}{\Longrightarrow}}
+\newcommand{\Reason}{\mathcolor{maroon}{\Longleftarrow}}
 \newcommand{\Iff}{\mathcolor{tangerine}{\Longleftrightarrow}}
 
 % FIXME: disabling this due to a new error for iftex
@@ -1943,5 +1952,7 @@ center arrow,
 space after arrow=0.1ex,
 }
 
+\newcommand{\digrep}[2]{\ensuremath{\overline{#1_#2#1_{#2-1}\dotso #1_2#1_1#1_0}}}
 % \counterwithin{defn}{section}
 \counterwithin{equation}{problem}
+\newcommand*{\vsqrt}[4]{\sqrt[\leftroot{#1}\uproot{#2}\mathlarger{#3}]{#4}}
