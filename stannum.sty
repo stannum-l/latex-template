@@ -996,6 +996,7 @@ ypoint/.style={circle, inner sep=0pt, minimum size=3pt, fill=Yellow, draw},%
 \newenvironment{enumnn}[1][]{\begin{enumerate}[label=\arabic*., ref=\arabic*, #1]}{\end{enumerate}}
 \newenvironment{enumri}[1][]{\begin{enumerate}[label=(\emph{\roman*}), ref=\roman*, #1]}{\end{enumerate}}
 \newenvironment{enumr}[1][]{\begin{enumerate}[label=({\roman*}), ref=\roman*, #1]}{\end{enumerate}}
+\newenvironment{enumrsc}[1][]{\begin{enumerate}[label=({\textsc{\roman*}}), ref=\roman*, #1]}{\end{enumerate}}
 \newenvironment{enumrnp}[1][]{\begin{enumerate}[label=\roman*., ref=\roman*, #1]}{\end{enumerate}}
 \newenvironment{enumR}[1][]{\begin{enumerate}[label=({\Roman*}), ref=\Roman*, #1]}{\end{enumerate}}
 
@@ -1710,21 +1711,21 @@ This page is intentionally left blank.%
 
 \declaretheoremstyle[
   % headfont=\color{blue!40!black}\normalfont\bfseries,
-  headfont=\color{azure}\sffamily,
-  spaceabove=2pt,
-  spacebelow=12pt,
-  bodyfont=\normalfont,
-  qed=\qedsymbol
-]{solnhead}
-
-\declaretheoremstyle[
-  % headfont=\color{blue!40!black}\normalfont\bfseries,
   headfont=\color{Orange}\sffamily\itshape,
   spaceabove=2pt,
   spacebelow=12pt,
   bodyfont=\normalfont,
-  qed=\qedsymbol
+  qed=$\square$
 ]{subsolnhead}
+
+\declaretheoremstyle[
+  % headfont=\color{blue!40!black}\normalfont\bfseries,
+  headfont=\color{azure}\sffamily,
+  spaceabove=2pt,
+  spacebelow=12pt,
+  bodyfont=\normalfont,
+  qed=$\blacksquare$
+]{solnhead}
 
 \declaretheoremstyle[
   % headfont=\color{blue!40!black}\normalfont\bfseries,
@@ -1764,11 +1765,11 @@ This page is intentionally left blank.%
 \declaretheorem[style=subsolnhead,name=Proof,sibling=solution]{vsproof}
 \declaretheorem[style=subsolnhead,name=Proof,numbered=no,sibling=solution]{vsproof*}
 
-\declaretheorem[style=thmbluebox,name=Theorem,numberwithin=problem]{theorem}
+\declaretheorem[style=thmbluebox,name=Theorem]{theorem}
 \declaretheorem[style=thmbluebox,name=Theorem,numbered=no]{theorem*}
-\declaretheorem[style=thmbluebox,name=Axiomnumberwithin=problem]{axiom}
+\declaretheorem[style=thmbluebox,name=Axiom]{axiom}
 \declaretheorem[style=thmbluebox,name=Axiom,numbered=no]{axiom*}
-\declaretheorem[style=thmcerubox,name=Lemma,sibling=theorem,numberwithin=problem]{lemma}
+\declaretheorem[style=thmcerubox,name=Lemma,sibling=theorem]{lemma}
 \declaretheorem[style=thmcerubox,name=Lemma,numbered=no]{lemma*}
 \declaretheorem[style=thmbluebox,name=Corollary,sibling=theorem]{corollary}
 \declaretheorem[style=thmbluebox,name=Corollary,numbered=no]{corollary*}
@@ -1778,11 +1779,11 @@ This page is intentionally left blank.%
 \declaretheorem[style=thmgreenbox,name=Algorithm,numbered=no]{algo*}
 \declaretheorem[style=thmredbox,name=Example,sibling=theorem]{example}
 \declaretheorem[style=thmredbox,name=Example,numbered=no]{example*}
-\declaretheorem[style=normhead,name=Answer,numberwithin=problem]{answer}
+\declaretheorem[style=normhead,name=Answer]{answer}
 \declaretheorem[style=normhead,name=Answer,numbered=no]{answer*}
-\declaretheorem[style=answerhead,name=Answer,numberwithin=problem]{fancyanswer}
+\declaretheorem[style=answerhead,name=Answer]{fancyanswer}
 \declaretheorem[style=answerhead,name=Answer,numbered=no]{fancyanswer*}
-\declaretheorem[style=answerhead,name=Fact,numberwithin=problem]{fact}
+\declaretheorem[style=answerhead,name=Fact]{fact}
 \declaretheorem[style=answerhead,name=Fact,numbered=no]{fact*}
 \declaretheorem[style=thmdefbox,name=Conjecture,sibling=theorem]{conjecture}
 \declaretheorem[style=thmdefbox,name=Conjecture,numbered=no]{conjecture*}
@@ -1790,15 +1791,15 @@ This page is intentionally left blank.%
 \declaretheorem[style=basehead,name=Exercise,numbered=no]{exercise*}
 \declaretheorem[style=basehead,name=Question,sibling=theorem]{ques}
 \declaretheorem[style=basehead,name=Question,numbered=no]{ques*}
-\declaretheorem[style=thmgreenbox,name=Proposition,numberwithin=problem]{proposition}
+\declaretheorem[style=thmgreenbox,name=Proposition]{proposition}
 \declaretheorem[style=thmgreenbox,name=Proposition,numbered=no]{proposition*}
-\declaretheorem[style=thmgreenbox,name=Claim,numberwithin=problem]{claim}
+\declaretheorem[style=thmgreenbox,name=Claim]{claim}
 \declaretheorem[style=thmgreenbox,name=Claim,numbered=no]{claim*}
-\declaretheorem[style=remarkhead,name=Remark,numberwithin=problem]{remark}
+\declaretheorem[style=remarkhead,name=Remark]{remark}
 \declaretheorem[style=remarkhead,name=Remark,numbered=no]{remark*}
-\declaretheorem[style=fancyremarkhead,name=Remark,numberwithin=problem]{fancyremark}
+\declaretheorem[style=fancyremarkhead,name=Remark]{fancyremark}
 \declaretheorem[style=fancyremarkhead,name=Remark,numbered=no]{fancyremark*}
-\declaretheorem[style=thmdefbox,name=Definition,sibling=theorem,numberwithin=problem]{defn}
+\declaretheorem[style=thmdefbox,name=Definition,sibling=theorem]{defn}
 \declaretheorem[style=thmdefbox,name=Definition,numbered=no]{defn*}
 
 % Fancier
@@ -1952,7 +1953,9 @@ center arrow,
 space after arrow=0.1ex,
 }
 
+\usepackage{xargs}
 \newcommand{\digrep}[2]{\ensuremath{\overline{#1_#2#1_{#2-1}\dotso #1_2#1_1#1_0}}}
 % \counterwithin{defn}{section}
-\counterwithin{equation}{problem}
-\newcommand*{\vsqrt}[4]{\sqrt[\leftroot{#1}\uproot{#2}\mathlarger{#3}]{#4}}
+% \counterwithin{equation}{problem}
+\newcommand{\vsqrt}[2][]{\ifthenelse{\equal{#1}{}}{\sqrt{#2}}{\sqrt[\mathlarger{#1}]{#2}}}
+% \leftroot \uproot
