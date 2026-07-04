@@ -369,7 +369,7 @@
 \definecolor{darkturquoise}{rgb}{0.0, 0.81, 0.82}
 \definecolor{darkviolet}{rgb}{0.58, 0.0, 0.83}
 \definecolor{dartmouthgreen}{rgb}{0.05, 0.5, 0.06}
-\definecolor{davy\'sgrey}{rgb}{0.33, 0.33, 0.33}
+\definecolor{davysgrey}{rgb}{0.33, 0.33, 0.33}
 \definecolor{debianred}{rgb}{0.84, 0.04, 0.33}
 \definecolor{deepcarmine}{rgb}{0.66, 0.13, 0.24}
 \definecolor{deepcarminepink}{rgb}{0.94, 0.19, 0.22}
@@ -991,7 +991,7 @@ ypoint/.style={circle, inner sep=0pt, minimum size=3pt, fill=Yellow, draw},%
 % \newenvironment{enumI}{\begin{itemize}}{\end{itemize}}
 \newenvironment{enum}[1][]{\begin{enumerate}[label=(\alph*), ref=\alpha*, #1]}{\end{enumerate}}
 \newenvironment{enumA}[1][]{\begin{enumerate}[label=(\Alph*), ref=\Alpha*, #1]}{\end{enumerate}}
-\newenvironment{enumI}[1][]{\begin{enumerate}[#1]}{\end{enumerate}}
+\newenvironment{enumi}[1][]{\begin{enumerate}[#1]}{\end{enumerate}}
 \newenvironment{enumn}[1][]{\begin{enumerate}[label=(\arabic*), ref=\arabic*, #1]}{\end{enumerate}}
 \newenvironment{enumnn}[1][]{\begin{enumerate}[label=\arabic*., ref=\arabic*, #1]}{\end{enumerate}}
 \newenvironment{enumri}[1][]{\begin{enumerate}[label=(\emph{\roman*}), ref=\roman*, #1]}{\end{enumerate}}
@@ -1321,6 +1321,8 @@ This page is intentionally left blank.%
 \newcommand{\nparteb}[1]{\noindent{\color{indigo!75!white}{(\textbf{#1})}}}
 \newcommand{\parteb}[1]{{\color{indigo!75!white}{(\textbf{#1})}}}
 \newcommand{\caseeb}[1]{{\color{indigo!75!white}{{\textbf{Case} \textsc{\textbf{#1}}}}}}
+\newcommand{\cit}[1]{{\color{lightbrown}{{{\textbf{(#1)}}}}}}
+
 
 \newcommand{\scasee}[1]{{\color{lightbrown}{{\textbf{Case} \textsc{#1}}.}}}
 \newcommand{\ncasee}[1]{\noindent{\color{indigo!75!white}{{\textbf{Case} \textsc{#1}}.}}}
