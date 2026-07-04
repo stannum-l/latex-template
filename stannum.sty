@@ -1356,6 +1356,7 @@ This page is intentionally left blank.%
 \DeclareRobustCommand{\Aut}{\operatorname{Aut}}
 \DeclareRobustCommand{\avg}{\operatorname{avg}}
 \DeclareRobustCommand{\Bdy}{\operatorname{Bdy}}
+\DeclareRobustCommand{\bdy}{\operatorname{bdy}}
 \DeclareRobustCommand{\bd}{\operatorname{bd}}
 \DeclareRobustCommand{\Bern}{\operatorname{\mathsf{Bern}}}
 \DeclareRobustCommand{\Beta}{\operatorname{\mathsf{Beta}}}
@@ -1367,6 +1368,7 @@ This page is intentionally left blank.%
 \DeclareRobustCommand{\cis}{\operatorname{cis}}
 \DeclareRobustCommand{\cl}{\operatorname{cl}}
 \DeclareRobustCommand{\Clo}{\operatorname{Clo}}
+\DeclareRobustCommand{\clo}{\operatorname{clo}}
 \DeclareRobustCommand{\cod}{\operatorname{Cod}}
 \DeclareRobustCommand{\cof}{\operatorname{cof}}
 \DeclareRobustCommand{\Corr}{\operatorname{Corr}}
@@ -1389,6 +1391,7 @@ This page is intentionally left blank.%
 \DeclareRobustCommand{\Gal}{\operatorname{Gal}}
 \DeclareRobustCommand{\Geo}{\operatorname{\mathsf{Geo}}}
 \DeclareRobustCommand{\GF}{\operatorname{\mathrm{GF}}}
+\DeclareRobustCommand{\gl}{\operatorname{\mathfrank{gl}}}
 \DeclareRobustCommand{\GL}{\operatorname{GL}}
 \DeclareRobustCommand{\gKer}{\operatorname{gKer}}
 \DeclareRobustCommand{\gp}{\operatorname{gp}}
@@ -1402,6 +1405,7 @@ This page is intentionally left blank.%
 \DeclareRobustCommand{\Ind}{\operatorname{Ind}}
 \DeclareRobustCommand{\Inn}{\operatorname{Inn}}
 \DeclareRobustCommand{\Int}{\operatorname{Int}}
+\DeclareRobustCommand{\intt}{\operatorname{int}}
 \DeclareRobustCommand{\Irr}{\operatorname{Irr}}
 \DeclareRobustCommand{\Iso}{\operatorname{Iso}}
 \DeclareRobustCommand{\itr}{\operatorname{int}}
@@ -1437,8 +1441,10 @@ This page is intentionally left blank.%
 \DeclareRobustCommand{\sf}{\operatorname{sf}}
 \DeclareRobustCommand{\sign}{\operatorname{sign}}
 \DeclareRobustCommand{\sinc}{\operatorname{sinc}}
+\DeclareRobustCommand{\sl}{\operatorname{\mathfrak{sl}}}
 \DeclareRobustCommand{\SL}{\operatorname{SL}}
 \DeclareRobustCommand{\So}{\operatorname{SO}}
+\DeclareRobustCommand{\sp}{\operatorname{\mathfrak{sp}}}
 \DeclareRobustCommand{\Span}{\operatorname{span}}
 \DeclareRobustCommand{\Spin}{\operatorname{Spin}}
 \DeclareRobustCommand{\Stab}{\operatorname{Stab}}
@@ -1961,3 +1967,7 @@ space after arrow=0.1ex,
 % \counterwithin{equation}{problem}
 \newcommand{\vsqrt}[2][]{\ifthenelse{\equal{#1}{}}{\sqrt{#2}}{\sqrt[\mathlarger{#1}]{#2}}}
 % \leftroot \uproot
+
+\newcommand{\vclo}[1]{\bar{#1}}
+\newcommand{\vbdy}[1]{\partial#1}
+\newcommand{\vint}[1]{\mathring{#1}}
