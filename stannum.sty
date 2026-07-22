@@ -1022,9 +1022,17 @@ This page is intentionally left blank.%
 \vspace{\fill}%
 }
 
-\newcommand{\cir}[2]{\begin{tikzpicture}
-\node[draw,scale=0.7,circle,{#1},{#2}] at (0,0) {};
-\end{tikzpicture}}
+\newcommand{\cir}[2]{%
+  \mathbin{%
+    \vcenter{%
+      \hbox{%
+        \begin{tikzpicture}
+          \node[draw,circle,scale=0.7,#1,#2] {};
+        \end{tikzpicture}%
+      }%
+    }%
+  }%
+}
 
 \newcommand{\qz}[1]{\ZZ/#1\ZZ}
 \newcommand{\cp}{\ensuremath{{}^{\,\complement}}}
@@ -1052,7 +1060,7 @@ This page is intentionally left blank.%
 \newcommand{\inv}{\ensuremath{^{-1}}}
 \newcommand{\iprod}[1]{\prod_{#1}^\infty}
 \newcommand{\isum}[1]{\sum_{#1}^\infty}
-\newcommand{\iter}[1]{\ensuremath{{}^{\,\cir{scale=0.35}{} #1}}}
+\newcommand{\iter}[1]{\ensuremath{{}^{\,\cir{scale=0.5}{}\,#1}}}
 \newcommand{\listhack}{$\empty$\vspace{-2em}}
 \newcommand{\nder}[1]{\ensuremath{{}^{\left(#1\right)}}}
 \newcommand{\nnsubg}{\mathrel{\ntriangleleft}}
