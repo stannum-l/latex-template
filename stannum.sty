@@ -91,6 +91,7 @@
 % \usepackage[margin=0.75in]{geometry}
 \usepackage{typearea}
 \usepackage{geometry}
+\usepackage{mleftright}
 % \usepackage{fixmath}
 %\setlength{\textheight}{1.1\textheight}
 
@@ -113,7 +114,7 @@
 \usepackage[warnings-off={mathtools-colon,mathtools-overbracket}]{unicode-math}
 \usepackage{mathtools}
 \usepackage{titling}
-\setlength{\droptitle}{-3cm}
+\setlength{\droptitle}{-4cm}
 % \setmathfont{NewCMMath-Regular.otf}
 \usepackage[default]{fontsetup}
 %\setmathfont[range={\pm,\mp}]{FiraMath-Regular}
@@ -1021,6 +1022,10 @@ This page is intentionally left blank.%
 \vspace{\fill}%
 }
 
+\newcommand{\cir}[2]{\begin{tikzpicture}
+\node[draw,scale=0.7,circle,{#1},{#2}] at (0,0) {};
+\end{tikzpicture}}
+
 \newcommand{\qz}[1]{\ZZ/#1\ZZ}
 \newcommand{\cp}{\ensuremath{{}^{\,\complement}}}
 \newcommand{\cro}{\ensuremath{{}^{\times}}}
@@ -1028,7 +1033,7 @@ This page is intentionally left blank.%
 \newcommand{\cycsum}{\sum_{\mathrm{cyc}}}
 \newcommand{\Defeq}{\ensuremath \stackrel{\Delta}{=}}
 \newcommand{\defeq}{\ensuremath \stackrel{\text{def}}{=}}
-\newcommand{\dg}{\ensuremath{{}^{\circ}}}
+% \newcommand{\dg}{\ensuremath{{}^{\circ}}}
 \newcommand{\dual}{\ensuremath{{}^{\ast}}}
 \newcommand{\ddual}{\ensuremath{{}^{\ast\ast}}}
 \newcommand{\eins}{\ensuremath{\mathbbm{1}}}
@@ -1047,7 +1052,7 @@ This page is intentionally left blank.%
 \newcommand{\inv}{\ensuremath{^{-1}}}
 \newcommand{\iprod}[1]{\prod_{#1}^\infty}
 \newcommand{\isum}[1]{\sum_{#1}^\infty}
-\newcommand{\iter}[1]{\ensuremath{^{\circ #1}}}
+\newcommand{\iter}[1]{\ensuremath{{}^{\,\cir{scale=0.35}{} #1}}}
 \newcommand{\listhack}{$\empty$\vspace{-2em}}
 \newcommand{\nder}[1]{\ensuremath{{}^{\left(#1\right)}}}
 \newcommand{\nnsubg}{\mathrel{\ntriangleleft}}
@@ -1229,10 +1234,13 @@ This page is intentionally left blank.%
 	<-> \mathalfa@scrscaled stix2-mathscr}{}
 \newcommand{\mx}[1]{\ensuremath{\mathstix{#1}}}
 
+\newcommand\lft{\mathopen{}\mathclose\bgroup\left}
+\newcommand\rgt{\aftergroup\egroup\right}
+
 % Generalize delimiters
 \newcommand{\delimit}[4]{
 	\ifcase #1
-		\mathopen{}\left#2 #3 \right#4\mathclose{}
+		\mathopen{}\lft#2 #3 \rgt#4\mathclose{}
 		\or #2 #3 #4
 		\or \bigl#2 #3 \bigr#4
 		\or \Bigl#2 #3 \Bigr#4
