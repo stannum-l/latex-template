@@ -1264,6 +1264,28 @@ This page is intentionally left blank.%
 	\fi
 }
 
+\newcommand{\delimitl}[2]{
+	\ifcase #1
+		\mathopen{}\lft#2\mathclose{}
+		\or #2
+		\or \bigl#2
+		\or \Bigl#2
+		\or \biggl#2
+		\or \Biggl#2
+	\fi
+}
+
+\newcommand{\delimitr}[2]{
+	\ifcase #1
+		\mathopen{}\rgt#2\mathclose{}
+		\or #2
+		\or \bigr#2
+		\or \Bigr#2
+		\or \biggr#2
+		\or \Biggr#2
+	\fi
+}
+
 %Generalize builder with a bar
 \newcommand{\delb}[5]{
 	\delimit{#1}{#2}{
@@ -1600,6 +1622,12 @@ This page is intentionally left blank.%
   linecolor=CarnationPink,
 }
 
+\mdfdefinestyle{mdgreybox}{%
+  style=mdbox,
+  backgroundcolor=black!4,
+  linecolor=black!35,
+}
+
 \mdfdefinestyle{remarkbox}{%
   style=mdbox,
   backgroundcolor=CarnationPink!5,
@@ -1607,7 +1635,7 @@ This page is intentionally left blank.%
 }
 
 \declaretheoremstyle[
-  headfont=\bfseries\color{CarnationPink},
+  headfont=\sffamily\bfseries\color{CarnationPink},
   mdframed={style=mdredbox},
   bodyfont=\normalfont,
   spaceabove=2pt,
@@ -1615,6 +1643,14 @@ This page is intentionally left blank.%
   % headpunct={---},
   % postheadspace={0pt},
 ]{thmredbox}
+
+\declaretheoremstyle[
+  headfont=\sffamily\bfseries\color{black!55},
+  mdframed={style=mdgreybox},
+  bodyfont=\normalfont,
+  spaceabove=2pt,
+  spacebelow=2pt,
+]{thmgreybox}
 
 
 \mdfdefinestyle{mdblackbox}{%
@@ -1624,7 +1660,7 @@ This page is intentionally left blank.%
 }
 
 \declaretheoremstyle[
-  headfont=\bfseries,
+  headfont=\bfseries\sffamily,
   mdframed={style=mdredbox},
   bodyfont=\normalfont,
   spaceabove=2pt,
@@ -1724,7 +1760,7 @@ This page is intentionally left blank.%
 
 \declaretheoremstyle[
   % headfont=\color{blue!40!black}\normalfont\bfseries,
-  headfont=\color{BrickRed}\sffamily,
+  headfont=\color{BrickRed}\sffamily\bfseries,
   spaceabove=2pt,
   spacebelow=1pt,
   bodyfont=\normalfont,
@@ -1752,7 +1788,7 @@ This page is intentionally left blank.%
 
 \declaretheoremstyle[
   % headfont=\color{blue!40!black}\normalfont\bfseries,
-  headfont=\color{azure}\sffamily,
+  headfont=\color{blue}\sffamily,
   spaceabove=2pt,
   spacebelow=12pt,
   bodyfont=\normalfont,
@@ -1809,8 +1845,10 @@ This page is intentionally left blank.%
 \declaretheorem[style=thmcerubox,name=Assumption,numbered=no]{assume*}
 \declaretheorem[style=thmgreenbox,name=Algorithm,sibling=theorem]{algo}
 \declaretheorem[style=thmgreenbox,name=Algorithm,numbered=no]{algo*}
-\declaretheorem[style=thmredbox,name=Example,sibling=theorem]{example}
-\declaretheorem[style=thmredbox,name=Example,numbered=no]{example*}
+\declaretheorem[style=thmgreybox,name=Example,sibling=theorem]{example}
+\declaretheorem[style=thmgreybox,name=Example,numbered=no]{example*}
+\declaretheorem[style=thmredbox,name=Counter Example,sibling=theorem]{cexample}
+\declaretheorem[style=thmredbox,name=Counter Example,numbered=no]{cexample*}
 \declaretheorem[style=normhead,name=Answer]{answer}
 \declaretheorem[style=normhead,name=Answer,numbered=no]{answer*}
 \declaretheorem[style=answerhead,name=Answer]{fancyanswer}
@@ -1862,11 +1900,9 @@ This page is intentionally left blank.%
 \mdfdefinestyle{problemstatement}{style=mdboxybox,frametitle={Problem Statement}}
 \newmdenv[style=problemstatement]{probstat}
 
-% \newenvironment{vproof}[1][\textcolor{teal}{\proofname}]{\renewcommand\qedsymbol{$\square$}\renewcommand{\proofname}{Proof}\proof[\normalfont\sffamily\bfseries \textcolor{teal}{#1}]}{\endproof}
-%\newenvironment{vproof}[1][\textcolor{azure}{\proofname}]{\renewcommand\qedsymbol{$\square$}\renewcommand{\proofname}{Proof}\proof[\normalfont \itshape \textcolor{azure}{#1}]}{\endproof}
+\newenvironment{prf}[1][\textcolor{azure}{\proofname}]{\renewcommand\qedsymbol{$\square$}\renewcommand{\proofname}{Proof}\proof[\textcolor{azure}{#1}]}{\endproof}
+\newenvironment{sprf}[1][\textcolor{azure}{\proofname}]{\renewcommand\qedsymbol{$\triangle$}\renewcommand{\proofname}{Proof}\proof[\textcolor{azure}{#1}]}{\endproof}
 
-\newenvironment{varproof}[1][\textcolor{azure}{\proofname}]{\renewcommand\qedsymbol{$\square$}\renewcommand{\proofname}{Proof}\proof[\normalfont \sffamily\bfseries \textcolor{azure}{#1}]}{\endproof}
-\newenvironment{varsubproof}[1][\textcolor{azure}{\proofname}]{\renewcommand\qedsymbol{$\triangle$}\renewcommand{\proofname}{Proof}\proof[\normalfont \sffamily\bfseries \textcolor{azure}{#1}]}{\endproof}
 \newenvironment{varsoln}[1][\textcolor{azure}{\proofname}]{\renewcommand\qedsymbol{$\square$}\renewcommand{\proofname}{Solution}\proof[\normalfont \sffamily\bfseries \textcolor{azure}{#1}]}{\endproof}
 
 
@@ -1930,6 +1966,7 @@ This page is intentionally left blank.%
 
 \newcommand{\Implies}{\mathcolor{darkcyan}{\Longrightarrow}}
 \newcommand{\Reason}{\mathcolor{maroon}{\Longleftarrow}}
+\newcommand{\Contradiction}{\mathcolor{darkcyan}{\Rightarrow}\!\mathcolor{maroon}{\Leftarrow}}
 \newcommand{\Iff}{\mathcolor{tangerine}{\Longleftrightarrow}}
 
 % FIXME: disabling this due to a new error for iftex
@@ -1997,3 +2034,10 @@ space after arrow=0.1ex,
 \newcommand{\vclo}[1]{\bar{#1}}
 \newcommand{\vbdy}[1]{\partial#1}
 \newcommand{\vint}[1]{\mathring{#1}}
+
+\newcommand{\ffactorial}[1]{%
+  ^{\mspace{2mu}\underline{\mspace{-2mu}#1\mspace{-2mu}}\mspace{2mu}}%
+}
+\newcommand{\rfactorial}[1]{%
+  ^{\mspace{2mu}\overline{\mspace{-2mu}#1\mspace{-2mu}}\mspace{2mu}}%
+}
