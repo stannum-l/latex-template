@@ -51,7 +51,6 @@
 % DEALINGS IN THE SOFTWARE.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ProvidesPackage{stannum}
-
 \usepackage{anyfontsize}
 
 \AtBeginDocument{\setlength{\abovedisplayshortskip}{2pt}}%
@@ -132,24 +131,7 @@
 \ModifyLayer[addvoffset=.6ex]{plain.scrheadings.foot.even}
 \ModifyLayer[addvoffset=.6ex]{plain.scrheadings.foot.oneside}
 
-\DeclareFontFamily{U}{mathb}{\hyphenchar\font45}
-\DeclareFontShape{U}{mathb}{m}{n}{
-  <-5.5>    mathb5
-  <5.5-6.5> mathb6
-  <6.5-7.5> mathb7
-  <7.5-8.5> mathb8
-  <8.5-9.5> mathb9
-  <9.5-11>  mathb10
-  <12->     mathb12
-}{}
-
-\DeclareSymbolFont{mathb}{U}{mathb}{m}{n}
-\DeclareFontSubstitution{U}{mathb}{m}{n}
-\DeclareMathSymbol{\smalltriangleup}   {\mathbin}{mathb}{"98}
-\DeclareMathSymbol{\smalltriangledown} {\mathbin}{mathb}{"99}
-\DeclareMathSymbol{\blacktriangleup}   {\mathbin}{mathb}{"9C}
-\DeclareMathSymbol{\bigast}            {\mathop}{mathb}{"07}
-\DeclareMathSymbol{\bigcoast}          {\mathop}{mathb}{"06}
+\DeclareMathOperator*{\bigast}{\raisebox{-1.2ex}{\scalebox{3.5}{$\ast$}}}
 
 \newcommand{\Ast}{\mathop{\scalebox{2.4}{\raisebox{-0.4ex}{$\bigast$}}}}
 \newcommand{\Coast}{\mathop{\scalebox{2.4}{\raisebox{-0.4ex}{$\bigcoast$}}}}
@@ -1102,13 +1084,6 @@ This page is intentionally left blank.%
 \newcommand{\ctb}[2]{\tcbox[on line,boxsep=4pt,boxrule=0.6pt,left=0pt,right=0pt,top=0pt,bottom=0pt,colback=#1,highlight math style={enhanced}]{#2}}%
 \newcommand{\cmb}[2]{\tcbhighmath[on line,boxsep=4pt,boxrule=0.6pt,left=0pt,right=0pt,top=0pt,bottom=0pt,colback=#1,highlight math style={enhanced}]{#2}}
 
-% center not
-\def\@nll#1#2{\m@th\ooalign{\hfil$#1#2$\hfil\cr\hfil$#1/$\hfil\cr}}
-\newcommand{\nll}{\mathrel{\mathpalette\@nll{\ll}}}
-\newcommand{\ngg}{\mathrel{\mathpalette\@nll{\gg}}}
-\newcommand{\varnmid}{\mathrel{\mathpalette\@nll{\mid}}}
-\newcommand{\centernot}[1]{\mathrel{\mathpalette\@nll{#1}}}
-
 % Special characters
 \newcommand{\NN}{\ensuremath{\mathbb{N}}}
 \newcommand{\RR}{\ensuremath{\mathbb{R}}}
@@ -1821,45 +1796,45 @@ This page is intentionally left blank.%
 \theoremstyle{definition}
 % \declaretheorem[style=probhead,name=Problem,numberwithin=section]{Problem}
 \declaretheorem[style=probhead,name=Problem]{problem}
-\declaretheorem[style=probhead,name=,sibling=problem]{nproblem}
-\declaretheorem[style=hprobhead,name=,sibling=problem]{nhproblem}
-\declaretheorem[style=hprobhead,name=Problem,sibling=problem]{hproblem}
+\declaretheorem[style=probhead,name=Problem,sibling=problem,numberwithin=problem]{nproblem}
+\declaretheorem[style=hprobhead,name=Problem,sibling=problem,numberwithin=problem]{nhproblem}
+\declaretheorem[style=hprobhead,name=Problem,sibling=problem,numberwithin=problem]{hproblem}
 \declaretheorem[style=probhead,name=Problem,numbered=no]{problem*}
 
 \declaretheorem[style=solnhead,name=Solution]{solution}
 \declaretheorem[style=solnhead,name=Solution,numbered=no]{solution*}
-\declaretheorem[style=solnhead,name=Proof,sibling=solution]{vproof}
+\declaretheorem[style=solnhead,name=Proof,sibling=solution,numberwithin=problem]{vproof}
 \declaretheorem[style=solnhead,name=Proof,numbered=no,sibling=solution]{vproof*}
-\declaretheorem[style=subsolnhead,name=Proof,sibling=solution]{vsproof}
+\declaretheorem[style=subsolnhead,name=Proof,sibling=solution,numberwithin=problem]{vsproof}
 \declaretheorem[style=subsolnhead,name=Proof,numbered=no,sibling=solution]{vsproof*}
 
 \declaretheorem[style=thmbluebox,name=Theorem]{theorem}
 \declaretheorem[style=thmbluebox,name=Theorem,numbered=no]{theorem*}
 \declaretheorem[style=thmbluebox,name=Axiom]{axiom}
 \declaretheorem[style=thmbluebox,name=Axiom,numbered=no]{axiom*}
-\declaretheorem[style=thmcerubox,name=Lemma,sibling=theorem]{lemma}
+\declaretheorem[style=thmcerubox,name=Lemma,sibling=theorem,numberwithin=problem]{lemma}
 \declaretheorem[style=thmcerubox,name=Lemma,numbered=no]{lemma*}
-\declaretheorem[style=thmbluebox,name=Corollary,sibling=theorem]{corollary}
+\declaretheorem[style=thmbluebox,name=Corollary,sibling=theorem,numberwithin=problem]{corollary}
 \declaretheorem[style=thmbluebox,name=Corollary,numbered=no]{corollary*}
-\declaretheorem[style=thmcerubox,name=Assumption,sibling=theorem]{assume}
+\declaretheorem[style=thmcerubox,name=Assumption,sibling=theorem,numberwithin=problem]{assume}
 \declaretheorem[style=thmcerubox,name=Assumption,numbered=no]{assume*}
-\declaretheorem[style=thmgreenbox,name=Algorithm,sibling=theorem]{algo}
+\declaretheorem[style=thmgreenbox,name=Algorithm,sibling=theorem,numberwithin=problem]{algo}
 \declaretheorem[style=thmgreenbox,name=Algorithm,numbered=no]{algo*}
-\declaretheorem[style=thmgreybox,name=Example,sibling=theorem]{example}
+\declaretheorem[style=thmgreybox,name=Example,sibling=theorem,numberwithin=problem]{example}
 \declaretheorem[style=thmgreybox,name=Example,numbered=no]{example*}
-\declaretheorem[style=thmredbox,name=Counter Example,sibling=theorem]{cexample}
-\declaretheorem[style=thmredbox,name=Counter Example,numbered=no]{cexample*}
+\declaretheorem[style=thmredbox,name=Counter-example,sibling=theorem,numberwithin=problem]{cexample}
+\declaretheorem[style=thmredbox,name=Counter-example,numbered=no]{cexample*}
 \declaretheorem[style=normhead,name=Answer]{answer}
 \declaretheorem[style=normhead,name=Answer,numbered=no]{answer*}
 \declaretheorem[style=answerhead,name=Answer]{fancyanswer}
 \declaretheorem[style=answerhead,name=Answer,numbered=no]{fancyanswer*}
 \declaretheorem[style=answerhead,name=Fact]{fact}
 \declaretheorem[style=answerhead,name=Fact,numbered=no]{fact*}
-\declaretheorem[style=thmdefbox,name=Conjecture,sibling=theorem]{conjecture}
+\declaretheorem[style=thmdefbox,name=Conjecture,sibling=theorem,numberwithin=problem]{conjecture}
 \declaretheorem[style=thmdefbox,name=Conjecture,numbered=no]{conjecture*}
-\declaretheorem[style=basehead,name=Exercise,sibling=theorem]{exercise}
+\declaretheorem[style=basehead,name=Exercise,sibling=theorem,numberwithin=problem]{exercise}
 \declaretheorem[style=basehead,name=Exercise,numbered=no]{exercise*}
-\declaretheorem[style=basehead,name=Question,sibling=theorem]{ques}
+\declaretheorem[style=basehead,name=Question,sibling=theorem,numberwithin=problem]{ques}
 \declaretheorem[style=basehead,name=Question,numbered=no]{ques*}
 \declaretheorem[style=thmgreenbox,name=Proposition]{proposition}
 \declaretheorem[style=thmgreenbox,name=Proposition,numbered=no]{proposition*}
@@ -1869,7 +1844,7 @@ This page is intentionally left blank.%
 \declaretheorem[style=remarkhead,name=Remark,numbered=no]{remark*}
 \declaretheorem[style=fancyremarkhead,name=Remark]{fancyremark}
 \declaretheorem[style=fancyremarkhead,name=Remark,numbered=no]{fancyremark*}
-\declaretheorem[style=thmdefbox,name=Definition,sibling=theorem]{defn}
+\declaretheorem[style=thmdefbox,name=Definition,sibling=theorem,numberwithin=problem]{defn}
 \declaretheorem[style=thmdefbox,name=Definition,numbered=no]{defn*}
 
 % Fancier
@@ -1900,10 +1875,11 @@ This page is intentionally left blank.%
 \mdfdefinestyle{problemstatement}{style=mdboxybox,frametitle={Problem Statement}}
 \newmdenv[style=problemstatement]{probstat}
 
-\newenvironment{prf}[1][\textcolor{azure}{\proofname}]{\renewcommand\qedsymbol{$\square$}\renewcommand{\proofname}{Proof}\proof[\textcolor{azure}{#1}]}{\endproof}
-\newenvironment{sprf}[1][\textcolor{azure}{\proofname}]{\renewcommand\qedsymbol{$\triangle$}\renewcommand{\proofname}{Proof}\proof[\textcolor{azure}{#1}]}{\endproof}
+\newenvironment{prf}[1][\textcolor{azure}{\proofname}]{\renewcommand\qedsymbol{$\square$}\renewcommand{\proofname}{Proof}\proof[\textcolor{blue}{#1}]}{\endproof}
+\newenvironment{sprf}[1][\textcolor{azure}{\proofname}]{\renewcommand\qedsymbol{$\triangle$}\renewcommand{\proofname}{Proof}\proof[\textcolor{blue}{#1}]}{\endproof}
 
-\newenvironment{varsoln}[1][\textcolor{azure}{\proofname}]{\renewcommand\qedsymbol{$\square$}\renewcommand{\proofname}{Solution}\proof[\normalfont \sffamily\bfseries \textcolor{azure}{#1}]}{\endproof}
+\newenvironment{soln}[1][\proofname]{\renewcommand\qedsymbol{$\square$}\renewcommand{\proofname}{Solution}\proof[#1]}{\endproof}
+\newenvironment{vsoln}[1][\textcolor{azure}{\proofname}]{\renewcommand\qedsymbol{$\square$}\renewcommand{\proofname}{Solution}\proof[\normalfont \sffamily\bfseries \textcolor{blue}{#1}]}{\endproof}
 
 
 \makeatletter
